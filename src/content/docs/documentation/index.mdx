@@ -1,0 +1,39 @@
+---
+title: Welcome to Scoold Documentation
+description: The complete guide to installing, configuring, and managing your Scoold instance.
+template: splash
+hero:
+  tagline: Everything you need to set up, configure, and run Scoold for your team or organization.
+  actions:
+    - text: Get Started
+      link: /documentation/getting-started/installation
+      icon: right-arrow
+      variant: primary
+    - text: View on GitHub
+      link: https://github.com/Erudika/scoold
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Quick links
+
+<CardGrid stagger>
+  <Card title="Installation" icon="setting">
+    Get Scoold running in minutes with Docker or as a standalone JAR.
+    [Installation guide →](/documentation/getting-started/installation)
+  </Card>
+  <Card title="Configuration" icon="document">
+    Configure authentication, search, storage, and all Pro features.
+    [Configuration →](/documentation/configuration/overview)
+  </Card>
+  <Card title="Deployment" icon="rocket">
+    Deploy to AWS, Azure, GCP, Heroku, or any Docker-compatible host.
+    [Deployment guide →](/documentation/deployment/docker)
+  </Card>
+  <Card title="API Reference" icon="puzzle">
+    Full OpenAPI 3.x specification for the Scoold REST API.
+    [API Reference →](/documentation/scoold-api)
+  </Card>
+</CardGrid>

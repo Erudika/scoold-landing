@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from './CTA.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  hero_badge: string;
+  intro: string;
+  table_headers: string[];
+  rows: (string | boolean)[][];
+  metaDescription?: string;
+}
+
+const { title, subtitle, hero_badge, intro, table_headers, rows, metaDescription } = Astro.props;
+---
+
+<BaseLayout title={title} description={metaDescription ?? subtitle}>
+  <!-- Hero -->
+  <section class="section-padding bg-white border-b border-slate-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="section-label">{hero_badge}</span>
+      <h1 class="text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-5">
+        {title}
+      </h1>
+      <p class="text-xl text-slate-500 leading-relaxed">{subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-14 bg-slate-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-lg text-slate-600 leading-relaxed text-center">{intro}</p>
+    </div>
+  </section>
+
+  <!-- Comparison table -->
+  <section class="section-padding bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm rounded-2xl overflow-hidden border border-slate-200">
+          <thead>
+            <tr class="bg-slate-50">
+              {table_headers.map((header, i) => (
+                <th
+                  class:list={[
+                    'py-4 font-semibold text-sm',
+                    i === 0 ? 'text-left pl-6 w-2/5 text-slate-600' : 'text-center px-6',
+                    i === 1 ? 'text-brand-600 bg-brand-50' : '',
+                  ]}
+                >
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {rows.map((row) => (
+              <tr class="hover:bg-slate-50 transition-colors">
+                {row.map((cell, i) => (
+                  <td
+                    class:list={[
+                      'py-4',
+                      i === 0 ? 'pl-6 font-medium text-slate-700' : 'text-center px-6',
+                      i === 1 ? 'bg-brand-50/30' : '',
+                    ]}
+                  >
+                    {typeof cell === 'boolean' ? (
+                      cell ? (
+                        <div class="flex justify-center">
+                          <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                          </svg>
+                        </div>
+                      ) : (
+                        <div class="flex justify-center">
+                          <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                          </svg>
+                        </div>
+                      )
+                    ) : (
+                      <span class:list={[i === 1 ? 'text-brand-700 font-medium' : 'text-slate-600']}>{cell}</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href="/download"
+          class="inline-flex items-center gap-2 px-7 py-3.5 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-700 transition-colors text-sm"
+        >
+          Get started with Scoold free
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

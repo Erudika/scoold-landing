@@ -1,0 +1,22 @@
+---
+import siteData from '../data/site-data.json';
+
+const { stats } = siteData;
+---
+
+<section class="bg-slate-50 border-y border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-slate-200">
+      {stats.map((stat) => (
+        <div class="text-center md:px-8">
+          <div class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-1">
+            {stat.value}
+          </div>
+          <div class="text-sm text-slate-500 font-medium">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import siteData from '../data/site-data.json';
+
+const { features_page } = siteData;
+---
+
+<BaseLayout
+  title="Features"
+  description="Full feature breakdown of Scoold — Q&A, enterprise SSO (LDAP, SAML, SCIM), REST API, multi-space, analytics and more."
+>
+  <!-- Page hero -->
+  <section class="section-padding bg-white border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="section-label">FEATURES</span>
+      <h1 class="text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-5 max-w-3xl mx-auto">
+        {features_page.title}
+      </h1>
+      <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        {features_page.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Feature categories -->
+  {features_page.categories.map((cat, catIdx) => (
+    <section class:list={['section-padding', catIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50']}>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-brand-600 mb-8">{cat.name}</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cat.features.map((feature) => (
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-slate-900 mb-1">{feature.title}</h3>
+                <p class="text-sm text-slate-500 leading-relaxed">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Comparison table -->
+  <section class="section-padding bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+          {features_page.comparison.title}
+        </h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200">
+              {features_page.comparison.headers.map((header, i) => (
+                <th
+                  class:list={[
+                    'py-3 font-semibold text-left',
+                    i === 0 ? 'text-slate-700 pl-4 w-2/5' : 'text-center px-4',
+                    i === 2 ? 'text-brand-600' : 'text-slate-600',
+                  ]}
+                >
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {features_page.comparison.rows.map((row) => (
+              <tr class="hover:bg-slate-50 transition-colors">
+                {row.map((cell, i) => (
+                  <td class:list={['py-3', i === 0 ? 'pl-4 font-medium text-slate-700' : 'text-center px-4']}>
+                    {typeof cell === 'boolean' ? (
+                      cell ? (
+                        <svg class="w-5 h-5 text-emerald-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                        </svg>
+                      ) : (
+                        <svg class="w-5 h-5 text-slate-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                      )
+                    ) : (
+                      <span class:list={[i === 2 ? 'text-brand-600 font-medium' : 'text-slate-600']}>{cell}</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Live Demo"
+  description="Try Scoold live — no account required. Explore the full Q&A platform at demo.scoold.com."
+>
+  <section class="section-padding bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="section-label">DEMO</span>
+      <h1 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-5">
+        See Scoold in action
+      </h1>
+      <p class="text-xl text-slate-500 leading-relaxed mb-8">
+        Try the full Scoold platform live — no account, no credit card required.
+        Explore Q&A, search, tags, reputation, and more.
+      </p>
+      <a
+        href="https://demo.scoold.com"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-brand-600 text-white font-bold rounded-xl hover:bg-brand-700 transition-colors text-base"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        Open Live Demo
+      </a>
+      <p class="mt-4 text-xs text-slate-400">
+        Opens demo.scoold.com in a new tab &middot; Pre-populated with sample content
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-slate-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-slate-900 text-center mb-10">What you can explore in the demo</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { icon: '❓', title: 'Q&A flow', desc: 'Ask questions, post answers, vote and accept the best answer.' },
+          { icon: '🔍', title: 'Search', desc: 'Try full-text search across all questions, answers, and tags.' },
+          { icon: '🏷️', title: 'Tags & wikis', desc: 'Browse content by topic tags and view tag wiki pages.' },
+          { icon: '⭐', title: 'Reputation', desc: 'See how the reputation and badge system works.' },
+          { icon: '🛠️', title: 'Admin panel', desc: 'Explore the moderation and admin configuration interface.' },
+          { icon: '📱', title: 'Mobile view', desc: 'Test the responsive design on any screen size.' },
+        ].map((item) => (
+          <div class="bg-white border border-slate-100 rounded-2xl p-5">
+            <div class="text-2xl mb-3">{item.icon}</div>
+            <h3 class="font-semibold text-slate-900 text-sm mb-1.5">{item.title}</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

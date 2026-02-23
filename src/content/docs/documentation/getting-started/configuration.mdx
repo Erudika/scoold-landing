@@ -1,0 +1,89 @@
+---
+title: Basic Configuration
+description: Core configuration options for Scoold — branding, authentication, and general settings.
+sidebar:
+  order: 2
+---
+
+Scoold is configured primarily through environment variables or a `application.conf` file in the working directory.
+
+## Core settings
+
+```properties
+# Application name displayed in the header
+scoold.app_name = "My Team Knowledge Base"
+
+# Public URL of your Scoold instance
+scoold.server_url = "https://scoold.mycompany.com"
+
+# Admin email address(es), comma-separated
+scoold.admins = "admin@mycompany.com"
+
+# Support email address
+scoold.support_email = "support@mycompany.com"
+```
+
+## Authentication
+
+Scoold supports multiple authentication methods that can be enabled simultaneously.
+
+### Social login (OAuth)
+
+```properties
+# Google
+scoold.gp_app_id = "your-google-client-id"
+scoold.gp_secret = "your-google-client-secret"
+
+# GitHub
+scoold.gh_app_id = "your-github-client-id"
+scoold.gh_secret = "your-github-client-secret"
+
+# Microsoft (Azure AD)
+scoold.ms_app_id = "your-microsoft-client-id"
+scoold.ms_secret = "your-microsoft-client-secret"
+```
+
+### LDAP (Scoold Pro)
+
+```properties
+scoold.security.ldap.server = "ldap://ldap.mycompany.com:389"
+scoold.security.ldap.base_dn = "dc=mycompany,dc=com"
+scoold.security.ldap.bind_dn = "cn=scoold,dc=mycompany,dc=com"
+scoold.security.ldap.bind_pass = "ldap-password"
+scoold.security.ldap.user_search_base = "ou=users"
+scoold.security.ldap.user_search_filter = "(sAMAccountName={0})"
+```
+
+### SAML 2.0 (Scoold Pro)
+
+```properties
+scoold.security.saml.idp.metadata_url = "https://your-idp/metadata"
+scoold.security.saml.sp.entity_id = "https://scoold.mycompany.com"
+scoold.security.saml.attributes.id = "NameID"
+scoold.security.saml.attributes.name = "displayName"
+scoold.security.saml.attributes.email = "mail"
+```
+
+## Email configuration
+
+```properties
+spring.mail.host = smtp.sendgrid.net
+spring.mail.port = 587
+spring.mail.username = apikey
+spring.mail.password = your-sendgrid-api-key
+spring.mail.properties.mail.smtp.auth = true
+spring.mail.properties.mail.smtp.starttls.enable = true
+```
+
+## Branding
+
+```properties
+# Custom logo URL
+scoold.logo_url = "https://cdn.mycompany.com/logo.png"
+
+# Custom CSS (URL to a stylesheet)
+scoold.stylesheet_url = "https://cdn.mycompany.com/scoold-custom.css"
+
+# Welcome message on login page
+scoold.welcome_message = "Welcome to MyCompany's knowledge base"
+```

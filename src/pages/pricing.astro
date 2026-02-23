@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import siteData from '../data/site-data.json';
+
+const { pricing, faq } = siteData;
+---
+
+<BaseLayout
+  title="Pricing"
+  description="Simple one-time pricing for Scoold. Free open-source Community edition, Scoold Pro at €499, or Pro + Source at €1,499. No subscriptions, no per-seat fees."
+>
+  <!-- Page hero -->
+  <section class="pt-16 pb-2 bg-white text-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="section-label">{pricing.badge}</span>
+      <h1 class="text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
+        {pricing.title} <span class="text-brand-600">{pricing.title_highlight}</span>
+      </h1>
+      <p class="text-xl text-slate-500 leading-relaxed">
+        {pricing.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <Pricing />
+
+  <!-- Enterprise contact section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-slate-50 rounded-2xl border border-slate-100 p-8">
+        <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+        </div>
+        <h2 class="text-xl font-bold text-slate-900 mb-2">Need a custom enterprise arrangement?</h2>
+        <p class="text-slate-500 text-sm mb-5">
+          Multi-instance licensing, volume discounts, dedicated support SLAs, or custom procurement — we can work with your procurement team.
+        </p>
+        <a
+          href="/imprint/contact-us"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl hover:bg-slate-700 transition-colors"
+        >
+          Talk to sales
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing FAQ -->
+  <section class="section-padding bg-slate-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-3">Pricing FAQ</h2>
+        <p class="text-slate-500">Common questions about Scoold licensing and pricing.</p>
+      </div>
+      <div class="space-y-3">
+        {[
+          { q: 'Can I upgrade from Community to Pro later?', a: 'Yes. You can start with Scoold Community (free) and purchase a Pro license at any time. Your existing data, users, and configuration migrate seamlessly.' },
+          { q: 'Does the license cover multiple instances?', a: 'A single Pro license covers one production instance with unlimited users. Contact us for multi-instance or enterprise volume licensing.' },
+          { q: 'What happens after 12 months of free updates?', a: 'Your license continues to work indefinitely — you\'re never forced to upgrade. After 12 months, you can purchase an extended update period to continue receiving new features and security patches.' },
+          { q: 'Do you offer refunds?', a: 'We offer a 30-day money-back guarantee if Scoold Pro doesn\'t meet your needs. Contact support@scoold.com within 30 days of purchase.' },
+          { q: 'Is Scoold Cloud priced differently?', a: 'Yes — Scoold Cloud is a hosted SaaS offering with separate subscription pricing. See scoold-cloud for details.' },
+        ].map((item) => (
+          <details class="group border border-slate-100 rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between gap-4 px-5 py-4 font-medium text-slate-800 cursor-pointer hover:text-brand-600 transition-colors list-none">
+              <span class="text-sm">{item.q}</span>
+              <svg class="w-5 h-5 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-5 pb-5 pt-1 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
+              {item.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

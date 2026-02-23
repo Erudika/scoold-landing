@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Fetch changelog from GitHub at build time
+let changelogContent = '';
+let fetchError = false;
+
+try {
+  const response = await fetch(
+    'https://raw.githubusercontent.com/Erudika/scoold-pro/master/CHANGELOG.md',
+    { signal: AbortSignal.timeout(10000) }
+  );
+  if (response.ok) {
+    changelogContent = await response.text();
+  } else {
+    fetchError = true;
+  }
+} catch (e) {
+  fetchError = true;
+}
+
+// Simple Markdown parser for the changelog (headings + lists)
+function parseChangelog(md: string): string {
+  return md
+    .replace(/^#### (.+)$/gm, '<h4 class="text-base font-semibold text-slate-700 mt-4 mb-2">$1</h4>')
+    .replace(/^### (.+)$/gm, '<h3 class="text-xl font-bold text-slate-900 mt-8 mb-3 pt-4 border-t border-slate-100">$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-extrabold text-brand-600 mt-10 mb-3">$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1 class="text-3xl font-extrabold text-slate-900 mb-6">$1</h1>')
+    .replace(/^\- (.+)$/gm, '<li class="text-sm text-slate-600 leading-relaxed">$1</li>')
+    .replace(/(<li[^>]*>[\s\S]*?<\/li>\n?)+/g, (match) => `<ul class="list-disc pl-5 space-y-1 mb-3">${match}</ul>`)
+    .replace(/`([^`]+)`/g, '<code class="bg-slate-100 px-1.5 py-0.5 rounded text-xs font-mono text-brand-700">$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-brand-600 hover:underline" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(/\n{2,}/g, '</p><p class="text-sm text-slate-600 leading-relaxed mb-3">');
+}
+---
+
+<BaseLayout
+  title="Changelog"
+  description="Scoold Pro changelog — see what's new, what changed, and what was fixed in each release."
+>
+  <section class="section-padding bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <span class="section-label">CHANGELOG</span>
+        <h1 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-5">What's new</h1>
+        <p class="text-lg text-slate-500">
+          Release history and detailed changelogs for Scoold Pro.
+        </p>
+      </div>
+
+      {fetchError ? (
+        <div class="p-6 bg-amber-50 border border-amber-200 rounded-xl text-center">
+          <p class="text-amber-800 text-sm mb-3">
+            Could not load the changelog at build time. View it directly on GitHub:
+          </p>
+          <a
+            href="https://github.com/Erudika/scoold-pro/blob/master/CHANGELOG.md"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-900 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View CHANGELOG.md on GitHub
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        </div>
+      ) : (
+        <div
+          class="prose prose-slate prose-sm max-w-none"
+          set:html={parseChangelog(changelogContent)}
+        />
+      )}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,80 @@
+---
+title: Cloud Deployment
+description: Deploy Scoold to AWS, Azure, Google Cloud, Heroku, and other cloud providers.
+sidebar:
+  order: 2
+---
+
+Scoold can be deployed to any cloud provider that supports Docker containers or Java applications.
+
+## AWS (Elastic Container Service)
+
+The recommended AWS deployment uses ECS Fargate:
+
+1. Push the `erudikaltd/scoold` image to ECR or use it directly
+2. Create a Fargate task definition with the required environment variables
+3. Set up an Application Load Balancer pointing to your ECS service
+4. Use RDS PostgreSQL as the Para backend database
+
+```bash
+# Pull and tag for ECR
+docker pull erudikaltd/scoold:latest
+docker tag erudikaltd/scoold:latest YOUR_ACCOUNT.dkr.ecr.REGION.amazonaws.com/scoold:latest
+docker push YOUR_ACCOUNT.dkr.ecr.REGION.amazonaws.com/scoold:latest
+```
+
+## Azure Container Instances
+
+```bash
+az container create \
+  --resource-group myResourceGroup \
+  --name scoold \
+  --image erudikaltd/scoold:latest \
+  --dns-name-label my-scoold \
+  --ports 8000 \
+  --environment-variables \
+    PARA_ENDPOINT=https://my-para.azurewebsites.net \
+    PARA_ACCESS_KEY=app:scoold \
+    PARA_SECRET_KEY=your-secret
+```
+
+## Google Cloud Run
+
+```bash
+gcloud run deploy scoold \
+  --image erudikaltd/scoold:latest \
+  --platform managed \
+  --region us-central1 \
+  --set-env-vars "PARA_ENDPOINT=https://para-xyz-uc.a.run.app,PARA_ACCESS_KEY=app:scoold,PARA_SECRET_KEY=secret" \
+  --allow-unauthenticated \
+  --port 8000
+```
+
+## Heroku
+
+```bash
+heroku create my-scoold-app
+heroku container:login
+heroku container:push web -a my-scoold-app
+heroku container:release web -a my-scoold-app
+heroku config:set PARA_ENDPOINT=https://my-para.herokuapp.com -a my-scoold-app
+```
+
+## Render
+
+Render supports Docker deployments directly from GitHub. Create a `render.yaml`:
+
+```yaml
+services:
+  - type: web
+    name: scoold
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PARA_ENDPOINT
+        value: https://para.onrender.com
+      - key: PARA_ACCESS_KEY
+        fromDatabase:
+          name: scoold-db
+          property: connectionString
+```

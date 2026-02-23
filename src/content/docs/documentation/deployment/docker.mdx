@@ -1,0 +1,97 @@
+---
+title: Docker Deployment
+description: Production Docker and Docker Compose deployment guide for Scoold.
+sidebar:
+  order: 1
+---
+
+This guide covers deploying Scoold to production using Docker.
+
+## Production Docker Compose
+
+A production-grade setup with PostgreSQL as the Para backend:
+
+```yaml
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: para
+      POSTGRES_USER: para
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  para:
+    image: erudikaltd/para:latest
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: production
+      PARA_DB_TYPE: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/para
+      SPRING_DATASOURCE_USERNAME: para
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      - postgres
+
+  scoold:
+    image: erudikaltd/scoold:latest
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      PARA_ENDPOINT: http://para:8080
+      PARA_ACCESS_KEY: ${PARA_ACCESS_KEY}
+      PARA_SECRET_KEY: ${PARA_SECRET_KEY}
+      SCOOLD_APP_NAME: "${APP_NAME}"
+      SCOOLD_SERVER_URL: "https://${DOMAIN}"
+      SCOOLD_ADMINS: "${ADMIN_EMAIL}"
+    depends_on:
+      - para
+
+volumes:
+  postgres_data:
+```
+
+## Reverse proxy with Nginx
+
+```nginx
+server {
+    listen 80;
+    server_name scoold.mycompany.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name scoold.mycompany.com;
+
+    ssl_certificate /etc/letsencrypt/live/scoold.mycompany.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/scoold.mycompany.com/privkey.pem;
+
+    location / {
+        proxy_pass http://localhost:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+## Kubernetes (Helm)
+
+A community Helm chart is available for Kubernetes deployments. See the [GitHub repository](https://github.com/Erudika/scoold) for the latest chart values.
+
+## Health check
+
+Scoold exposes a health endpoint at `/v1/_health`. Use this for load balancer health checks:
+
+```
+GET https://scoold.mycompany.com/v1/_health
+```
+
+Expected response: `{ "healthy": true }`

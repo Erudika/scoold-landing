@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Licenses"
+  description="Scoold licensing — Apache 2.0 open source license for Scoold Community and the commercial EULA for Scoold Pro."
+>
+  <section class="section-padding bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <span class="section-label">LEGAL</span>
+        <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Licenses</h1>
+        <p class="text-slate-500 leading-relaxed">
+          Scoold is available under two licenses depending on which edition you use.
+        </p>
+      </div>
+
+      <!-- Tab navigation -->
+      <div class="border-b border-slate-200 mb-8">
+        <nav class="-mb-px flex gap-8">
+          <button
+            id="tab-oss"
+            class="tab-btn pb-3 text-sm font-semibold border-b-2 border-brand-600 text-brand-600 transition-colors"
+            data-target="panel-oss"
+          >
+            Scoold OSS
+          </button>
+          <button
+            id="tab-pro"
+            class="tab-btn pb-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition-colors"
+            data-target="panel-pro"
+          >
+            Scoold PRO
+          </button>
+        </nav>
+      </div>
+
+      <!-- Apache 2.0 panel -->
+      <div id="panel-oss" class="tab-panel">
+        <div class="bg-slate-900 rounded-2xl p-6 text-green-400 font-mono text-xs leading-relaxed overflow-x-auto">
+          <p class="text-slate-400 mb-4">Apache License, Version 2.0</p>
+          <p>Copyright 2024 Erudika Ltd.</p>
+          <br/>
+          <p>Licensed under the Apache License, Version 2.0 (the "License");</p>
+          <p>you may not use this file except in compliance with the License.</p>
+          <p>You may obtain a copy of the License at</p>
+          <br/>
+          <p class="text-brand-400">    http://www.apache.org/licenses/LICENSE-2.0</p>
+          <br/>
+          <p>Unless required by applicable law or agreed to in writing, software</p>
+          <p>distributed under the License is distributed on an "AS IS" BASIS,</p>
+          <p>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</p>
+          <p>See the License for the specific language governing permissions and</p>
+          <p>limitations under the License.</p>
+        </div>
+        <div class="mt-6 p-4 bg-brand-50 border border-brand-100 rounded-xl">
+          <p class="text-sm text-brand-800">
+            <strong>What this means:</strong> You are free to use, modify, and distribute Scoold Community
+            for any purpose — including commercial use — as long as you retain the copyright notice.
+            Full license text at <a href="https://www.apache.org/licenses/LICENSE-2.0" class="underline" target="_blank" rel="noopener noreferrer">apache.org</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- EULA panel (hidden by default) -->
+      <div id="panel-pro" class="tab-panel hidden">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-5">
+          <div>
+            <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wide mb-2">Scoold Pro End User License Agreement (EULA)</h2>
+            <p class="text-xs text-slate-400">Effective date: 2024-01-01</p>
+          </div>
+          {[
+            { title: '1. Grant of License', text: 'Erudika Ltd. grants you a non-exclusive, non-transferable, perpetual license to install and use Scoold Pro on a single production server instance with unlimited users, subject to the terms of this agreement.' },
+            { title: '2. Restrictions', text: 'You may not: (a) sublicense, sell, resell, or redistribute Scoold Pro; (b) modify or create derivative works without the Pro + Source license; (c) use Scoold Pro to build a competing product.' },
+            { title: '3. Updates', text: 'This license includes free updates for 12 months from the date of purchase. Extended update periods may be purchased separately.' },
+            { title: '4. Support', text: 'Scoold Pro includes priority email support with a 1-business-day response SLA. Support is provided via email at support@scoold.com.' },
+            { title: '5. Warranty Disclaimer', text: 'Scoold Pro is provided "AS IS" without warranty of any kind. Erudika Ltd. disclaims all warranties, express or implied, including merchantability and fitness for a particular purpose.' },
+            { title: '6. Limitation of Liability', text: 'In no event shall Erudika Ltd. be liable for any indirect, incidental, special, or consequential damages arising from your use of Scoold Pro.' },
+            { title: '7. Governing Law', text: 'This agreement is governed by the laws of England and Wales. Any disputes shall be resolved exclusively in the courts of England and Wales.' },
+          ].map((clause) => (
+            <div>
+              <h3 class="text-xs font-bold text-slate-700 mb-1">{clause.title}</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">{clause.text}</p>
+            </div>
+          ))}
+        </div>
+        <div class="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <p class="text-sm text-amber-800">
+            <strong>Questions about the EULA?</strong>{' '}
+            <a href="/imprint/contact-us" class="underline">Contact us</a> before purchasing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const targetId = (tab as HTMLElement).dataset.target;
+      // Update tabs
+      tabs.forEach((t) => {
+        t.classList.remove('border-brand-600', 'text-brand-600');
+        t.classList.add('border-transparent', 'text-slate-500');
+      });
+      tab.classList.add('border-brand-600', 'text-brand-600');
+      tab.classList.remove('border-transparent', 'text-slate-500');
+      // Update panels
+      document.querySelectorAll('.tab-panel').forEach((panel) => {
+        panel.classList.add('hidden');
+      });
+      if (targetId) document.getElementById(targetId)?.classList.remove('hidden');
+    });
+  });
+</script>

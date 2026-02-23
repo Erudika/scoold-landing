@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import siteData from '../data/site-data.json';
+
+const { faq } = siteData;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Frequently asked questions about Scoold — pricing, deployment, SSO, licensing, and more."
+  jsonLd={jsonLd}
+>
+  <FAQ />
+  <CTA />
+</BaseLayout>

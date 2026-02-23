@@ -1,0 +1,76 @@
+---
+title: Installation
+description: How to install and run Scoold using Docker, JAR, or from source.
+sidebar:
+  order: 1
+---
+
+Scoold is a Java application that runs on any modern JVM. The recommended way to run it is via Docker.
+
+## Prerequisites
+
+- **Java 11+** (Java 17 recommended for production)
+- **Para backend** — Scoold requires [Para](https://paraio.org) as its backend data service. Para supports PostgreSQL, DynamoDB, MongoDB, Elasticsearch, and more.
+- **4 GB RAM** minimum for the combined Scoold + Para stack
+
+## Docker (recommended)
+
+The fastest way to get started is with Docker Compose:
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  para:
+    image: erudikaltd/para:latest
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+
+  scoold:
+    image: erudikaltd/scoold:latest
+    ports:
+      - "8000:8000"
+    environment:
+      PARA_ENDPOINT: http://para:8080
+      PARA_ACCESS_KEY: app:scoold
+      PARA_SECRET_KEY: your-secret-key
+    depends_on:
+      - para
+```
+
+Then run:
+
+```bash
+docker-compose up -d
+```
+
+Scoold will be available at `http://localhost:8000`.
+
+## Standalone JAR
+
+Download the latest JAR from [GitHub Releases](https://github.com/Erudika/scoold/releases/latest):
+
+```bash
+java -jar scoold-*.jar \
+  --para.endpoint=http://localhost:8080 \
+  --para.access_key=app:scoold \
+  --para.secret_key=your-secret-key
+```
+
+## Environment variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `PARA_ENDPOINT` | URL of your Para instance | `http://localhost:8080` |
+| `PARA_ACCESS_KEY` | Para access key | — |
+| `PARA_SECRET_KEY` | Para secret key | — |
+| `SERVER_PORT` | Port Scoold listens on | `8000` |
+| `SCOOLD_APP_NAME` | Display name of your instance | `Scoold` |
+
+## Next steps
+
+- [Configure authentication →](/documentation/configuration/authentication)
+- [Set up LDAP or SAML SSO →](/documentation/configuration/sso)
+- [Deploy to production →](/documentation/deployment/docker)

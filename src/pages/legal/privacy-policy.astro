@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import siteData from '../../data/site-data.json';
+
+const { privacy } = siteData.legal;
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Scoold privacy policy — how we collect, use, and protect your personal data. GDPR compliant."
+>
+  <section class="section-padding bg-white">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <span class="section-label">LEGAL</span>
+        <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-3">{privacy.title}</h1>
+        <p class="text-sm text-slate-400">Effective date: {privacy.effective_date}</p>
+      </div>
+      <div class="space-y-8">
+        {privacy.sections.map((section) => (
+          <div>
+            <h2 class="text-lg font-bold text-slate-900 mb-3">{section.heading}</h2>
+            <p class="text-sm text-slate-600 leading-relaxed">{section.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,7 @@
+---
+import IntegrationPage from '../../components/IntegrationPage.astro';
+import siteData from '../../data/site-data.json';
+
+const data = siteData.integrations.slack;
+---
+<IntegrationPage {...data} metaDescription="Scoold + Slack integration — turn Slack questions into permanent, searchable knowledge base entries automatically." />

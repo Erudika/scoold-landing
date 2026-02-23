@@ -1,0 +1,121 @@
+---
+title: API Reference
+description: Scoold REST API reference — full OpenAPI 3.x specification for interacting with Scoold programmatically.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Scoold REST API is based on the Para REST API and follows REST conventions. Authentication uses API key + secret pairs.
+
+<Aside type="tip">
+  The full interactive OpenAPI specification is available at `/v1/_openapi` on your running Scoold instance.
+</Aside>
+
+## Authentication
+
+All API requests require authentication via HTTP Basic with your Para access key and secret:
+
+```bash
+curl -u "app:scoold:YOUR_SECRET" \
+  https://scoold.mycompany.com/v1/questions
+```
+
+Or via Bearer token (after OAuth):
+
+```bash
+curl -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  https://scoold.mycompany.com/v1/questions
+```
+
+## Base URL
+
+```
+https://your-scoold-instance.com/v1
+```
+
+## Core endpoints
+
+### Questions
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/questions` | List all questions |
+| `POST` | `/questions` | Create a question |
+| `GET` | `/questions/{id}` | Get a question |
+| `PUT` | `/questions/{id}` | Update a question |
+| `DELETE` | `/questions/{id}` | Delete a question |
+| `GET` | `/questions/{id}/answers` | List answers for a question |
+
+### Answers
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/answers/{id}` | Get an answer |
+| `POST` | `/questions/{id}/answers` | Post an answer |
+| `PUT` | `/answers/{id}` | Update an answer |
+| `DELETE` | `/answers/{id}` | Delete an answer |
+
+### Users
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/users` | List users |
+| `GET` | `/users/{id}` | Get user profile |
+| `PUT` | `/users/{id}` | Update user |
+
+### Tags
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/tags` | List all tags |
+| `GET` | `/tags/{name}/questions` | Questions by tag |
+
+## Example: Creating a question
+
+```bash
+curl -X POST https://scoold.mycompany.com/v1/questions \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "How do I configure LDAP in Scoold?",
+    "body": "I want to set up LDAP authentication...",
+    "tags": ["ldap", "configuration", "authentication"]
+  }'
+```
+
+## Pagination
+
+All list endpoints support cursor-based pagination:
+
+```
+GET /v1/questions?limit=20&page=1
+```
+
+Response includes:
+
+```json
+{
+  "items": [...],
+  "totalHits": 248,
+  "page": 1,
+  "limit": 20
+}
+```
+
+## Rate limiting
+
+API requests are rate-limited to **1,000 requests per minute** per API key. Rate limit headers are included in responses:
+
+```
+X-RateLimit-Limit: 1000
+X-RateLimit-Remaining: 997
+X-RateLimit-Reset: 1699999200
+```
+
+## OpenAPI specification
+
+Download the full OpenAPI 3.x schema from your running Scoold instance:
+
+```
+GET https://your-scoold.com/v1/_openapi
+```

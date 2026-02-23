@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Blog posts would normally come from content collections
+// For now, we define them here and would migrate to src/content/blog/ with Astro content collections
+const posts = [
+  {
+    slug: 'deploying-scoold-with-docker',
+    title: 'Deploying Scoold with Docker in 5 minutes',
+    date: '2024-11-15',
+    author: 'Alex Bogdanovski',
+    tags: ['deployment', 'docker', 'guide'],
+    excerpt: 'Get a production-ready Scoold instance running with Docker Compose in under 5 minutes. We cover the essential configuration options and how to persist your data.',
+  },
+  {
+    slug: 'scoold-vs-confluence-knowledge-base',
+    title: 'Why teams switch from Confluence to Scoold for internal Q&A',
+    date: '2024-10-22',
+    author: 'Alex Bogdanovski',
+    tags: ['knowledge-base', 'comparison'],
+    excerpt: 'Confluence is great for long-form documentation. But for Q&A and expert knowledge capture, a dedicated platform like Scoold often works better. Here\'s why.',
+  },
+  {
+    slug: 'scoold-pro-saml-sso-setup',
+    title: 'Setting up SAML SSO with Okta and Scoold Pro',
+    date: '2024-09-10',
+    author: 'Alex Bogdanovski',
+    tags: ['enterprise', 'sso', 'saml', 'guide'],
+    excerpt: 'Step-by-step guide to configuring SAML 2.0 single sign-on between Okta and your Scoold Pro instance. Includes the exact attribute mappings you need.',
+  },
+  {
+    slug: 'gamification-knowledge-sharing',
+    title: 'How gamification drives knowledge sharing in engineering teams',
+    date: '2024-08-05',
+    author: 'Alex Bogdanovski',
+    tags: ['culture', 'gamification', 'engineering'],
+    excerpt: 'Reputation points and badges are more than just fun — they create lasting behavioral change. A look at the psychology behind Scoold\'s gamification system.',
+  },
+  {
+    slug: 'scoold-slack-integration-guide',
+    title: 'Connecting Scoold to Slack: the complete guide',
+    date: '2024-07-18',
+    author: 'Alex Bogdanovski',
+    tags: ['integration', 'slack', 'guide'],
+    excerpt: 'Turn ephemeral Slack conversations into permanent knowledge base entries. Full setup guide for the Scoold + Slack integration.',
+  },
+  {
+    slug: 'open-source-knowledge-management',
+    title: 'The case for open source knowledge management tools',
+    date: '2024-06-30',
+    author: 'Alex Bogdanovski',
+    tags: ['open-source', 'knowledge-management'],
+    excerpt: 'Proprietary knowledge management tools create vendor lock-in and opaque pricing. Here\'s why open source alternatives like Scoold are increasingly the right choice for teams.',
+  },
+];
+
+const tagColors: Record<string, string> = {
+  deployment: 'bg-blue-50 text-blue-600',
+  docker: 'bg-sky-50 text-sky-600',
+  guide: 'bg-emerald-50 text-emerald-600',
+  enterprise: 'bg-violet-50 text-violet-600',
+  sso: 'bg-purple-50 text-purple-600',
+  saml: 'bg-indigo-50 text-indigo-600',
+  'knowledge-base': 'bg-amber-50 text-amber-600',
+  comparison: 'bg-orange-50 text-orange-600',
+  culture: 'bg-pink-50 text-pink-600',
+  gamification: 'bg-rose-50 text-rose-600',
+  engineering: 'bg-slate-50 text-slate-600',
+  integration: 'bg-cyan-50 text-cyan-600',
+  slack: 'bg-lime-50 text-lime-600',
+  'open-source': 'bg-teal-50 text-teal-600',
+  'knowledge-management': 'bg-yellow-50 text-yellow-600',
+};
+
+function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout
+  title="Blog"
+  description="The Scoold blog — guides, tutorials, and insights on knowledge management, team collaboration, and enterprise Q&A."
+>
+  <section class="section-padding bg-white border-b border-slate-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="section-label">BLOG</span>
+      <h1 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+        Guides & insights
+      </h1>
+      <p class="text-xl text-slate-500 leading-relaxed">
+        Tutorials, best practices, and insights on knowledge sharing, team collaboration, and getting the most from Scoold.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-8">
+        {posts.map((post) => (
+          <article class="group">
+            <a href={`/blog/${post.slug}`} class="block">
+              <div class="flex flex-wrap gap-2 mb-3">
+                {post.tags.map((tag) => (
+                  <span class:list={['inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold', tagColors[tag] ?? 'bg-slate-50 text-slate-600']}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h2 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors mb-2 leading-tight">
+                {post.title}
+              </h2>
+              <p class="text-sm text-slate-500 leading-relaxed mb-3">
+                {post.excerpt}
+              </p>
+              <div class="flex items-center gap-3 text-xs text-slate-400">
+                <span>{post.author}</span>
+                <span>·</span>
+                <time datetime={post.date}>{formatDate(post.date)}</time>
+                <span class="ml-auto flex items-center gap-1 text-brand-600 font-semibold group-hover:gap-2 transition-all">
+                  Read more
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                  </svg>
+                </span>
+              </div>
+            </a>
+            <hr class="mt-8 border-slate-100"/>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
