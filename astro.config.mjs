@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
+import starlightContextualMenu from "starlight-contextual-menu";
 
 export default defineConfig({
   site: 'https://scoold.com',
@@ -13,7 +14,10 @@ export default defineConfig({
       logo: {
         src: './public/favicon.svg',
       },
-      customCss: ['./src/styles/starlight.css'],
+      customCss: [
+        // Path to your Tailwind base styles:
+        './src/styles/global.css',
+      ],
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Erudika/scoold' }],
       sidebar: [
         {
@@ -26,6 +30,9 @@ export default defineConfig({
         },
         { label: 'API Reference', autogenerate: { directory: 'documentation/scoold-api' } },
       ],
+      plugins: [starlightContextualMenu({
+        actions: ["copy", "view", "chatgpt", "claude"]
+      })]
     }),
   ],
   vite: {
