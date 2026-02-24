@@ -14,9 +14,7 @@ export default defineConfig({
         src: './public/favicon.svg',
       },
       customCss: ['./src/styles/starlight.css'],
-      social: {
-        github: 'https://github.com/Erudika/scoold',
-      },
+      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Erudika/scoold' }],
       sidebar: [
         {
           label: 'Getting Started',

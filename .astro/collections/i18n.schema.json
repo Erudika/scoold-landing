@@ -61,8 +61,8 @@
         },
         "sidebarNav.accessibleLabel": {
           "type": "string",
-          "description": "Accessible label for the main sidebar `<nav>` element to distinguish it fom other `<nav>` landmarks on the page.",
-          "markdownDescription": "Accessible label for the main sidebar `<nav>` element to distinguish it fom other `<nav>` landmarks on the page."
+          "description": "Accessible label for the main sidebar `<nav>` element to distinguish it from other `<nav>` landmarks on the page.",
+          "markdownDescription": "Accessible label for the main sidebar `<nav>` element to distinguish it from other `<nav>` landmarks on the page."
         },
         "tableOfContents.onThisPage": {
           "type": "string",
@@ -138,6 +138,11 @@
           "type": "string",
           "description": "Label for the “Built with Starlight” badge optionally displayed in the site footer.",
           "markdownDescription": "Label for the “Built with Starlight” badge optionally displayed in the site footer."
+        },
+        "heading.anchorLabel": {
+          "type": "string",
+          "description": "Label for anchor links in Markdown content.",
+          "markdownDescription": "Label for anchor links in Markdown content."
         },
         "pagefind.clear_search": {
           "type": "string",
