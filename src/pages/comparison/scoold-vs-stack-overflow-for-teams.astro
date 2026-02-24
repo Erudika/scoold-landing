@@ -1,7 +1,7 @@
 ---
 import ComparisonPage from '../../components/ComparisonPage.astro';
-import siteData from '../../data/site-data.json';
+import { comparisons } from '../../data/site-data.json';
 
-const data = siteData.comparisons.stack_overflow;
+const data = comparisons.stack_overflow;
 ---
 <ComparisonPage {...data} metaDescription="Scoold vs Stack Overflow for Teams — same Q&A experience, no subscription, your own infrastructure. Save thousands per year." />

@@ -8,3 +8,4 @@ site/css/*
 11ty/
 skills-lock.json
 worktrees/
+dist/

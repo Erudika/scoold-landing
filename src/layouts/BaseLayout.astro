@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import siteData from '../data/site-data.json';
+import { site, imprint } from '../data/site-data.json';
 
 interface Props {
   title?: string;
@@ -15,7 +15,7 @@ interface Props {
 
 const {
   title,
-  description = siteData.site.description,
+  description = site.description,
   ogImage = '/og-default.png',
   noindex = false,
   jsonLd,
@@ -23,17 +23,17 @@ const {
 } = Astro.props;
 
 const pageTitle = title
-  ? `${title} — ${siteData.site.title}`
-  : `${siteData.site.title} — ${siteData.site.tagline}`;
+  ? `${title} — ${site.title}`
+  : `${site.title} — ${site.tagline}`;
 
-const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteData.site.url).toString();
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, site.url).toString();
 
 const defaultJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Scoold',
-  description: siteData.site.description,
-  url: siteData.site.url,
+  name: site.title,
+  description: site.description,
+  url: site.url,
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Any',
   offers: {
@@ -44,8 +44,8 @@ const defaultJsonLd = {
   },
   author: {
     '@type': 'Organization',
-    name: 'Erudika Ltd.',
-    url: 'https://erudika.com',
+    name: site.company,
+    url: imprint.impressum.website,
   },
 };
 
@@ -70,7 +70,7 @@ const structuredData = jsonLd ?? defaultJsonLd;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <meta name="apple-mobile-web-app-title" content={site.title} />
     <link rel="manifest" href="/manifest.json" />
 
     <!-- Open Graph -->
@@ -78,8 +78,8 @@ const structuredData = jsonLd ?? defaultJsonLd;
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content="Scoold" />
-    <meta property="og:image" content={new URL(ogImage, siteData.site.url).toString()} />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:image" content={new URL(ogImage, site.url).toString()} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
@@ -87,7 +87,7 @@ const structuredData = jsonLd ?? defaultJsonLd;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, siteData.site.url).toString()} />
+    <meta name="twitter:image" content={new URL(ogImage, site.url).toString()} />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

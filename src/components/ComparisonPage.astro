@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from './CTA.astro';
+import { ui } from '../data/site-data.json';
 
 interface Props {
   title: string;
@@ -92,10 +93,10 @@ const { title, subtitle, hero_badge, intro, table_headers, rows, metaDescription
 
       <div class="mt-8 text-center">
         <a
-          href="/download"
+          href={ui.comparison_page.cta_href}
           class="inline-flex items-center gap-2 px-7 py-3.5 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-700 transition-colors text-sm"
         >
-          Get started with Scoold free
+          {ui.comparison_page.cta_label}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
           </svg>

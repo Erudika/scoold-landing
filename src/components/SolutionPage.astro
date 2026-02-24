@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from './CTA.astro';
+import { ui } from '../data/site-data.json';
 
 interface Feature {
   title: string;
@@ -23,35 +24,35 @@ const { title, subtitle, description, hero_badge, features, use_cases, cta, meta
 
 <BaseLayout title={title} description={metaDescription ?? subtitle}>
   <!-- Hero -->
-  <section class="section-padding bg-white border-b border-slate-100">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <section class="bg-white border-slate-100 border-b section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
       <span class="section-label">{hero_badge}</span>
-      <h1 class="text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-5">
+      <h1 class="mb-5 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
         {title}
       </h1>
-      <p class="text-xl text-slate-500 leading-relaxed mb-4">
+      <p class="mb-4 text-slate-500 text-xl leading-relaxed">
         {subtitle}
       </p>
-      <p class="text-base text-slate-400 leading-relaxed max-w-2xl mx-auto">
+      <p class="mx-auto max-w-2xl text-slate-400 text-base leading-relaxed">
         {description}
       </p>
     </div>
   </section>
 
   <!-- Features -->
-  <section class="section-padding bg-slate-50">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-sm font-bold uppercase tracking-widest text-brand-600 mb-8 text-center">Key capabilities</h2>
-      <div class="grid sm:grid-cols-2 gap-6">
+  <section class="bg-slate-50 section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <h2 class="mb-8 font-bold text-brand-600 text-sm text-center uppercase tracking-widest">{ui.solution_page.key_capabilities_label}</h2>
+      <div class="gap-6 grid sm:grid-cols-2">
         {features.map((feature) => (
-          <div class="bg-white border border-slate-100 rounded-2xl p-6">
-            <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center mb-3">
+          <div class="bg-white p-6 border border-slate-100 rounded-2xl">
+            <div class="flex justify-center items-center bg-brand-50 mb-3 rounded-lg w-8 h-8">
               <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-slate-900 mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">{feature.description}</p>
+            <h3 class="mb-2 font-semibold text-slate-900">{feature.title}</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">{feature.description}</p>
           </div>
         ))}
       </div>
@@ -59,25 +60,25 @@ const { title, subtitle, description, hero_badge, features, use_cases, cta, meta
   </section>
 
   <!-- Use cases -->
-  <section class="section-padding bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">Common use cases</h2>
-      <div class="grid sm:grid-cols-2 gap-4">
+  <section class="bg-white section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <h2 class="mb-8 font-bold text-slate-900 text-2xl text-center">{ui.solution_page.use_cases_title}</h2>
+      <div class="gap-4 grid sm:grid-cols-2">
         {use_cases.map((uc) => (
-          <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
-            <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0">
+          <div class="flex items-center gap-3 bg-slate-50 p-4 border border-slate-100 rounded-xl">
+            <div class="flex justify-center items-center bg-brand-100 rounded-full w-6 h-6 shrink-0">
               <svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
               </svg>
             </div>
-            <span class="text-sm font-medium text-slate-700">{uc}</span>
+            <span class="font-medium text-slate-700 text-sm">{uc}</span>
           </div>
         ))}
       </div>
-      <div class="text-center mt-10">
+      <div class="mt-10 text-center">
         <a
           href={cta.href}
-          class="inline-flex items-center gap-2 px-7 py-3.5 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-700 transition-colors"
+          class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 px-7 py-3.5 rounded-xl font-semibold text-white transition-colors"
         >
           {cta.label}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

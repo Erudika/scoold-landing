@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { changelog_page } from '../data/site-data.json';
 
 // Fetch changelog from GitHub at build time
 let changelogContent = '';
@@ -7,7 +8,7 @@ let fetchError = false;
 
 try {
   const response = await fetch(
-    'https://raw.githubusercontent.com/Erudika/scoold-pro/master/CHANGELOG.md',
+    changelog_page.github_raw_url,
     { signal: AbortSignal.timeout(10000) }
   );
   if (response.ok) {
@@ -42,25 +43,25 @@ function parseChangelog(md: string): string {
   <section class="section-padding bg-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-12">
-        <span class="section-label">CHANGELOG</span>
-        <h1 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-5">What's new</h1>
+        <span class="section-label">{changelog_page.badge}</span>
+        <h1 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-5">{changelog_page.title}</h1>
         <p class="text-lg text-slate-500">
-          Release history and detailed changelogs for Scoold Pro.
+          {changelog_page.subtitle}
         </p>
       </div>
 
       {fetchError ? (
         <div class="p-6 bg-amber-50 border border-amber-200 rounded-xl text-center">
           <p class="text-amber-800 text-sm mb-3">
-            Could not load the changelog at build time. View it directly on GitHub:
+            {changelog_page.error_message}
           </p>
           <a
-            href="https://github.com/Erudika/scoold-pro/blob/master/CHANGELOG.md"
+            href={changelog_page.github_url}
             class="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-900 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
-            View CHANGELOG.md on GitHub
+            {changelog_page.github_link_label}
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>

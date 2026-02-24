@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
-import siteData from '../data/site-data.json';
-
-const { download, site } = siteData;
+import { download, site } from '../data/site-data.json';
 ---
 
 <BaseLayout
@@ -11,25 +9,25 @@ const { download, site } = siteData;
   description="Download Scoold — free, open-source Q&A platform. Get the Docker image, JAR, or browse GitHub releases."
 >
   <!-- Hero -->
-  <section class="section-padding bg-white border-b border-slate-100">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <section class="bg-white border-slate-100 border-b section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
       <span class="section-label">{download.hero_badge}</span>
-      <h1 class="text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-5">
+      <h1 class="mb-5 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
         {download.title}
       </h1>
-      <p class="text-xl text-slate-500 leading-relaxed">
+      <p class="text-slate-500 text-xl leading-relaxed">
         {download.subtitle}
       </p>
     </div>
   </section>
 
   <!-- Download options -->
-  <section class="section-padding bg-slate-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-6">
+  <section class="bg-slate-50 section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <div class="gap-6 grid md:grid-cols-3">
         {download.options.map((option) => (
-          <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-            <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
+          <div class="bg-white shadow-sm p-6 border border-slate-200 rounded-2xl">
+            <div class="flex justify-center items-center bg-brand-50 mb-4 rounded-xl w-10 h-10">
               {option.icon === 'docker' && (
                 <svg class="w-5 h-5 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.186.186 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.186v1.887c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288z"/>
@@ -46,20 +44,20 @@ const { download, site } = siteData;
                 </svg>
               )}
             </div>
-            <h3 class="font-semibold text-slate-900 mb-2">{option.title}</h3>
-            <p class="text-sm text-slate-500 mb-4 leading-relaxed">{option.description}</p>
+            <h3 class="mb-2 font-semibold text-slate-900">{option.title}</h3>
+            <p class="mb-4 text-slate-500 text-sm leading-relaxed">{option.description}</p>
             {option.command ? (
-              <div class="bg-slate-900 rounded-lg px-4 py-3 font-mono text-xs text-green-400 break-all">
+              <div class="bg-slate-900 px-4 py-3 rounded-lg font-mono text-green-400 text-xs break-all">
                 {option.command}
               </div>
             ) : option.href ? (
               <a
                 href={option.href}
-                class="inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors"
+                class="inline-flex items-center gap-2 font-medium text-brand-600 hover:text-brand-700 text-sm transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View releases
+                {download.view_releases_label}
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                 </svg>
@@ -72,24 +70,24 @@ const { download, site } = siteData;
   </section>
 
   <!-- System requirements -->
-  <section class="section-padding bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-slate-900 mb-6">System requirements</h2>
+  <section class="bg-white section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <h2 class="mb-6 font-bold text-slate-900 text-2xl">{download.requirements_title}</h2>
       <ul class="space-y-3">
         {download.requirements.map((req) => (
-          <li class="flex items-center gap-3 text-sm text-slate-600">
-            <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <li class="flex items-center gap-3 text-slate-600 text-sm">
+            <svg class="w-4 h-4 text-brand-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
             </svg>
             {req}
           </li>
         ))}
       </ul>
-      <div class="mt-8 p-5 bg-brand-50 border border-brand-100 rounded-xl">
-        <p class="text-sm text-brand-800">
-          <strong>Need the full setup guide?</strong>{' '}
-          <a href="/documentation" class="font-medium underline hover:no-underline">
-            Read the documentation →
+      <div class="bg-brand-50 mt-8 p-5 border border-brand-100 rounded-xl">
+        <p class="text-brand-800 text-sm">
+          <strong>{download.docs_cta}</strong>{' '}
+          <a href={download.docs_href} class="font-medium underline hover:no-underline">
+            {download.docs_link_label}
           </a>
         </p>
       </div>

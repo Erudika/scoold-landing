@@ -1,7 +1,5 @@
 ---
-import siteData from '../data/site-data.json';
-
-const { features_overview } = siteData;
+import { features_overview } from '../data/site-data.json';
 
 const icons: Record<string, string> = {
   search: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>`,
@@ -13,26 +11,26 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section class="section-padding bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="bg-white section-padding">
+  <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
     <!-- Section header -->
-    <div class="text-center max-w-2xl mx-auto mb-16">
+    <div class="mx-auto mb-16 max-w-2xl text-center">
       <span class="section-label">{features_overview.badge}</span>
-      <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+      <h2 class="mb-4 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
         {features_overview.title}<br/>
         <span class="text-brand-600">{features_overview.title_highlight}</span>
       </h2>
-      <p class="text-lg text-slate-500 leading-relaxed">
+      <p class="text-slate-500 text-lg leading-relaxed">
         {features_overview.subtitle}
       </p>
     </div>
 
     <!-- Feature grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
       {features_overview.items.map((feature, i) => (
-        <div class="group p-6 rounded-2xl border border-slate-100 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-50 transition-all duration-300 bg-white">
+        <div class="group bg-white hover:shadow-brand-50 hover:shadow-lg p-6 border border-slate-100 hover:border-brand-200 rounded-2xl transition-all duration-300">
           <!-- Icon -->
-          <div class="w-11 h-11 rounded-xl bg-brand-50 group-hover:bg-brand-100 flex items-center justify-center mb-4 transition-colors duration-300">
+          <div class="flex justify-center items-center bg-brand-50 group-hover:bg-brand-100 mb-4 rounded-xl w-11 h-11 transition-colors duration-300">
             <svg
               class="w-5 h-5 text-brand-600"
               fill="none"
@@ -42,11 +40,11 @@ const icons: Record<string, string> = {
             />
           </div>
           <!-- Title -->
-          <h3 class="text-base font-semibold text-slate-900 mb-2">
+          <h3 class="mb-2 font-semibold text-slate-900 text-base">
             {feature.title}
           </h3>
           <!-- Description -->
-          <p class="text-sm text-slate-500 leading-relaxed">
+          <p class="text-slate-500 text-sm leading-relaxed">
             {feature.description}
           </p>
         </div>
@@ -54,12 +52,12 @@ const icons: Record<string, string> = {
     </div>
 
     <!-- View all features link -->
-    <div class="text-center mt-10">
+    <div class="mt-10 text-center">
       <a
-        href="/features"
-        class="inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors group"
+        href={features_overview.view_all_href}
+        class="group inline-flex items-center gap-2 font-semibold text-brand-600 hover:text-brand-700 text-sm transition-colors"
       >
-        View all features
+        {features_overview.view_all_label}
         <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>

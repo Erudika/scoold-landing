@@ -1,8 +1,7 @@
 ---
-import siteData from '../data/site-data.json';
+import { nav } from '../data/site-data.json';
 import scooldLogo from '../images/logo.svg';
 import { Image } from 'astro:assets';
-const { nav } = siteData;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -13,7 +12,7 @@ const currentPath = Astro.url.pathname;
   <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
     <nav class="flex justify-between items-center h-16">
       <!-- Logo -->
-      <a href={nav.logo.href} class="group flex flex-shrink-0 items-center gap-2.5">
+      <a href={nav.logo.href} class="group flex items-center gap-2.5 shrink-0">
         <Image src={scooldLogo} alt="Scoold Logo" class="max-w-45"/>
       </a>
 
@@ -101,12 +100,12 @@ const currentPath = Astro.url.pathname;
       <!-- Desktop CTA -->
       <div class="hidden md:flex items-center gap-3">
         <a
-          href="https://demo.scoold.com"
+          href={nav.demo.href}
           class="font-medium text-slate-600 hover:text-slate-900 text-sm transition-colors"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Demo
+          {nav.demo.label}
         </a>
         <a
           href={nav.cta.href}
@@ -148,7 +147,7 @@ const currentPath = Astro.url.pathname;
         </a>
       ))}
       <div class="mt-2 pt-1 pb-1 border-slate-100 border-t">
-        <p class="px-3 py-1.5 font-semibold text-slate-400 text-xs uppercase tracking-wider">Solutions</p>
+        <p class="px-3 py-1.5 font-semibold text-slate-400 text-xs uppercase tracking-wider">{nav.solutions_section_label}</p>
         {nav.solutions_dropdown.map((item) => (
           <a
             href={item.href}
@@ -160,12 +159,12 @@ const currentPath = Astro.url.pathname;
       </div>
       <div class="flex flex-col gap-2 pt-3 border-slate-100 border-t">
         <a
-          href="https://demo.scoold.com"
+          href={nav.demo.href}
           class="block hover:bg-slate-50 px-4 py-2.5 border border-slate-200 rounded-lg font-medium text-slate-700 text-sm text-center transition-colors"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Try Demo
+          {nav.demo.label_mobile}
         </a>
         <a
           href={nav.cta.href}

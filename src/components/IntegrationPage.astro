@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from './CTA.astro';
+import { ui } from '../data/site-data.json';
 
 interface Feature {
   title: string;
@@ -22,31 +23,31 @@ const { title, subtitle, hero_badge, description, features, setup_steps, metaDes
 
 <BaseLayout title={title} description={metaDescription ?? subtitle}>
   <!-- Hero -->
-  <section class="section-padding bg-white border-b border-slate-100">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <section class="bg-white border-slate-100 border-b section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
       <span class="section-label">{hero_badge}</span>
-      <h1 class="text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-5">
+      <h1 class="mb-5 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
         {title}
       </h1>
-      <p class="text-xl text-slate-500 leading-relaxed mb-4">{subtitle}</p>
-      <p class="text-base text-slate-400 leading-relaxed max-w-2xl mx-auto">{description}</p>
+      <p class="mb-4 text-slate-500 text-xl leading-relaxed">{subtitle}</p>
+      <p class="mx-auto max-w-2xl text-slate-400 text-base leading-relaxed">{description}</p>
     </div>
   </section>
 
   <!-- Integration features -->
-  <section class="section-padding bg-slate-50">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-sm font-bold uppercase tracking-widest text-brand-600 mb-8 text-center">Integration highlights</h2>
-      <div class="grid sm:grid-cols-3 gap-6">
+  <section class="bg-slate-50 section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <h2 class="mb-8 font-bold text-brand-600 text-sm text-center uppercase tracking-widest">{ui.integration_page.highlights_label}</h2>
+      <div class="gap-6 grid sm:grid-cols-3">
         {features.map((feature) => (
-          <div class="bg-white border border-slate-100 rounded-2xl p-6">
-            <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center mb-3">
+          <div class="bg-white p-6 border border-slate-100 rounded-2xl">
+            <div class="flex justify-center items-center bg-brand-50 mb-3 rounded-lg w-8 h-8">
               <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-slate-900 mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">{feature.description}</p>
+            <h3 class="mb-2 font-semibold text-slate-900">{feature.title}</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">{feature.description}</p>
           </div>
         ))}
       </div>
@@ -54,25 +55,25 @@ const { title, subtitle, hero_badge, description, features, setup_steps, metaDes
   </section>
 
   <!-- Setup steps -->
-  <section class="section-padding bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-slate-900 mb-8">How to set it up</h2>
+  <section class="bg-white section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <h2 class="mb-8 font-bold text-slate-900 text-2xl">{ui.integration_page.setup_label}</h2>
       <ol class="space-y-4">
         {setup_steps.map((step, i) => (
           <li class="flex gap-4">
-            <div class="w-8 h-8 rounded-full bg-brand-600 text-white font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div class="flex justify-center items-center bg-brand-600 mt-0.5 rounded-full w-8 h-8 font-bold text-white text-sm shrink-0">
               {i + 1}
             </div>
             <div class="pt-1">
-              <p class="text-sm text-slate-600 leading-relaxed">{step}</p>
+              <p class="text-slate-600 text-sm leading-relaxed">{step}</p>
             </div>
           </li>
         ))}
       </ol>
-      <div class="mt-8 p-5 bg-brand-50 border border-brand-100 rounded-xl">
-        <p class="text-sm text-brand-800">
-          <strong>Need detailed setup instructions?</strong>{' '}
-          <a href="/documentation" class="font-medium underline hover:no-underline">Read the documentation →</a>
+      <div class="bg-brand-50 mt-8 p-5 border border-brand-100 rounded-xl">
+        <p class="text-brand-800 text-sm">
+          <strong>{ui.integration_page.docs_cta_text}</strong>{' '}
+          <a href={ui.integration_page.docs_href} class="font-medium underline hover:no-underline">{ui.integration_page.docs_link_label}</a>
         </p>
       </div>
     </div>

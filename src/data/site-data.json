@@ -35,7 +35,13 @@
     "cta": {
       "label": "Get Started",
       "href": "/download"
-    }
+    },
+    "demo": {
+      "label": "Demo",
+      "label_mobile": "Try Demo",
+      "href": "https://demo.scoold.com"
+    },
+    "solutions_section_label": "Solutions"
   },
   "hero": {
     "badge": "Open Source · Apache 2.0",
@@ -50,7 +56,24 @@
       "label": "Try Demo",
       "href": "https://demo.scoold.com"
     },
-    "image_alt": "Scoold Q&A platform interface"
+    "image_alt": "Scoold Q&A platform interface",
+    "social_proof": "Trusted by <strong class=\"text-slate-600\">hundreds</strong> teams worldwide",
+    "mockup_url": "answers.acme.corp",
+    "mockup_company": "Your logo here",
+    "mockup_answers_label": "ans",
+    "mockup_questions": [
+      { "votes": 12, "answers": 3, "accepted": true, "title": "How to configure LDAP authentication with Active Directory?", "tags": ["ldap", "auth", "configuration"] },
+      { "votes": 8, "answers": 5, "accepted": true, "title": "Best practices for Docker deployment in production", "tags": ["docker", "deployment"] },
+      { "votes": 4, "answers": 0, "accepted": false, "title": "Can Scoold integrate with our Slack workspace?", "tags": ["slack", "integration"] }
+    ],
+    "badge_enterprise": {
+      "title": "Enterprise Ready",
+      "subtitle": "LDAP · SAML · SCIM"
+    },
+    "badge_opensource": {
+      "title": "Open Source",
+      "subtitle": "Apache 2.0"
+    }
   },
   "stats": [
     { "value": "10K+", "label": "Organizations" },
@@ -63,6 +86,8 @@
     "title": "Everything your team needs to",
     "title_highlight": "succeed",
     "subtitle": "Packed with powerful features designed to help your team capture, organize, and share knowledge effectively.",
+    "view_all_label": "View all features",
+    "view_all_href": "/features",
     "items": [
       {
         "icon": "search",
@@ -173,6 +198,25 @@
     "title_highlight": "pricing",
     "subtitle": "No subscriptions. No per-seat fees. A one-time license that's yours forever.",
     "note": "All plans include free updates for 12 months. Pro licenses valid for unlimited users on a single production instance.",
+    "compare_features_label": "Compare all features",
+    "compare_features_href": "/features",
+    "enterprise": {
+      "title": "Need a custom enterprise arrangement?",
+      "description": "Multi-instance licensing, volume discounts, dedicated support SLAs, or custom procurement — we can work with your procurement team.",
+      "cta_label": "Talk to sales",
+      "cta_href": "/imprint/contact-us"
+    },
+    "pricing_faq": {
+      "title": "Pricing FAQ",
+      "subtitle": "Common questions about Scoold licensing and pricing.",
+      "items": [
+        { "q": "Can I upgrade from Community to Pro later?", "a": "Yes. You can start with Scoold Community (free) and purchase a Pro license at any time. Your existing data, users, and configuration migrate seamlessly." },
+        { "q": "Does the license cover multiple instances?", "a": "A single Pro license covers one production instance with unlimited users. Contact us for multi-instance or enterprise volume licensing." },
+        { "q": "What happens after 12 months of free updates?", "a": "Your license continues to work indefinitely — you're never forced to upgrade. After 12 months, you can purchase an extended update period to continue receiving new features and security patches." },
+        { "q": "Do you offer refunds?", "a": "We offer a 30-day money-back guarantee if Scoold Pro doesn't meet your needs. Contact support@scoold.com within 30 days of purchase." },
+        { "q": "Is Scoold Cloud priced differently?", "a": "Yes — Scoold Cloud is a hosted SaaS offering with separate subscription pricing. See scoold-cloud for details." }
+      ]
+    },
     "plans": [
       {
         "name": "Community",
@@ -242,6 +286,12 @@
     "title": "Frequently asked",
     "title_highlight": "questions",
     "subtitle": "Everything you need to know about Scoold. Can't find the answer you're looking for? Reach out to our support team.",
+    "support_cta": {
+      "title": "Still have questions?",
+      "subtitle": "Can't find the answer you're looking for? Our support team is here to help.",
+      "cta_label": "Contact support",
+      "cta_href": "/imprint/contact-us"
+    },
     "items": [
       {
         "q": "What is Scoold and how is it different from Scoold Pro?",
@@ -299,6 +349,12 @@
   },
   "footer": {
     "tagline": "The open-source Q&A and knowledge base platform for teams and enterprises.",
+    "made_with": "Made with ♥ by",
+    "made_by_label": "Erudika",
+    "made_by_href": "https://erudika.com",
+    "open_source_label": "Open Source",
+    "license_label": "License",
+    "license_href": "/legal/licenses",
     "columns": [
       {
         "heading": "Product",
@@ -351,6 +407,179 @@
       { "name": "Discord", "href": "https://discord.gg/scoold", "icon": "discord" }
     ],
     "copyright": "© 2024 Erudika Ltd. All rights reserved."
+  },
+  "home": {
+    "mission": {
+      "badge": "BUILT FOR TEAMS",
+      "title": "We build tools that",
+      "title_highlight": "empower",
+      "title_suffix": "knowledge workers",
+      "description": "Focused on a mission to eliminate knowledge silos, we've built a platform that transforms how teams capture, share, and find information — without the subscription fatigue.",
+      "bullets": [
+        "Deployed on your own infrastructure — your data, your rules",
+        "One-time licensing. No per-seat fees, no monthly surprises",
+        "Built-in search, reputation, and SSO from day one",
+        "Open source core, with enterprise features in Pro"
+      ],
+      "stats": [
+        { "value": "10+ yrs", "label": "Open source" },
+        { "value": "99.9%", "label": "Uptime (Pro)" },
+        { "value": "24/7", "label": "Self-hosted" }
+      ]
+    },
+    "tiles": [
+      { "icon": "🔍", "title": "Full-text Search", "desc": "Find any answer in seconds" },
+      { "icon": "🛡️", "title": "Enterprise SSO", "desc": "LDAP, SAML, SCIM ready" },
+      { "icon": "⭐", "title": "Reputation Engine", "desc": "Gamified knowledge sharing" },
+      { "icon": "🚀", "title": "Deploy Anywhere", "desc": "Docker, JAR, or cloud" }
+    ],
+    "use_cases": {
+      "badge": "SOLUTIONS",
+      "title": "One platform,",
+      "title_highlight": "many use cases",
+      "description": "Whether you need a developer knowledge base, a community forum, or a customer support portal — Scoold adapts to your needs.",
+      "learn_more_label": "Learn more",
+      "cards": [
+        { "title": "Knowledge Base", "href": "/solutions/scoold-as-knowledge-base", "desc": "Searchable institutional knowledge for your whole team.", "color": "bg-blue-50 text-blue-600 border-blue-100" },
+        { "title": "Community Forum", "href": "/solutions/scoold-as-community-forum", "desc": "Build a thriving community around your product or project.", "color": "bg-emerald-50 text-emerald-600 border-emerald-100" },
+        { "title": "Developer Hub", "href": "/solutions/scoold-as-developer-hub", "desc": "The engineering team's permanent home for technical Q&A.", "color": "bg-violet-50 text-violet-600 border-violet-100" },
+        { "title": "Support Center", "href": "/solutions/scoold-as-support-center", "desc": "Reduce ticket volume with searchable self-service answers.", "color": "bg-orange-50 text-orange-600 border-orange-100" },
+        { "title": "Q&A Platform", "href": "/solutions/scoold-as-questions-and-answers-platform", "desc": "Stack Overflow-style Q&A running on your own infrastructure.", "color": "bg-pink-50 text-pink-600 border-pink-100" },
+        { "title": "Knowledge Sharing", "href": "/solutions/scoold-as-knowledge-sharing-platform", "desc": "Break down silos and create a culture of sharing.", "color": "bg-amber-50 text-amber-600 border-amber-100" }
+      ]
+    }
+  },
+  "demo_page": {
+    "badge": "DEMO",
+    "title": "See Scoold in action",
+    "subtitle": "Try the full Scoold platform live — no account, no credit card required. Explore Q&A, search, tags, reputation, and more.",
+    "cta_label": "Open Live Demo",
+    "cta_note": "Opens demo.scoold.com in a new tab · Pre-populated with sample content",
+    "explore_title": "What you can explore in the demo",
+    "features": [
+      { "icon": "❓", "title": "Q&A flow", "desc": "Ask questions, post answers, vote and accept the best answer." },
+      { "icon": "🔍", "title": "Search", "desc": "Try full-text search across all questions, answers, and tags." },
+      { "icon": "🏷️", "title": "Tags & wikis", "desc": "Browse content by topic tags and view tag wiki pages." },
+      { "icon": "⭐", "title": "Reputation", "desc": "See how the reputation and badge system works." },
+      { "icon": "🛠️", "title": "Admin panel", "desc": "Explore the moderation and admin configuration interface." },
+      { "icon": "📱", "title": "Mobile view", "desc": "Test the responsive design on any screen size." }
+    ]
+  },
+  "changelog_page": {
+    "badge": "CHANGELOG",
+    "title": "What's new",
+    "subtitle": "Release history and detailed changelogs for Scoold Pro.",
+    "github_raw_url": "https://raw.githubusercontent.com/Erudika/scoold-pro/master/CHANGELOG.md",
+    "github_url": "https://github.com/Erudika/scoold-pro/blob/master/CHANGELOG.md",
+    "github_link_label": "View CHANGELOG.md on GitHub",
+    "error_message": "Could not load the changelog at build time. View it directly on GitHub:"
+  },
+  "licenses_page": {
+    "badge": "LEGAL",
+    "title": "Licenses",
+    "subtitle": "Scoold is available under two licenses depending on which edition you use.",
+    "tab_oss": "Scoold OSS",
+    "tab_pro": "Scoold PRO",
+    "apache": {
+      "header": "Apache License, Version 2.0",
+      "copyright": "Copyright 2024 Erudika Ltd.",
+      "preamble": "Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0",
+      "disclaimer": "Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.",
+      "explanation": "You are free to use, modify, and distribute Scoold Community for any purpose — including commercial use — as long as you retain the copyright notice.",
+      "explanation_link_label": "Full license text at apache.org",
+      "explanation_link_href": "https://www.apache.org/licenses/LICENSE-2.0"
+    },
+    "eula": {
+      "title": "Scoold Pro End User License Agreement (EULA)",
+      "effective_date": "Effective date: 2024-01-01",
+      "clauses": [
+        { "title": "1. Grant of License", "text": "Erudika Ltd. grants you a non-exclusive, non-transferable, perpetual license to install and use Scoold Pro on a single production server instance with unlimited users, subject to the terms of this agreement." },
+        { "title": "2. Restrictions", "text": "You may not: (a) sublicense, sell, resell, or redistribute Scoold Pro; (b) modify or create derivative works without the Pro + Source license; (c) use Scoold Pro to build a competing product." },
+        { "title": "3. Updates", "text": "This license includes free updates for 12 months from the date of purchase. Extended update periods may be purchased separately." },
+        { "title": "4. Support", "text": "Scoold Pro includes priority email support with a 1-business-day response SLA. Support is provided via email at support@scoold.com." },
+        { "title": "5. Warranty Disclaimer", "text": "Scoold Pro is provided \"AS IS\" without warranty of any kind. Erudika Ltd. disclaims all warranties, express or implied, including merchantability and fitness for a particular purpose." },
+        { "title": "6. Limitation of Liability", "text": "In no event shall Erudika Ltd. be liable for any indirect, incidental, special, or consequential damages arising from your use of Scoold Pro." },
+        { "title": "7. Governing Law", "text": "This agreement is governed by the laws of England and Wales. Any disputes shall be resolved exclusively in the courts of England and Wales." }
+      ],
+      "questions_cta": "Questions about the EULA?",
+      "contact_label": "Contact us",
+      "contact_href": "/imprint/contact-us",
+      "before_purchasing": "before purchasing."
+    }
+  },
+  "blog_page": {
+    "badge": "BLOG",
+    "title": "Guides & insights",
+    "subtitle": "Tutorials, best practices, and insights on knowledge sharing, team collaboration, and getting the most from Scoold.",
+    "read_more_label": "Read more",
+    "posts": [
+      {
+        "slug": "deploying-scoold-with-docker",
+        "title": "Deploying Scoold with Docker in 5 minutes",
+        "date": "2024-11-15",
+        "author": "Alex Bogdanovski",
+        "tags": ["deployment", "docker", "guide"],
+        "excerpt": "Get a production-ready Scoold instance running with Docker Compose in under 5 minutes. We cover the essential configuration options and how to persist your data."
+      },
+      {
+        "slug": "scoold-vs-confluence-knowledge-base",
+        "title": "Why teams switch from Confluence to Scoold for internal Q&A",
+        "date": "2024-10-22",
+        "author": "Alex Bogdanovski",
+        "tags": ["knowledge-base", "comparison"],
+        "excerpt": "Confluence is great for long-form documentation. But for Q&A and expert knowledge capture, a dedicated platform like Scoold often works better. Here's why."
+      },
+      {
+        "slug": "scoold-pro-saml-sso-setup",
+        "title": "Setting up SAML SSO with Okta and Scoold Pro",
+        "date": "2024-09-10",
+        "author": "Alex Bogdanovski",
+        "tags": ["enterprise", "sso", "saml", "guide"],
+        "excerpt": "Step-by-step guide to configuring SAML 2.0 single sign-on between Okta and your Scoold Pro instance. Includes the exact attribute mappings you need."
+      },
+      {
+        "slug": "gamification-knowledge-sharing",
+        "title": "How gamification drives knowledge sharing in engineering teams",
+        "date": "2024-08-05",
+        "author": "Alex Bogdanovski",
+        "tags": ["culture", "gamification", "engineering"],
+        "excerpt": "Reputation points and badges are more than just fun — they create lasting behavioral change. A look at the psychology behind Scoold's gamification system."
+      },
+      {
+        "slug": "scoold-slack-integration-guide",
+        "title": "Connecting Scoold to Slack: the complete guide",
+        "date": "2024-07-18",
+        "author": "Alex Bogdanovski",
+        "tags": ["integration", "slack", "guide"],
+        "excerpt": "Turn ephemeral Slack conversations into permanent knowledge base entries. Full setup guide for the Scoold + Slack integration."
+      },
+      {
+        "slug": "open-source-knowledge-management",
+        "title": "The case for open source knowledge management tools",
+        "date": "2024-06-30",
+        "author": "Alex Bogdanovski",
+        "tags": ["open-source", "knowledge-management"],
+        "excerpt": "Proprietary knowledge management tools create vendor lock-in and opaque pricing. Here's why open source alternatives like Scoold are increasingly the right choice for teams."
+      }
+    ]
+  },
+  "ui": {
+    "solution_page": {
+      "key_capabilities_label": "Key capabilities",
+      "use_cases_title": "Common use cases"
+    },
+    "comparison_page": {
+      "cta_label": "Get started with Scoold free",
+      "cta_href": "/download"
+    },
+    "integration_page": {
+      "highlights_label": "Integration highlights",
+      "setup_label": "How to set it up",
+      "docs_cta_text": "Need detailed setup instructions?",
+      "docs_link_label": "Read the documentation →",
+      "docs_href": "/documentation"
+    }
   },
   "solutions": {
     "knowledge_base": {
@@ -568,6 +797,7 @@
     "title": "Open source and proud of it",
     "subtitle": "Scoold has been open source since day one. We believe in transparency, community ownership, and freedom from vendor lock-in.",
     "hero_badge": "OPEN SOURCE",
+    "view_github_label": "View on GitHub",
     "benefits": [
       {
         "icon": "shield",
@@ -603,6 +833,10 @@
     "subtitle": "All the power of Scoold Pro, hosted and managed by us.",
     "hero_badge": "SCOOLD CLOUD",
     "description": "Skip the infrastructure management. Scoold Cloud gives you a fully managed Scoold Pro instance — we handle deployments, updates, backups, and security patches. You focus on building your knowledge base.",
+    "explore_cta_label": "Explore Scoold Cloud",
+    "contact_sales_label": "Contact sales",
+    "contact_sales_href": "/imprint/contact-us",
+    "features_title": "Everything managed for you",
     "features": [
       { "icon": "zap", "title": "Up in minutes", "description": "Your Scoold instance is provisioned instantly. No server setup, no Docker commands." },
       { "icon": "shield", "title": "Managed security", "description": "Automatic security patches, TLS certificates, and regular backups included." },
@@ -611,6 +845,19 @@
       { "icon": "refresh-cw", "title": "Automatic updates", "description": "Always on the latest version of Scoold Pro. Zero-downtime rolling updates." },
       { "icon": "headphones", "title": "Dedicated support", "description": "Cloud customers get priority support with a dedicated customer success contact." }
     ],
+    "comparison": {
+      "title": "Cloud vs Self-hosted",
+      "headers": ["Aspect", "Scoold Cloud", "Self-hosted Pro"],
+      "rows": [
+        ["Setup time", "Minutes", "Hours to days"],
+        ["Infrastructure management", "We handle it", "You manage it"],
+        ["Updates", "Automatic", "Manual"],
+        ["Backups", "Automatic daily", "You configure"],
+        ["Data location", "Our cloud", "Your infrastructure"],
+        ["Cost model", "Monthly subscription", "One-time license"],
+        ["Customization", "Standard", "Full control"]
+      ]
+    },
     "cloud_url": "https://cloud.scoold.com"
   },
   "imprint": {
@@ -622,7 +869,20 @@
       "email": "support@erudika.com",
       "website": "https://erudika.com"
     },
+    "impressum_page": {
+      "badge": "LEGAL",
+      "title": "Impressum",
+      "subtitle": "Legal information as required under UK and EU regulations.",
+      "labels": {
+        "company_name": "Company Name",
+        "registered_address": "Registered Address",
+        "vat_number": "VAT Number",
+        "email": "Email",
+        "website": "Website"
+      }
+    },
     "contact": {
+      "badge": "GET IN TOUCH",
       "title": "Contact us",
       "subtitle": "Have a question or want to work together? We'd love to hear from you.",
       "channels": [
@@ -630,6 +890,18 @@
         { "label": "GitHub Issues", "value": "github.com/Erudika/scoold", "href": "https://github.com/Erudika/scoold/issues", "icon": "github" },
         { "label": "Discord", "value": "Join our Discord", "href": "https://discord.gg/scoold", "icon": "message-circle" }
       ]
+    },
+    "contact_form": {
+      "title": "Send a message",
+      "name_label": "Name",
+      "name_placeholder": "Your name",
+      "email_label": "Email",
+      "email_placeholder": "you@example.com",
+      "subject_label": "Subject",
+      "subject_placeholder": "How can we help?",
+      "message_label": "Message",
+      "message_placeholder": "Tell us more about your project...",
+      "submit_label": "Send Message"
     }
   },
   "legal": {
@@ -662,6 +934,11 @@
     "title": "Download Scoold",
     "subtitle": "Free to download, free to deploy. Apache 2.0 open source.",
     "hero_badge": "DOWNLOAD",
+    "view_releases_label": "View releases",
+    "requirements_title": "System requirements",
+    "docs_cta": "Need the full setup guide?",
+    "docs_link_label": "Read the documentation →",
+    "docs_href": "/documentation",
     "options": [
       {
         "title": "Docker (recommended)",

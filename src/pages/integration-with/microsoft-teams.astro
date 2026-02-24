@@ -1,7 +1,6 @@
 ---
 import IntegrationPage from '../../components/IntegrationPage.astro';
-import siteData from '../../data/site-data.json';
-
-const data = siteData.integrations.teams;
+import { integrations } from '../../data/site-data.json';
+const data = integrations.teams;
 ---
 <IntegrationPage {...data} metaDescription="Scoold integrates with Microsoft Teams — post questions from Teams, get notified in Teams when answers arrive." />
