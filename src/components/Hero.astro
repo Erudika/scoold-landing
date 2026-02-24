@@ -1,8 +1,9 @@
 ---
-import siteData from '../data/site-data.json';
+import { Image } from 'astro:assets';
+import { hero } from '../data/site-data.json';
 import herobg from '../images/herobg.svg';
+import companies from '../images/companies.png';
 
-const { hero } = siteData;
 ---
 <section class="relative bg-white pt-16 lg:pt-24 pb-20 lg:pb-28 overflow-hidden" style={`background-image: url(${herobg.src});`}>
   <!-- Subtle dot grid background -->
@@ -61,14 +62,17 @@ const { hero } = siteData;
 
         <!-- Social proof -->
         <div class="flex items-center gap-2 mt-8 text-slate-400 text-sm">
-          <div class="flex -space-x-2">
+          <!-- <div class="flex -space-x-2">
             {[...Array(4)].map((_, i) => (
               <div class:list={['w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold', ['bg-blue-500', 'bg-emerald-500', 'bg-violet-500', 'bg-orange-500'][i]]}>
                 {['E', 'T', 'A', '+'][i]}
               </div>
             ))}
-          </div>
-          <span>Trusted by <strong class="text-slate-600">10,000+</strong> teams worldwide</span>
+          </div> -->
+          <span>Trusted by <strong class="text-slate-600">hundreds</strong> teams worldwide</span>
+        </div>
+        <div class="opacity-60 hover:opacity-100 transition-all duration-300 ease-in-out">
+          <Image src={companies} alt="List of Companies using Scoold"/>
         </div>
       </div>
 
