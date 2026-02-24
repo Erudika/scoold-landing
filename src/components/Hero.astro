@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { hero } from '../data/site-data.json';
 import herobg from '../images/herobg.svg';
+import logosq from '../images/logosq.svg';
 import companies from '../images/companies.png';
 
 ---
@@ -89,7 +90,7 @@ import companies from '../images/companies.png';
             </div>
             <div class="flex-1 mx-4">
               <div class="bg-white px-3 py-1 border border-slate-200 rounded-md text-slate-400 text-xs text-center">
-                demo.scoold.com
+                answers.acme.corp
               </div>
             </div>
           </div>
@@ -99,13 +100,17 @@ import companies from '../images/companies.png';
             <!-- Nav bar inside mock -->
             <div class="flex justify-between items-center mb-5">
               <div class="flex items-center gap-2">
-                <div class="bg-brand-600 rounded w-6 h-6"></div>
-                <div class="bg-slate-800 rounded w-16 h-3"></div>
+                <div class="bg-white rounded w-6 h-6">
+                  <Image src={logosq} alt="Scoold Logo"/>
+                </div>
+                <div class="rounded w-32 h-4 text-xs">Your logo here</div>
               </div>
               <div class="flex gap-2">
                 <div class="bg-slate-200 rounded w-12 h-3"></div>
                 <div class="bg-slate-200 rounded w-12 h-3"></div>
-                <div class="bg-brand-600 rounded-md w-20 h-6"></div>
+                <div class="justify-center bg-neutral-200 px-0.5 rounded-md w-6 h-6">
+                  <svg class="fill-blue-500" width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M16 15.503A5.041 5.041 0 1 0 16 5.42a5.041 5.041 0 0 0 0 10.083zm0 2.215c-6.703 0-11 3.699-11 5.5v3.363h22v-3.363c0-2.178-4.068-5.5-11-5.5z"></path></g></svg>
+                </div>
               </div>
             </div>
 

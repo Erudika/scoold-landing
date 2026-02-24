@@ -1,0 +1,27 @@
+{
+    "orientation": "any",
+    "display": "standalone",
+    "dir": "auto",
+    "lang": "en-US",
+    "start_url": "https://scoold.com",
+    "scope": "https://scoold.com",
+    "description": "Scoold is an open source Q&A platform for your team.",
+    "id": "https://scoold.com",
+    "icons":
+    [
+        {
+            "src": "/web-app-manifest-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/web-app-manifest-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "theme_color": "#8936FF",
+    "background_color": "#2EC6FE"
+}
