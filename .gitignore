@@ -9,3 +9,9 @@ site/css/*
 skills-lock.json
 worktrees/
 dist/
+CLAUDE.md
+AGENTS.md
+prd.md
+.agent/
+.agents/
+.claude/
