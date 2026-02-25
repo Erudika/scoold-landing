@@ -1,29 +1,82 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Pricing from '../components/Pricing.astro';
+import PricingCards from '../components/PricingCards.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
-import { pricing, faq } from '../data/site-data.json';
+import { pricing, features_page, faq } from '../data/site-data.json';
 ---
 
 <BaseLayout
-  title="Pricing"
-  description="Simple one-time pricing for Scoold. Free open-source Community edition, Scoold Pro at €499, or Pro + Source at €1,499. No subscriptions, no per-seat fees."
+  title={pricing.title_short}
+  description={pricing.description}
 >
   <!-- Page hero -->
-  <section class="bg-white pt-16 pb-2 text-center">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+  <section class="bg-white py-16 text-center">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
       <span class="section-label">{pricing.badge}</span>
       <h1 class="mb-4 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
         {pricing.title} <span class="text-brand-600">{pricing.title_highlight}</span>
       </h1>
-      <p class="text-slate-500 text-xl leading-relaxed">
+      <p class="text-slate-700 text-xl leading-relaxed">
         {pricing.subtitle}
       </p>
     </div>
   </section>
 
-  <Pricing />
+  <PricingCards />
+
+  <!-- Comparison table -->
+  <section class="bg-white section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div class="mb-12 text-center">
+        <h2 class="font-extrabold text-slate-900 text-3xl tracking-tight">
+          {features_page.comparison.title}
+        </h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="table-zebra w-full text-sm">
+          <thead>
+            <tr class="border-slate-200 border-b">
+              {features_page.comparison.headers.map((header, i) => (
+                <th
+                  class:list={[
+                    'py-3 font-semibold',
+                    i === 0 ? 'text-slate-600 pl-4 w-2/5 text-left' : 'px-4 text-center',
+                    i === 2 ? 'text-brand-600' : 'text-slate-600 text-center',
+                  ]}
+                >
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {features_page.comparison.rows.map((row) => (
+              <tr class="hover:bg-slate-50 transition-colors">
+                {row.map((cell, i) => (
+                  <td class:list={['py-3', i === 0 ? 'pl-4 font-medium text-slate-700' : 'text-center px-4']}>
+                    {typeof cell === 'boolean' ? (
+                      cell ? (
+                        <svg class="mx-auto w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                        </svg>
+                      ) : (
+                        <svg class="mx-auto w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                      )
+                    ) : (
+                      <span class:list={[i === 2 ? 'text-brand-600 font-medium' : 'text-slate-600']}>{cell}</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
   <!-- Enterprise contact section -->
   <section class="bg-white py-16">
@@ -35,7 +88,7 @@ import { pricing, faq } from '../data/site-data.json';
           </svg>
         </div>
         <h2 class="mb-2 font-bold text-slate-900 text-xl">{pricing.enterprise.title}</h2>
-        <p class="mb-5 text-slate-500 text-sm">
+        <p class="mb-5 text-slate-700 text-sm">
           {pricing.enterprise.description}
         </p>
         <a
@@ -56,18 +109,18 @@ import { pricing, faq } from '../data/site-data.json';
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
       <div class="mb-12 text-center">
         <h2 class="mb-3 font-extrabold text-slate-900 text-3xl tracking-tight">{pricing.pricing_faq.title}</h2>
-        <p class="text-slate-500">{pricing.pricing_faq.subtitle}</p>
+        <p class="text-slate-700">{pricing.pricing_faq.subtitle}</p>
       </div>
       <div class="space-y-3">
         {pricing.pricing_faq.items.map((item) => (
-          <details class="group border border-slate-100 rounded-xl overflow-hidden">
+          <details class="group border border-slate-300 hover:border-slate-500 rounded-xl overflow-hidden">
             <summary class="flex justify-between items-center gap-4 px-5 py-4 font-medium text-slate-800 hover:text-brand-600 transition-colors cursor-pointer list-none">
               <span class="text-sm">{item.q}</span>
-              <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-slate-600 group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
             </summary>
-            <div class="px-5 pt-1 pb-5 border-slate-100 border-t text-slate-500 text-sm leading-relaxed">
+            <div class="px-5 pt-1 pb-5 border-slate-100 border-t text-slate-700 text-sm leading-relaxed">
               {item.a}
             </div>
           </details>

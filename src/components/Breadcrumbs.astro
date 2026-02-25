@@ -1,0 +1,19 @@
+---
+import { components } from "../data/site-data.json";
+
+const { breadcrumbs } = components;
+const { items = [] } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="text-slate-700 text-xs uppercase tracking-widest">
+  <ol class="flex flex-wrap items-center gap-2">
+    {items.map((item, index) => (
+      <li class="flex items-center gap-2">
+        {index > 0 && <span class="text-slate-300">{breadcrumbs.separator}</span>}
+        <a href={item.href} class="hover:text-sky-700">
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>

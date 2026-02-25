@@ -5,15 +5,15 @@ import { pricing } from '../data/site-data.json';
 <section class="bg-slate-50 section-padding" id="pricing">
   <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
     <!-- Section header -->
-    <div class="mx-auto mb-16 max-w-2xl text-center">
+    <!-- <div class="mx-auto mb-16 max-w-2xl text-center">
       <span class="section-label">{pricing.badge}</span>
       <h2 class="mb-4 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
         {pricing.title} <span class="text-brand-600">{pricing.title_highlight}</span>
       </h2>
-      <p class="text-slate-500 text-lg leading-relaxed">
+      <p class="text-slate-700 text-lg leading-relaxed">
         {pricing.subtitle}
       </p>
-    </div>
+    </div> -->
 
     <!-- Pricing cards -->
     <div class="gap-6 lg:gap-8 grid md:grid-cols-3 mx-auto max-w-5xl">
@@ -40,7 +40,7 @@ import { pricing } from '../data/site-data.json';
             <h3 class:list={['text-lg font-bold mb-1', plan.popular ? 'text-white' : 'text-slate-900']}>
               {plan.name}
             </h3>
-            <p class:list={['text-sm leading-relaxed', plan.popular ? 'text-slate-400' : 'text-slate-500']}>
+            <p class:list={['text-sm leading-relaxed', plan.popular ? 'text-slate-300' : 'text-slate-700']}>
               {plan.description}
             </p>
           </div>
@@ -50,7 +50,7 @@ import { pricing } from '../data/site-data.json';
             <div class:list={['text-4xl font-extrabold tracking-tight', plan.popular ? 'text-white' : 'text-slate-900']}>
               {plan.price}
             </div>
-            <div class:list={['text-sm font-medium mt-0.5', plan.popular ? 'text-slate-400' : 'text-slate-400']}>
+            <div class:list={['text-sm font-medium mt-0.5', plan.popular ? 'text-slate-300' : 'text-slate-600']}>
               {plan.price_note}
             </div>
           </div>
@@ -76,14 +76,14 @@ import { pricing } from '../data/site-data.json';
             {plan.features.map((feature) => (
               <li class="flex items-start gap-3">
                 <svg
-                  class:list={['w-4 h-4 shrink-0 mt-0.5', plan.popular ? 'text-brand-400' : 'text-brand-500']}
+                  class:list={['w-4 h-4 shrink-0 mt-0.5', plan.popular ? 'text-brand-100' : 'text-brand-500']}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span class:list={['text-sm', plan.popular ? 'text-slate-300' : 'text-slate-600']}>
+                <span class:list={['text-sm', plan.popular ? 'text-slate-100' : 'text-slate-600']}>
                   {feature}
                 </span>
               </li>
@@ -93,22 +93,11 @@ import { pricing } from '../data/site-data.json';
       ))}
     </div>
 
-    {/* Note */}
-    <p class="mt-8 text-slate-400 text-sm text-center">
-      {pricing.note}
-    </p>
-
-    {/* Compare all features link */}
-    <div class="mt-4 text-center">
-      <a
-        href={pricing.compare_features_href}
-        class="inline-flex items-center gap-1.5 font-medium text-brand-600 hover:text-brand-700 text-sm transition-colors"
-      >
-        {pricing.compare_features_label}
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-        </svg>
-      </a>
+    
+    <div class="text-center">
+      <p class="mt-10 px-40 text-md text-slate-600 text-center">
+        {pricing.note}
+      </p>
     </div>
   </div>
 </section>

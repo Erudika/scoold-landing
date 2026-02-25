@@ -5,15 +5,15 @@ const { terms } = legal;
 ---
 
 <BaseLayout
-  title="Terms of Use"
-  description="Scoold terms of use — conditions for using scoold.com and Scoold software."
+  title={terms.title}
+  description={terms.description}
 >
   <section class="bg-white section-padding">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
       <div class="mb-10">
         <span class="section-label">LEGAL</span>
         <h1 class="mb-3 font-extrabold text-slate-900 text-4xl tracking-tight">{terms.title}</h1>
-        <p class="text-slate-400 text-sm">Effective date: {terms.effective_date}</p>
+        <p class="text-slate-600 text-sm">Effective date: {terms.effective_date}</p>
       </div>
       <div class="space-y-8">
         {terms.sections.map((section) => (

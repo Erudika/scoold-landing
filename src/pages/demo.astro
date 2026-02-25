@@ -4,21 +4,21 @@ import { demo_page, site } from '../data/site-data.json';
 ---
 
 <BaseLayout
-  title="Live Demo"
-  description="Try Scoold live — no account required. Explore the full Q&A platform at demo.scoold.com."
+  title={demo_page.title_short}
+  description={demo_page.description}
 >
-  <section class="section-padding bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <section class="bg-white section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
       <span class="section-label">{demo_page.badge}</span>
-      <h1 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-5">
+      <h1 class="mb-5 font-extrabold text-slate-900 text-5xl tracking-tight">
         {demo_page.title}
       </h1>
-      <p class="text-xl text-slate-500 leading-relaxed mb-8">
+      <p class="mb-8 text-slate-700 text-xl leading-relaxed">
         {demo_page.subtitle}
       </p>
       <a
         href={site.demo}
-        class="inline-flex items-center gap-3 px-8 py-4 bg-brand-600 text-white font-bold rounded-xl hover:bg-brand-700 transition-colors text-base"
+        class="inline-flex items-center gap-3 bg-brand-600 hover:bg-brand-700 px-8 py-4 rounded-xl font-bold text-white text-base transition-colors"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -28,21 +28,21 @@ import { demo_page, site } from '../data/site-data.json';
         </svg>
         {demo_page.cta_label}
       </a>
-      <p class="mt-4 text-xs text-slate-400">
+      <p class="mt-4 text-slate-600 text-xs">
         {demo_page.cta_note}
       </p>
     </div>
   </section>
 
-  <section class="section-padding bg-slate-50">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-slate-900 text-center mb-10">{demo_page.explore_title}</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <section class="bg-slate-50 section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <h2 class="mb-10 font-bold text-slate-900 text-2xl text-center">{demo_page.explore_title}</h2>
+      <div class="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
         {demo_page.features.map((item) => (
-          <div class="bg-white border border-slate-100 rounded-2xl p-5">
-            <div class="text-2xl mb-3">{item.icon}</div>
-            <h3 class="font-semibold text-slate-900 text-sm mb-1.5">{item.title}</h3>
-            <p class="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+          <div class="bg-white p-5 border border-slate-100 rounded-2xl">
+            <div class="mb-3 text-2xl">{item.icon}</div>
+            <h3 class="mb-1.5 font-semibold text-slate-900 text-sm">{item.title}</h3>
+            <p class="text-slate-700 text-xs leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>

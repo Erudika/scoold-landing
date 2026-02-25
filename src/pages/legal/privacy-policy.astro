@@ -1,19 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { legal} from '../../data/site-data.json';
+import { legal, licenses_page } from '../../data/site-data.json';
 const { privacy } = legal;
 ---
 
 <BaseLayout
-  title="Privacy Policy"
-  description="Scoold privacy policy — how we collect, use, and protect your personal data. GDPR compliant."
+  title={privacy.title}
+  description={privacy.description}
 >
   <section class="bg-white section-padding">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
       <div class="mb-10">
-        <span class="section-label">LEGAL</span>
+        <span class="section-label">{licenses_page.badge}</span>
         <h1 class="mb-3 font-extrabold text-slate-900 text-4xl tracking-tight">{privacy.title}</h1>
-        <p class="text-slate-400 text-sm">Effective date: {privacy.effective_date}</p>
+        <p class="text-slate-600 text-sm">Effective date: {privacy.effective_date}</p>
       </div>
       <div class="space-y-8">
         {privacy.sections.map((section) => (

@@ -1,8 +1,26 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { blog_page } from '../../data/site-data.json';
+import { getCollection } from "astro:content";
+import herobg from '../../images/herobg.svg';
 
-const { posts } = blog_page;
+const PAGE_SIZE = 15;
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+const pagePosts = posts.slice(0, PAGE_SIZE).map((post) => ({
+  title: post.data.title,
+  excerpt: post.data.excerpt,
+  date: post.data.date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit"
+  }),
+  img: post.data.img,
+  tags: post.data.tags,
+  href: `/blog/${post.slug}`
+}));
 
 const tagColors: Record<string, string> = {
   deployment: 'bg-blue-50 text-blue-600',
@@ -32,25 +50,28 @@ function formatDate(dateStr: string): string {
 ---
 
 <BaseLayout
-  title="Blog"
-  description="The Scoold blog — guides, tutorials, and insights on knowledge management, team collaboration, and enterprise Q&A."
+  title={blog_page.title_short}
+  description={blog_page.description}
 >
-  <section class="section-padding bg-white border-b border-slate-100">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="relative bg-white border-slate-100 border-b section-padding"  style={`background-image: url(${herobg.src});`}>
+    <!-- Gradient fade edges -->
+    <div class="absolute inset-0 bg-linear-to-b from-white via-transparent to-white pointer-events-none"></div>
+
+    <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
       <span class="section-label">{blog_page.badge}</span>
-      <h1 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+      <h1 class="mb-4 font-extrabold text-slate-900 text-5xl tracking-tight">
         {blog_page.title}
       </h1>
-      <p class="text-xl text-slate-500 leading-relaxed">
+      <p class="text-slate-700 text-xl leading-relaxed">
         {blog_page.subtitle}
       </p>
     </div>
   </section>
 
-  <section class="section-padding bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="bg-white section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
       <div class="space-y-8">
-        {posts.map((post) => (
+        {pagePosts.map((post) => (
           <article class="group">
             <a href={`/blog/${post.slug}`} class="block">
               <div class="flex flex-wrap gap-2 mb-3">
@@ -60,17 +81,17 @@ function formatDate(dateStr: string): string {
                   </span>
                 ))}
               </div>
-              <h2 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors mb-2 leading-tight">
+              <h2 class="mb-2 font-bold text-slate-900 group-hover:text-brand-600 text-xl leading-tight transition-colors">
                 {post.title}
               </h2>
-              <p class="text-sm text-slate-500 leading-relaxed mb-3">
+              <p class="mb-3 text-slate-700 text-sm leading-relaxed">
                 {post.excerpt}
               </p>
-              <div class="flex items-center gap-3 text-xs text-slate-400">
+              <div class="flex items-center gap-3 text-slate-600 text-xs">
                 <span>{post.author}</span>
                 <span>·</span>
                 <time datetime={post.date}>{formatDate(post.date)}</time>
-                <span class="ml-auto flex items-center gap-1 text-brand-600 font-semibold group-hover:gap-2 transition-all">
+                <span class="flex items-center gap-1 group-hover:gap-2 ml-auto font-semibold text-brand-600 transition-all">
                   {blog_page.read_more_label}
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>

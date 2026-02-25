@@ -12,8 +12,8 @@ const iconPaths: Record<string, string> = {
 ---
 
 <BaseLayout
-  title="Scoold Cloud"
-  description="Scoold Cloud — fully managed hosted Q&A platform. All the power of Scoold Pro, deployed and managed by us."
+  title={cloud.title_short}
+  description={cloud.description}
 >
   <!-- Hero -->
   <section class="bg-white border-slate-100 border-b section-padding">
@@ -22,10 +22,10 @@ const iconPaths: Record<string, string> = {
       <h1 class="mb-5 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
         {cloud.title}
       </h1>
-      <p class="mb-4 text-slate-500 text-xl leading-relaxed">
+      <p class="mb-4 text-slate-700 text-xl leading-relaxed">
         {cloud.subtitle}
       </p>
-      <p class="mx-auto mb-8 max-w-2xl text-slate-400 text-base leading-relaxed">
+      <p class="mx-auto mb-8 max-w-2xl text-slate-600 text-base leading-relaxed">
         {cloud.description}
       </p>
       <div class="flex sm:flex-row flex-col justify-center gap-3">
@@ -67,7 +67,7 @@ const iconPaths: Record<string, string> = {
               </svg>
             </div>
             <h3 class="mb-2 font-semibold text-slate-900">{feature.title}</h3>
-            <p class="text-slate-500 text-sm leading-relaxed">{feature.description}</p>
+            <p class="text-slate-700 text-sm leading-relaxed">{feature.description}</p>
           </div>
         ))}
       </div>
@@ -97,7 +97,7 @@ const iconPaths: Record<string, string> = {
               <tr class="hover:bg-slate-50">
                 <td class="py-3 pl-4 font-medium text-slate-700">{row[0]}</td>
                 <td class="px-4 py-3 font-medium text-brand-600 text-center">{row[1]}</td>
-                <td class="px-4 py-3 text-slate-500 text-center">{row[2]}</td>
+                <td class="px-4 py-3 text-slate-700 text-center">{row[2]}</td>
               </tr>
             ))}
           </tbody>

@@ -5,15 +5,15 @@ const { contact, contact_form } = imprint;
 ---
 
 <BaseLayout
-  title="Contact Us"
-  description="Contact the Scoold team — email, GitHub issues, or Discord. We're here to help."
+  title={contact.title_short}
+  description={contact.description}
 >
   <section class="bg-white section-padding">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
       <div class="mb-10 text-center">
         <span class="section-label">{contact.badge}</span>
         <h1 class="mb-4 font-extrabold text-slate-900 text-5xl tracking-tight">{contact.title}</h1>
-        <p class="text-slate-500 text-xl leading-relaxed">{contact.subtitle}</p>
+        <p class="text-slate-700 text-xl leading-relaxed">{contact.subtitle}</p>
       </div>
 
       <!-- Contact channels -->
@@ -42,10 +42,10 @@ const { contact, contact_form } = imprint;
               )}
             </div>
             <div>
-              <div class="mb-0.5 font-semibold text-slate-400 text-xs uppercase tracking-wider">{channel.label}</div>
+              <div class="mb-0.5 font-semibold text-slate-600 text-xs uppercase tracking-wider">{channel.label}</div>
               <div class="font-medium text-slate-800 group-hover:text-brand-600 text-base transition-colors">{channel.value}</div>
             </div>
-            <svg class="ml-auto w-4 h-4 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="ml-auto w-4 h-4 text-slate-600 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
           </a>

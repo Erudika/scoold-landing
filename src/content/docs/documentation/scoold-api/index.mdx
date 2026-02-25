@@ -1,31 +1,28 @@
 ---
 title: API Reference
-description: Scoold REST API reference — full OpenAPI 3.x specification for interacting with Scoold programmatically.
+description: Scoold REST API reference - full OpenAPI 3.x specification for interacting with Scoold programmatically.
 tableOfContents: false
 ---
 
 import { Aside } from '@astrojs/starlight/components';
-import { ScalarComponent } from '@scalar/astro'
-import { Icon } from '@astrojs/starlight/components';
+import ScalarWithThemeSync from '../../../../components/ScalarWithThemeSync.astro';
 
+<style>{`.sl-container { margin-left: 0; } @media (max-width: 1200px) { .sl-container { max-width: 100% !important; } } @media (min-width: 1200px) { .sl-container { max-width: 80% !important; } }`}</style>
 
-The Scoold REST API is based on the Para REST API and follows REST conventions. Authentication uses API key + secret pairs.
+The Scoold REST API is accessible only if enabled with `scoold.api_enabled = true`. Authentication uses a `Bearer` access token (API key) generated on the Scoold Administration page.
 
 <Aside type="tip">
   You can also browse the full interactive API console, available at `/apidocs` on your running Scoold instance.
 </Aside>
 
-<ScalarComponent configuration={{
-    title: "hg",
-    // The URL of the OpenAPI/Swagger document
-    url: 'https://demo.scoold.com/api.json',
-    // Avoid CORS issues
-    //theme: "purple",
-    proxyUrl: 'https://proxy.scalar.com',
-    persistAuth: true,
-    hideSearch: true,
-    authentication: {
-      preferredSecurityScheme: 'scoold_auth'
-    }
-
-}} />
+<ScalarWithThemeSync
+  url="https://demo.scoold.com/api.json"
+  proxyUrl="https://proxy.scalar.com"
+  persistAuth={true}
+  hideSearch={true}
+  withDefaultFonts={false}
+  telemetry={false}
+  layout="modern"
+  showDeveloperTools="never"
+  authentication={{ preferredSecurityScheme: 'scoold_auth' }}
+/>

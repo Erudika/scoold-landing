@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getCollection } from "astro:content";
+import { site, components, authors, blogPage } from "../../data/site-data.json";
+import Prose from '../../components/Prose.astro';
+import PersonCard from "../../components/PersonCard.astro";
+import { getImage } from "astro:assets";
+
+const { breadcrumbs } = components;
+const baseUrl = site.url;
+
+const toSlug = (tag) => tag.toLowerCase().replace(/\s+/g, "-");
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const postUrl = `${baseUrl}/blog/${post.slug}`;
+const heroImageUrl = await getImage({src: import(`../../images/blog/${post.data.img}.png`)});
+const author = authors.filter((p) => p.email === post.data.author)[0];
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.excerpt,
+  datePublished: post.data.date.toISOString(),
+  dateModified: post.data.date.toISOString(),
+  author: {
+    "@type": "Person",
+    name: author.name
+  },
+  publisher: {
+    "@type": "Organization",
+    name: site.company,
+    logo: {
+      "@type": "ImageObject",
+      url: site.companyLogo
+    }
+  },
+  mainEntityOfPage: postUrl,
+  image: [post.data.img ?? site.companyLogo],
+  url: postUrl
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
+    { "@type": "ListItem", position: 2, name: breadcrumbs.blog, item: `${baseUrl}/blog` },
+    { "@type": "ListItem", position: 3, name: post.data.title, item: postUrl }
+  ]
+};
+---
+
+<BaseLayout
+  title={`${post.data.title} | Erudika`}
+  description={post.data.excerpt}
+  ogImage={heroImageUrl.src}
+  jsonLd={[articleJsonLd, breadcrumbJsonLd]}
+>
+  <div class="bg-cover bg-center" style={`background-image: url('${heroImageUrl.src}')`}>
+    <div class="py-24 section-shell">
+      <div class="inline-flex flex-col gap-3 p-6 rounded-[3px] max-w-3xl">&nbsp;
+      </div>
+    </div>
+  </div>
+  <article class="py-12">
+    <div class="max-w-3xl section-shell">
+      <span class="float-right text-xs text-base-400">
+        {post.data.date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "2-digit"
+        })}
+      </span>
+      <Breadcrumbs items={[
+        { label: breadcrumbs.home, href: "/" },
+        { label: breadcrumbs.blog, href: "/blog" }
+      ]} />
+      <h1 class="mt-6 font-semibold text-base-content text-4xl">{post.data.title}</h1>
+      <div class="flex flex-wrap gap-3 mt-4 pb-10 text-slate-700 text-sm">
+        <div class="flex flex-wrap gap-2">
+          {post.data.tags.map((tag) => (
+            <a href={`/blog/tags/${toSlug(tag)}`} class="bg-base-200 px-3 py-1 rounded-[3px] font-medium text-xs text-base-content/70">
+              {tag}
+            </a>
+          ))}
+        </div>
+      </div>
+      <Prose>
+        <Content />
+      </Prose>
+
+      <div class="mt-10 text-center section-shell">
+        <p class="font-semibold text-slate-700 text-xs uppercase tracking-[0.3em]">{blogPage.author}</p>
+        <div class="flex flex-wrap justify-center gap-4 mt-6">
+          <PersonCard email={post.data.author} />
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Stats from '../components/Stats.astro';
 import Features from '../components/Features.astro';
-import Pricing from '../components/Pricing.astro';
+import PricingCards from '../components/PricingCards.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import { site, home, imprint } from '../data/site-data.json';
@@ -21,13 +21,13 @@ const jsonLd = {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'EUR',
-      description: 'Scoold Community — free, open source',
+      description: 'Scoold Community - free, open source',
     },
     {
       '@type': 'Offer',
       price: '499',
       priceCurrency: 'EUR',
-      description: 'Scoold Pro — one-time license',
+      description: 'Scoold Pro - one-time license',
     },
   ],
   author: {
@@ -57,7 +57,7 @@ const jsonLd = {
           <h2 class="mb-6 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
             {home.mission.title} <span class="text-brand-600">{home.mission.title_highlight}</span> {home.mission.title_suffix}
           </h2>
-          <p class="mb-8 text-slate-500 text-lg leading-relaxed">
+          <p class="mb-8 text-slate-700 text-lg leading-relaxed">
             {home.mission.description}
           </p>
           <ul class="space-y-4">
@@ -76,7 +76,7 @@ const jsonLd = {
             {home.mission.stats.map((stat) => (
               <div>
                 <div class="font-extrabold text-slate-900 text-2xl">{stat.value}</div>
-                <div class="font-medium text-slate-400 text-xs">{stat.label}</div>
+                <div class="font-medium text-slate-600 text-xs">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -94,7 +94,7 @@ const jsonLd = {
               <h3 class:list={['text-sm font-semibold mb-1', i === 1 ? 'text-white' : 'text-slate-800']}>
                 {tile.title}
               </h3>
-              <p class:list={['text-xs', i === 1 ? 'text-brand-200' : 'text-slate-500']}>
+              <p class:list={['text-xs', i === 1 ? 'text-brand-200' : 'text-slate-700']}>
                 {tile.desc}
               </p>
             </div>
@@ -112,7 +112,7 @@ const jsonLd = {
         <h2 class="mb-4 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
           {home.use_cases.title} <span class="text-brand-600">{home.use_cases.title_highlight}</span>
         </h2>
-        <p class="text-slate-500 text-lg leading-relaxed">
+        <p class="text-slate-700 text-lg leading-relaxed">
           {home.use_cases.description}
         </p>
       </div>
@@ -125,7 +125,7 @@ const jsonLd = {
             <div class:list={['inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border mb-3', s.color]}>
               {s.title}
             </div>
-            <p class="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
+            <p class="text-slate-700 text-sm leading-relaxed">{s.desc}</p>
             <div class="flex items-center gap-1 group-hover:gap-2 mt-3 font-semibold text-brand-600 text-xs transition-all">
               {home.use_cases.learn_more_label}
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,7 +138,7 @@ const jsonLd = {
     </div>
   </section>
 
-  <Pricing />
+  <!-- <PricingCards /> -->
   <FAQ limit={5} />
   <CTA />
 </BaseLayout>

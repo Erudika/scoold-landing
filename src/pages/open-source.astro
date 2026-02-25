@@ -5,8 +5,8 @@ import { open_source } from '../data/site-data.json';
 ---
 
 <BaseLayout
-  title="Open Source"
-  description="Scoold is open source (Apache 2.0). Security, transparency, and no vendor lock-in. Deploy anywhere, own your data."
+  title={open_source.title_short}
+  description={open_source.description}
 >
   <!-- Hero -->
   <section class="bg-white border-slate-100 border-b section-padding">
@@ -15,7 +15,7 @@ import { open_source } from '../data/site-data.json';
       <h1 class="mb-5 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
         {open_source.title}
       </h1>
-      <p class="mb-8 text-slate-500 text-xl leading-relaxed">
+      <p class="mb-8 text-slate-700 text-xl leading-relaxed">
         {open_source.subtitle}
       </p>
       <a
@@ -47,7 +47,7 @@ import { open_source } from '../data/site-data.json';
               </svg>
             </div>
             <h3 class="mb-2 font-bold text-slate-900 text-lg">{benefit.title}</h3>
-            <p class="text-slate-500 text-sm leading-relaxed">{benefit.description}</p>
+            <p class="text-slate-700 text-sm leading-relaxed">{benefit.description}</p>
           </div>
         ))}
       </div>
@@ -61,7 +61,7 @@ import { open_source } from '../data/site-data.json';
         {open_source.stats.map((stat) => (
           <div>
             <div class="mb-1 font-extrabold text-slate-900 text-3xl">{stat.value}</div>
-            <div class="font-medium text-slate-400 text-sm">{stat.label}</div>
+            <div class="font-medium text-slate-600 text-sm">{stat.label}</div>
           </div>
         ))}
       </div>
