@@ -12,7 +12,10 @@
     "company": "Erudika Ltd.",
     "companyUrl": "",
     "companyLogo": "https://erudika.com/logo.png",
-    "version": "1.66.0"
+    "version": "1.66.0",
+    "pricePro": "499",
+    "priceProPlus": "1199",
+    "priceSign": "€"
   },
   "components": {
     "blogCard": {
@@ -112,7 +115,7 @@
     ]
   },
   "hero": {
-    "badge": "Deploy Scoold Pro in minutes with <a class=\"underline\" href=\"/scoold-cloud\">Scoold Cloud</a>!",
+    "badge": "Deploy Scoold in minutes on <a class=\"underline\" href=\"/scoold-cloud\">Scoold Cloud</a>!",
     "title": "The smarter way to share",
     "title_highlight": "knowledge",
     "subtitle": "Scoold is a self-hosted Q&A platform, forum, and knowledge base built for teams and enterprises. Deploy on-premises or to any cloud - fully under your control.",
@@ -125,7 +128,7 @@
       "href": "https://demo.scoold.com"
     },
     "image_alt": "Scoold Q&A platform interface",
-    "social_proof": "Trusted by <strong class=\"text-slate-600\">hundreds</strong> teams worldwide",
+    "social_proof": "Trusted by teams worldwide",
     "mockup_url": "answers.acme.corp",
     "mockup_company": "Your logo here",
     "mockup_answers_label": "ans",
@@ -259,7 +262,7 @@
         ["High-availability clustering", false, true, true],
         ["Source code access", false, false, true],
         ["License", "Apache 2.0", "Commercial", "Commercial"],
-        ["Price", "Free", "€499 one-time", "€1199 one-time"]
+        ["Price", "Free", "{pricePro} one-time", "{priceProPlus} one-time"]
       ]
     }
   },
@@ -315,7 +318,7 @@
       },
       {
         "name": "Scoold Pro",
-        "price": "€499",
+        "price": "{pricePro}",
         "price_note": "one-time fee",
         "description": "Best for teams of any size. Includes all the premium features.",
         "cta_label": "Buy Scoold Pro",
@@ -338,7 +341,7 @@
       },
       {
         "name": "Pro + Source",
-        "price": "€1199",
+        "price": "{priceProPlus}",
         "price_note": "one-time fee",
         "description": "All Scoold Pro features, plus access to the source code repository.",
         "cta_label": "Buy Pro + Source",
@@ -481,16 +484,6 @@
           { "label": "GitHub", "href": "https://github.com/Erudika/scoold" },
           { "label": "API Reference", "href": "/documentation/scoold-api" }
         ]
-      },
-      {
-        "heading": "Company",
-        "links": [
-          { "label": "Imprint", "href": "/imprint/impressum" },
-          { "label": "Contact Us", "href": "/imprint/contact-us" },
-          { "label": "Privacy Policy", "href": "/legal/privacy-policy" },
-          { "label": "Terms of Use", "href": "/legal/terms-of-use" },
-          { "label": "Licenses", "href": "/legal/licenses" }
-        ]
       }
     ],
     "social": [
@@ -509,7 +502,7 @@
       "description": "Focused on a mission to eliminate knowledge silos, we've built a platform that transforms how teams capture, share, and find information - without the subscription fatigue.",
       "bullets": [
         "Deployed on your own infrastructure - your data, your rules",
-        "One-time licensing. No per-seat fees, no monthly surprises",
+        "One-time payment. No per-seat fees, no surprises",
         "Built-in search, reputation, and SSO from day one",
         "Open source core, with enterprise features in Pro"
       ],
@@ -715,7 +708,7 @@
       "intro": "Stack Overflow for Teams is a great product, but it comes with per-seat monthly fees that add up fast, and your data lives in their cloud. Scoold gives you the same battle-tested Q&A format - self-hosted, with a one-time license.",
       "table_headers": ["Feature", "Scoold Pro", "SO for Teams Business"],
       "rows": [
-        ["Pricing model", "One-time €499", "~$6.50/user/month"],
+        ["Pricing model", "One-time {price}", "~$6.50/user/month"],
         ["Data ownership", "100% yours", "Hosted by SO"],
         ["On-premises deploy", true, false],
         ["SAML SSO", true, true],
@@ -897,7 +890,7 @@
         ["Updates", "Automatic", "Manual"],
         ["Backups", "Automatic daily", "You configure"],
         ["Data location", "Our cloud", "Your infrastructure"],
-        ["Cost model", "Monthly subscription", "One-time license"],
+        ["Cost model", "Monthly subscription", "One-time license fee"],
         ["Customization", "Standard", "Full control"]
       ]
     },

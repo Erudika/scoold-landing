@@ -1,9 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PricingCards from '../components/PricingCards.astro';
-import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
-import { pricing, features_page, faq } from '../data/site-data.json';
+import { pricing, features_page, site } from '../data/site-data.json';
 ---
 
 <BaseLayout
@@ -66,7 +65,11 @@ import { pricing, features_page, faq } from '../data/site-data.json';
                         </svg>
                       )
                     ) : (
-                      <span class:list={[i === 2 ? 'text-brand-600 font-medium' : 'text-slate-600']}>{cell}</span>
+                      <span class:list={[i === 2 ? 'text-brand-600 font-medium' : 'text-slate-600']}>
+                        {cell.
+                          replace("{pricePro}", site.priceSign + site.pricePro).
+                          replace("{priceProPlus}", site.priceSign + site.priceProPlus)}
+                      </span>
                     )}
                   </td>
                 ))}
@@ -96,9 +99,7 @@ import { pricing, features_page, faq } from '../data/site-data.json';
           class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 px-5 py-2.5 rounded-xl font-semibold text-white text-sm transition-colors"
         >
           {pricing.enterprise.cta_label}
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-          </svg>
+          &rarr;
         </a>
       </div>
     </div>

@@ -36,17 +36,25 @@ const defaultJsonLd = {
   url: site.url,
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Any',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    description: 'Free open-source edition',
-  },
+  offers: [
+    {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR',
+      description: 'Scoold Community - free, open source',
+    },
+    {
+      '@type': 'Offer',
+      price: '499',
+      priceCurrency: 'EUR',
+      description: 'Scoold Pro - one-time license',
+    },
+  ],
   author: {
     '@type': 'Organization',
     name: site.company,
     url: imprint.impressum.website,
-  },
+  }
 };
 ---
 

@@ -93,9 +93,7 @@ function formatDate(dateStr: string): string {
                 <time datetime={post.date}>{formatDate(post.date)}</time>
                 <span class="flex items-center gap-1 group-hover:gap-2 ml-auto font-semibold text-brand-600 transition-all">
                   {blog_page.read_more_label}
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
+                  &rarr;
                 </span>
               </div>
             </a>

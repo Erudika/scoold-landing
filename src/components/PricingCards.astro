@@ -1,5 +1,5 @@
 ---
-import { pricing } from '../data/site-data.json';
+import { pricing, site } from '../data/site-data.json';
 ---
 
 <section class="bg-slate-50 section-padding" id="pricing">
@@ -48,7 +48,9 @@ import { pricing } from '../data/site-data.json';
           {/* Price */}
           <div class="mb-6">
             <div class:list={['text-4xl font-extrabold tracking-tight', plan.popular ? 'text-white' : 'text-slate-900']}>
-              {plan.price}
+              {plan.price.
+                          replace("{pricePro}", site.priceSign + site.pricePro).
+                          replace("{priceProPlus}", site.priceSign + site.priceProPlus)}
             </div>
             <div class:list={['text-sm font-medium mt-0.5', plan.popular ? 'text-slate-300' : 'text-slate-600']}>
               {plan.price_note}
