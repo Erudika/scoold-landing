@@ -16,57 +16,41 @@ import { licenses_page } from '../../data/site-data.json';
           {licenses_page.subtitle}
         </p>
       </div>
-
+      
       <!-- Tab navigation -->
-      <div class="mb-8 border-slate-200 border-b">
-        <nav class="flex gap-8 -mb-px">
-          <button
-            id="tab-oss"
-            class="pb-3 border-brand-600 border-b-2 font-semibold text-brand-600 text-sm transition-colors tab-btn"
-            data-target="panel-oss"
-          >
-            {licenses_page.tab_oss}
-          </button>
-          <button
-            id="tab-pro"
-            class="pb-3 border-transparent border-b-2 font-semibold text-slate-700 hover:text-slate-700 text-sm transition-colors tab-btn"
-            data-target="panel-pro"
-          >
-            {licenses_page.tab_pro}
-          </button>
-        </nav>
-      </div>
-
-      <!-- Apache 2.0 panel -->
-      <div id="panel-oss" class="tab-panel">
-        <div class="bg-slate-50 p-6 border border-slate-200 rounded-2xl overflow-x-auto font-mono text-slate-800 text-xs leading-relaxed">
-          <p class="mb-4 font-bold">{licenses_page.apache.header}</p>
-          <p>{licenses_page.apache.copyright}</p>
-          <br/>
-          <p>{licenses_page.apache.preamble}</p>
-          <br/>
-          <a href={licenses_page.apache.url} class="text-brand-600">{licenses_page.apache.url}</a>
-          <br/>
-          <br/>
-          <p>{licenses_page.apache.disclaimer}</p>
-        </div>
-        <div class="bg-brand-50 mt-6 p-4 border border-brand-100 rounded-xl">
-          <p class="text-brand-800 text-sm">
-            {licenses_page.apache.explanation}
-            <a href={licenses_page.apache.explanation_link_href} class="underline" target="_blank" rel="noopener noreferrer">{licenses_page.apache.explanation_link_label}</a>.
-          </p>
-        </div>
-      </div>
-
-      <!-- EULA panel (hidden by default) -->
-      <div id="panel-pro" class="hidden tab-panel">
-        <div class="space-y-5 bg-slate-50 p-6 border border-slate-200 rounded-2xl font-mono text-xs">
-          <div>
-            <h2 class="mb-2 font-bold text-slate-800 tracking-wide">{licenses_page.eula.title}</h2>
-            <p class="text-slate-600">{licenses_page.eula.effective_date}</p>
+      <div id="license-tabs" class="mb-8 border-slate-200 border-b">
+        <div role="tablist" class="tabs-border tabs">
+          <!-- OSS tab -->
+          <input type="radio" name="license_tabs" class="tab" aria-label={licenses_page.tab_oss} checked="checked"/>
+          <div class="pt-3 tab-content">
+            <div class="bg-slate-50 p-6 border border-slate-200 rounded-2xl overflow-x-auto font-mono text-slate-800 text-xs leading-relaxed">
+              <p class="mb-4 font-bold">{licenses_page.apache.header}</p>
+              <p>{licenses_page.apache.copyright}</p>
+              <br/>
+              <p>{licenses_page.apache.preamble}</p>
+              <br/>
+              <a href={licenses_page.apache.url} class="text-brand-600">{licenses_page.apache.url}</a>
+              <br/>
+              <br/>
+              <p>{licenses_page.apache.disclaimer}</p>
+            </div>
+            <div class="bg-brand-50 mt-6 p-4 border border-brand-100 rounded-xl">
+              <p class="text-brand-800 text-sm">
+                {licenses_page.apache.explanation}
+                <a href={licenses_page.apache.explanation_link_href} class="underline" target="_blank" rel="noopener noreferrer">{licenses_page.apache.explanation_link_label}</a>.
+              </p>
+            </div>
           </div>
 
-          <pre class="text-wrap">
+          <input type="radio" name="license_tabs" class="tab" aria-label={licenses_page.tab_pro}/>
+          <div class="pt-3 tab-content">
+            <div class="space-y-5 bg-slate-50 p-6 border border-slate-200 rounded-2xl font-mono text-xs">
+              <div>
+                <h2 class="mb-2 font-bold text-slate-800 tracking-wide">{licenses_page.eula.title}</h2>
+                <p class="text-slate-600">{licenses_page.eula.effective_date}</p>
+              </div>
+
+              <pre class="text-wrap">
 
 IMPORTANT: THIS SOFTWARE END-USER LICENSE AGREEMENT ("EULA") IS A LEGAL AGREEMENT (“Agreement”) BETWEEN YOU (THE CUSTOMER, EITHER AS AN INDIVIDUAL OR, IF PURCHASED OR OTHERWISE ACQUIRED BY OR FOR AN ENTITY, AS AN ENTITY) AND ERUDIKA. READ IT CAREFULLY BEFORE COMPLETING THE INSTALLATION PROCESS AND USING SCOOLD PRO AND RELATED SOFTWARE COMPONENTS (“SOFTWARE”). IT PROVIDES A LICENSE TO USE THE SOFTWARE AND CONTAINS WARRANTY INFORMATION AND LIABILITY DISCLAIMERS. BY INSTALLING AND USING THE SOFTWARE, YOU ARE CONFIRMING YOUR ACCEPTANCE OF THE SOFTWARE AND AGREEING TO BECOME BOUND BY THE TERMS OF THIS AGREEMENT.
 
@@ -159,37 +143,18 @@ In no event will Erudika's liability exceed the Software license price as indica
 13.10 Headings. The headings of sections and paragraphs of this Agreement are for convenience of reference only and are not intended to restrict, affect or be of any weight in the interpretation or construction of the provisions of such sections or paragraphs.
 
 14. Contact Information. If you have any questions about this EULA, or if you want to contact Erudika for any reason, please direct correspondence to support@erudika.com.
-          </pre>
+            </pre>
           
-        </div>
-        <div class="bg-amber-50 mt-6 p-4 border border-amber-200 rounded-xl">
-          <p class="text-amber-800 text-sm">
-            <strong>{licenses_page.eula.questions_cta}</strong>{' '}
-            <a href={licenses_page.eula.contact_href} class="underline">{licenses_page.eula.contact_label}</a> {licenses_page.eula.before_purchasing}
-          </p>
+            </div>
+            <div class="bg-amber-50 mt-6 p-4 border border-amber-200 rounded-xl">
+              <p class="text-amber-800 text-sm">
+                <strong>{licenses_page.eula.questions_cta}</strong>{' '}
+                <a href={licenses_page.eula.contact_href} class="underline">{licenses_page.eula.contact_label}</a> {licenses_page.eula.before_purchasing}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  const tabs = document.querySelectorAll('.tab-btn');
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const targetId = (tab as HTMLElement).dataset.target;
-      // Update tabs
-      tabs.forEach((t) => {
-        t.classList.remove('border-brand-600', 'text-brand-600');
-        t.classList.add('border-transparent', 'text-slate-700');
-      });
-      tab.classList.add('border-brand-600', 'text-brand-600');
-      tab.classList.remove('border-transparent', 'text-slate-700');
-      // Update panels
-      document.querySelectorAll('.tab-panel').forEach((panel) => {
-        panel.classList.add('hidden');
-      });
-      if (targetId) document.getElementById(targetId)?.classList.remove('hidden');
-    });
-  });
-</script>

@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
+import { Image } from 'astro:assets';
 import { features_page } from '../data/site-data.json';
 import herobg from '../images/herobg.svg';
+import lightUI from '../images/hero-image.png';
+import darkUI from '../images/hero-image-dark.png';
 ---
 
 <BaseLayout
@@ -13,7 +16,7 @@ import herobg from '../images/herobg.svg';
   <section class="relative bg-white border-slate-100 border-b section-padding" style={`background-image: url(${herobg.src});`}>
     <!-- Gradient fade edges -->
     <div class="absolute inset-0 bg-linear-to-b from-white via-transparent to-white pointer-events-none"></div>
-
+    
     <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl text-center">
       <span class="section-label">{features_page.title_short}</span>
       <h1 class="mx-auto mb-5 max-w-3xl font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
@@ -24,6 +27,27 @@ import herobg from '../images/herobg.svg';
       </p>
     </div>
   </section>
+  
+  <section class="py-10">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <h2 class="mb-8 font-bold text-5xl text-center">{features_page.themes}</h2>
+      <figure class="aspect-16/9 diff" tabindex="0">
+        <div class="diff-item-1" role="img" tabindex="0">
+          <div class="place-content-stretch grid">
+            <Image src={lightUI} alt="Scoold UI"/>
+            </div>
+          </div>
+          <div class="diff-item-2" role="img">
+            <div class="place-content-stretch grid">
+              <Image src={darkUI} alt="Scoold UI"/>
+            </div>
+          </div>
+        <div class="diff-resizer"></div>
+      </figure>
+    </div>
+  </section>
+
+  
 
   <!-- Feature categories -->
   {features_page.categories.map((cat, catIdx) => (

@@ -1,5 +1,5 @@
 ---
-import { footer, site } from '../data/site-data.json';
+import { footer, site, imprint, legal_index } from '../data/site-data.json';
 import { Image } from 'astro:assets';
 import logoFooter from '../images/footer-logo.svg';
 ---
@@ -7,7 +7,7 @@ import logoFooter from '../images/footer-logo.svg';
 <footer class="bg-slate-900 text-slate-300">
   <!-- Main footer content -->
   <div class="mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 max-w-7xl">
-    <div class="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 mb-12">
+    <div class="gap-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 mb-12">
       <!-- Brand column -->
       <div class="lg:col-span-1">
         <a href="/" class="group flex items-center gap-2.5 mb-4">
@@ -72,16 +72,19 @@ import logoFooter from '../images/footer-logo.svg';
 
     <!-- Bottom bar -->
     <div class="flex sm:flex-row flex-col justify-between items-center gap-4 pt-8 border-slate-800 border-t">
-      <!-- <p class="text-sm">{footer.copyright}</p> -->
       <p class="text-sm">
         {footer.made_with}
         <a href={footer.made_by_href} class="hover:text-brand-400 transition-colors" target="_blank" rel="noopener noreferrer">
           {footer.made_by_label}
         </a>
-        <!-- ·
-        <a href={site.dockerhub} class="hover:text-brand-400 transition-colors" target="_blank" rel="noopener noreferrer">{footer.open_source_label}</a>
-        ·
-        <a href={footer.license_href} class="hover:text-brand-400 transition-colors">{footer.license_label}</a> -->
+      </p>
+      <p class="text-sm">
+        &ndash;
+        <a href={imprint.contact.href} class="px-1 hover:text-brand-400 transition-colors">{imprint.contact.title}</a>
+        &ndash;
+        <a href={legal_index.href} class="px-1 hover:text-brand-400 transition-colors">{legal_index.title}</a>
+        &ndash;
+        <a href={imprint.impressum_page.title} class="px-1 hover:text-brand-400 transition-colors">{imprint.impressum_page.title}</a>
       </p>
     </div>
   </div>

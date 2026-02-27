@@ -15,12 +15,48 @@ const { privacy } = legal;
         <h1 class="mb-3 font-extrabold text-slate-900 text-4xl tracking-tight">{privacy.title}</h1>
         <p class="text-slate-600 text-sm">Effective date: {privacy.effective_date}</p>
       </div>
-      <div class="space-y-8">
+      <!-- <div class="space-y-8">
         {privacy.sections.map((section) => (
           <div>
             <h2 class="mb-3 font-bold text-slate-900 text-lg">{section.heading}</h2>
             <p class="text-slate-600 text-sm leading-relaxed">{section.content}</p>
           </div>
+        ))}
+      </div> -->
+
+      <div class="space-y-8 mt-8 text-sm text-base-content/70">
+        {privacy.sections.map((section) => (
+          <section>
+            <h2 class="font-semibold text-base-content text-lg">{section.title}</h2>
+            {section.paragraphs?.map((paragraph) => (
+              <p class="mt-2">{paragraph}</p>
+            ))}
+            {section.items?.length ? (
+              <ul class="space-y-1 mt-2 pl-5 list-disc">
+                {section.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            ) : null}
+            {section.email && section.emailLabel ? (
+              <p class="mt-2">
+                {section.emailLabel}:{" "}
+                <a class="text-sky-700" href={`mailto:${section.email}`}>
+                  {section.email}
+                </a>
+                .
+              </p>
+            ) : null}
+            {section.contactIntro && section.email ? (
+              <p class="mt-2">
+                {section.contactIntro}{" "}
+                <a class="text-sky-700" href={`mailto:${section.email}`}>
+                  {section.email}
+                </a>
+                .
+              </p>
+            ) : null}
+          </section>
         ))}
       </div>
     </div>

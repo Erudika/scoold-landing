@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { legal_index } from '../../data/site-data.json';
+---
+
+<BaseLayout title={legal_index.title} description={legal_index.subtitle}>
+  <section class="py-20 md:py-28">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <!-- Header -->
+      <div class="mb-12 text-center">
+        <span class="inline-block bg-slate-100 mb-4 px-3 py-1 rounded-full font-semibold text-slate-600 text-xs uppercase tracking-widest">
+          {legal_index.badge}
+        </span>
+        <h1 class="mb-4 font-bold text-slate-900 text-4xl tracking-tight">{legal_index.title}</h1>
+        <p class="text-slate-500 text-lg">{legal_index.subtitle}</p>
+      </div>
+
+      <!-- Cards -->
+      <div class="gap-6 grid grid-cols-2 sm:grid-rows-3">
+        {legal_index.cards.map((card) => (
+          <a
+            href={card.href}
+            class="group flex flex-col gap-3 bg-white hover:bg-slate-50 p-6 border border-slate-200 hover:border-brand-300 rounded-2xl transition-colors duration-150"
+          >
+            <h2 class="font-semibold text-slate-900 group-hover:text-brand-600 text-lg transition-colors">
+              {card.label}
+            </h2>
+            <p class="text-slate-700 text-sm leading-relaxed grow">{card.description}</p>
+            <span class="flex items-center gap-1 font-medium text-brand-600 text-sm">
+              Read
+              <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
