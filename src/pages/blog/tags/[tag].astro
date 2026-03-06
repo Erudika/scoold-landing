@@ -7,8 +7,9 @@ import { site, components, blogTag } from "../../../data/site-data.json";
 const { breadcrumbs } = components;
 const baseUrl = site.url;
 
+const toSlug = (tag) => tag.toLowerCase().replace(/\s+/g, "-");
+
 export async function getStaticPaths() {
-  const toSlug = (tag) => tag.toLowerCase().replace(/\s+/g, "-");
   const posts = await getCollection("blog");
   const tagMap = new Map();
 
@@ -28,7 +29,6 @@ export async function getStaticPaths() {
   }));
 }
 
-const toSlug = (tag) => tag.toLowerCase().replace(/\s+/g, "-");
 const { tag, posts } = Astro.props;
 const cards = posts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())

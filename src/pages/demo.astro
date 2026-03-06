@@ -1,26 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '@/components/CTA.astro';
 import { demo_page, site } from '../data/site-data.json';
+import gifbg from '../images/scoold.gif';
 ---
 
 <BaseLayout
   title={demo_page.title_short}
   description={demo_page.description}
 >
-  <section class="bg-white section-padding">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
+  <section class="relative bg-white bg-no-repeat bg-center section-padding" style={`background-image: url(${gifbg.src})`}>
+    <!-- Gradient fade edges -->
+    <div class="absolute inset-0 bg-linear-to-b from-white via-transparent to-white pointer-events-none"></div>
+    <div class="relative bg-white/70 mx-auto px-4 sm:px-6 lg:px-8 rounded-4xl max-w-3xl text-center">
       <span class="section-label">{demo_page.badge}</span>
       <h1 class="mb-5 font-extrabold text-slate-900 text-5xl tracking-tight">
         {demo_page.title}
       </h1>
-      <p class="mb-8 text-slate-700 text-xl leading-relaxed">
+      <p class="mb-8 text-slate-950 text-xl leading-relaxed">
         {demo_page.subtitle}
       </p>
       <a
         href={site.demo}
         class="inline-flex items-center gap-3 bg-brand-600 hover:bg-brand-700 px-8 py-4 rounded-xl font-bold text-white text-base transition-colors"
         target="_blank"
-        rel="noopener noreferrer"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
@@ -40,7 +43,7 @@ import { demo_page, site } from '../data/site-data.json';
       <div class="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
         {demo_page.features.map((item) => (
           <div class="bg-white p-5 border border-slate-100 rounded-2xl">
-            <div class="mb-3 text-2xl">{item.icon}</div>
+            <div class="mb-3 text-green-700 text-2xl">&check;</div>
             <h3 class="mb-1.5 font-semibold text-slate-900 text-sm">{item.title}</h3>
             <p class="text-slate-700 text-xs leading-relaxed">{item.desc}</p>
           </div>
@@ -48,4 +51,6 @@ import { demo_page, site } from '../data/site-data.json';
       </div>
     </div>
   </section>
+
+  <CTA/>
 </BaseLayout>

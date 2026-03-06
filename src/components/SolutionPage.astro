@@ -16,13 +16,12 @@ interface Props {
   features: Feature[];
   use_cases: string[];
   cta: { label: string; href: string };
-  metaDescription?: string;
 }
 
-const { title, subtitle, description, hero_badge, features, use_cases, cta, metaDescription } = Astro.props;
+const { title, subtitle, description, hero_badge, features, use_cases, cta } = Astro.props;
 ---
 
-<BaseLayout title={title} description={metaDescription ?? subtitle}>
+<BaseLayout title={title} description={description}>
   <!-- Hero -->
   <section class="bg-white border-slate-100 border-b section-padding">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">

@@ -25,11 +25,11 @@ function parseChangelog(md: string): string {
   return md
     .replace(/^#### (.+)$/gm, '<h4 class="mt-4 mb-2 font-semibold text-slate-700 text-base">$1</h4>')
     .replace(/^### (.+)$/gm, '<h3 class="mt-8 mb-3 pt-4 border-slate-100 border-t font-bold text-slate-900 text-xl">$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2 class="mt-10 mb-3 font-extrabold text-brand-600 text-2xl">$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1 class="mb-6 font-extrabold text-slate-900 text-3xl">$1</h1>')
-    .replace(/^\- (.+)$/gm, '<li class="text-slate-600 text-sm leading-relaxed">$1</li>')
+    .replace(/^## (.+)$/gm, '<h2 class="mt-10 mb-3 font-extrabold text-base-900">$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1 class="mb-6 font-extrabold text-slate-900">$1</h1>')
+    .replace(/^\- (.+)$/gm, '<li class="text-slate-600 leading-relaxed">$1</li>')
     .replace(/(<li[^>]*>[\s\S]*?<\/li>\n?)+/g, (match) => `<ul class="space-y-1 mb-3 pl-5 list-disc">${match}</ul>`)
-    .replace(/`([^`]+)`/g, '<code class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-brand-700 text-xs">$1</code>')
+    .replace(/`([^`]+)`/g, '<code class="bg-slate-100 px-1.5 py-0.5 rounded font-mono">$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-brand-600 hover:underline" target="_blank" rel="noopener noreferrer">$1</a>')
     .replace(/\n{2,}/g, '</p><p class="mb-3 text-slate-600 text-sm leading-relaxed">');

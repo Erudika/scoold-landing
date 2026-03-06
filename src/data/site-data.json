@@ -12,9 +12,11 @@
     "company": "Erudika Ltd.",
     "companyUrl": "",
     "companyLogo": "https://erudika.com/logo.png",
-    "version": "1.66.0",
     "pricePro": "499",
-    "priceProPlus": "1199",
+    "priceProPlus": "1999",
+    "priceCloudSmall": "49",
+    "priceCloudLarge": "99",
+    "priceCloudApp": "25",
     "priceSign": "€"
   },
   "components": {
@@ -29,6 +31,8 @@
       "separator": "/",
       "home": "Home",
       "blog": "Blog",
+      "faq": "FAQ",
+      "pricing": "Pricing",
       "tags": "Tags",
       "pagePrefix": "Page",
       "features": "Features",
@@ -76,21 +80,67 @@
     },
     "links": [
       { "label": "Features", "href": "/features" },
-      { "label": "Solutions", "href": "/solutions/scoold-as-knowledge-base", "dropdown": "solutions" },
-      { "label": "Comparisons", "href": "/comparison/scoold-vs-discourse", "dropdown": "comparisons" },
-      { "label": "Integrations", "href": "/integration-with/slack", "dropdown": "integrations" },
+      { "label": "Solutions", "dropdown": "solutions" },
+      { "label": "Integrations", "dropdown": "integrations" },
+      { "label": "Comparisons", "dropdown": "comparisons" },
+      { "label": "Resources" },
       { "label": "Pricing", "href": "/pricing" },
-      { "label": "Docs", "href": "/documentation" },
-      { "label": "Blog", "href": "/blog" },
-      { "label": "FAQ", "href": "/faq" }
+      { "label": "Docs", "href": "/documentation" }
     ],
-    "solutions_dropdown": [
-      { "label": "Knowledge Base", "href": "/solutions/scoold-as-knowledge-base", "icon": "book" },
-      { "label": "Community Forum", "href": "/solutions/scoold-as-community-forum", "icon": "users" },
-      { "label": "Developer Hub", "href": "/solutions/scoold-as-developer-hub", "icon": "code" },
-      { "label": "Support Center", "href": "/solutions/scoold-as-support-center", "icon": "headset" },
-      { "label": "Q&A Platform", "href": "/solutions/scoold-as-questions-and-answers-platform", "icon": "question" },
-      { "label": "Knowledge Sharing", "href": "/solutions/scoold-as-knowledge-sharing-platform", "icon": "share" }
+    "solutions": [
+      { 
+        "label": "Knowledge Base", 
+        "href": "/solutions/scoold-as-knowledge-base", 
+        "desc": "Searchable institutional knowledge for your whole team.", 
+        "color": "bg-blue-50 text-blue-600 border-blue-100",
+        "icon": "book"
+      },
+      { 
+        "label": "Community Forum", 
+        "href": "/solutions/scoold-as-community-forum", 
+        "desc": "Build a thriving community around your product or project.", 
+        "color": "bg-emerald-50 text-emerald-600 border-emerald-100", 
+        "icon": "users"
+      },
+      { 
+        "label": "Developer Hub", 
+        "href": "/solutions/scoold-as-developer-hub", 
+        "desc": "The engineering team's permanent home for technical Q&A.",
+        "color": "bg-violet-50 text-violet-600 border-violet-100",
+        "icon": "code"
+      },
+      { 
+        "label": "Support Center", 
+        "href": "/solutions/scoold-as-support-center", 
+        "desc": "Reduce ticket volume with searchable self-service answers.", 
+        "color": "bg-orange-50 text-orange-600 border-orange-100",
+        "icon": "headset"
+      },
+      { 
+        "label": "Q&A Platform", 
+        "href": "/solutions/scoold-as-questions-and-answers-platform", 
+        "desc": "Stack Overflow-style Q&A running on your own infrastructure.", 
+        "color": "bg-pink-50 text-pink-600 border-pink-100",
+        "icon": "question"
+      },
+      { 
+        "label": "Issue Tracker", 
+        "href": "/solutions/scoold-as-issue-tracker", 
+        "desc": "Break down silos and create a culture of sharing.", 
+        "color": "bg-amber-50 text-amber-600 border-amber-100",
+        "icon": "issue" 
+      }
+    ],
+    "integrations": [
+      { "label": "Slack", "href": "/integration-with/slack", "icon": "puzzle" },
+      { "label": "Microsoft Teams", "href": "/integration-with/microsoft-teams", "icon": "puzzle" },
+      { "label": "Mattermost", "href": "/integration-with/mattermost", "icon": "puzzle" },
+      { "label": "Zapier", "href": "/integration-with/zapier", "icon": "zap" }
+    ],
+    "comparisons": [
+      { "label": "vs. Apache Answers", "href": "/comparison/scoold-vs-apache-answers", "icon": "check" },
+      { "label": "vs. Discourse", "href": "/comparison/scoold-vs-discourse", "icon": "check" },
+      { "label": "vs. Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business", "icon": "check" }
     ],
     "cta": {
       "label": "Get Started",
@@ -100,25 +150,13 @@
       "label": "Demo",
       "label_mobile": "Try Demo",
       "href": "https://demo.scoold.com"
-    },
-    "solutions_section_label": "Solutions",
-    "comparisons_dropdown": [
-      { "label": "vs. Apache Answers", "href": "/comparison/scoold-vs-apache-answers" },
-      { "label": "vs. Discourse", "href": "/comparison/scoold-vs-discourse" },
-      { "label": "vs. Stack Overflow for Teams", "href": "/comparison/scoold-vs-stack-overflow-for-teams" }
-    ],
-    "integrations_dropdown": [
-      { "label": "Slack", "href": "/integration-with/slack" },
-      { "label": "Microsoft Teams", "href": "/integration-with/microsoft-teams" },
-      { "label": "Mattermost", "href": "/integration-with/mattermost" },
-      { "label": "Zapier", "href": "/integration-with/zapier" }
-    ]
+    }
   },
   "hero": {
-    "badge": "Deploy Scoold in minutes on <a class=\"underline\" href=\"/scoold-cloud\">Scoold Cloud</a>!",
-    "title": "The smarter way to share",
+    "badge": "Deploy Scoold in minutes on <a class=\"underline\" href=\"/cloud-hosting\">Scoold Cloud</a>!",
+    "title": "The most effective way to share <span class=\"text-brand-500\">knowledge</span> within your team or organization",
     "title_highlight": "knowledge",
-    "subtitle": "Scoold is a self-hosted Q&A platform, forum, and knowledge base built for teams and enterprises. Deploy on-premises or to any cloud - fully under your control.",
+    "subtitle": "Scoold is a privacy-first, self-hosted Q&A platform, forum, and knowledge base platform for your team. ",
     "primary_cta": {
       "label": "Download Free",
       "href": "/download"
@@ -139,7 +177,7 @@
     ],
     "badge_enterprise": {
       "title": "Enterprise Ready",
-      "subtitle": "LDAP · SAML · SCIM"
+      "subtitle": "LDAP · SAML · OAuth2"
     },
     "badge_opensource": {
       "title": "Open Source",
@@ -147,15 +185,15 @@
     }
   },
   "stats": [
-    { "value": "10K+", "label": "Organizations" },
-    { "value": "500K+", "label": "Questions answered" },
-    { "value": "99.9%", "label": "Uptime SLA (Pro)" },
-    { "value": "Apache 2.0", "label": "Open source license" }
+    { "value": "1000+", "label": "Instanced deployed" },
+    { "value": "5M+", "label": "Downloads on Docker Hub" },
+    { "value": "4.9/5", "label": "Customers satisfaction" },
+    { "value": "900+", "label": "Stars on GitHub" }
   ],
   "features_overview": {
-    "badge": "FEATURES",
-    "title": "Everything your team needs to",
-    "title_highlight": "succeed",
+    "badge": "KEY FEATURES",
+    "title": "Ask, Answer & Organize",
+    "title_highlight": "knowledge",
     "subtitle": "Packed with powerful features designed to help your team capture, organize, and share knowledge effectively.",
     "view_all_label": "View all features",
     "view_all_href": "/features",
@@ -163,12 +201,12 @@
       {
         "icon": "search",
         "title": "Full-text Search",
-        "description": "Every question, answer, and comment is indexed for fast, accurate search. Find knowledge in seconds, not hours."
+        "description": "Every question, answer, and comment is indexed for fast, accurate search. Find knowledge in seconds."
       },
       {
         "icon": "shield",
         "title": "Enterprise SSO",
-        "description": "LDAP, SAML 2.0, and SCIM support for seamless integration with your existing identity provider and directory."
+        "description": "LDAP, SAML 2.0, OAuth 2.0 and SCIM support for seamless integration with your existing identity provider."
       },
       {
         "icon": "star",
@@ -177,92 +215,126 @@
       },
       {
         "icon": "lock",
-        "title": "On-Premises Deploy",
-        "description": "Keep your data in your own infrastructure. Deploy as a Docker container, JAR, or to any cloud provider."
+        "title": "On-Premises Deployment",
+        "description": "Preserve full ownership of your data. Deployable as a Docker container, to any cloud provider, as a JAR or native executable."
       },
       {
         "icon": "zap",
         "title": "REST API",
-        "description": "Full-featured REST API for integrations, custom automations, and embedding Scoold content in your existing tools."
+        "description": "Full-featured REST API for integrations, custom automations, and embedding Scoold content in your existing tools. MCP server, coming soon."
       },
       {
         "icon": "users",
-        "title": "Multi-space Support",
-        "description": "Create separate spaces for different teams, departments, or projects - all from a single Scoold instance. (Pro)"
+        "title": "Multiple Spaces",
+        "description": "Create separate spaces for different teams, departments, or projects - all from a single Scoold instance."
       }
     ]
   },
   "features_page": {
-    "title": "Features built for enterprise knowledge sharing",
+    "title": "Features built for collaboration",
     "title_short": "Features",
     "description": "Full feature breakdown of Scoold - Q&A, enterprise SSO (LDAP, SAML, SCIM), REST API, multi-space, analytics and more.",
-    "subtitle": "From full-text search to enterprise SSO, Scoold provides everything you need to build a world-class internal knowledge platform.",
+    "subtitle": "From editing history to enterprise SSO, Scoold provides everything you need to build a world-class internal knowledge hub.",
     "themes": "Light UI, dark UI, or anything in between.",
     "categories": [
       {
         "name": "Core Q&A",
         "features": [
-          { "title": "Question & Answer", "description": "Stack Overflow-style Q&A with voting, accepted answers, and commenting." },
-          { "title": "Full-text Search", "description": "Blazing-fast search across all content with typo tolerance and relevance ranking." },
-          { "title": "Tags & Categories", "description": "Organize content with tags, wikis, and structured hierarchies." },
-          { "title": "Markdown Editor", "description": "Rich Markdown editor with code syntax highlighting, image embedding, and preview." },
-          { "title": "Email Notifications", "description": "Configurable email notifications for answers, comments, and mentions." },
-          { "title": "Activity Feed", "description": "Real-time activity feed showing recent questions, answers, and community activity." }
+          { "title": "Full featured Q&A platform", "description": "Scoold is inspired by Stack Overflow and implements most of its features. You can ask and answer questions, upvote and downvote posts, earn badges and reputation. Each edit creates an new revision, making it easy to follow the history of edits." },
+          { "title": "Reputation & Badges", "description": "Scoold has a simple but effective reputation system with badges. People are awarded reputation points for good questions and answers, as well as various badges for their achievements on the site. You can also create your own custom badges." },
+          { "title": "Email Notifications", "description": "You can subscribe to each question thread by clicking the checkbox at the bottom. Scoold will send you emails whenever a new answer is published. Also you can subscribe to replies to your own answers from the settings page." },
+          { "title": "Geolocation Filtering", "description": "Questions can be associated with a specific location and then filtered based on that location. This feature enables geolocation queries an gives you the option to search for questions around you." },
+          { "title": "Modern, Responsive & SEO-friendly", "description": "Scoold features a modern look-and-feel which looks great on any device. Server-side rendering for all pages with tidy URLs, easily crawlable by search engines and AI." },
+          { "title": "Full-text Search", "description": "All content is indexed and analyzed by Para. You can search for users, questions and answers from the search bar on top." },
+          { "title": "Similar Posts Suggestions", "description": "When you ask a new question, Scoold will give you hints if a similar question already exist. Additionally, on each question page there's a sidebar with suggestions for the top 10 similar posts." },
+          { "title": "Rich Content", "description": "Scoold can display content in Markdown (GFM) with attached multimedia, files and code snippets with full syntax highlighting. The Markdown editor is powerful and supports, images, links, emojis and preview." },
+          { "title": "Spaces (Groups)", "description": "Spaces are a way to organize users and questions into isolated groups. You can edit users' spaces in bulk and also move a question to a different space. Permission to access a space is given by an administrator." },
+          { "title": "Backup & Restore", "description": "Administrators can easily export all the data from Scoold as a zipped archive. The exported data can later be imported into another Scoold instance." },
+          { "title": "Themes & Customization", "description": "Quickly change the look and feel by using one of the bundled themes or create your own. The CSS styles are fully customizable and you can create custom themes. Add your brand and logo (white-label), and use your own domain name." },
+          { "title": "I18n & RTL Language Support", "description": "The whole website is easily translatable into other languages. Right-to-left languages are also supported and the layout is mirrored if an RTL language is detected." }
         ]
       },
       {
         "name": "Enterprise & Security",
         "features": [
-          { "title": "LDAP Integration", "description": "Connect to your Active Directory or any LDAP server for centralized user management." },
-          { "title": "SAML 2.0 SSO", "description": "Single sign-on with Okta, Azure AD, Auth0, and all major SAML identity providers." },
-          { "title": "SCIM Provisioning", "description": "Automatic user provisioning and deprovisioning via the SCIM protocol." },
-          { "title": "Role-based Access Control", "description": "Fine-grained permissions: admins, moderators, power users, and read-only roles." },
-          { "title": "Audit Logs", "description": "Complete audit trail of all administrative actions and content changes." },
-          { "title": "Data Isolation", "description": "Your data never leaves your infrastructure. Full on-premises deployment supported." }
+          { "title": "LDAP Authentication", "description": "Both LDAP and Active Directory are supported. Team members can authenticate with your company's LDAP server for a seamless single sign-on experience." },
+          { "title": "SAML 2.0 SSO {pro}", "description": "Single sign-on with Okta, Azure AD, Auth0, and all major SAML identity providers. This makes it super easy for organizations to leverage existing centralized identity management infrastructure." },
+          { "title": "SCIM Provisioning {pro}", "description": "Automatic user provisioning and deprovisioning via the SCIM 2.0 protocol. Manage all users centrally, quickly provision and deprovision accounts from your identity platform of choice." },
+          { "title": "Social Login & 2FA", "description": "People can also log in with any social account. Plain-old email-and-password logins are also supported. For optimal security, users can enable two-factor authentication with time-based tokens (TOTP)." },
+          { "title": "Custom Authentication {pro}", "description": "Redirect users to your company's login page for a custom single sign-on experience. Virtually any external authentication provider can be made to work with Scoold in this way." },
+          { "title": "SSL & mTLS", "description": "Secure all connections to Scoold with HTTPS by using your own SSL certificate without the need for a proxy. Tighten security with mutual authentication between a proxy, Scoold and Para (mTLS)." }
         ]
       },
       {
         "name": "Integrations & API",
         "features": [
-          { "title": "REST API", "description": "Full-featured REST API with OpenAPI 3.x specification for custom integrations." },
-          { "title": "Slack Integration", "description": "Post new questions to Slack channels. Answer and interact with Scoold from Slack." },
-          { "title": "Microsoft Teams", "description": "Native Teams bot and connector for seamless knowledge sharing in your Teams workspace." },
-          { "title": "Mattermost", "description": "Webhook-based integration with self-hosted Mattermost instances." },
-          { "title": "Zapier", "description": "Connect Scoold to 5,000+ apps with Zapier - no code required." },
-          { "title": "Webhooks", "description": "HTTP webhooks for all major events: new questions, answers, votes, and more." }
+          { "title": "RESTful API", "description": "A fully-fledged RESTful JSON API defined with an OpenAPI spec. All CRUD operations can be executed through the API from your code." },
+          { "title": "Slack, Mattermost & Teams Integration {pro}", "description": "Create questions and answers from Slack, Mattermost or Microsoft Teams, get real-time in-channel notification of new posts and mentions, approve posts and perform searches. Scoold can map your teams and chat channels to spaces." },
+          { "title": "Zapier Integration {pro}", "description": "Zapier makes it easy to integrate Scoold with thousands of other applications. Thanks to the power of REST hooks, you can have questions created automatically based on data from an external app or configure Scoold to notify other apps when a new question is posted." },
+          { "title": "Import from Stack Overflow", "description": "Migrating from Stack Overflow for Teams (Business) to Scoold is effortless and seamless. Simply download your data from Stack Overflow and import it into Scoold." },
+          { "title": "Akismet Integration", "description": "With automatic anti-spam protection powered by Akismet's advanced AI filters, Scoold gives you a peace of mind. Spam can be deleted instantly if detected or you can choose to leave it to moderators for review." },
+          { "title": "Webhooks", "description": "HTTP webhooks for all major events: new questions, answers, votes, and more. The payloads are signed with HMAC-SHA256 for extra security." }
         ]
       },
       {
-        "name": "Platform & Deployment",
+        "name": "Additional Premium Features",
         "features": [
-          { "title": "Docker Support", "description": "Official Docker image for rapid deployment. Run with a single docker-compose command." },
-          { "title": "Cloud Ready", "description": "Deploy to AWS, Azure, GCP, Heroku, Render, or any cloud provider that supports Docker." },
-          { "title": "High Availability", "description": "Clustered deployments with load balancing for enterprise-grade uptime. (Pro)" },
-          { "title": "Multi-space", "description": "Separate knowledge spaces for different teams, projects, or customer segments. (Pro)" },
-          { "title": "White-labeling", "description": "Custom branding, logo, colors, and domain name for a seamless company experience. (Pro)" },
-          { "title": "Analytics Dashboard", "description": "Usage metrics, engagement stats, and content health reports. (Pro)" }
+          { "title": "Mentions {pro}", "description": "Mention anyone in your posts with @Name. Administrators can turn on an mention notifications for all users or have each user decide if they want to opt-in. Mentions make discussions better by allowing you to engage the right people." },
+          { "title": "File Uploads {pro}", "description": "Easily attach images and documents to posts. Files can either be uploaded to the local file system or to Microsoft Azure Blob Storage, AWS S3 or Imgur." },
+          { "title": "Sticky & Favorite Posts", "description": "Questions marked as \"sticky\" will always appear on top, before all the others. You can also mark your favorite questions with ♥ and they'll be saved to your profile." },
+          { "title": "Anonymous Posts", "description": "This can either be enabled or disabled. When enabled, anybody will be able to ask a question or submit an answer. This lowers the barrier for new users and increases engagement." },
+          { "title": "Wiki-Style Answers", "description": "Make your answers editable by everyone by checking the \"wiki\" checkbox. This is useful if you want to allow everyone to contribute to the knowledge around a question, regardless of their reputation points." },
+          { "title": "Email Digest", "description": "Administrators can turn on an email digest for all users or have each user decide if they want to opt-in. And email digest contains a summary of the top questions published recently on Scoold. This can increase engagement and stimulate users to come back to the site." }
         ]
       }
     ],
     "comparison": {
       "title": "Feature Comparison",
-      "headers": ["Feature", "Community (Free)", "Scoold Pro", "Pro + Source"],
+      "headers": ["Feature", "Scoold", "Scoold Pro", "Pro + Source"],
       "rows": [
-        ["Full Q&A platform", true, true, true],
+        ["Price per instance", "Free", "{pricePro} one-time", "{priceProPlus} one-time"],
+        ["License", "<a href=\"/legal/licenses\">Apache 2.0</a>", "<a href=\"/legal/licenses\">Commercial</a>", "<a href=\"/legal/licenses\">Commercial</a>"],
+        ["Source code included", true, false, true],
+        ["Deployment options", "on premises", "cloud, on premises", "cloud, on premises"],
+        ["Full-featured Q&A platform", true, true, true],
         ["Full-text search", true, true, true],
-        ["REST API", true, true, true],
-        ["Social login (Google, GitHub, etc.)", true, true, true],
-        ["Custom branding", false, true, true],
-        ["LDAP / Active Directory", false, true, true],
-        ["SAML 2.0 SSO", false, true, true],
-        ["SCIM provisioning", false, true, true],
-        ["Multi-space", false, true, true],
-        ["Analytics dashboard", false, true, true],
-        ["Priority support", false, true, true],
-        ["High-availability clustering", false, true, true],
-        ["Source code access", false, false, true],
-        ["License", "Apache 2.0", "Commercial", "Commercial"],
-        ["Price", "Free", "{pricePro} one-time", "{priceProPlus} one-time"]
+        ["Responsive UI & SEO optimization", true, true, true],
+        ["Themes & dark mode", true, true, true],
+        ["Backup & Restore", true, true, true],
+        ["RESTful API", true, true, true],
+        ["Reputation system with badges", true, true, true],
+        ["Custom badges", true, true, true],
+        ["Social login & two-factor auth", true, true, true],
+        ["Mutual authentication (mTLS)", true, true, true],
+        ["OAuth 2.0 authentication", true, true, true],
+        ["LDAP authentication", true, true, true],
+        ["SAML authentication", false, true, true],
+        ["SCIM 2.0 support", false, true, true],
+        ["Custom authentication", false, true, true],
+        ["Similar posts suggestions", true, true, true],
+        ["Geolocation filtering of posts", true, true, true],
+        ["Email notifications", true, true, true],
+        ["i18n with RTL support", true, true, true],
+        ["Spaces (Teams)", true, true, true],
+        ["Webhooks", true, true, true],
+        ["Akismet anti-spam integration", true, true, true],
+        ["Zapier integration", true, true, true],
+        ["Import from Stack Overflow", true, true, true],
+        ["Sticky / Favorite posts", false, true, true],
+        ["Anonymous posts", false, true, true],
+        ["Cookie consent (GDPR, CCPA)", false, true, true],
+        ["Syntax highlighting", "basic", "advanced", "advanced"],
+        ["Maximum number of spaces", "10", "unlimited", "unlimited"],
+        ["Maximum number of admins", "1", "unlimited", "unlimited"],
+        ["Whitelisted identity domains", "1", "unlimited", "unlimited"],
+        ["File uploads", false, true, true],
+        ["Security notifications", false, true, true],
+        ["Account suspension", false, true, true],
+        ["Slack / Mattermost / Teams integration", false, true, true],
+        ["Wiki-style answers", false, true, true],
+        ["Email digest", false, true, true],
+        ["Mentions & notifications", false, true, true],
+        ["MathJax", false, true, true]
       ]
     }
   },
@@ -286,16 +358,30 @@
       "title": "Pricing FAQ",
       "subtitle": "Common questions about Scoold licensing and pricing.",
       "items": [
-        { "q": "Can I upgrade from Community to Pro later?", "a": "Yes. You can start with Scoold Community (free) and purchase a Pro license at any time. Your existing data, users, and configuration migrate seamlessly." },
-        { "q": "Does the license cover multiple instances?", "a": "A single Pro license covers one production instance with unlimited users. Contact us for multi-instance or enterprise volume licensing." },
-        { "q": "What happens after 12 months of free updates?", "a": "Your license continues to work indefinitely - you're never forced to upgrade. After 12 months, you can purchase an extended update period to continue receiving new features and security patches." },
-        { "q": "Do you offer refunds?", "a": "We offer a 30-day money-back guarantee if Scoold Pro doesn't meet your needs. Contact support@scoold.com within 30 days of purchase." },
-        { "q": "Is Scoold Cloud priced differently?", "a": "Yes - Scoold Cloud is a hosted SaaS offering with separate subscription pricing. See scoold-cloud for details." }
+        { 
+          "q": "Can I upgrade from Community to Pro later?", 
+          "a": "Yes. You can start with Scoold (free) and purchase a Pro license at any time. Your existing data, users, and configuration migrate seamlessly." },
+        { 
+          "q": "Does the license cover multiple instances?", 
+          "a": "No. A single Scoold Pro license covers only one instance running in a production environment. You can purchase as many license as you need, depending on your instance count." },
+        { 
+          "q": "What happens after 12 months of free updates?", 
+          "a": "Your license continues to work indefinitely - you're never forced to upgrade. After 12 months, you can purchase an extended update period to continue receiving new features and security patches." },
+        { 
+          "q": "Do you offer refunds?", 
+          "a": "We offer a 14-day money-back guarantee if Scoold Pro doesn't meet your needs. Contact support@scoold.com within 14 days of purchase." },
+        { 
+          "q": "Is Scoold Cloud priced differently?", 
+          "a": "Yes - Scoold Cloud offers Scoold Pro hosting with subscription pricing. Check Scoold Cloud for details." },
+        {
+          "q": "What payment methods do you accept?",
+          "a": "We accept VISA, MasterCard, American Express and Discover cards. Online payments are handled by Braintree, Ireland. We also accept bank transfers (SEPA) and offer VAT invoices upon request."
+        }
       ]
     },
     "plans": [
       {
-        "name": "Community",
+        "name": "Scoold",
         "price": "Free",
         "price_note": "forever",
         "description": "Everything you need to get started. Self-hosted, open source, fully customizable.",
@@ -327,7 +413,7 @@
         "popular": true,
         "badge": "MOST POPULAR",
         "features": [
-          "Everything in Community",
+          "Everything in Scoold",
           "Custom authentication support",
           "SAML 2.0 SSO",
           "SCIM user provisioning",
@@ -374,7 +460,15 @@
     "items": [
       {
         "q": "What is Scoold and how is it different from Scoold Pro?",
-        "a": "Scoold is an open-source Q&A and knowledge base platform licensed under Apache 2.0. It's completely free and self-hosted. Scoold Pro is a commercial edition that adds enterprise features like LDAP, SAML SSO, SCIM provisioning, multi-space support, analytics, and priority support. Both share the same core codebase."
+        "a": "Scoold is open-source and licensed under Apache 2.0. It's completely free. Scoold Pro is a commercial product that adds enterprise features like file uploads, SAML, SCIM provisioning, Teams/Mattermost/Slack integrations, and more."
+      },
+      {
+        "q": "What does a Scoold Pro license allow me to do?",
+        "a": "Buying a Scoold Pro license allows you to deploy one instance of Scoold Pro on one host machine (VM, container, K8s pod, etc.) and receive new releases and fixes for a period of 1 year. The license has 3 tiers - Pro basic, Pro with source, Pro unlimited. With the basic license you get the Scoold Pro binary files. The \"Pro with source\" license gives you the binaries and the complete source code for Scoold Pro (in a private Git repo). For larger organizations and resellers, there's the unlimited license which gives you the source code, binaries and permission to run Scoold Pro on an unlimited number of production hosts. This is ideal for resellers or organisations with larger deployments."
+      },
+      {
+        "q": "Is the source code included with Scoold Pro?",
+        "a": "The source code is only available with the \"Scoold Pro with source\" and \"Scoold Pro unlimited\" license tiers. Get in touch with us for more details."
       },
       {
         "q": "Can I use Scoold on-premises or in my private cloud?",
@@ -390,40 +484,40 @@
       },
       {
         "q": "Is there a trial or demo available?",
-        "a": "Yes! You can try the live demo at demo.scoold.com - no account required. The Community edition is also free to download and run locally, so you can evaluate the full platform before purchasing Pro."
+        "a": "Yes! You can try the live demo - no account required. Scoold is free to download and run locally, so you can evaluate the full platform before purchasing Pro."
       },
       {
         "q": "What technology does Scoold run on?",
-        "a": "Scoold is a Java application built on top of Para - our open-source backend platform. It requires Java 11+ and a compatible database (Para supports DynamoDB, PostgreSQL, MongoDB, Elasticsearch, and others). Docker images are provided for easy setup."
+        "a": "Scoold is a Java application built on top of Spring Boot. Backend operations are handled by Para - our open-source backend platform. It requires Java 21+ and works with all popular databases. Docker images are provided for easy setup."
       },
       {
         "q": "Can I customize the look and feel?",
-        "a": "Yes. The Community edition supports CSS customization. Scoold Pro adds full white-labeling: custom logo, brand colors, custom domain, and the ability to embed Scoold within your existing intranet or portal."
+        "a": "Yes. The styling is fully customizable. Scoold also supports white-labeling: custom logo, brand colors, custom domain, and the ability to embed Scoold within your existing intranet or portal."
       },
       {
         "q": "What kind of support is included?",
-        "a": "Community edition users have access to the GitHub issues tracker and community forums. Scoold Pro includes priority email support with a 1-business-day response SLA. Pro + Source customers get a dedicated Slack channel and architecture consulting."
+        "a": "Basic support is included: email, Gitter chat and access to GitHub issues. Scoold Pro includes email support with a 1-business-day response time. Priority support is also available at extra cost."
       },
       {
         "q": "Does Scoold have a hosted cloud version?",
         "a": "Yes! Scoold Cloud is our fully managed hosted solution. We handle deployment, updates, backups, and security patches. Visit cloud.scoold.com to learn more about plans and pricing."
       },
       {
-        "q": "How do I migrate from Stack Overflow for Teams or Confluence?",
-        "a": "Scoold provides import/export tools and a REST API that makes migration straightforward. We also offer professional migration services for Pro customers. Contact us to discuss your specific migration needs."
-      }
+        "q": "Can I migrate from Stack Overflow Business?",
+        "a": "Scoold supports importing data from Stack Overflow and that makes migration straightforward. We also offer additional migration assistance for Pro customers. Contact us to discuss your specific migration needs."
+      }      
     ]
   },
   "cta": {
-    "title": "Ready to build your team's knowledge base?",
-    "subtitle": "Join thousands of organizations using Scoold to capture and share knowledge effectively. Start free, scale when you're ready.",
+    "title": "Ready to build your team's",
+    "subtitle": "Join hundreds of organizations using Scoold Pro to capture and share knowledge effectively. Choose between a self-hosted license or a cloud subscription.",
     "primary": {
-      "label": "Download Free",
-      "href": "/download"
+      "label": "Buy Scoold Pro",
+      "href": "https://paraio.com/scoold-pro"
     },
     "secondary": {
-      "label": "View Live Demo",
-      "href": "https://demo.scoold.com"
+      "label": "Deploy on Scoold Cloud",
+      "href": "/cloud-hosting"
     }
   },
   "footer": {
@@ -441,38 +535,19 @@
           { "label": "Features", "href": "/features" },
           { "label": "Pricing", "href": "/pricing" },
           { "label": "Download", "href": "/download" },
-          { "label": "Demo", "href": "https://demo.scoold.com" },
-          { "label": "Scoold Cloud", "href": "/scoold-cloud" },
+          { "label": "Live Demo", "href": "/demo" },
+          { "label": "Scoold Cloud", "href": "/cloud-hosting" },
           { "label": "Changelog", "href": "/changelog" }
         ]
       },
       {
-        "heading": "Solutions",
-        "links": [
-          { "label": "Knowledge Base", "href": "/solutions/scoold-as-knowledge-base" },
-          { "label": "Community Forum", "href": "/solutions/scoold-as-community-forum" },
-          { "label": "Developer Hub", "href": "/solutions/scoold-as-developer-hub" },
-          { "label": "Support Center", "href": "/solutions/scoold-as-support-center" },
-          { "label": "Q&A Platform", "href": "/solutions/scoold-as-questions-and-answers-platform" },
-          { "label": "Knowledge Sharing", "href": "/solutions/scoold-as-knowledge-sharing-platform" }
-        ]
+        "heading": "Solutions"
       },
       {
-        "heading": "Comparisons",
-        "links": [
-          { "label": "vs. Apache Answers", "href": "/comparison/scoold-vs-apache-answers" },
-          { "label": "vs. Discourse", "href": "/comparison/scoold-vs-discourse" },
-          { "label": "vs. Stack Overflow for Teams", "href": "/comparison/scoold-vs-stack-overflow-for-teams" }
-        ]
+        "heading": "Comparisons"
       },
       {
-        "heading": "Integrations",
-        "links": [
-          { "label": "Slack", "href": "/integration-with/slack" },
-          { "label": "Microsoft Teams", "href": "/integration-with/microsoft-teams" },
-          { "label": "Mattermost", "href": "/integration-with/mattermost" },
-          { "label": "Zapier", "href": "/integration-with/zapier" }
-        ]
+        "heading": "Integrations"
       },
       {
         "heading": "Resources",
@@ -496,68 +571,62 @@
   "home": {
     "mission": {
       "badge": "BUILT FOR TEAMS",
-      "title": "We build tools that",
-      "title_highlight": "empower",
-      "title_suffix": "knowledge workers",
-      "description": "Focused on a mission to eliminate knowledge silos, we've built a platform that transforms how teams capture, share, and find information - without the subscription fatigue.",
+      "title": "Scoold is a tool for",
+      "title_highlight": "optimal",
+      "title_suffix": "knowledge sharing",
+      "description": "Focused on a mission to improve internal efficiency and minimize time spent looking for answers, we've built a platform that transforms how teams capture and share information.",
       "bullets": [
         "Deployed on your own infrastructure - your data, your rules",
-        "One-time payment. No per-seat fees, no surprises",
         "Built-in search, reputation, and SSO from day one",
-        "Open source core, with enterprise features in Pro"
+        "Available as open source or a premium version - Scoold Pro",
+        "Premium features without gotchas - no per-seat fees, no surprises"
       ],
       "stats": [
-        { "value": "10+ yrs", "label": "Open source" },
-        { "value": "99.9%", "label": "Uptime (Pro)" },
-        { "value": "24/7", "label": "Self-hosted" }
+        { "value": "2017", "label": "Open Sourced" },
+        { "value": "2018", "label": "Scoold Pro" },
+        { "value": "2020", "label": "Scoold Cloud" },
+        { "value": "2021-2023", "label": "Chat Integrations" },
+        { "value": "2026", "label": "Scoold MCP" }
       ]
     },
     "tiles": [
-      { "icon": "🔍", "title": "Full-text Search", "desc": "Find any answer in seconds" },
-      { "icon": "🛡️", "title": "Enterprise SSO", "desc": "LDAP, SAML, SCIM ready" },
-      { "icon": "🔼", "title": "Reputation Engine", "desc": "Gamified knowledge sharing" },
-      { "icon": "🚀", "title": "Deploy Anywhere", "desc": "Docker, JAR, or cloud" }
+      { "icon": "search", "title": "Full-text Search", "desc": "Find any answer in seconds" },
+      { "icon": "shield", "title": "Reliable Backup & Restore", "desc": "Import and export your data at any time" },
+      { "icon": "votes", "title": "Reputation Engine", "desc": "Gamified knowledge sharing with custom badges for field experts" },
+      { "icon": "sparkles", "title": "Vastly Customizable", "desc": "Add your company logo and assets, modify the look-and-feel" }
     ],
     "use_cases": {
       "badge": "SOLUTIONS",
       "title": "One platform,",
       "title_highlight": "many use cases",
       "description": "Whether you need a developer knowledge base, a community forum, or a customer support portal - Scoold adapts to your needs.",
-      "learn_more_label": "Learn more",
-      "cards": [
-        { "title": "Knowledge Base", "href": "/solutions/scoold-as-knowledge-base", "desc": "Searchable institutional knowledge for your whole team.", "color": "bg-blue-50 text-blue-600 border-blue-100" },
-        { "title": "Community Forum", "href": "/solutions/scoold-as-community-forum", "desc": "Build a thriving community around your product or project.", "color": "bg-emerald-50 text-emerald-600 border-emerald-100" },
-        { "title": "Developer Hub", "href": "/solutions/scoold-as-developer-hub", "desc": "The engineering team's permanent home for technical Q&A.", "color": "bg-violet-50 text-violet-600 border-violet-100" },
-        { "title": "Support Center", "href": "/solutions/scoold-as-support-center", "desc": "Reduce ticket volume with searchable self-service answers.", "color": "bg-orange-50 text-orange-600 border-orange-100" },
-        { "title": "Q&A Platform", "href": "/solutions/scoold-as-questions-and-answers-platform", "desc": "Stack Overflow-style Q&A running on your own infrastructure.", "color": "bg-pink-50 text-pink-600 border-pink-100" },
-        { "title": "Knowledge Sharing", "href": "/solutions/scoold-as-knowledge-sharing-platform", "desc": "Break down silos and create a culture of sharing.", "color": "bg-amber-50 text-amber-600 border-amber-100" }
-      ]
+      "learn_more_label": "Learn more"
     }
   },
   "demo_page": {
     "badge": "DEMO",
-    "title": "See Scoold in action",
+    "title": "See Scoold Pro in action",
     "title_short": "Live Demo",
     "description": "Try Scoold live - no account required. Explore the full Q&A platform at demo.scoold.com.",
-    "subtitle": "Try the full Scoold platform live - no account, no credit card required. Explore Q&A, search, tags, reputation, and more.",
+    "subtitle": "Try the Scoold platform live - no account, no credit card required. Ask anything, edit your content and explore, tags, reputation, and more.",
     "cta_label": "Open Live Demo",
-    "cta_note": "Opens demo.scoold.com in a new tab · Pre-populated with sample content",
+    "cta_note": "Opens in a new tab · Pre-populated with sample content",
     "explore_title": "What you can explore in the demo",
     "features": [
-      { "icon": "❓", "title": "Q&A flow", "desc": "Ask questions, post answers, vote and accept the best answer." },
-      { "icon": "🔍", "title": "Search", "desc": "Try full-text search across all questions, answers, and tags." },
-      { "icon": "🏷️", "title": "Tags & wikis", "desc": "Browse content by topic tags and view tag wiki pages." },
-      { "icon": "⭐", "title": "Reputation", "desc": "See how the reputation and badge system works." },
-      { "icon": "🛠️", "title": "Admin panel", "desc": "Explore the moderation and admin configuration interface." },
-      { "icon": "📱", "title": "Mobile view", "desc": "Test the responsive design on any screen size." }
+      { "icon": "qna", "title": "Q&A flow", "desc": "Ask questions, post answers, vote and accept the best answer." },
+      { "icon": "search", "title": "Search", "desc": "Try full-text search across all questions, answers, and tags." },
+      { "icon": "tag", "title": "Tags & Spaces", "desc": "Browse content by topic tags and explore different spaces." },
+      { "icon": "star", "title": "Reputation", "desc": "See how the reputation and badge system works." },
+      { "icon": "admin", "title": "Admin panel", "desc": "Explore the moderation and admin configuration interface." },
+      { "icon": "mobile", "title": "Mobile view", "desc": "Test the responsive design on any screen size." }
     ]
   },
   "changelog_page": {
     "badge": "CHANGELOG",
-    "title": "What's new",
+    "title": "Release History",
     "title_short": "Changelog",
-    "description": "Scoold Pro changelog - see what's new, what changed, and what was fixed in each release.",
-    "subtitle": "Release history and detailed changelogs for Scoold Pro.",
+    "description": "Scoold changelog - see what's new, what changed, and what was fixed in each release.",
+    "subtitle": "Release history and detailed changelog.",
     "github_raw_url": "https://raw.githubusercontent.com/Erudika/scoold-pro/master/CHANGELOG.md",
     "github_url": "https://github.com/Erudika/scoold-pro/blob/master/CHANGELOG.md",
     "github_link_label": "View CHANGELOG.md on GitHub",
@@ -567,7 +636,7 @@
     "badge": "LEGAL",
     "title": "Licenses",
     "subtitle": "Scoold is available under two licenses depending on which edition you use.",
-    "tab_oss": "Scoold OSS",
+    "tab_oss": "Scoold",
     "tab_pro": "Scoold PRO",
     "apache": {
       "header": "Apache License, Version 2.0",
@@ -575,7 +644,7 @@
       "preamble": "Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at",
       "url": "http://www.apache.org/licenses/LICENSE-2.0",
       "disclaimer": "Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.",
-      "explanation": "You are free to use, modify, and distribute Scoold Community for any purpose - including commercial use - as long as you retain the copyright notice.",
+      "explanation": "You are free to use, modify, and distribute Scoold (open-source edition) for any purpose - including commercial use - as long as you retain the copyright notice.",
       "explanation_link_label": "Full license text at apache.org",
       "explanation_link_href": "https://www.apache.org/licenses/LICENSE-2.0"
     },
@@ -614,8 +683,8 @@
       "docs_href": "/documentation"
     }
   },
-  "solutions": {
-    "knowledge_base": {
+  "solutions": [
+    {
       "title": "Scoold as a Knowledge Base",
       "subtitle": "Capture, organize, and surface institutional knowledge before it walks out the door.",
       "description": "Teams lose countless hours searching for answers that already exist somewhere. Scoold's searchable, structured knowledge base ensures the right information reaches the right person instantly.",
@@ -629,7 +698,7 @@
       "use_cases": ["Onboarding new employees", "Engineering runbooks", "Product documentation", "Customer support escalations"],
       "cta": { "label": "Get started free", "href": "/download" }
     },
-    "community_forum": {
+    {
       "title": "Scoold as a Community Forum",
       "subtitle": "Build a thriving community around your product, project, or organization.",
       "description": "Whether it's an open-source project, a SaaS product, or an internal guild, Scoold provides the discussion platform your community deserves - without the lock-in.",
@@ -643,7 +712,7 @@
       "use_cases": ["Open-source project support", "Product feedback forums", "Developer communities", "Alumni networks"],
       "cta": { "label": "Start your community", "href": "/download" }
     },
-    "developer_hub": {
+    {
       "title": "Scoold as a Developer Hub",
       "subtitle": "Give your engineering team a dedicated space to ask, answer, and document technical knowledge.",
       "description": "Engineers spend too much time asking questions in Slack that disappear into history. Scoold creates a permanent, searchable record of technical knowledge that compounds over time.",
@@ -657,7 +726,7 @@
       "use_cases": ["Internal Stack Overflow replacement", "Architecture decision records", "Incident post-mortems", "API Q&A"],
       "cta": { "label": "Deploy for your team", "href": "/download" }
     },
-    "support_center": {
+    {
       "title": "Scoold as a Support Center",
       "subtitle": "Reduce ticket volume by turning repeat support questions into self-serve answers.",
       "description": "The best support ticket is the one that never gets opened. Scoold's public-facing Q&A lets customers find answers themselves while your team builds a growing library of solutions.",
@@ -671,7 +740,7 @@
       "use_cases": ["Product support portal", "Developer support for APIs", "Customer FAQ management", "Internal IT helpdesk"],
       "cta": { "label": "Reduce your ticket volume", "href": "/download" }
     },
-    "qa_platform": {
+    {
       "title": "Scoold as a Q&A Platform",
       "subtitle": "The Stack Overflow experience, running entirely on your own infrastructure.",
       "description": "Scoold was purpose-built as a Q&A platform. Every feature - voting, accepted answers, tags, reputation - mirrors the experience your team already knows from Stack Overflow, without the subscription cost.",
@@ -683,9 +752,9 @@
         { "title": "Unanswered Queue", "description": "Dedicated view for unanswered questions ensures nothing falls through the cracks." }
       ],
       "use_cases": ["Stack Overflow for Teams alternative", "Internal engineering Q&A", "Product team knowledge sharing", "Partner knowledge bases"],
-      "cta": { "label": "Switch from Stack Overflow for Teams", "href": "/comparison/scoold-vs-stack-overflow-for-teams" }
+      "cta": { "label": "Switch from Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business" }
     },
-    "knowledge_sharing": {
+    {
       "title": "Scoold as a Knowledge Sharing Platform",
       "subtitle": "Break down information silos and create a culture of sharing across your entire organization.",
       "description": "Knowledge hoarded in individual inboxes, private docs, and Slack DMs is knowledge lost. Scoold creates a culture where sharing is the default - and where every insight is findable forever.",
@@ -699,16 +768,16 @@
       "use_cases": ["Post-merger integration", "Remote & distributed teams", "Cross-functional projects", "Organizational learning"],
       "cta": { "label": "Start sharing knowledge", "href": "/download" }
     }
-  },
+  ],
   "comparisons": {
     "stack_overflow": {
-      "title": "Scoold vs Stack Overflow for Teams",
+      "title": "Scoold vs Stack Overflow Business",
       "subtitle": "Same Q&A experience. No subscription. Your data, your infrastructure.",
       "hero_badge": "COMPARISON",
-      "intro": "Stack Overflow for Teams is a great product, but it comes with per-seat monthly fees that add up fast, and your data lives in their cloud. Scoold gives you the same battle-tested Q&A format - self-hosted, with a one-time license.",
+      "intro": "Stack Overflow Business is a great product, but it comes with per-seat monthly fees that add up fast, and your data lives in their cloud. Scoold gives you the same battle-tested Q&A format - self-hosted, with a one-time license.",
       "table_headers": ["Feature", "Scoold Pro", "SO for Teams Business"],
       "rows": [
-        ["Pricing model", "One-time {price}", "~$6.50/user/month"],
+        ["Pricing model", "{price}, one-time", "~$6.50/user/month"],
         ["Data ownership", "100% yours", "Hosted by SO"],
         ["On-premises deploy", true, false],
         ["SAML SSO", true, true],
@@ -830,9 +899,9 @@
     "title": "Open source and proud of it",
     "title_short": "Open Source",
     "description": "Scoold is open source (Apache 2.0). Security, transparency, and no vendor lock-in. Deploy anywhere, own your data.",
-    "subtitle": "Scoold has been open source since day one. We believe in transparency, community ownership, and freedom from vendor lock-in.",
+    "subtitle": "We believe in transparency, community ownership, and freedom from vendor lock-in. ",
     "hero_badge": "OPEN SOURCE",
-    "view_github_label": "View on GitHub",
+    "view_github_label": "Scoold on GitHub",
     "benefits": [
       {
         "icon": "shield",
@@ -847,54 +916,152 @@
       {
         "icon": "users",
         "title": "Community driven",
-        "description": "Feature ideas, bug reports, and pull requests are welcome from anyone. The roadmap is shaped by the community, not just business interests."
+        "description": "Feature ideas, bug reports, and pull requests are always welcome. We strive to resolve issues quickly and listen to what users really need."
       },
       {
-        "icon": "globe",
+        "icon": "cloud",
         "title": "Deploy anywhere",
-        "description": "Apache 2.0 means you can deploy Scoold to any environment - cloud, on-premises, air-gapped - with no royalties or licensing fees for the Community edition."
+        "description": "We are committed to integrating Scoold with the open standards used in the industry, like OCI. Scoold can be easily deployed using Docker or with the provided Helm chart for Kubernetes."
       }
     ],
     "stats": [
-      { "value": "10+ years", "label": "Open source development" },
-      { "value": "Apache 2.0", "label": "License" },
-      { "value": "1000+", "label": "GitHub stars" },
-      { "value": "Active", "label": "Community" }
+      { "value": "2017", "label": "Open Sourced" },
+      { "value": "{stars}", "label": "GitHub Stars" },
+      { "value": "{issues}", "label": "Open Issues" },
+      { "value": "Apache 2.0", "label": "License" }
     ],
     "github_url": "https://github.com/Erudika/scoold"
   },
   "cloud": {
+    "badge": "SCOOLD CLOUD",
+    "subscriptions": "Subscription Plans &",
+    "pricing": "Pricing",
     "title": "Scoold Pro Hosting",
     "title_short": "Scoold Cloud",
-    "subtitle": "All the power of Scoold Pro, hosted and managed by us.",
-    "hero_badge": "SCOOLD CLOUD",
-    "description": "Skip the infrastructure management. Scoold Cloud gives you a fully managed Scoold Pro instance - we handle deployments, updates, backups, and security patches. You focus on building your knowledge base.",
-    "explore_cta_label": "Explore Scoold Cloud",
-    "contact_sales_label": "Contact sales",
-    "contact_sales_href": "/imprint/contact-us",
-    "features_title": "Everything managed for you",
+    "url": "https://cloud.scoold.com/login",
+    "subtitle": "Get a Scoold Pro server up and running in minutes, without worrying about deployment or maintainance.",
+    "description": "Skip the infrastructure management - Scoold Cloud offers fully managed Scoold hosting with automatic updates, backups, and security patches.",
+    "note": "🛈 Billing is on a monthly basis. Annual billing is also available - pay 10 months and get 2 months free. The prices don't include European Union VAT (not applicable to customers outside the EU).",
+    "explore_cta_label": "Try Scoold Cloud",
+    "features_title": "Effortless Deployment",
     "features": [
       { "icon": "zap", "title": "Up in minutes", "description": "Your Scoold instance is provisioned instantly. No server setup, no Docker commands." },
-      { "icon": "shield", "title": "Managed security", "description": "Automatic security patches, TLS certificates, and regular backups included." },
-      { "icon": "trending-up", "title": "Auto-scaling", "description": "Your instance scales automatically with your team. No capacity planning required." },
-      { "icon": "globe", "title": "Global CDN", "description": "Static assets served from a global CDN for fast page loads worldwide." },
-      { "icon": "refresh-cw", "title": "Automatic updates", "description": "Always on the latest version of Scoold Pro. Zero-downtime rolling updates." },
-      { "icon": "headphones", "title": "Dedicated support", "description": "Cloud customers get priority support with a dedicated customer success contact." }
+      { "icon": "shield", "title": "Fully Managed", "description": "Automatic updates, security patches, TLS certificates, and regular backups included." },
+      { "icon": "battery", "title": "Batteries Included", "description": "Your instance is ready to go, with preconfigured SMTP server and file storage settings. You can bring your own storage as well." },
+      { "icon": "cloud", "title": "Powered by AWS", "description": "Scoold Cloud is built on industry-standard, best-in-class services of the largest public cloud provider - AWS." },
+      { "icon": "globe", "title": "Regional Availability", "description": "Choose between 20 regions worldwide for optimal latency." },
+      { "icon": "thumb", "title": "Dedicated support", "description": "Cloud customers get priority support with a dedicated support contact." }
     ],
     "comparison": {
-      "title": "Cloud vs Self-hosted",
-      "headers": ["Aspect", "Scoold Cloud", "Self-hosted Pro"],
+      "title": "Scoold Cloud vs Self-Hosted",
+      "headers": [" ", "Scoold Cloud", "Self-Hosted"],
       "rows": [
         ["Setup time", "Minutes", "Hours to days"],
-        ["Infrastructure management", "We handle it", "You manage it"],
-        ["Updates", "Automatic", "Manual"],
-        ["Backups", "Automatic daily", "You configure"],
-        ["Data location", "Our cloud", "Your infrastructure"],
-        ["Cost model", "Monthly subscription", "One-time license fee"],
-        ["Customization", "Standard", "Full control"]
+        ["Infrastructure management", "Managed", "You manage it"],
+        ["Updates & Patches", "Managed", "Manual"],
+        ["Backups", "Automatic with PITR", "You configure"],
+        ["Data location", "AWS cloud", "Your infrastructure"],
+        ["Cost model", "Subscription plan", "One-time license fee"],
+        ["Customization", "Fully customizable", "Fully customizable"]
       ]
     },
-    "cloud_url": "https://cloud.scoold.com"
+    "pricing_faq": {
+      "title": "Scoold Cloud FAQ",
+      "subtitle": "Common questions about our Scoold Pro hosting service.",
+      "items": [
+        { 
+          "q": "Is there a free plan?", 
+          "a": "No, but you can try out the service for 5 days (no credit card required)." },
+        { 
+          "q": "What are app credits and do I need to buy them?", 
+          "a": "For each server you want to deploy, you will need to purchase a server credit. Similarly, if you need a hosted Para app for your server, you will need to purchase one app credit as well. You don't have to buy app credits if already have a Para app hosted somewhere. Scoold Cloud integrates with Para Cloud (paraio.com) so you can manage your servers and apps with a single account." },
+        { 
+          "q": "Where is my Scoold Pro server going to be hosted?", 
+          "a": "Scoold Pro servers are hosted on the AWS cloud, in a region of your choice (one of the 20 regions worldwide)." },
+        { 
+          "q": "How can I configure my hosted Scoold Pro server?", 
+          "a": "With the help of a wizard in the admin console. You can edit the entire Scoold configuration file right inside your browser. There's also a web API for configuring and deploying your hosted Scoold Pro server." },
+        { 
+          "q": "Which authentication methods are supported?", 
+          "a": "All the ones supported in Scoold Pro, including SAML, LDAP, OAuth 2.0 and custom authentication with JWTs." },
+        {
+          "q": "Do I need to buy a Scoold Pro license in order to use Scoold Cloud?",
+          "a": "No, you don't. License fees, as well as hosting fees, are included in the price of Scoold Cloud."
+        },
+        {
+          "q": "Do I need to run my own Para server to store data for my Scoold Cloud servers?",
+          "a": "Not at all - our cloud-based Para service is integrated in Scoold Cloud. Optionally, are free to self-host Para in order to keep full control of your data."
+        },
+        {
+          "q": "Which Scoold Pro server version am I going to get?",
+          "a": "Typically the latest stable version of Scoold Pro. Upgrades will be handled by us, transparently to you and with zero service downtime."
+        },
+        {
+          "q": "What is the billing cycle?",
+          "a": "Usage is billed monthly or yearly, according to the number of running Scoold Pro servers for the period. Annual subscriptions get 2 months free."
+        },
+        {
+          "q": "Do you issue VAT invoices?",
+          "a": "Yes, we do. You can enter a VAT number on checkout or in the billing portal (Account > My Subscription)."
+        }
+      ]
+    },
+    "plans": [
+      {
+        "name": "Para App",
+        "price": "{priceCloudApp}",
+        "price_note": "per app, per month",
+        "description": "Scoold needs a Para app for storing data. If you don't have one already, you can purchase Para app credits.",
+        "cta_label": "Get Started →",
+        "cta_href": "https://cloud.scoold.com/login",
+        "cta_style": "outline",
+        "popular": false,
+        "features": [
+          "Powerful backend API",
+          "Full-text search",
+          "Automatic object caching",
+          "Zero vendor lock-in",
+          "High availability & failover",
+          "Automatic backups",
+          "Encryption at rest"
+        ]
+      },
+      {
+        "name": "Small Instance",
+        "price": "{priceCloudSmall}",
+        "price_note": "per server, per month",
+        "description": "Suitable for most workloads and teams with less than 1000 members.",
+        "cta_label": "Get Started →",
+        "cta_href": "https://cloud.scoold.com/login",
+        "cta_style": "solid",
+        "popular": true,
+        "badge": "MOST POPULAR",
+        "features": [
+          "All features in Scoold Pro",
+          "Dedicated subdomain with SSL",
+          "Data encryption at rest",
+          "Custom domain support",
+          "Web admin console"
+        ]
+      },
+      {
+        "name": "Large Instance",
+        "price": "{priceCloudLarge}",
+        "price_note": "per server, per month",
+        "description": "Suitable for larger teams with up to 10K concurrent users.",
+        "cta_label": "Get Started →",
+        "cta_href": "https://cloud.scoold.com/login",
+        "cta_style": "outline",
+        "popular": false,
+        "features": [
+          "All features in Scoold Pro",
+          "Dedicated subdomain with SSL",
+          "Data encryption at rest",
+          "Custom domain support",
+          "Web admin console"
+        ]
+      }
+    ]
   },
   "imprint": {
     "impressum": {
@@ -909,6 +1076,7 @@
     "impressum_page": {
       "badge": "LEGAL",
       "title": "Imprint",
+      "href": "/imprint/impressum",
       "subtitle": "Legal information about Erudika, the company behind Scoold.",
       "labels": {
         "company_name": "Company Name",
@@ -1123,23 +1291,23 @@
     "docs_href": "/documentation",
     "options": [
       {
-        "title": "Docker (recommended)",
-        "description": "The fastest way to get started. Pull the Docker image and run.",
-        "command": "docker run -p 8080:8080 erudikaltd/scoold:latest_stable",
+        "title": "Docker",
+        "description": "Prefer Docker? Get up and running quickly with Docker Compose.",
+        "command": "docker compose -f https://github.com/Erudika/scoold.git up",
         "icon": "docker"
       },
       {
         "title": "Download executable",
         "description": "Download the latest JAR file from the GitHub releases page.",
-        "href": "https://github.com/Erudika/scoold/releases/latest",
+        "href": "https://github.com/Erudika/scoold/releases",
         "icon": "github"
       }
     ],
     "requirements": [
-      "Java 11 or higher (Java 17 recommended)",
+      "Java runtime environment (21 or higher)",
       "Para backend (see documentation for setup)",
       "512 MB RAM minimum (2 GB recommended for production)",
-      "Any Linux, macOS, or Windows server"
+      "Any operating system"
     ],
     "github_releases_url": "https://github.com/Erudika/scoold/releases"
   }

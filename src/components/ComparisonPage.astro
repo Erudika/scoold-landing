@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from './CTA.astro';
-import { ui } from '../data/site-data.json';
+import { site, ui } from '../data/site-data.json';
 
 interface Props {
   title: string;
@@ -81,7 +81,7 @@ const { title, subtitle, hero_badge, intro, table_headers, rows, metaDescription
                         </div>
                       )
                     ) : (
-                      <span class:list={[i === 1 ? 'text-brand-700 font-medium' : 'text-slate-600']}>{cell}</span>
+                      <span class:list={[i === 1 ? 'text-brand-700 font-medium' : 'text-slate-600']}>{cell.replace("{price}", site.priceSign + site.pricePro)}</span>
                     )}
                   </td>
                 ))}

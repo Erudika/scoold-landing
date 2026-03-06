@@ -2,15 +2,41 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PricingCards from '../components/PricingCards.astro';
 import CTA from '../components/CTA.astro';
-import { pricing, features_page, site } from '../data/site-data.json';
+import { pricing, features_page, site, components } from '../data/site-data.json';
+
+const { breadcrumbs } = components;
+const baseUrl = site.url;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: pricing.pricing_faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  }))
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
+    { "@type": "ListItem", position: 2, name: breadcrumbs.pricing, item: `${baseUrl}/pricing` }
+  ]
+};
 ---
 
 <BaseLayout
   title={pricing.title_short}
   description={pricing.description}
+  jsonLd={[jsonLd, breadcrumbJsonLd]}
 >
   <!-- Page hero -->
-  <section class="bg-white py-16 text-center">
+  <section class="bg-white text-center section-padding">
     <div class="mx-auto px-4 sm:px-6 lg:px-8">
       <span class="section-label">{pricing.badge}</span>
       <h1 class="mb-4 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
@@ -22,10 +48,10 @@ import { pricing, features_page, site } from '../data/site-data.json';
     </div>
   </section>
 
-  <PricingCards />
+  <PricingCards pageBlock={pricing} />
 
   <!-- Comparison table -->
-  <section class="bg-white section-padding">
+  <section class="bg-white animate-fade-in section-padding">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
       <div class="mb-12 text-center">
         <h2 class="font-extrabold text-slate-900 text-3xl tracking-tight">
@@ -56,19 +82,20 @@ import { pricing, features_page, site } from '../data/site-data.json';
                   <td class:list={['py-3', i === 0 ? 'pl-4 font-medium text-slate-700' : 'text-center px-4']}>
                     {typeof cell === 'boolean' ? (
                       cell ? (
-                        <svg class="mx-auto w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="mx-auto w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                         </svg>
                       ) : (
-                        <svg class="mx-auto w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="mx-auto w-5 h-5 text-red-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                       )
                     ) : (
-                      <span class:list={[i === 2 ? 'text-brand-600 font-medium' : 'text-slate-600']}>
+                      <span class:list={[i === 2 ? 'text-brand-600 font-bold' : 'text-slate-800 font-bold']} set:html=
                         {cell.
                           replace("{pricePro}", site.priceSign + site.pricePro).
-                          replace("{priceProPlus}", site.priceSign + site.priceProPlus)}
+                          replace("{priceProPlus}", site.priceSign + site.priceProPlus)} 
+                      >
                       </span>
                     )}
                   </td>

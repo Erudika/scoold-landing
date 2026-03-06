@@ -2,7 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
-import { faq } from '../data/site-data.json';
+import { site, faq, components } from '../data/site-data.json';
+
+const { breadcrumbs } = components;
+const baseUrl = site.url;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -14,14 +17,23 @@ const jsonLd = {
       '@type': 'Answer',
       text: item.a,
     },
-  })),
+  }))
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
+    { "@type": "ListItem", position: 2, name: breadcrumbs.faq, item: `${baseUrl}/faq` }
+  ]
 };
 ---
 
 <BaseLayout
   title={faq.title_short}
   description={faq.description}
-  jsonLd={jsonLd}
+  jsonLd={[jsonLd, breadcrumbJsonLd]}
 >
   <FAQ />
   <CTA />

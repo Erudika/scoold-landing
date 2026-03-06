@@ -29,25 +29,23 @@ import darkUI from '../images/hero-image-dark.png';
   </section>
   
   <section class="py-10">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 border-b border-b-gray-200 max-w-7xl">
       <h2 class="mb-8 font-bold text-5xl text-center">{features_page.themes}</h2>
-      <figure class="aspect-16/9 diff" tabindex="0">
+      <figure class="aspect-video diff" tabindex="0">
         <div class="diff-item-1" role="img" tabindex="0">
           <div class="place-content-stretch grid">
-            <Image src={lightUI} alt="Scoold UI"/>
+            <Image src={lightUI} alt="Scoold UI" loading="eager"}/>
             </div>
           </div>
           <div class="diff-item-2" role="img">
             <div class="place-content-stretch grid">
-              <Image src={darkUI} alt="Scoold UI"/>
+              <Image src={darkUI} alt="Scoold UI" loading="eager"}/>
             </div>
           </div>
         <div class="diff-resizer"></div>
       </figure>
     </div>
   </section>
-
-  
 
   <!-- Feature categories -->
   {features_page.categories.map((cat, catIdx) => (
@@ -63,7 +61,10 @@ import darkUI from '../images/hero-image-dark.png';
                 </svg>
               </div>
               <div>
-                <h3 class="mb-1 font-semibold text-slate-900 text-sm">{feature.title}</h3>
+                <h3 class="mb-1 font-semibold text-slate-900 text-sm">
+                  {feature.title.replace("{pro}", "")}
+                  <span class={feature.title.indexOf("{pro}") > 0 ? "mx-1 badge badge-primary badge-outline badge-xs" : " hidden"}>PRO</span>
+                </h3>
                 <p class="text-slate-700 text-sm leading-relaxed">{feature.description}</p>
               </div>
             </div>

@@ -4,16 +4,13 @@ import { hero, site } from '../data/site-data.json';
 import herobg from '../images/herobg.svg';
 import logosq from '../images/logosq.svg';
 import companies from '../images/companies.png';
-
-const heroBadge = hero.badge.replace("{ver}", "v" + site.version);
-
 ---
 <section class="relative bg-white pt-16 lg:pt-24 pb-20 lg:pb-28 overflow-hidden" style={`background-image: url(${herobg.src});`}>
   <!-- Gradient fade edges -->
   <div class="absolute inset-0 bg-linear-to-b from-white via-transparent to-white pointer-events-none"></div>
 
   <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-    <div class="items-center gap-12 lg:gap-16 grid lg:grid-cols-2 max-lg:text-center">
+    <div class="items-center gap-12 lg:gap-11 grid lg:grid-cols-2 max-lg:text-center">
 
       <!-- Left: text content -->
       <div class="animate-fade-in">
@@ -22,13 +19,13 @@ const heroBadge = hero.badge.replace("{ver}", "v" + site.version);
         <div class="inline-flex items-center gap-2 bg-amber-50 mb-6 px-3 py-1.5 border border-amber-200 rounded-full font-semibold text-amber-800 text-xs">
           <!-- <span class="bg-brand-600 rounded-full w-1.5 h-1.5 animate-pulse"></span> -->
            <strong class="font-bold text-amber-500">❈</strong>
-           <span set:html={heroBadge}></span>
+           <span set:html={hero.badge}></span>
         </div>
 
         <!-- Headline -->
-        <h1 class="mb-6 font-extrabold text-slate-900 text-5xl sm:text-6xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight">
-          {hero.title}<br/>
-          <span class="text-brand-600">{hero.title_highlight}</span>
+        <h1 set:html={hero.title} 
+          class="mb-6 font-extrabold text-slate-900 text-4xl sm:text-5xl lg:text-5xl xl:text-6xl leading-[1.05] tracking-tight">
+          <!-- <span class="text-brand-500">{hero.title_highlight}</span> -->
         </h1>
 
         <!-- Subtitle -->
@@ -51,7 +48,6 @@ const heroBadge = hero.badge.replace("{ver}", "v" + site.version);
             href={hero.secondary_cta.href}
             class="inline-flex justify-center items-center gap-2 bg-white hover:bg-slate-50 mx-2 px-6 py-3.5 border border-slate-200 hover:border-slate-300 rounded-xl font-semibold text-slate-700 text-sm transition-all duration-200"
             target="_blank"
-            rel="noopener noreferrer"
           >
             <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
@@ -168,8 +164,8 @@ const heroBadge = hero.badge.replace("{ver}", "v" + site.version);
 
         <!-- Floating badge: "Open Source" -->
         <div class="-top-4 -right-4 absolute flex items-center gap-2.5 bg-white shadow-lg px-4 py-2.5 border border-slate-200 rounded-xl">
-          <div class="flex justify-center items-center bg-brand-100 rounded-lg w-8 h-8">
-            <svg class="w-4 h-4 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+          <div class="flex justify-center items-center bg-emerald-100 rounded-lg w-8 h-8">
+            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
             </svg>
           </div>

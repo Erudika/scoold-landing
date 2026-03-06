@@ -1,23 +1,48 @@
 ---
-import { pricing, site } from '../data/site-data.json';
+import type { P } from 'node_modules/tailwindcss/dist/resolve-config-QUZ9b-Gn.d.mts';
+import { site } from '../data/site-data.json';
+
+interface Plan {
+  popular: boolean,
+  badge?: string,
+  name: string,
+  description: string,
+  price: string,
+  price_note: string,
+  cta_href: string,
+  cta_style: string,
+  cta_label: string,
+  features: string[]
+}
+
+interface PageBlock {
+  plans: Plan[];
+  note: string;
+}
+
+interface Props {
+  pageBlock: PageBlock;
+  titleFirst?: string;
+  titleSecond?: string;
+}
+
+const { titleFirst, titleSecond, pageBlock } = Astro.props;
 ---
 
-<section class="bg-slate-50 section-padding" id="pricing">
+<section class="bg-slate-50 animate-fade-in section-padding" id="pricing">
   <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
     <!-- Section header -->
-    <!-- <div class="mx-auto mb-16 max-w-2xl text-center">
-      <span class="section-label">{pricing.badge}</span>
-      <h2 class="mb-4 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
-        {pricing.title} <span class="text-brand-600">{pricing.title_highlight}</span>
+    <div class={`mx-auto mb-10 max-w-2xl text-center ${titleFirst ? '' : 'hidden'}`}>
+      <!-- <span class="section-label"></span> -->
+      <h2 class="font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
+        {titleFirst} <span class="text-brand-600">{titleSecond}</span>
       </h2>
-      <p class="text-slate-700 text-lg leading-relaxed">
-        {pricing.subtitle}
-      </p>
-    </div> -->
+      <!-- <p class="text-slate-700 text-lg leading-relaxed">{cloud.subtitle}</p> -->
+    </div>
 
     <!-- Pricing cards -->
     <div class="gap-6 lg:gap-8 grid md:grid-cols-3 mx-auto max-w-5xl">
-      {pricing.plans.map((plan) => (
+      {pageBlock.plans.map((plan) => (
         <div
           class:list={[
             'relative rounded-2xl p-7 flex flex-col',
@@ -50,7 +75,10 @@ import { pricing, site } from '../data/site-data.json';
             <div class:list={['text-4xl font-extrabold tracking-tight', plan.popular ? 'text-white' : 'text-slate-900']}>
               {plan.price.
                           replace("{pricePro}", site.priceSign + site.pricePro).
-                          replace("{priceProPlus}", site.priceSign + site.priceProPlus)}
+                          replace("{priceProPlus}", site.priceSign + site.priceProPlus).
+                          replace("{priceCloudSmall}", site.priceSign + site.priceCloudSmall).
+                          replace("{priceCloudLarge}", site.priceSign + site.priceCloudLarge).
+                          replace("{priceCloudApp}", site.priceSign + site.priceCloudApp)}
             </div>
             <div class:list={['text-sm font-medium mt-0.5', plan.popular ? 'text-slate-300' : 'text-slate-600']}>
               {plan.price_note}
@@ -97,8 +125,8 @@ import { pricing, site } from '../data/site-data.json';
 
     
     <div class="text-center">
-      <p class="mt-10 px-40 text-md text-slate-600 text-center">
-        {pricing.note}
+      <p class="mt-10 lg:px-40 text-md text-slate-600 text-center">
+        {pageBlock.note}
       </p>
     </div>
   </div>
