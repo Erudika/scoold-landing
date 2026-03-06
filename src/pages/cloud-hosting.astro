@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { cloud } from '../data/site-data.json';
+import PricingCards from '@/components/PricingCards.astro';
+import { Image } from 'astro:assets';
+import icon from '../images/scoold_cloud.svg';
+import herobg from '../images/herobg.svg';
+
+const iconPaths: Record<string, string> = {
+  zap: 'M13 10V3L4 14h7v7l9-11h-7z',
+  shield: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  battery: 'M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5H18V15H4.5v-4.5ZM3.75 18h15A2.25 2.25 0 0 0 21 15.75v-6a2.25 2.25 0 0 0-2.25-2.25h-15A2.25 2.25 0 0 0 1.5 9.75v6A2.25 2.25 0 0 0 3.75 18Z',
+  globe: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9',
+  cloud: 'M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z',
+  thumb: 'M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z',
+};
+---
+
+<BaseLayout
+  title={cloud.title_short}
+  description={cloud.description}
+>
+  <!-- Hero -->
+  <section class="relative bg-white py-10 border-slate-100 border-b animate-fade-in" style={`background-image: url(${herobg.src});`}>
+    <!-- Gradient fade edges -->
+    <div class="absolute inset-0 bg-linear-to-b from-white via-transparent to-white pointer-events-none"></div>
+
+
+    <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
+      <!-- <div class="section-label">{cloud.badge}</div> -->
+      <div class="py-5">
+        <Image src={icon} width=100 alt="icon" loading="eager" class="inline-block"/>
+      </div>
+      <h1 class="mb-5 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
+        {cloud.title}
+      </h1>
+      <p class="mb-4 text-slate-700 text-xl leading-relaxed">
+        {cloud.subtitle}
+      </p>
+      <p class="mx-auto mb-8 max-w-2xl text-slate-600 text-base leading-relaxed">
+        {cloud.description}
+      </p>
+      <div class="flex sm:flex-row flex-col justify-center gap-3">
+        <a
+          href={cloud.url}
+          class="inline-flex justify-center items-center gap-2 bg-slate-900 hover:bg-slate-700 px-7 py-3.5 rounded-xl font-semibold text-white transition-colors"
+        >
+          {cloud.explore_cta_label}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <PricingCards pageBlock={cloud} titleFirst={cloud.subscriptions} titleSecond={cloud.pricing} />
+
+  <!-- Features grid -->
+  <section class="bg-slate-50 section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div class="mb-12 text-center">
+        <h2 class="font-extrabold text-slate-900 text-3xl tracking-tight">
+          {cloud.features_title}
+        </h2>
+      </div>
+      <div class="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
+        {cloud.features.map((feature) => (
+          <div class="bg-white p-6 border border-slate-100 rounded-2xl">
+            <div class="flex justify-center items-center bg-brand-50 mb-4 rounded-xl w-10 h-10">
+              <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={iconPaths[feature.icon] ?? iconPaths.zap}/>
+              </svg>
+            </div>
+            <h3 class="mb-2 font-semibold text-slate-900">{feature.title}</h3>
+            <p class="text-slate-700 text-sm leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cloud vs Self-hosted comparison -->
+  <section class="bg-white section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <h2 class="mb-8 font-extrabold text-slate-900 text-3xl text-center">{cloud.comparison.title}</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-slate-200 border-b">
+              {cloud.comparison.headers.map((header, i) => (
+                <th class:list={[
+                  'py-3 font-semibold',
+                  i === 0 ? 'text-left pl-4 text-slate-600 w-1/2' : i === 1 ? 'text-center px-4 text-brand-600' : 'text-center px-4 text-slate-600',
+                ]}>
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {cloud.comparison.rows.map((row) => (
+              <tr class="hover:bg-slate-50">
+                <td class="py-3 pl-4 font-medium text-slate-700">{row[0]}</td>
+                <td class="px-4 py-3 font-medium text-brand-600 text-center">{row[1]}</td>
+                <td class="px-4 py-3 text-slate-700 text-center">{row[2]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cloud FAQ -->
+  <section class="bg-slate-50 section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <div class="mb-12 text-center">
+        <h2 class="mb-3 font-extrabold text-slate-900 text-3xl tracking-tight">{cloud.pricing_faq.title}</h2>
+        <p class="text-slate-700">{cloud.pricing_faq.subtitle}</p>
+      </div>
+      <div class="space-y-3">
+        {cloud.pricing_faq.items.map((item) => (
+          <details class="group border border-slate-300 hover:border-slate-500 rounded-xl overflow-hidden">
+            <summary class="flex justify-between items-center gap-4 px-5 py-4 font-medium text-slate-800 hover:text-brand-600 transition-colors cursor-pointer list-none">
+              <span class="text-sm">{item.q}</span>
+              <svg class="w-5 h-5 text-slate-600 group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-5 pt-1 pb-5 border-slate-100 border-t text-slate-700 text-sm leading-relaxed">
+              {item.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
