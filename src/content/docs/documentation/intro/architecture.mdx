@@ -1,0 +1,46 @@
+---
+title: Scoold Architecture
+description: Scoold architecture intro (or 'what the heck is Para?')
+sidebar:
+  order: 2
+---
+
+import { Code } from '@astrojs/starlight/components';
+
+import { Image } from 'astro:assets';
+
+Scoold is a client application of the [Para](https://paraio.org) backend server. Almost every request to
+Scoold produces at least one request to Para as well. When you ask a question on Scoold, a `create` request is
+sent to Para to the location `POST /v1/questions`. Here are a few key points about that architecture:
+- A Para server can be hosted anywhere and store data inside any of the [supported databases](https://github.com/Erudika/para#database-integrations).
+- Para is a multi-tenant server which stores data in isolated environments called "apps".
+- One or more instance of Scoold (like a cluster) can connect to the same Para app environment and share the data.
+- Multiple separate Scoold websites can be powered by the same Para backend using different Para apps.
+- Each app environment is completely independent from others and has its own database table and search index.
+- Both Scoold and Para can be hosted on the same machine or on multiple machines, on different networks.
+- Scoold talks to Para via HTTP(S) so Para must be directly accessible from Scoold, but can also be hosted on a private network.
+
+Here's an overview of the architecture:
+
+### Simple - one Scoold node, one Para node
+
+<Image src={import(`../../../../images/documentation/single.png`)}
+    alt="Architecture diagram 1"
+    class="py-5 w-fit"
+    loading="eager"/>
+
+
+### Multiple Scoold nodes - single Para backend
+
+<Image src={import(`../../../../images/documentation/hybrid.png`)}
+    alt="Architecture diagram 2"
+    class="py-5 w-fit"
+    loading="lazy"/>
+
+
+### Multi-tenant architecture
+
+<Image src={import(`../../../../images/documentation/multinode.png`)}
+    alt="Architecture diagram 3"
+    class="py-5 w-fit"
+    loading="lazy"/>

@@ -11,7 +11,7 @@ try {
   var downloadUrl = "";
   if (githubData) {
     version = githubData.tag_name ? "v" + githubData.tag_name : "";
-    var downloadUrls = githubData.assets.filter((i) => i.name.contains(".jar"));
+    var downloadUrls = githubData.assets.filter((i) => i.name.endsWith(".jar"));
     if (downloadUrls.length) {
       downloadUrl = downloadUrls[0].browser_download_url;
     }

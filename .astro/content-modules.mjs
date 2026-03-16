@@ -1,10 +1,17 @@
 
 export default new Map([
-["src/content/docs/documentation/index.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Findex.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/index.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Findex.mdx&astroContentModuleFlag=true")],
+["src/content/docs/documentation/index.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Findex.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/documentation/deployment/cloud.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fdeployment%2Fcloud.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/documentation/deployment/docker.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fdeployment%2Fdocker.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/documentation/getting-started/configuration.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fgetting-started%2Fconfiguration.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/documentation/getting-started/installation.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fgetting-started%2Finstallation.mdx&astroContentModuleFlag=true")],
+["src/content/docs/documentation/integrations/mattermost.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fintegrations%2Fmattermost.mdx&astroContentModuleFlag=true")],
+["src/content/docs/documentation/integrations/microsoft-teams.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fintegrations%2Fmicrosoft-teams.mdx&astroContentModuleFlag=true")],
+["src/content/docs/documentation/integrations/slack.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fintegrations%2Fslack.mdx&astroContentModuleFlag=true")],
+["src/content/docs/documentation/integrations/zapier.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fintegrations%2Fzapier.mdx&astroContentModuleFlag=true")],
+["src/content/docs/documentation/intro/architecture.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fintro%2Farchitecture.mdx&astroContentModuleFlag=true")],
+["src/content/docs/documentation/intro/features.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fintro%2Ffeatures.mdx&astroContentModuleFlag=true")],
+["src/content/docs/documentation/intro/what-is-scoold.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fintro%2Fwhat-is-scoold.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/documentation/scoold-api/index.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fdocumentation%2Fscoold-api%2Findex.mdx&astroContentModuleFlag=true")]]);
 		

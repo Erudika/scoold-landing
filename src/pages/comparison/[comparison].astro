@@ -1,0 +1,46 @@
+---
+import ComparisonPage from '../../components/ComparisonPage.astro';
+import { site, components, comparisons } from "../../data/site-data.json";
+
+const { breadcrumbs } = components;
+const baseUrl = site.url;
+const prefix = site.title.toLowerCase() + "-vs-";
+
+export async function getStaticPaths() {
+    const prefix = site.title.toLowerCase() + "-vs-";
+    return comparisons.map((comparison) => ({
+        params: { comparison: prefix + comparison.slug },
+        props: { comparison }
+    }));
+}
+const { comparison } = Astro.props;
+const postUrl = `${baseUrl}/comparison/${prefix}${comparison.slug}`;
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: "Scoold + " + comparison.title + " Integration",
+  description: comparison.description,
+  datePublished: new Date().toISOString(),
+  dateModified: new Date().toISOString(),
+  author: {
+    "@type": "Organization",
+    name: site.company,
+    url: site.companyUrl
+  },
+  mainEntityOfPage: postUrl,
+  image: [site.companyLogo],
+  url: postUrl
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
+    { "@type": "ListItem", position: 2, name: breadcrumbs.blog, item: `${postUrl}` }
+  ]
+};
+---
+
+<ComparisonPage {...comparison}/>

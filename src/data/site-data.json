@@ -36,6 +36,7 @@
       "tags": "Tags",
       "pagePrefix": "Page",
       "features": "Features",
+      "integrations": "Integrations",
       "solutions": "Solutions"
     }
   },
@@ -132,15 +133,19 @@
       }
     ],
     "integrations": [
-      { "label": "Slack", "href": "/integration-with/slack", "icon": "puzzle" },
-      { "label": "Microsoft Teams", "href": "/integration-with/microsoft-teams", "icon": "puzzle" },
-      { "label": "Mattermost", "href": "/integration-with/mattermost", "icon": "puzzle" },
-      { "label": "Zapier", "href": "/integration-with/zapier", "icon": "zap" }
+      { "label": "Slack", "href": "/integration-with/slack"},
+      { "label": "Microsoft Teams", "href": "/integration-with/microsoft-teams"},
+      { "label": "Mattermost", "href": "/integration-with/mattermost"},
+      { "label": "Zapier", "href": "/integration-with/zapier", "icon": "zap" },
+      { "label": "n8n", "href": "/integration-with/n8n", "icon": "zap" }
     ],
     "comparisons": [
-      { "label": "vs. Apache Answers", "href": "/comparison/scoold-vs-apache-answers", "icon": "check" },
+      { "label": "vs. Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business", "icon": "check" },
+      { "label": "vs. Apache Answer", "href": "/comparison/scoold-vs-apache-answer", "icon": "check" },
       { "label": "vs. Discourse", "href": "/comparison/scoold-vs-discourse", "icon": "check" },
-      { "label": "vs. Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business", "icon": "check" }
+      { "label": "vs. Talkyard", "href": "/comparison/scoold-vs-talkyard", "icon": "check" },
+      { "label": "vs. Askbot", "href": "/comparison/scoold-vs-askbot", "icon": "check" },
+      { "label": "vs. Question2Answer", "href": "/comparison/scoold-vs-question2answer", "icon": "check" }
     ],
     "cta": {
       "label": "Get Started",
@@ -188,7 +193,7 @@
     { "value": "1000+", "label": "Instanced deployed" },
     { "value": "5M+", "label": "Downloads on Docker Hub" },
     { "value": "4.9/5", "label": "Customers satisfaction" },
-    { "value": "900+", "label": "Stars on GitHub" }
+    { "value": "{years}", "label": "Years active" }
   ],
   "features_overview": {
     "badge": "KEY FEATURES",
@@ -238,7 +243,7 @@
     "themes": "Light UI, dark UI, or anything in between.",
     "categories": [
       {
-        "name": "Core Q&A",
+        "name": "Core Features",
         "features": [
           { "title": "Full featured Q&A platform", "description": "Scoold is inspired by Stack Overflow and implements most of its features. You can ask and answer questions, upvote and downvote posts, earn badges and reputation. Each edit creates an new revision, making it easy to follow the history of edits." },
           { "title": "Reputation & Badges", "description": "Scoold has a simple but effective reputation system with badges. People are awarded reputation points for good questions and answers, as well as various badges for their achievements on the site. You can also create your own custom badges." },
@@ -290,6 +295,8 @@
     ],
     "comparison": {
       "title": "Feature Comparison",
+      "title2": "High-level Overview",
+      "hero_badge": "COMPARISON TABLE",
       "headers": ["Feature", "Scoold", "Scoold Pro", "Pro + Source"],
       "rows": [
         ["Price per instance", "Free", "{pricePro} one-time", "{priceProPlus} one-time"],
@@ -672,7 +679,7 @@
       "use_cases_title": "Common use cases"
     },
     "comparison_page": {
-      "cta_label": "Get started with Scoold free",
+      "cta_label": "Get Started for Free",
       "cta_href": "/download"
     },
     "integration_page": {
@@ -686,215 +693,473 @@
   "solutions": [
     {
       "title": "Scoold as a Knowledge Base",
-      "subtitle": "Capture, organize, and surface institutional knowledge before it walks out the door.",
+      "slug": "scoold-as-knowledge-base",
+      "img": "knowledge_base",
+      "subtitle": "Capture, organize, and surface institutional knowledge. Harness the power internal know-how with MCP.",
       "description": "Teams lose countless hours searching for answers that already exist somewhere. Scoold's searchable, structured knowledge base ensures the right information reaches the right person instantly.",
-      "hero_badge": "SOLUTION",
       "features": [
-        { "title": "Searchable Knowledge Repository", "description": "Every document, answer, and conversation is indexed and searchable. Typo tolerance and relevance ranking surface the right content first." },
-        { "title": "Structured with Tags & Wikis", "description": "Organize content by topic, team, product, or any taxonomy that fits your organization." },
-        { "title": "Expert Identification", "description": "Reputation system surfaces your internal experts. Know who to ask before you ask." },
-        { "title": "Version History", "description": "Full edit history for every article. Track who changed what and when." }
+        { "title": "Searchable Knowledge Repository", "description": "Every document, answer, and conversation is indexed and searchable. Best content is ranked higher by users using a robust voting system." },
+        { "title": "Structured with Tags & Spaces", "description": "Organize content by topic, team, product, or any taxonomy that fits your organization." },
+        { "title": "Expert Identification", "description": "Reputation system surfaces your internal experts. Additionally, you can add expert badges to highlight top talent." },
+        { "title": "Version History", "description": "Full edit history for every post. Track who changed what and when. Any revision can be restored if something goes wrong." }
       ],
-      "use_cases": ["Onboarding new employees", "Engineering runbooks", "Product documentation", "Customer support escalations"],
-      "cta": { "label": "Get started free", "href": "/download" }
+      "use_cases": ["Onboarding New Employees", "Engineering Notes", "Product Documentation", "Customer Cupport Escalations"],
+      "cta": { "label": "Build your knowledge base", "href": "/download" }
     },
     {
       "title": "Scoold as a Community Forum",
+      "slug": "scoold-as-community-forum",
+      "img": "community_forum",
       "subtitle": "Build a thriving community around your product, project, or organization.",
-      "description": "Whether it's an open-source project, a SaaS product, or an internal guild, Scoold provides the discussion platform your community deserves - without the lock-in.",
-      "hero_badge": "SOLUTION",
+      "description": "Whether it's an open-source project, a SaaS product, or an internal tool, Scoold provides the discussion platform your community deserves - with zero lock-in.",
       "features": [
-        { "title": "Threaded Discussions", "description": "Q&A format with threaded comments creates structured, searchable discussions instead of chat noise." },
-        { "title": "Reputation & Gamification", "description": "Points, badges, and leaderboards keep your community engaged and reward helpful contributors." },
-        { "title": "Open or Private", "description": "Public-facing community or private, login-required forum - your choice." },
-        { "title": "Self-hosted or Cloud", "description": "You own your community data. Deploy anywhere, migrate anytime." }
+        { "title": "Concise Discussions", "description": "Q&A format that promotes concise and clear discussions. Additional comments add extra context, instead of chat noise." },
+        { "title": "Reputation & Gamification", "description": "Points, badges, and reputation keep your community engaged and reward helpful contributors." },
+        { "title": "Open or Private", "description": "Public-facing community or private, locked-down forum - it's your choice." },
+        { "title": "Self-hosted or Cloud", "description": "You own your community data. Deploy anywhere, migrate anytime. Zero vendor lock-in." }
       ],
-      "use_cases": ["Open-source project support", "Product feedback forums", "Developer communities", "Alumni networks"],
+      "use_cases": ["Open-source project support", "Product Feedback Forums", "Developer Communities", "Alumni Networks"],
       "cta": { "label": "Start your community", "href": "/download" }
     },
     {
       "title": "Scoold as a Developer Hub",
+      "slug": "scoold-as-developer-hub",
+      "img": "developer_hub",
       "subtitle": "Give your engineering team a dedicated space to ask, answer, and document technical knowledge.",
-      "description": "Engineers spend too much time asking questions in Slack that disappear into history. Scoold creates a permanent, searchable record of technical knowledge that compounds over time.",
-      "hero_badge": "SOLUTION",
+      "description": "Engineers spend too much time in chat, asking questions that disappear into oblivion. Scoold creates a permanent, searchable record of technical knowledge that compounds over time.",
       "features": [
-        { "title": "Code-first Editor", "description": "Markdown with syntax highlighting for all major languages. Questions and answers look as good as your code." },
-        { "title": "Slack & Teams Integration", "description": "Questions asked in Slack can be automatically routed to Scoold for a permanent, searchable record." },
-        { "title": "API Documentation Hub", "description": "Use Scoold alongside your OpenAPI docs to handle developer Q&A." },
-        { "title": "Git & CI/CD Friendly", "description": "REST API enables integration into your developer workflows and toolchains." }
+        { "title": "Powerful Content Editor", "description": "Markdown support for code snippets with syntax highlighting for all major languages. Code looks the way it should." },
+        { "title": "Slack, Teams, Mattermost Integrations", "description": "Questions asked in chat can be automatically routed to Scoold for a permanent, searchable record. In the other direction, Scoold will notify your chat channel for new content." },
+        { "title": "Git & CI/CD Friendly", "description": "REST API and webhooks support enable integration into your developer workflows and toolchains. Zapier integration allows you to add Scoold in custom automations easily." },
+        { "title": "API Documentation Hub", "description": "Use Scoold alongside your OpenAPI docs to handle developer Q&A." }
       ],
-      "use_cases": ["Internal Stack Overflow replacement", "Architecture decision records", "Incident post-mortems", "API Q&A"],
+      "use_cases": ["Self-Hosted Stack Overflow Alternative", "Architecture Decision Records", "Incident Post-mortems", "Headless Questions and Answers API"],
       "cta": { "label": "Deploy for your team", "href": "/download" }
     },
     {
       "title": "Scoold as a Support Center",
-      "subtitle": "Reduce ticket volume by turning repeat support questions into self-serve answers.",
+      "slug": "scoold-as-support-center",
+      "img": "support_center",
+      "subtitle": "Reduce ticket volume by turning repeat support questions into a self-service portal.",
       "description": "The best support ticket is the one that never gets opened. Scoold's public-facing Q&A lets customers find answers themselves while your team builds a growing library of solutions.",
-      "hero_badge": "SOLUTION",
       "features": [
-        { "title": "Searchable Self-service", "description": "Customers search before they submit. Reduce tier-1 tickets by up to 40%." },
-        { "title": "Expert Escalation", "description": "Unanswered questions can be escalated to the right subject-matter expert automatically." },
-        { "title": "Customer-facing or Internal", "description": "Public Q&A for customers, private space for internal team escalations - or both." },
-        { "title": "Analytics & Insights", "description": "See which questions get asked most. Identify gaps in your product documentation." }
+        { "title": "Searchable Answers", "description": "Customers search before they submit a question. Support teams claim up to 40% reduction of tier-1 tickets." },
+        { "title": "Expert Escalation", "description": "Unanswered questions can be escalated to the right subject-matter expert." },
+        { "title": "Customer-facing or Internal", "description": "Public Q&A for customers, private space for internal team escalations, or both, using the 'Spaces' feature." },
+        { "title": "Weekly Digests & Insights", "description": "Get a weekly digest of the most recent posts. See which questions get asked most and identify gaps in your product documentation." }
       ],
-      "use_cases": ["Product support portal", "Developer support for APIs", "Customer FAQ management", "Internal IT helpdesk"],
+      "use_cases": ["Product Support Hub", "Self-service Portal", "Customer FAQ Center", "Internal IT Helpdesk"],
       "cta": { "label": "Reduce your ticket volume", "href": "/download" }
     },
     {
       "title": "Scoold as a Q&A Platform",
+      "slug": "scoold-as-questions-and-answers-platform",
+      "img": "qna_platform",
       "subtitle": "The Stack Overflow experience, running entirely on your own infrastructure.",
       "description": "Scoold was purpose-built as a Q&A platform. Every feature - voting, accepted answers, tags, reputation - mirrors the experience your team already knows from Stack Overflow, without the subscription cost.",
-      "hero_badge": "SOLUTION",
       "features": [
         { "title": "Voting & Accepted Answers", "description": "The Q&A workflow your team already knows. Upvotes, downvotes, and accepted answers surface the best content." },
-        { "title": "Tag-based Organization", "description": "Tag questions by technology, topic, or team. Tag wikis provide context for every tag." },
-        { "title": "Reputation System", "description": "Reputation scores reflect real contribution. High-rep users earn moderation privileges." },
-        { "title": "Unanswered Queue", "description": "Dedicated view for unanswered questions ensures nothing falls through the cracks." }
+        { "title": "Tag-based Organization", "description": "Tag questions by technology, topic, or team. Most used tags are always at the top." },
+        { "title": "Reputation System", "description": "Reputation scores reflect real contribution. High-scoring users earn moderation privileges." },
+        { "title": "Unanswered Queue", "description": "Dedicated view for unanswered questions ensures no questions are left behind without attention." }
       ],
-      "use_cases": ["Stack Overflow for Teams alternative", "Internal engineering Q&A", "Product team knowledge sharing", "Partner knowledge bases"],
-      "cta": { "label": "Switch from Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business" }
+      "use_cases": ["Stack Overflow for Teams Alternative", "Internal Engineering Q&A", "Product Team Knowledge Sharing", "Partner Knowledge Base"],
+      "cta": { "label": "Migrate from Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business" }
     },
     {
-      "title": "Scoold as a Knowledge Sharing Platform",
-      "subtitle": "Break down information silos and create a culture of sharing across your entire organization.",
-      "description": "Knowledge hoarded in individual inboxes, private docs, and Slack DMs is knowledge lost. Scoold creates a culture where sharing is the default - and where every insight is findable forever.",
-      "hero_badge": "SOLUTION",
+      "title": "Scoold as an Issue Tracker",
+      "slug": "scoold-as-issue-tracker",
+      "img": "issue_tracker",
+      "subtitle": "Crush bugs, organize issue reports and create a culture of problem-solving across your entire organization.",
+      "description": "Scoold boosts visibility for the issues your clients have and stimulates immediate action. With customizable webhooks, Scoold can ping the right people, AI or any software system.",
       "features": [
-        { "title": "Cross-team Visibility", "description": "Break down department silos. Make knowledge visible across the entire organization." },
-        { "title": "Recognition & Reward", "description": "Gamification mechanics reward sharing. Top contributors are celebrated." },
-        { "title": "Onboarding Acceleration", "description": "New hires find answers from day one. Reduce time-to-productivity by weeks." },
-        { "title": "Living Documentation", "description": "Unlike wikis, Scoold content stays current - answers get updated when things change." }
+        { "title": "Cross-team Visibility", "description": "Break down department silos. Make knowledge visible across the entire organization with the use of pulbic spaces." },
+        { "title": "Recognition & Reward", "description": "Gamification mechanics reward experts but also reward those who report issues often. Top contributors are celebrated." },
+        { "title": "Fast Issue Resolution", "description": "Assign custom tags and speed up issue resolution with instant email notifications." },
+        { "title": "Webhooks and MCP", "description": "When new reports arrive, Scoold can ping your software, subject matter experts or AI, via webhooks. Scoold MCP server adds context to your LLM agents." }
       ],
-      "use_cases": ["Post-merger integration", "Remote & distributed teams", "Cross-functional projects", "Organizational learning"],
-      "cta": { "label": "Start sharing knowledge", "href": "/download" }
+      "use_cases": ["Bug Tracking Software", "Ticket Management Hub", "GitHub Issues Alternative", "Incident Reporting Tool"],
+      "cta": { "label": "Create an issue tracker", "href": "/download" }
     }
   ],
-  "comparisons": {
-    "stack_overflow": {
-      "title": "Scoold vs Stack Overflow Business",
-      "subtitle": "Same Q&A experience. No subscription. Your data, your infrastructure.",
+  "comparisons": [
+    {
+      "title": "Stack Overflow Business",
+      "subtitle": "Same Q&A experience. No subscription. Your data, your infrastructure. TL;DR: Stack Overflow Business is the OG Q&A platform that targets big organizations with its cloud solution. Scoold aims to commoditize the proven Q&A format with excellent cost-effectiveness and ROI.",
+      "slug": "stack-overflow-business",
+      "pdf": "/scoold_vs_so_business.pdf",
+      "description": "Scoold is an alternative to Stack Overflow for Teams comparison - same Q&A experience, no subscription, your own infrastructure. Save thousands per year.",
       "hero_badge": "COMPARISON",
-      "intro": "Stack Overflow Business is a great product, but it comes with per-seat monthly fees that add up fast, and your data lives in their cloud. Scoold gives you the same battle-tested Q&A format - self-hosted, with a one-time license.",
-      "table_headers": ["Feature", "Scoold Pro", "SO for Teams Business"],
+      "intro": [
+        "Stack Overflow Business is a great product, but it comes with per-seat monthly fees that add up fast, and your data lives in their cloud. Scoold gives you the same battle-tested Q&A format - self-hosted, with a perpetual license.",
+        "The products target similar needs - private technical Q&A - but Scoold appeals to teams needing on-prem control and better ROI, while Stack Overflow is geared toward engineering-led organizations looking for turnkey hosted knowledge bases with premium support and AI-enhanced features",
+        "Stack Overflow shines in turnkey SaaS setup and features, whereas Scoold offers a great alternative with better cost efficiency, privacy and open-source flexibility."
+      ],
+      "table_headers": ["Feature", "Scoold", "Scoold Pro", "SO for Teams Business"],
       "rows": [
-        ["Pricing model", "{price}, one-time", "~$6.50/user/month"],
-        ["Data ownership", "100% yours", "Hosted by SO"],
-        ["On-premises deploy", true, false],
-        ["SAML SSO", true, true],
-        ["LDAP integration", true, false],
-        ["Custom branding", true, false],
-        ["API access", true, true],
-        ["Open source option", true, false],
-        ["Vendor lock-in", "None", "High"]
+        ["Pricing model", "Free", "from {price}, one-time", "~$6.50/user/month"],
+        ["Data ownership", "100% yours", "100% yours", "Hosted by Stack Overflow"],
+        ["On-premises", true, true, false],
+        ["Cloud hosting", false, true, true],
+        ["OAuth 2.0 SSO", true, true, true],
+        ["SAML SSO", false, true, true],
+        ["LDAP SSO", true, true, false],
+        ["White label", true, true, false],
+        ["RESTful API", true, true, true],
+        ["Source code access", true, true, false],
+        ["Kubernetes & Docker", true, true, false],
+        ["Vendor lock-in", "None", "None", "High"],
+        ["Customization", "Fully customizable", "Fully customizable", "Limited (logos, banners)"]
       ]
     },
-    "apache_answers": {
-      "title": "Scoold vs Apache Answer",
-      "subtitle": "Two strong open-source Q&A platforms - here's how they compare.",
+    {
+      "title": "Apache Answer",
+      "subtitle": "Two strong open-source Q&A platforms - here's how they compare. TD;DR: Scoold is more customizable and has more features.",
+      "slug": "apache-answer",
+      "pdf": "/scoold_vs_apache_answer.pdf",
+      "description": "Scoold is an alternative to Apache Answer - two open-source Q&A platforms compared. Enterprise features, deployment options, SSO support, and more.",
       "hero_badge": "COMPARISON",
-      "intro": "Apache Answer is a well-built open-source Q&A platform under the Apache Software Foundation. Scoold offers comparable core features with a stronger enterprise story: Pro edition with LDAP/SAML, a hosted cloud option, and a mature Java stack.",
-      "table_headers": ["Feature", "Scoold", "Apache Answer"],
+      "intro": [
+        "Apache Answer is a well-built open-source Q&A platform under the Apache Software Foundation. Scoold offers comparable core features with advanced integrations like Zapier and n8n. Only Scoold offers cloud hosting officially, from the same vendor.",
+        "Scoold is easy to deploy (self-hosted, cloud) and fully customizable. Apache Answer emphasizes enterprise scalability, REST API, plugins and containerization. Scoold appeals to teams needing a familiar Stack Overflow-like Q&A (with optional cloud hosting), while Apache Answer targets larger public communities.",
+        "Both score high on cost-effectiveness and are open source, but Scoold is a great alternative that has easier initial setup and is more feature-rich."
+      ],
+      "table_headers": ["Feature", "Scoold", "Scoold Pro", "Apache Answer"],
       "rows": [
-        ["Language / stack", "Java", "Go"],
-        ["Open source license", "Apache 2.0", "Apache 2.0"],
-        ["LDAP integration", "Pro", "Community Plugin"],
-        ["SAML SSO", "Pro", "Limited"],
-        ["SCIM provisioning", "Pro", false],
-        ["Multi-space", "Pro", false],
-        ["Hosted cloud option", true, false],
-        ["REST API", true, true],
-        ["Docker support", true, true]
+        ["Pricing model", "Free", "from {price}, one-time", "Free"],
+        ["License", "Apache 2.0", "EULA", "Apache 2.0"],
+        ["Data ownership", true, true, true],
+        ["On-premises", true, true, true],
+        ["Cloud hosting", false, true, false],
+        ["LDAP SSO", "Built-in", "Built-in", "Community Plugin"],
+        ["SAML SSO", false, true, false],
+        ["SCIM provisioning", false, true, false],
+        ["Spaces (private groups)", true, true, false],
+        ["RESTful API", true, true, true],
+        ["MCP Server", true, true, true],
+        ["Advanced integrations", true, true, false],
+        ["Akismet anti-spam", true, true, false],
+        ["Kubernetes & Docker", true, true, true],
+        ["Language / stack", "Java", "Java", "Go"],
+        ["Initial commit", "Jul 6, 2011", "Sep 13, 2018", "Sep 27, 2022"],
+        ["Open GitHub issues", "~8", "~9", "~91"]
       ]
     },
-    "discourse": {
-      "title": "Scoold vs Discourse",
-      "subtitle": "Q&A or forum? When structured answers matter more than conversation threads.",
+    {
+      "title": "Discourse",
+      "subtitle": "Two open-source Q&A platforms head-to-head. TL;DR: Discourse excels as a threaded forum with plenty of features, while Scoold is simpler to set up and more cost-effective.",
+      "slug": "discourse",
+      "pdf": "/scoold_vs_discourse.pdf",
+      "description": "Scoold is an alternative to Discourse. A comparison around enterprise features, deployment options, SSO support, and more.",
       "hero_badge": "COMPARISON",
-      "intro": "Discourse is an excellent forum platform optimized for long-form discussion threads. Scoold is purpose-built for Q&A - where finding the best answer quickly is the goal. Both are open-source and self-hostable.",
-      "table_headers": ["Feature", "Scoold", "Discourse"],
+      "intro": [
+        "Discourse is an excellent forum platform optimized for long-form discussion threads. Scoold is purpose-built for Q&A - where finding the best answer quickly is the goal. Both are open-source and easy to self-host.",
+        "Scoold also offers managed cloud hosting (Scoold Cloud) with plans starting from €49/month, and perpetual Pro licenses (from €499). Discourse offers several cloud hosting plans (ranging from $0 to $500+/month), but the cheaper plans are very limited in terms of functionality.",
+        "Discourse relies on plugins for additional features. Scoold offers an excellent alternative with well-rounded features out-of-the-box, and advanced integrations."
+      ],
+      "table_headers": ["Feature", "Scoold", "Scoold Pro", "Discourse"],
       "rows": [
-        ["Primary format", "Q&A", "Forum / Threads"],
-        ["Accepted answers", true, "Plugin"],
-        ["Voting system", true, true],
-        ["Full-text search", true, true],
-        ["LDAP / SSO", "Pro", "Paid plugin"],
-        ["Docker support", true, true],
-        ["REST API", true, true],
-        ["Gamification", "Built-in", "Basic"],
-        ["Best for", "Knowledge retrieval", "Discussion & community"]
+        ["Pricing model", "Free", "from {price}, one-time", "Free"],
+        ["License", "Apache 2.0", "EULA", "GPL v2"],
+        ["Data ownership", true, true, true],
+        ["On-premises", true, true, true],
+        ["Cloud hosting", false, true, true],
+        ["LDAP SSO", true, true, false],
+        ["SAML SSO", false, true, false],
+        ["SCIM provisioning", false, true, false],
+        ["Accepted answers", "Built-in", "Built-in", "Plugin"],
+        ["Voting system", true, true, true],
+        ["Spaces (private groups)", true, true, true],
+        ["RESTful API", true, true, true],
+        ["MCP Server", true, true, true],
+        ["Akismet anti-Spam", "Built-in", "Built-in", "Plugin"],
+        ["Kubernetes & Docker", true, true, true],
+        ["Language / stack", "Java", "Java", "Ruby"]
+      ]
+    },
+    {
+      "title": "Talkyard",
+      "subtitle": "Two open-source Q&A platforms compared. TL;DR: Talkyard is a hybrid community platform combining features from multiple products - Reddit, Stack Overflow, Discourse. Scoold is focused on the Q&A style format and provides extra features targeting small to medium sized enterprises and teams.",
+      "slug": "talkyard",
+      "pdf": "/scoold_vs_talkyard.pdf",
+      "description": "Scoold is an alternative to Talkyard. Two open-source Q&A platforms head-to-head - enterprise features, deployment options, SSO support, and more.",
+      "hero_badge": "COMPARISON",
+      "intro": [
+        "Scoold and Talkyard are both open-source Q&A platforms aimed at internal knowledge sharing, but they emphasize slightly different workflows. Scoold is a lightweight Stack Overflow-style Q&A system, available under Apache 2.0 with optional paid \"Pro\" licenses. It can be self-hosted or deployed on Scoold Cloud. ",
+        "Talkyard is an AGPLv3-licensed discussion platform that blends Q&A with threaded forum discussions and idea voting. It can be self-hosted or used via Talkyard's hosted service. Talkyard is great for threaded discussions similar to Reddit, Discourse, and it supports comment embedding.",
+        "Scoold offers a great Q&A alternative with features like reputation, custom badges and spaces, whereas Talkyard focuses on forum threads and ideation features."
+      ],
+      "table_headers": ["Feature", "Scoold", "Scoold Pro", "Talkyard"],
+      "rows": [
+        ["Pricing model", "Free", "from {price}, one-time", "Free"],
+        ["License", "Apache 2.0", "EULA", "AGPL v3"],
+        ["Data ownership", true, true, true],
+        ["On-premises", true, true, true],
+        ["Cloud hosting", false, true, true],
+        ["LDAP SSO", true, true, true],
+        ["SAML SSO", false, true, false],
+        ["SCIM provisioning", false, true, false],
+        ["Accepted answers", true, true, true],
+        ["Reputation & Badges", true, true, false],
+        ["Spaces (private groups)", true, true, true],
+        ["RESTful API", true, true, true],
+        ["MCP Server", true, true, false],
+        ["Akismet anti-spam", true, true, false],
+        ["Kubernetes & Docker", true, true, true],
+        ["Language / stack", "Java", "Java", "Scala"],
+        ["Initial commit", "Jul 6, 2011", "Sep 13, 2018", "Jan 8, 2015"],
+        ["Open GitHub issues", "~8", "~9", "~0"]
+      ]
+    },
+    {
+      "title": "Askbot",
+      "subtitle": "Two open-source Q&A platforms compared. TL;DR: Both are open-source and great for Q&A; Scoold is much easier to set up, and offers a feature-rich solution with a modern user interface.",
+      "slug": "askbot",
+      "pdf": "/scoold_vs_askbot.pdf",
+      "description": "Scoold is an alternative to Askbot. Two open-source Q&A platforms head-to-head - enterprise features, deployment options, SSO support, and more.",
+      "hero_badge": "COMPARISON",
+      "intro": [
+        "Scoold and Askbot are both open-source Q&A platforms designed to build community knowledge bases, but they differ in features and target use cases. Scoold is a lightweight Stack Overflow-style Q&A system, available under Apache 2.0 with optional paid \"Pro\" licenses. It can be self-hosted or deployed on Scoold Cloud. ",
+        "Askbot, built on Django/Python, is licensed under GPLv3 and offers a traditional Q&A forum with karma, tagging, and moderation. It is also available for free self-hosting but a cloud hosting service also exists as an option.",
+        "Scoold offers a great alternative solution with advanced features and modern UI. Askbot is great for public forums and the Python code base allows for easy extensibility."
+      ],
+      "table_headers": ["Feature", "Scoold", "Scoold Pro", "Askbot"],
+      "rows": [
+        ["Pricing model", "Free", "from {price}, one-time", "Free"],
+        ["License", "Apache 2.0", "EULA", "GPL v3"],
+        ["Data ownership", true, true, true],
+        ["On-premises", true, true, true],
+        ["Cloud hosting", false, true, true],
+        ["LDAP SSO", true, true, true],
+        ["SAML SSO", false, true, false],
+        ["SCIM provisioning", false, true, false],
+        ["Accepted answers", true, true, true],
+        ["Badges", true, true, false],
+        ["Spaces (private groups)", true, true, false],
+        ["REST API", true, true, true],
+        ["MCP Server", true, true, false],
+        ["Akismet anti-spam", true, true, false],
+        ["Docker", true, true, true],
+        ["Kubernetes (Helm chart)", true, true, false],
+        ["Language / stack", "Java", "Java", "Python"],
+        ["Initial commit", "Jul 6, 2011", "Sep 13, 2018", "Jul 5, 2009"],
+        ["Open GitHub issues", "~8", "~9", "~140"]
+      ]
+    },
+    {
+      "title": "Question2Answer",
+      "subtitle": "Two open-source Q&A platforms compared. TL;DR: Scoold is more feature-rich, enterprise-oriented, and has official cloud hosting, while Q2A is slightly easier and cheaper to deploy because it targets commodity PHP hosting.",
+      "slug": "question2answer",
+      "pdf": "/scoold_vs_q2a.pdf",
+      "description": "Scoold is an alternative to Question2Answer. Two open-source Q&A platforms head-to-head - enterprise features, deployment options, SSO support, and more.",
+      "hero_badge": "COMPARISON",
+      "intro": [
+        "Scoold and Question2Answer (Q2A) are both open-source Q&A platforms. Scoold is better suited for teams with strict privacy and security requirements as an internal Q&A/KB solution. It can be deployed on premises or to any cloud. Scoold requires a Java 21+ runtime. It features a Q&A-style format, full-text search, spaces (private groups), webhooks, backup/export, and a REST API.",
+        "Question2Answer (Q2A) is an older open-source project built using PHP and MySQL. It is widely used and translated in 40 languages and is also available as a Wordpress extension. It can be self-hosted, but does not offer official cloud hosting. Scoold offers much easier install path with a premium upgrade option (Scoold Pro), and official cloud hosting (Scoold Cloud).",
+        "Question2Answer (Q2A) is relatively easy to install on comodity shared hosting (with cPanel) but has slightly outdated UI. Q2A is licensed under GPL v3, which can negatively affect the ability for organizations to redistribute modified versions or derivatives."
+      ],
+      "table_headers": ["Feature", "Scoold", "Scoold Pro", "Question2Answer"],
+      "rows": [
+        ["Pricing model", "Free", "from {price}, one-time", "Free"],
+        ["License", "Apache 2.0", "EULA", "GPL v3"],
+        ["Data ownership", true, true, true],
+        ["On-premises", true, true, true],
+        ["Cloud hosting", false, true, false],
+        ["LDAP SSO", "Built-in", "Built-in", "Plugin"],
+        ["SAML SSO", false, true, false],
+        ["SCIM provisioning", false, true, false],
+        ["Accepted answers", true, true, true],
+        ["Sticky/pinned posts", false, "Built-in", "Plugin"],
+        ["Badges", "Built-in", "Built-in", "Plugin"],
+        ["Spaces (private groups)", true, true, false],
+        ["REST API", true, true, false],
+        ["MCP Server", true, true, false],
+        ["Email notifications", "Built-in", "Built-in", "Plugin"],
+        ["Akismet anti-spam", "Built-in", "Built-in", "Plugin"],
+        ["MathJax", false, "Built-in", "Plugin"],
+        ["Docker", true, true, true],
+        ["Kubernetes (Helm chart)", true, true, false],
+        ["Language / stack", "Java", "Java", "PHP"],
+        ["Initial commit", "Jul 6, 2011", "Sep 13, 2018", "Dec 14, 2011"],
+        ["Open GitHub issues", "~8", "~9", "~60"]
       ]
     }
-  },
-  "integrations": {
-    "teams": {
-      "title": "Scoold + Microsoft Teams",
+  ],
+  "integrations": [
+    {
+      "title": "Slack",
+      "subtitle": "Ask questions from Slack. Get answers in Scoold. Build a permanent knowledge base.",
+      "slug": "slack",
+      "description": "Stop losing knowledge in Slack chat threads. With the Slack integration, questions from your Slack channels can be routed to Scoold, where they get answered and indexed permanently.",
+      "features": [
+        { 
+          "img": "slack_intro1",
+          "title": "Create questions and answers instantly from Slack", 
+          "description": "• Asking a question on Slack is as easy as writing <br><code class='ml-2'>/scoold ask How do I...?</code> <br>• To answer, simply type in <br><code class='ml-2'>/scoold answer [question URL] Here's my answer...</code> <br> • You can also turn any chat message into a Scoold question or answer by using the special message actions." 
+        },
+        { 
+          "img": "slack_intro2",
+          "title": "Full editing capability", 
+          "description": "• Compose a new question by opening the \"Edit & Ask\" dialog. <br>• To compose a new answer, click the context menu and choose \"Answer on Scoold\" <br>• Write longer pieces of text, choose the exact title and tags you want your question to have." 
+        },
+        { 
+          "img": "slack_intro3",
+          "title": "Search for questions, people or tags", 
+          "description": "Perform advanced search queries from any Slack channel by using the slash commands: <br>•<code>/scoold search {query}</code> <br>•<code>/scoold search-people {name}</code> <br>•<code>/scoold search-tags {tag}</code>"
+        },
+        { 
+          "img": "slack_intro4",
+          "title": "Real-time notifications", 
+          "description": "• Linked channels will be instantly notified whenever a new question or answer is created on Scoold. <br> • Mentions of people in chat are sent to the channel even if the person is mentioned at a later revision of the post. <br> • Mention anyone in Scoold from Slack, by linking to their profile in your post."
+        },
+        { 
+          "img": "slack_intro5",
+          "title": "Approve questions and answers without leaving the channel", 
+          "description": "• A handy feature for moderators who wish to keep an eye on new posts on Scoold. <br> • If new posts require explicit approval from mods, Scoold will notify the chat by presenting the option to \"Approve\" or \"Delete\" the newly created post."
+        }
+      ],
+      "setup_steps": [
+        "You'll need a copy of Scoold Pro up and running first.",
+        "Create a new Slack app from the Slack API Portal.",
+        "Copy the app credentials and configure Scoold to use them.",
+        "Connect Scoold to Slack from the \"Administration\" page in Scoold.",
+        "Follow the documentation to get started."
+      ]
+    },
+    {
+      "title": "Microsoft Teams",
       "subtitle": "Ask questions from Teams. Get answers in Scoold. Build a permanent knowledge base.",
-      "hero_badge": "INTEGRATION",
-      "description": "Stop losing knowledge in Teams chat threads. With the Scoold + Microsoft Teams integration, questions from your Teams channels are automatically posted to Scoold, where they get answered and indexed permanently.",
+      "slug": "microsoft-teams",
+      "description": "Stop losing knowledge in Teams chat threads. With the Microsoft Teams integration, questions from your Teams channels can be routed to Scoold, where they get answered and indexed permanently.",
       "features": [
-        { "title": "Post to Scoold from Teams", "description": "Use a slash command or bot mention to post a question directly to Scoold without leaving Teams." },
-        { "title": "Notifications in Teams", "description": "Get notified in Teams when your Scoold question is answered or commented on." },
-        { "title": "Knowledge Capture", "description": "Every Teams conversation that ends with a Scoold answer becomes a permanent, searchable resource." }
+        { 
+          "img": "teams_intro1",
+          "title": "Create questions and answers instantly from Microsoft Teams", 
+          "description": "• Asking a question on Teams is as easy as writing <br><code class='ml-2'>@Scoold ask How do I...?</code> <br>• To answer, simply type in <br><code class='ml-2'>@Scoold answer [question URL] Here's my answer...</code> <br> • You can also turn any chat message into a Scoold question or answer by using the special message actions." 
+        },
+        { 
+          "img": "teams_intro2",
+          "title": "Full editing capability", 
+          "description": "• Compose a new question by typing in the <code class=''>@Scoold ask</code> command. <br> • To compose a new answer, type in <code>@Scoold answer</code> <br> • Write longer pieces of text, choose the exact title and tags you want your question to have." 
+        },
+        { 
+          "img": "teams_intro3",
+          "title": "Search for questions, people or tags", 
+          "description": "• Perform advanced search queries from the message compose box in Teams by typing <code>@Scoold search</code> and choosing a search option from the menu. <br> • Find any question, person or tag instantly and share the results with your team."
+        },
+        { 
+          "img": "teams_intro4",
+          "title": "Real-time notifications", 
+          "description": "• Linked channels will be instantly notified whenever a new question or answer is created on Scoold. <br> • Mentions of people in chat are sent to the channel even if the person is mentioned at a later revision of the post. <br> • Mention anyone in Scoold from Teams, by linking to their profile in your post."
+        },
+        { 
+          "img": "teams_intro5",
+          "title": "Approve questions and answers without leaving the channel", 
+          "description": "• A handy feature for moderators who wish to keep an eye on new posts on Scoold. <br> • If new posts require explicit approval from mods, Scoold will notify the chat by presenting the option to \"Approve\" or \"Delete\" the newly created post."
+        }
       ],
       "setup_steps": [
-        "Install the Scoold connector in Microsoft Teams admin center",
-        "Configure your Scoold Pro instance with the Teams webhook URL",
-        "Set up notification channels for new questions and answers",
-        "Start posting - questions flow automatically from Teams to Scoold"
+        "You'll need a copy of Scoold Pro up and running first.",
+        "Create a new bot from the Teams Developer Portal.",
+        "Copy the bot credentials and configure Scoold to use them.",
+        "Connect Scoold to Teams from the \"Administration\" page in Scoold.",
+        "Follow the documentation to get started."
       ]
     },
-    "slack": {
-      "title": "Scoold + Slack",
-      "subtitle": "Turn Slack questions into permanent knowledge - automatically.",
-      "hero_badge": "INTEGRATION",
-      "description": "Questions asked in Slack evaporate after 90 days on free plans. Scoold captures them permanently. Set up the integration once and every question your team asks in Slack has a home in your knowledge base.",
-      "features": [
-        { "title": "Slash Command", "description": "Use /scoold ask to post questions to Scoold directly from any Slack channel." },
-        { "title": "Answer Notifications", "description": "Get a Slack DM when your question is answered on Scoold." },
-        { "title": "Channel Digests", "description": "Weekly digest of unanswered questions posted to a designated Slack channel." }
-      ],
-      "setup_steps": [
-        "Create a Slack App and get your bot token and webhook URL",
-        "Add the Slack webhook URL in Scoold Pro settings",
-        "Configure which Slack channels to monitor or post to",
-        "Install the Slack App to your workspace"
-      ]
-    },
-    "mattermost": {
-      "title": "Scoold + Mattermost",
-      "subtitle": "Self-hosted chat meets self-hosted knowledge base.",
-      "hero_badge": "INTEGRATION",
+    {
+      "title": "Mattermost",
+      "subtitle": "Ask questions from Mattermost. Get answers in Scoold. Build a permanent knowledge base.",
+      "slug": "mattermost",
       "description": "If your organization runs Mattermost for secure, self-hosted chat, Scoold is the perfect companion for knowledge management. Both run on your infrastructure - complete data sovereignty.",
       "features": [
-        { "title": "Incoming Webhooks", "description": "Scoold posts new questions and answers to configured Mattermost channels via incoming webhooks." },
-        { "title": "Slash Commands", "description": "Ask questions from Mattermost and have them automatically posted to Scoold." },
-        { "title": "Full Self-hosted Stack", "description": "Mattermost + Scoold = a completely self-hosted communication and knowledge management stack." }
+        { 
+          "img": "mm_intro1",
+          "title": "Create questions and answers instantly from Mattermost", 
+           "description": "• Asking a question on Mattermost is as easy as writing <br><code class='ml-2'>/scoold ask How do I...?</code> <br>• To answer, simply type in <br><code class='ml-2'>/scoold answer [question URL] Here's my answer...</code> <br> • You can also turn any chat message into a Scoold question or answer by using the special message actions." 
+        },
+        { 
+          "img": "mm_intro2",
+          "title": "Full editing capability", 
+          "description": "• Compose a new question by typing in the <code class=''>/scoold ask</code> slash command. <br> • To compose a new answer, type in <code>/scoold answer</code> <br> • Write longer pieces of text, choose the exact title and tags you want your question to have."
+        },
+        { 
+          "img": "mm_intro3",
+          "title": "Search for questions, people or tags", 
+          "description": "Perform advanced search queries from any Mattermost channel by using the slash commands: <br>•<code>/scoold search {query}</code> <br>•<code>/scoold search-people {name}</code> <br>•<code>/scoold search-tags {tag}</code>"
+        },
+        { 
+          "img": "mm_intro4",
+          "title": "Real-time notifications", 
+          "description": "• Linked channels will be instantly notified whenever a new question or answer is created on Scoold. <br> • Mentions of people in chat are sent to the channel even if the person is mentioned at a later revision of the post. <br> • Mention anyone in Scoold from Mattermost, by linking to their profile in your post."
+        },
+        { 
+          "img": "mm_intro5",
+          "title": "Approve questions and answers without leaving the channel", 
+          "description": "• A handy feature for moderators who wish to keep an eye on new posts on Scoold. <br> • If new posts require explicit approval from mods, Scoold will notify the chat by presenting the option to \"Approve\" or \"Delete\" the newly created post."
+        }
       ],
       "setup_steps": [
-        "Create an Incoming Webhook in Mattermost",
-        "Add the webhook URL in your Scoold Pro configuration",
-        "Create a Slash Command in Mattermost pointing to your Scoold instance",
-        "Test by posting a question from Mattermost"
+        "You'll need both Scoold Pro and Mattermost up and running first.",
+        "In Mattermost, enable OAuth2 and create a new OAuth2 trusted application.",
+        "Copy the app credentials and configure Scoold to use them.",
+        "Connect Scoold to Teams from the \"Administration\" page in Scoold.",
+        "Follow the documentation to get started."
       ]
     },
-    "zapier": {
-      "title": "Scoold + Zapier",
-      "subtitle": "Connect Scoold to 5,000+ apps - no code required.",
-      "hero_badge": "INTEGRATION",
-      "description": "Zapier connects Scoold's REST API to thousands of other tools. Automate workflows like notifying Jira when a new question is tagged 'bug', or adding unanswered questions to your team's project management tool.",
+    {
+      "title": "Zapier",
+      "subtitle": "Connect Scoold to thousands of apps - no code required.",
+      "slug": "zapier",
+      "description": "Zapier connects Scoold's API to thousands of other tools. Automate workflows like notifying Jira when a new question is tagged 'bug', or adding unanswered questions to your team's project management tool.",
       "features": [
-        { "title": "Trigger on New Questions", "description": "Fire Zapier automations whenever a new question is posted, answered, or tagged." },
-        { "title": "Push to Any Tool", "description": "Route Scoold events to Jira, Trello, Notion, Airtable, HubSpot, or any Zapier-supported app." },
-        { "title": "Automate Moderation", "description": "Use Zapier to auto-flag questions, assign experts, or create follow-up tasks." }
+        { 
+          "img": "zapier_intro1",
+          "title": "Quickly connect to any Scoold instance", 
+          "description": "Simply enable the Scoold API and generate a new API key from the \"Administration\" page in Scoold. Then point Zapier to your Scoold server URL and enter your API key." 
+        },
+        { 
+          "img": "zapier_intro2",
+          "title": "Trigger on new questions and answers", 
+          "description": "Fire Zapier automations whenever a new question is posted, answered, or tagged. Send emails to subject-matter experts, add humans in the loop." 
+        },
+        { 
+          "img": "zapier_intro3",
+          "title": "Automate Scoold content creation with Zapier Actions", 
+          "description": "Create a new question whenever a person pushes a new message in chat, or a new email comes in. The possibilities are endless." 
+        },
+        { 
+          "img": "zapier_intro4",
+          "title": "Manage your custom zaps centrally", 
+          "description": "Quickly add and manage zaps on the Zapier platform, enable or disable zaps with a single click." 
+        },
+        { 
+          "img": "zapier_intro5",
+          "title": "Use AI to generate complete Zapier integrations", 
+          "description": "Save hours by using Zapier's Copilot feature to help you generate complete integrations between your favorite tools and Scoold." 
+        }
       ],
       "setup_steps": [
-        "Create a Zapier account (free tier works)",
-        "Connect the Scoold Zapier app using your API key",
-        "Choose your trigger (new question, new answer, new user, etc.)",
-        "Connect to your target app and configure the action"
+        "You'll need a Zapier account and Scoold Pro up and running first.",
+        "Connect Scoold to Zapier app using your Scoold API key",
+        "Create a zap by choosing the provided Scoold triggers and actions in Zapier",
+        "Follow the documentation to get started."
+      ]
+    },
+    {
+      "title": "n8n",
+      "subtitle": "Connect Scoold to thousands of apps - no code required.",
+      "slug": "n8n",
+      "description": "🚧 This integration is under active development. Stay tuned! 🚧",
+      "features": [
+      ],
+      "setup_steps": [
+        "You'll need Scoold Pro and n8n up and running first.",
+        "Connect Scoold to n8n app using your Scoold API key",
+        "Create an integration by choosing the provided Scoold triggers and actions in n8n",
+        "Follow the documentation to get started."
       ]
     }
-  },
+  ],
   "open_source": {
     "title": "Open source and proud of it",
     "title_short": "Open Source",

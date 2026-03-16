@@ -1,25 +1,18 @@
 ---
-import { site, components, authors, blogPage } from "../../data/site-data.json";
-import { getImage } from "astro:assets";
+import { site, components, solutions } from "../../data/site-data.json";
 import SolutionPage from '../../components/SolutionPage.astro';
-import { solutions } from '../../data/site-data.json';
 
 const { breadcrumbs } = components;
 const baseUrl = site.url;
 
-const toSlug = (sol) => sol.toLowerCase().replace(/\s+/g, "-");
-
 export async function getStaticPaths() {
-  return solutions.map((sol) => ({
-    params: { slug: toSlug(sol.title) },
-    props: { solution: sol }
-  }));
+    return solutions.map((solution) => ({
+        params: { solution: solution.slug },
+        props: { solution }
+    }));
 }
-console.log(">>> ", Astro.props)
-
-
 const { solution } = Astro.props;
-const postUrl = `${baseUrl}/${toSlug(solution.title)}`;
+const postUrl = `${baseUrl}/solutions/${solution.slug}`;
 
 const articleJsonLd = {
   "@context": "https://schema.org",

@@ -12,8 +12,9 @@ const toSlug = (tag) => tag.toLowerCase().replace(/\s+/g, "-");
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   const tagMap = new Map();
-
+  
   posts.forEach((post) => {
+    const toSlug = (tag) => tag.toLowerCase().replace(/\s+/g, "-");
     post.data.tags.forEach((tag) => {
       const slug = toSlug(tag);
       if (!tagMap.has(slug)) {

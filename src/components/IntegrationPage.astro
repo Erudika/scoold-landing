@@ -1,53 +1,95 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from './CTA.astro';
-import { ui } from '../data/site-data.json';
+import { site, ui, components } from '../data/site-data.json';
+import { Image } from 'astro:assets';
+import scooldLogo from '../images/logosq.svg';
+import plug from '../images/plug.png';
+import herobg from '../images/herobg.svg';
 
 interface Feature {
   title: string;
   description: string;
+  img?: string;
 }
 
 interface Props {
   title: string;
   subtitle: string;
-  hero_badge: string;
+  slug: string;
   description: string;
   features: Feature[];
   setup_steps: string[];
   metaDescription?: string;
 }
-
-const { title, subtitle, hero_badge, description, features, setup_steps, metaDescription } = Astro.props;
+const logoSize = 100;
+const plugSize = 100;
+const { title, subtitle, slug, description, features, setup_steps } = Astro.props;
 ---
 
-<BaseLayout title={title} description={metaDescription ?? subtitle}>
+<BaseLayout title={`${site.title} + $(title) Integration`} description={description}>
   <!-- Hero -->
-  <section class="bg-white border-slate-100 border-b section-padding">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-      <span class="section-label">{hero_badge}</span>
+  <section class="relative bg-white py-15 border-slate-100 border-b animate-fade-in" style={`background-image: url(${herobg.src});`}>
+     <!-- Gradient fade edges -->
+    <div class="absolute inset-0 bg-linear-to-b from-white via-transparent to-white pointer-events-none"></div>
+
+    <div class="relative mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="section-label">{components.breadcrumbs.integrations}</span>
       <h1 class="mb-5 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
-        {title}
+        {site.title} <span class="text-brand-500">&plus;</span> {title}
       </h1>
-      <p class="mb-4 text-slate-700 text-xl leading-relaxed">{subtitle}</p>
+
+      <div class="flex justify-center items-center">
+        <div class="pt-23">
+          <Image src={scooldLogo} 
+            width={logoSize} 
+            height={logoSize} 
+            alt="Scoold Logo" 
+            class="bg-white p-1 border border-neutral-300 rounded-2xl" 
+            loading="eager"
+          />
+        </div>
+        <Image src={plug} 
+          width={plugSize} 
+          height={plugSize} 
+          alt="Depicting plug and cord" 
+          class="inline-block" 
+          loading="eager"
+        />
+        <div class="pb-17">
+          <Image src={import(`../images/${slug}.svg`)} 
+            width={logoSize - 10} 
+            height={logoSize - 10} 
+            alt={`$(slug) Logo`} 
+            class="bg-white p-2 border border-neutral-300 rounded-2xl" 
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <p class="mt-10 mb-4 text-slate-700 text-xl leading-relaxed">{subtitle}</p>
       <p class="mx-auto max-w-2xl text-slate-600 text-base leading-relaxed">{description}</p>
     </div>
   </section>
 
   <!-- Integration features -->
-  <section class="bg-slate-50 section-padding">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+  <section class="bg-slate-50 animate-fade-in section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <h2 class="mb-8 font-bold text-brand-600 text-sm text-center uppercase tracking-widest">{ui.integration_page.highlights_label}</h2>
-      <div class="gap-6 grid sm:grid-cols-3">
+      <div class="gap-6 grid md:grid-cols-2">
         {features.map((feature) => (
-          <div class="bg-white p-6 border border-slate-100 rounded-2xl">
-            <div class="flex justify-center items-center bg-brand-50 mb-3 rounded-lg w-8 h-8">
-              <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              </svg>
+          <div class="bg-white p-6 border border-slate-200 rounded-2xl">
+            <div class="flex justify-center items-start bg-white mb-4 rounded-lg h-fit">
+              {feature.img && (
+                <Image 
+                  src={import(`../images/${slug}/${feature.img}.png`)} 
+                  alt={`Integration screenshot - ${feature.title}`} 
+                  class="bg-white border border-neutral-300 rounded-lg w-auto max-h-[380px]"
+                  loading="eager"/>)
+              }
             </div>
-            <h3 class="mb-2 font-semibold text-slate-900">{feature.title}</h3>
-            <p class="text-slate-700 text-sm leading-relaxed">{feature.description}</p>
+            <h3 class="mt-10 mb-2 font-semibold text-slate-900 text-lg">{feature.title}</h3>
+            <p class="text-slate-700 leading-relaxed" set:html={feature.description}></p>
           </div>
         ))}
       </div>
@@ -73,7 +115,7 @@ const { title, subtitle, hero_badge, description, features, setup_steps, metaDes
       <div class="bg-brand-50 mt-8 p-5 border border-brand-100 rounded-xl">
         <p class="text-brand-800 text-sm">
           <strong>{ui.integration_page.docs_cta_text}</strong>{' '}
-          <a href={ui.integration_page.docs_href} class="font-medium underline hover:no-underline">{ui.integration_page.docs_link_label}</a>
+          <a href={`${ui.integration_page.docs_href}/integrations/${slug}`} class="font-medium underline hover:no-underline">{ui.integration_page.docs_link_label}</a>
         </p>
       </div>
     </div>

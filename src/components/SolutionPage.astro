@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from './CTA.astro';
-import { ui } from '../data/site-data.json';
+import { ui, components } from '../data/site-data.json';
+import { getImage } from "astro:assets";
 
 interface Feature {
   title: string;
@@ -11,21 +12,23 @@ interface Feature {
 interface Props {
   title: string;
   subtitle: string;
+  slug: string;
   description: string;
-  hero_badge: string;
   features: Feature[];
   use_cases: string[];
+  img: string;
   cta: { label: string; href: string };
 }
 
-const { title, subtitle, description, hero_badge, features, use_cases, cta } = Astro.props;
+const { title, subtitle, description, features, use_cases, cta, img } = Astro.props;
+const heroImageUrl = await getImage({src: import(`../images/${img}.png`)});
 ---
 
 <BaseLayout title={title} description={description}>
   <!-- Hero -->
-  <section class="bg-white border-slate-100 border-b section-padding">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-      <span class="section-label">{hero_badge}</span>
+  <section class="bg-repeat-x bg-left py-50 border-slate-100 border-b text-center animate-fade-in" style={`background-image: url(${heroImageUrl.src});`}>
+    <div class="inline-block bg-white/85 mx-auto px-4 sm:px-6 lg:px-8 py-4 rounded-3xl">
+      <span class="section-label">{components.breadcrumbs.solutions}</span>
       <h1 class="mb-5 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
         {title}
       </h1>
@@ -39,7 +42,7 @@ const { title, subtitle, description, hero_badge, features, use_cases, cta } = A
   </section>
 
   <!-- Features -->
-  <section class="bg-slate-50 section-padding">
+  <section class="bg-slate-50 animate-fade-in section-padding">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
       <h2 class="mb-8 font-bold text-brand-600 text-sm text-center uppercase tracking-widest">{ui.solution_page.key_capabilities_label}</h2>
       <div class="gap-6 grid sm:grid-cols-2">
@@ -60,17 +63,17 @@ const { title, subtitle, description, hero_badge, features, use_cases, cta } = A
 
   <!-- Use cases -->
   <section class="bg-white section-padding">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
       <h2 class="mb-8 font-bold text-slate-900 text-2xl text-center">{ui.solution_page.use_cases_title}</h2>
       <div class="gap-4 grid sm:grid-cols-2">
         {use_cases.map((uc) => (
           <div class="flex items-center gap-3 bg-slate-50 p-4 border border-slate-100 rounded-xl">
             <div class="flex justify-center items-center bg-brand-100 rounded-full w-6 h-6 shrink-0">
-              <svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
               </svg>
             </div>
-            <span class="font-medium text-slate-700 text-sm">{uc}</span>
+            <span class="font-medium text-slate-700">{uc}</span>
           </div>
         ))}
       </div>

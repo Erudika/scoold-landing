@@ -1,0 +1,44 @@
+---
+import IntegrationPage from '../../components/IntegrationPage.astro';
+import { site, components, integrations } from "../../data/site-data.json";
+
+const { breadcrumbs } = components;
+const baseUrl = site.url;
+
+export async function getStaticPaths() {
+    return integrations.map((integration) => ({
+        params: { integration: integration.slug },
+        props: { integration }
+    }));
+}
+const { integration } = Astro.props;
+const postUrl = `${baseUrl}/integration-with/${integration.slug}`;
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: "Scoold + " + integration.title + " Integration",
+  description: integration.description,
+  datePublished: new Date().toISOString(),
+  dateModified: new Date().toISOString(),
+  author: {
+    "@type": "Organization",
+    name: site.company,
+    url: site.companyUrl
+  },
+  mainEntityOfPage: postUrl,
+  image: [site.companyLogo],
+  url: postUrl
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
+    { "@type": "ListItem", position: 2, name: breadcrumbs.blog, item: `${postUrl}` }
+  ]
+};
+---
+
+<IntegrationPage {...integration}/>

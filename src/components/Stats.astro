@@ -1,5 +1,6 @@
 ---
 import { stats } from '../data/site-data.json';
+const years = new Date().getFullYear() - 2017;
 ---
 
 <section class="bg-slate-50 border-slate-100 border-y animate-fade-in">
@@ -8,7 +9,7 @@ import { stats } from '../data/site-data.json';
       {stats.map((stat) => (
         <div class="md:px-8 text-center">
           <div class="mb-1 font-extrabold text-slate-900 text-3xl lg:text-4xl">
-            {stat.value}
+            {stat.value.replace("{years}", `${years}`)}
           </div>
           <div class="font-medium text-slate-700 text-sm">
             {stat.label}
