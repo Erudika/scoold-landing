@@ -10,6 +10,7 @@ export default defineConfig({
   site: site.url,
   output: 'static',
   trailingSlash: 'never', 
+  security: { csp: true },
   integrations: [// Register sitemap BEFORE Starlight to prevent Starlight adding its own version
     sitemap(),
     starlight(

@@ -10,13 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.0",
-    "@astrojs/starlight": "^0.37.6",
-    "@astrojs/starlight-tailwind": "^4.0.2",
+    "@astrojs/sitemap": "3.7.1",
+    "@astrojs/starlight": "0.38.1",
+    "@astrojs/starlight-tailwind": "5.0.0",
     "@scalar/astro": "^0.1.20",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.1",
-    "astro": "5.17.3",
+    "astro": "6.0.4",
     "daisyui": "^5.5.19",
     "starlight-contextual-menu": "^0.1.5",
     "tailwindcss": "4.2.1"
