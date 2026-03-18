@@ -5,13 +5,12 @@ import { getCollection } from "astro:content";
 import { site, blog_page, components, blogTags } from "../../../data/site-data.json";
 
 
-const toSlug = (tag) => tag.toLowerCase().replace(/\s+/g, "-");
 const posts = await getCollection("blog");
 const tagMap = new Map();
 
 posts.forEach((post) => {
   post.data.tags.forEach((tag) => {
-    const slug = toSlug(tag);
+    const slug = tag;
     if (!tagMap.has(slug)) {
       tagMap.set(slug, { label: tag, count: 0 });
     }
@@ -45,7 +44,7 @@ const breadcrumbJsonLd = {
       <p class="mt-4 max-w-2xl text-base-content/70 text-lg">{blogTags.body}</p>
       <div class="flex flex-wrap gap-3 mt-10">
         {tags.map((tag) => (
-          <a href={`/blog/tags/${tag.slug}`} class="chip">
+          <a href={`/blog/tags/${tag}/`} class="chip">
             {tag.label} <span class="ml-2 text-slate-600 text-xs">{tag.count}</span>
           </a>
         ))}

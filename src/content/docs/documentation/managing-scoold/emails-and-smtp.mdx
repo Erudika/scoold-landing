@@ -1,0 +1,85 @@
+---
+title: Emails & SMTP config
+description: Configuration for transactional emails and SMTP settings
+sidebar:
+  order: 2
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## SMTP configuration
+
+Scoold uses the JavaMail API to send emails. If you want Scoold to send notification emails you should add the
+following SMTP settings to your config file:
+
+```ini title="scoold-application.conf"
+# system email address
+scoold.support_email = "support@scoold.com"
+
+scoold.mail.host = "smtp.example.com"
+scoold.mail.port = 587
+scoold.mail.username = "user@example.com"
+scoold.mail.password = "password"
+scoold.mail.tls = true
+scoold.mail.ssl = false
+
+# enable SMTP debug logging
+scoold.mail.debug = true
+```
+The email template is located in `src/main/resources/emails/notify.html`.
+
+Email notifications are enabled by default but can also be turned off completely by changing these settings:
+```ini title="scoold-application.conf"
+# disable all notifications
+scoold.notification_emails_allowed = true
+# disable notifications for new posts
+scoold.newpost_emails_allowed = true
+# disable notifications for new posts that match favorite tags
+scoold.favtags_emails_allowed = true
+# disable notifications for replies
+scoold.reply_emails_allowed = true
+# disable notifications for comments
+scoold.comment_emails_allowed = true
+
+# additional options for Scoold Pro
+# disable notifications for mentions
+scoold.mentions_emails_allowed = true
+```
+
+For **Gmail** you have to turn on "Less secure app access" in your Google account settings. There's no need to configure
+`mail.tls` or `mail.ssl`, just set the `mail.host` to `smtp.gmail.com` and your Gmail email and password.
+
+## Email verification
+
+You can enable or disable the email verification step by setting `scoold.security.allow_unverified_emails = true`
+(in Scoold's `scoold-application.conf`). By default, email verification is turned off when Scoold is running in development mode.
+This will allow new users to register with fake emails and Scoold will not send them a confirmation email. It's useful
+for testing purposes or in certain situations where you want to programmatically sign up users who don't have an email.
+
+
+## Welcome email customization
+
+To customize the message sent when a new user signs up with Scoold, modify these properties in your Scoold configuration
+file:
+```ini title="scoold-application.conf"
+scoold.emails.welcome_text1 = "You are now part of {0} - a friendly Q&A community..."
+scoold.emails.welcome_text2 = "To get started, simply navigate to the "Ask question" page and ask a question..."
+scoold.emails.welcome_text3 = "Best, <br>The {0} team<br><br>"
+```
+
+
+## Periodic summary emails (email digest) 
+**This is a <Badge text="Pro" variant="tip" /> feature**
+
+You can choose to enable periodic summary emails for all users in Scoold or allow them to opt-in for these messages.
+By default summary emails are disabled and users can unsubscribe if they are enabled by admins.
+A summary email contains all new questions for a past period of time (daily, weekly). Admins can enable summary emails
+for everyone from the Settings page if `scoold.summary_email_controlled_by_admins = true`. If that parameter is `false`
+each person (by default) controls whether they want to receive summary emails or not.
+
+The period for which a summary report is generated is controlled by:
+```ini
+scoold.summary_email_period_days = 2
+```
+The values of this setting can range from `1` to `30` days, where `2` means "every other day", `7` means "every week".
+The summary email contains a list of the top 25 recent questions. For more questions set `scoold.summary_email_items = 30`.

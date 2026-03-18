@@ -1,0 +1,218 @@
+---
+title: Kubernetes Deployment
+description: Production Kubernetes deployment guide for Scoold.
+sidebar:
+  order: 2
+---
+
+import { Aside, Badge, Steps, LinkCard, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Helm chart
+
+There's a Helm chart inside the `helm/` folder, in each project repository. 
+{/* First edit `helm/scoold/values.yaml` and then you can deploy Scoold to Kubernetes with Helm: */}
+
+<Tabs>
+    <TabItem label="Scoold">
+        The Helm chart bootstraps a [Scoold](https://github.com/Erudika/scoold) instance on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+
+        This chart **does not** install Para next to Scoold in the K8s cluster. There is a separate [Helm chart for Para](https://github.com/Erudika/para/tree/master/helm).
+        We also offer a fully managed Para service at [ParaIO.com](https://paraio.com)
+
+        ### Prerequisites
+
+        - Para backend service (latest version recommended; [Helm chart](https://github.com/Erudika/para/tree/master/helm))
+        - Helm 3.0+
+        - Kubernetes 1.21+ (for the optional CronJob helper)
+
+        ### Installation
+
+        Clone the repo and go inside the `./helm/` directory :
+
+        ```bash
+        git clone https://github.com/Erudika/scoold
+        cd scoold/helm
+        # edit values.yaml as needed
+        helm install scoold ./scoold
+        ```
+        The command deploys Scoold on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+
+        If you want to auto-initialize Scoold from scratch, deploy the Para Helm chart first, then take note of the root app secret key.
+        The root app secret key is stored in the `para-application.conf` file located inside `/para/application.conf` inside the Para pod.
+        Then modify `values.yaml` and add this Scoold configuration property:
+
+        ```ini
+        scoold.autoinit.root_app_secret_key="{secret key for root Para app}"
+        ```
+        Finally, run `helm upgrade --install scoold ./scoold`.
+
+        <Aside type="tip">
+        List all releases using `helm list`
+        </Aside>
+
+        ### Uninstalling the Chart
+
+        To uninstall/delete the `scoold` deployment:
+
+        ```bash
+        helm uninstall scoold
+        ```
+
+        The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+        ### Configuration properties
+
+        The following table lists the configurable parameters inside `values.yaml` and their default values.
+
+        | Parameter                                                                              | Default value                                            |
+        |----------------------------------------------------------------------------------------|----------------------------------------------------------|
+        | `image.repository`                  <br/>Scoold image name                             | `erudikaltd/scoold`                                      |
+        | `image.tag`                         <br/>Scoold image tag                              | `1.65.0`                                                 |
+        | `image.pullPolicy`                  <br/>Image pull policy                             | `IfNotPresent`                                           |
+        | `image.pullSecrets`                 <br/>References to image pull secrets              | `[]`                                                     |
+        | `service.type`                      <br/>Kubernetes Service type                       | `ClusterIP`                                              |
+        | `service.port`                      <br/>Service HTTP port                             | `8000`                                                   |
+        | `service.name`                      <br/>Service port name                             | `http`                                                   |
+        | `applicationConf`                   <br/>Scoold configuration                          | Sample block in `values.yaml`                            |
+        | `javaOpts`                          <br/>`JAVA_OPTS` JVM arguments                     | `-Xmx512m -Xms512m -Dconfig.file=/scoold/config/application.conf` |
+        | `podAnnotations`                    <br/>Pod annotations                               | `{}`                                                     |
+        | `extraEnvs`                         <br/>Extra environment variables                   | `[]`                                                     |
+        | `updateStrategy`                    <br/>Deployment update strategy                    | `RollingUpdate`                                          |
+        | `ingress.enabled`                   <br/>Create Ingress                                | `false`                                                  |
+        | `ingress.className`                 <br/>Ingress class name                            | `""`                                                     |
+        | `ingress.hosts[0].host`             <br/>Hostname for the Ingress                      | `scoold.local`                                           |
+        | `ingress.hosts[0].paths[0].path`    <br/>HTTP path served by the Ingress               | `/`                                                      |
+        | `ingress.tls`                       <br/>TLS configuration                             | `[]`                                                     |
+        | `resources`                         <br/>CPU/Memory resource requests/limits           | `{}`                                                     |
+        | `nodeSelector`                      <br/>Node selector                                 | `{}`                                                     |
+        | `tolerations`                       <br/>Tolerations                                   | `[]`                                                     |
+        | `affinity`                          <br/>Affinity rules                                | `{}`                                                     |
+
+        A YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
+
+        ```bash
+        helm install scoold ./scoold -f values.yaml
+        ```
+        Or, when updating the chart with new configuration:
+
+        ```bash
+        helm upgrade --install scoold ./scoold -f values.yaml
+        ```
+    </TabItem>
+    <TabItem label="Scoold Pro">
+        The Helm chart bootstraps a [Scoold Pro](https://github.com/Erudika/scoold-pro) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+
+        This chart **does not** install Para next to Scoold in the K8s cluster. There is a separate [Helm chart for Para](https://github.com/Erudika/para/tree/master/helm).
+        We also offer a fully managed Para service at [ParaIO.com](https://paraio.com)
+
+        ### Prerequisites
+
+        - Para backend service (latest version recommended; [Helm chart](https://github.com/Erudika/para/tree/master/helm))
+        - Access credentials for the private [Scoold Pro Docker registry on ECR](/documentation/deployment/docker#docker-registry-for-scoold-pro-images)
+        - Helm 3.0+
+        - Kubernetes 1.21+ (for the optional CronJob helper)
+
+        ### Installation
+
+        First of all, make sure you have followed the [guide to get access to the private Docker registry on ECR.](/documentation/deployment/docker#docker-registry-for-scoold-pro-images)
+        Access to the private Docker registry can be requested by emailing support, after you purchase a Scoold Pro license.
+
+        Then clone the Helm chart locally:
+
+        ```bash
+        git clone https://github.com/Erudika/scoold-pro
+        cd scoold-pro/helm
+        ```
+
+        Inside the `./helm/` directory execute the following console command, while replacing the values `{ecr_key_id}` and `{ecr_secret}` with your ECR credentials:
+
+        ```bash
+        helm install scooldpro ./scoold-pro \
+            --set ecrCredentials.accessKeyId={ecr_key_id},ecrCredentials.accessSecretKey={ecr_secret}
+        ```
+        The command deploys Scoold on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+
+        If you want to auto-initialize Scoold from scratch, deploy the Para Helm chart first, then take note of the root app secret key.
+        The root app secret key is stored in the `para-application.conf` file located inside `/para/application.conf` inside the Para pod.
+        Then modify `values.yaml` and add this Scoold configuration property:
+
+        ```ini
+        scoold.autoinit.root_app_secret_key="{secret key for root Para app}"
+        ```
+        Finally, run `helm upgrade --install scooldpro ./scoold-pro`.
+
+        <Aside type="tip">
+        List all releases using `helm list`
+        </Aside>
+
+        ### Uninstalling the Chart
+
+        To uninstall/delete the `scoold` deployment:
+
+        ```bash
+        helm uninstall scooldpro
+        ```
+
+        The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+        ### Configuration properties
+
+        The following table lists the configurable parameters inside `[values.yaml](values.yaml)` and their default values.
+
+        | Parameter                                                                                                        | Default value                                            |
+        |------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+        | `image.repository`                           <br/> Scoold image name                                             | `374874639893.dkr.ecr.eu-west-1.amazonaws.com/scoold-pro`|
+        | `image.tag`                                  <br/> Scoold image tag                                              | `1.65.0`                                                 |
+        | `image.pullPolicy`                           <br/> Image pull policy                                             | `IfNotPresent`                                           |
+        | `image.pullSecrets`                          <br/> References to extra image pull secrets                        | `[]`                                                     |
+        | `ecrCredentials.registry`                    <br/> Registry host used inside the generated Secret                | `374874639893.dkr.ecr.eu-west-1.amazonaws.com`           |
+        | `ecrCredentials.region`                      <br/> AWS region passed to the helper job                           | `eu-west-1`                                              |
+        | `ecrCredentials.accessKeyId`                 <br/> AWS access key ID stored in a Secret                          | `""`                                                     |
+        | `ecrCredentials.accessSecretKey`             <br/> AWS secret access key stored in a Secret                      | `""`                                                     |
+        | `ecrCredentials.secretName`                  <br/> Override for the generated docker-registry Secret name        | `""`                                                     |
+        | `ecrCredentials.refreshSchedule`             <br/> Cron expression for refreshing the pull secret                | `"0 */6 * * *"`                                          |
+        | `ecrCredentials.helper.image`                <br/> Container image used for the helper Job/CronJob               | `public.ecr.aws/aws-cli/aws-cli:2.15.30`                 |
+        | `ecrCredentials.helper.pullPolicy`           <br/> Image pull policy for the helper Job/CronJob                  | `IfNotPresent`                                           |
+        | `ecrCredentials.helper.kubectlVersion`       <br/> Version of kubectl downloaded inside the helper Pods          | `v1.29.2`                                                |
+        | `ecrCredentials.helper.pullPolicy`           <br/> Image pull policy for the helper Job/CronJob                  | `IfNotPresent`                                           |
+        | `service.type`                               <br/> Kubernetes Service type                                       | `ClusterIP`                                              |
+        | `service.port`                               <br/> Service HTTP port                                             | `8000`                                                   |
+        | `service.name`                               <br/> Service port name                                             | `http`                                                   |
+        | `applicationConf`                            <br/> Scoold configuration                                          | Sample block in `values.yaml`                            |
+        | `persistentVolumes.uploads.size`             <br/> Requested capacity for `/scoold/uploads` PVC                  | `2Gi`                                                    |
+        | `persistentVolumes.uploads.accessModes`      <br/> Access modes for `/scoold/uploads` PVC                        | `[ReadWriteOnce]`                                        |
+        | `persistentVolumes.uploads.storageClassName` <br/> StorageClass for `/scoold/uploads` PVC                        | `""`                                                     |
+        | `javaOpts`                                   <br/> `JAVA_OPTS` JVM arguments                                     | `-Xmx512m -Xms512m -Dconfig.file=/scoold/config/application.conf` |
+        | `podAnnotations`                             <br/> Pod annotations                                               | `{}`                                                     |
+        | `extraEnvs`                                  <br/> Extra environment variables                                   | `[]`                                                     |
+        | `updateStrategy`                             <br/> Deployment update strategy                                    | `RollingUpdate`                                          |
+        | `ingress.enabled`                            <br/> Create Ingress                                                | `false`                                                  |
+        | `ingress.className`                          <br/> Ingress class name                                            | `""`                                                     |
+        | `ingress.hosts[0].host`                      <br/> Hostname for the Ingress                                      | `scooldpro.local`                                        |
+        | `ingress.hosts[0].paths[0].path`             <br/> HTTP path served by the Ingress                               | `/`                                                      |
+        | `ingress.tls`                                <br/> TLS configuration                                             | `[]`                                                     |
+        | `resources`                                  <br/> CPU/Memory resource requests/limits                           | `{}`                                                     |
+        | `nodeSelector`                               <br/> Node selector                                                 | `{}`                                                     |
+        | `tolerations`                                <br/> Tolerations                                                   | `[]`                                                     |
+        | `affinity`                                   <br/> Affinity rules                                                | `{}`                                                     |
+
+        When working with the private AWS ECR registry, provide an AWS key pair (`ecrCredentials.accessKeyId` / `ecrCredentials.accessSecretKey`). The chart stores the credentials in a Secret and deploys a helper Job plus CronJob that run `aws ecr get-login-password` inside the cluster. The generated token is continuously applied to the docker-registry Secret referenced by the Deployment, so Kubernetes keeps pulling the private Scoold Pro image without any manual steps. Adjust `ecrCredentials.refreshSchedule` (default every 6 hours) or the helper image/kubectl version if you need different behavior.
+
+        A YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
+
+        ```bash
+        $ helm install scooldpro ./scoold-pro -f values.yaml
+        ```
+        Or, when updating the chart with new configuration:
+
+        ```bash
+        $ helm upgrade --install scooldpro ./scoold-pro -f values.yaml
+        ```
+    </TabItem>
+</Tabs>
+
+<LinkCard
+  title="Configuration Reference"
+  href="/documentation/reference/configuration"
+  description="For the complete list of configuration options, visit the configuration reference page."
+/>

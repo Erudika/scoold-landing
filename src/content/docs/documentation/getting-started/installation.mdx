@@ -3,71 +3,150 @@ title: Installation
 description: How to install and run Scoold using Docker, JAR, or from source.
 sidebar:
   order: 1
----
 
-Scoold is a Java application that runs on any modern JVM. The recommended way to run it is via Docker.
+---
+import { Aside, Badge, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Scoold is a Java web application that runs on any modern JVM, or natively on x86 and ARMv8 architectures. 
+The easiest way to run Scoold is to run it as a Docker container.
+Scoold uses [↗ Para](https://paraio.org) as the backend service. 
+Para handles most of the backend operations and works with all of the popular databases.
 
 ## Prerequisites
 
-- **Java 11+** (Java 17 recommended for production)
-- **Para backend** - Scoold requires [Para](https://paraio.org) as its backend data service. Para supports PostgreSQL, DynamoDB, MongoDB, Elasticsearch, and more.
-- **4 GB RAM** minimum for the combined Scoold + Para stack
+Scoold and Para can both be hosted on the same machine, provided it has at least 3 GB of RAM.
 
-## Docker (recommended)
+<Tabs>
+  <TabItem label="Scoold Requirements">
+    - Java runtime environment (21 or higher)
+    - at least 500 MB RAM
+    - 1 vCPU or more
+    - 10 GB disk space or more (primarily for logs and storing images)
+  </TabItem>
+  <TabItem label="Para Requirements">
+    - Java runtime environment (21 or higher)
+    - at least 1 GB RAM
+    - 1 vCPU (2 are recommended)
+    - 10 GB disk space or more (unless the database is stored on the same machine)
+  </TabItem>
+</Tabs>
 
-The fastest way to get started is with Docker Compose:
-
-```yaml
-# docker-compose.yml
-version: '3.8'
-services:
-  para:
-    image: erudikaltd/para:latest
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_PROFILES_ACTIVE: dev
-
-  scoold:
-    image: erudikaltd/scoold:latest
-    ports:
-      - "8000:8000"
-    environment:
-      PARA_ENDPOINT: http://para:8080
-      PARA_ACCESS_KEY: app:scoold
-      PARA_SECRET_KEY: your-secret-key
-    depends_on:
-      - para
-```
-
-Then run:
+## Quick Start: Docker (single command)
+**Difficulty:** <Badge text="Easy" variant="success" />
 
 ```bash
-docker-compose up -d
+docker compose -f https://github.com/Erudika/scoold.git up
 ```
 
-Scoold will be available at `http://localhost:8000`.
+In your browser, Scoold will be accessible at `http://localhost:8000`.
 
-## Standalone JAR
+## Option 2: JAR executable
 
-Download the latest JAR from [GitHub Releases](https://github.com/Erudika/scoold/releases/latest):
+Choosing the standard JAR executable path is the simplest and most reliable way to run Scoold.
+Here, you have two options - run Scoold and Para locally, or, run Scoold locally and connect to Para Cloud (managed backed).
 
-```bash
-java -jar scoold-*.jar \
-  --para.endpoint=http://localhost:8080 \
-  --para.access_key=app:scoold \
-  --para.secret_key=your-secret-key
-```
 
-## Environment variables
+### Quick start with a Para Cloud account
+**Difficulty:** <Badge text="Easy" variant="success" />
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `PARA_ENDPOINT` | URL of your Para instance | `http://localhost:8080` |
-| `PARA_ACCESS_KEY` | Para access key | - |
-| `PARA_SECRET_KEY` | Para secret key | - |
-| `SERVER_PORT` | Port Scoold listens on | `8000` |
-| `SCOOLD_APP_NAME` | Display name of your instance | `Scoold` |
+<Aside>
+**Para Cloud** is free for developers, and the free tier allows you to store up to 10K objects.
+</Aside>
+
+<Steps>
+1. Sign up and create a new app on [↗ ParaIO.com](https://paraio.com), then copy your access keys somewhere.
+2. Create Scoold's configuration file named `scoold-application.conf`:
+    ```ini title="scoold-application.conf"
+    scoold.env = "production"
+    scoold.app_name = "Scoold"
+    scoold.para_access_key = "app:scoold"
+    scoold.para_secret_key = "{Para app secret}"
+    scoold.para_endpoint = "https://paraio.com"
+    # add your email here
+    scoold.admins = "your@email.com"
+    # (optional) require authentication for viewing content
+    scoold.is_default_space_public = false
+    ```
+3. Start Scoold with the command:
+    ```bash
+    java -jar -Dconfig.file=./scoold-application.conf scoold-*.jar
+    ```
+4. Open `http://localhost:8000/signin/register` and register a new account with same email you put in the configuration.
+</Steps>
+
+To login with a social account, you must create a developer app with
+[↗ Facebook](https://developers.facebook.com),
+[↗ Google](https://console.developers.google.com) or any other identity provider.
+This is not required when you log in with LDAP, SAML or email/password.
+
+
+###  Quick start with a self-hosted Para backend
+**Difficulty:** <Badge text="Moderate" variant="caution" />
+
+<Aside>
+The Para backend server should be deployed separately and is required for Scoold to run.
+</Aside>
+
+<Steps>
+1. [↗ Download the latest executable Para JAR package](https://github.com/Erudika/para/releases)
+2. Create a folder `para` and a file `para/para-application.conf`. Inside the folder, start Para with the command:
+    ```bash
+    java -jar -Dconfig.file=./para-application.conf para-*.jar
+    ```
+3. Create a folder `scoold` and a file `scoold/scoold-application.conf` (see example above)
+4. From inside the `scoold` folder, start Scoold with the following command, pointing it to the location of the Para configuration file:
+    ```bash
+    java -jar -Dconfig.file=./scoold-application.conf \
+      -Dscoold.autoinit.para_config_file=../para-application.conf \
+      scoold-*.jar
+    ```
+    On startup, Para will initialize and create its own configuration file. Scoold will then try to initialize and
+    configure itself automatically by reading the `para-application.conf`. **Alternatively** you could provide
+    Scoold with the root access key directly, instead of pointing it to the Para configuration file, like so:
+    ```bash
+    java -jar -Dconfig.file=./scoold-application.conf \
+      -Dscoold.autoinit.root_app_secret_key="{app:para secret key}" \
+      scoold-*.jar
+    ```
+    The secret key for the root Para app can be found inside the Para `para-application.conf`, labeled `para.root_secret_key`.
+5. Open [localhost:8000/signin/register](http://localhost:8000/signin/register) and register a new account with same email you put in the configuration
+</Steps>
+
+Optionally, you can also install the [Para CLI](https://github.com/Erudika/para-cli) tool for browsing and managing
+data in your Scoold app.
+
+<Aside type="caution" title="Important">
+- The convention is to use `para-application.conf` and `scoold-application.conf` for Para and Scoold respectively.
+- All settings shown here are meant to be kept inside the Scoold configuration file.
+- SMTP settings must be configured before deploying Scoold to production.
+- Scoold **does not have** a default user account with default username and password.
+</Aside>
+
+For more details about configuring Para, [check the Para docs](https://paraio.org/docs).
+
+
+## Option 3: Native executable
+**Difficulty:** <Badge text="Advanced" variant="tip" />
+
+[↗ GraalVM](https://www.graalvm.org) and [↗ Maven](https://maven.apache.org) are required to build the native executable.
+<Steps>
+1. Install GraalVM and Maven
+2. Clone the project:
+    ```bash
+    git clone https://github.com/Erudika/scoold
+    cd scoold
+    ```
+3. Build using Maven:
+    ```bash
+    mvn -Pnative clean package
+    ```
+4. Create the file `scoold-application.conf` as shown above and execute the native image:
+    ```bash
+    cd target/
+    ./scoold -Dconfig.file=./scoold-application.conf
+    ```
+</Steps>
+
 
 ## Next steps
 

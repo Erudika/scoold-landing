@@ -7,16 +7,13 @@ import { site, components, blogTag } from "../../../data/site-data.json";
 const { breadcrumbs } = components;
 const baseUrl = site.url;
 
-const toSlug = (tag) => tag.toLowerCase().replace(/\s+/g, "-");
-
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   const tagMap = new Map();
   
   posts.forEach((post) => {
-    const toSlug = (tag) => tag.toLowerCase().replace(/\s+/g, "-");
     post.data.tags.forEach((tag) => {
-      const slug = toSlug(tag);
+      const slug = tag;
       if (!tagMap.has(slug)) {
         tagMap.set(slug, { tag, posts: [] });
       }
@@ -43,7 +40,7 @@ const cards = posts
     }),
     img: post.data.img,
     tags: post.data.tags,
-    href: `/blog/${post.slug}`
+    href: `/blog/${post.id}/`
   }));
 
 const breadcrumbJsonLd = {
@@ -52,7 +49,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
     { "@type": "ListItem", position: 2, name: breadcrumbs.tags, item: `${baseUrl}/blog/tags` },
-    { "@type": "ListItem", position: 3, name: tag, item: `${baseUrl}/blog/tags/${toSlug(tag)}` }
+    { "@type": "ListItem", position: 3, name: tag, item: `${baseUrl}/blog/tags/${tag}` }
   ]
 };
 ---
@@ -67,7 +64,7 @@ const breadcrumbJsonLd = {
       <Breadcrumbs items={[
         { label: breadcrumbs.home, href: "/" },
         { label: breadcrumbs.tags, href: "/blog/tags" },
-        { label: tag, href: `/blog/tags/${toSlug(tag)}` }
+        { label: tag, href: `/blog/tags/${tag}/` }
       ]} />
       <h1 class="mt-6 font-semibold text-base-content text-4xl">{tag}</h1>
       <p class="mt-4 max-w-2xl text-base-content/70 text-lg">

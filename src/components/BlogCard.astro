@@ -2,6 +2,15 @@
 import { components } from "../data/site-data.json";
 import { Image } from "astro:assets";
 
+interface Props {
+  title: string;
+  excerpt: string;
+  date: Date;
+  tags: string[];
+  img: string;
+  href: string;
+}
+
 const { blogCard } = components;
 const { title, excerpt, date, tags, img, href } = Astro.props;
 ---

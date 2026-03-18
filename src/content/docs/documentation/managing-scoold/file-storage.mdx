@@ -1,0 +1,253 @@
+---
+title: File storage
+description: Configuring file storage and uploads
+sidebar:
+  badge:
+    text: Pro
+    variant: tip
+  order: 3
+---
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+**This is a <Badge text="Pro" variant="tip" /> feature**
+
+## File uploads
+
+Files can be uploaded to the local file system or to cloud storage. File uploads are enabled by default in Scoold Pro.
+To disable file uploads altogether set `scoold.uploads_enabled = false`. To protect uploaded files from unauthenticated
+access, set `scoold.uploads_require_auth = true`.
+
+To upload a file just **drag & drop** the file onto the post editor area. A link will automatically appear
+when the upload is finished. Uploads can fail either because their size is too large or because their format is not in
+the white list of permitted formats (documents, images, archives, audio or video). You can extend the list of permitted
+file types by configuring:
+```ini title="scoold-application.conf"
+scoold.allowed_upload_formats = "yml,py:text/plain,json:application/json"
+```
+If the MIME type is not specified in the format `extension:mime_type`, the default `text/plain` is used when serving these
+files.
+
+<details>
+<summary>List of allowed file formats for uploads</summary>
+
+| File extension | MIME type               |
+| ---            | ---                     |
+| jpg         | image/jpeg                 |
+| jpeg        | image/jpeg                 |
+| jpe         | image/jpeg                 |
+| gif         | image/gif                  |
+| png         | image/png                  |
+| bmp         | image/bmp                  |
+| tiff        | image/tiff                 |
+| tif         | image/tiff                 |
+| ico         | image/x-icon               |
+| svg         | image/svg+xml              |
+| webp        | image/webp                 |
+| asf         | video/x-ms-asf             |
+| asx         | video/x-ms-asf             |
+| wmv         | video/x-ms-wmv             |
+| wmx         | video/x-ms-wmx             |
+| wm          | video/x-ms-wm              |
+| avi         | video/avi                  |
+| divx        | video/divx                 |
+| flv         | video/x-flv                |
+| mov         | video/quicktime            |
+| qt          | video/quicktime            |
+| mpeg        | video/mpeg                 |
+| mpg         | video/mpeg                 |
+| mpe         | video/mpeg                 |
+| mp4         | video/mp4                  |
+| m4v         | video/mp4                  |
+| ogv         | video/ogg                  |
+| webm        | video/webm                 |
+| mkv         | video/x-matroska           |
+| 3gp         | video/3gpp                 |
+| 3gpp        | video/3gpp                 |
+| 3g2         | video/3gpp2                |
+| 3gp2        | video/3gpp2                |
+| mp3         | audio/mpeg                 |
+| m4a         | audio/mpeg                 |
+| m4b         | audio/mpeg                 |
+| aac         | audio/aac                  |
+| ra          | audio/x-realaudio          |
+| ram         | audio/x-realaudio          |
+| wav         | audio/wav                  |
+| ogg         | audio/ogg                  |
+| oga         | audio/ogg                  |
+| flac        | audio/flac                 |
+| mid         | audio/midi                 |
+| midi        | audio/midi                 |
+| wma         | audio/x-ms-wma             |
+| wax         | audio/x-ms-wax             |
+| mka         | audio/x-matroska           |
+| txt         | text/plain                 |
+| xml         | text/xml                   |
+| yml         | application/x-yaml         |
+| yaml        | application/x-yaml         |
+| json        | application/json           |
+| java        | text/x-java                |
+| py          | text/x-python              |
+| cs          | text/x-csharp              |
+| asc         | text/plain                 |
+| c           | text/x-csrc                |
+| h           | text/x-chdr                |
+| cc          | text/x-c++src              |
+| hh          | text/x-c++hdr              |
+| srt         | text/plain                 |
+| csv         | text/csv                   |
+| tsv         | text/tab-separated-values  |
+| ics         | text/calendar              |
+| rtx         | text/richtext              |
+| css         | text/css                   |
+| vtt         | text/vtt                   |
+| dfxp        | application/ttaf+xml       |
+| rtf         | application/rtf            |
+| pdf         | application/pdf            |
+| tar         | application/x-tar          |
+| zip         | application/zip            |
+| gz          | application/x-gzip         |
+| gzip        | application/x-gzip         |
+| rar         | application/rar            |
+| 7z          | application/x-7z-compressed|
+| psd         | application/octet-stream   |
+| xcf         | application/octet-stream   |
+| doc         | application/msword         |
+| pot         | application/vnd.ms-powerpoint |
+| pps         | application/vnd.ms-powerpoint |
+| ppt         | application/vnd.ms-powerpoint |
+| wri         | application/vnd.ms-write   |
+| xla         | application/vnd.ms-excel   |
+| xls         | application/vnd.ms-excel   |
+| xlt         | application/vnd.ms-excel   |
+| xlw         | application/vnd.ms-excel   |
+| mdb         | application/vnd.ms-access  |
+| mpp         | application/vnd.ms-project |
+| docx        | application/vnd.openxmlformats-officedocument.wordprocessingml.document |
+| docm        | application/vnd.ms-word.document.macroEnabled.12 |
+| dotx        | application/vnd.openxmlformats-officedocument.wordprocessingml.template |
+| dotm        | application/vnd.ms-word.template.macroEnabled.12 |
+| xlsx        | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet |
+| xlsm        | application/vnd.ms-excel.sheet.macroEnabled.12 |
+| xlsb        | application/vnd.ms-excel.sheet.binary.macroEnabled.12 |
+| xltx        | application/vnd.openxmlformats-officedocument.spreadsheetml.template |
+| xltm        | application/vnd.ms-excel.template.macroEnabled.12 |
+| xlam        | application/vnd.ms-excel.addin.macroEnabled.12 |
+| pptx        | application/vnd.openxmlformats-officedocument.presentationml.presentation |
+| pptm        | application/vnd.ms-powerpoint.presentation.macroEnabled.12 |
+| ppsx        | application/vnd.openxmlformats-officedocument.presentationml.slideshow |
+| ppsm        | application/vnd.ms-powerpoint.slideshow.macroEnabled.12 |
+| potx        | application/vnd.openxmlformats-officedocument.presentationml.template |
+| potm        | application/vnd.ms-powerpoint.template.macroEnabled.12 |
+| ppam        | application/vnd.ms-powerpoint.addin.macroEnabled.12 |
+| sldx        | application/vnd.openxmlformats-officedocument.presentationml.slide |
+| sldm        | application/vnd.ms-powerpoint.slide.macroEnabled.12 |
+| onetoc      | application/onenote        |
+| onetoc2     | application/onenote        |
+| onetmp      | application/onenote        |
+| onepkg      | application/onenote        |
+| oxps        | application/oxps           |
+| xps         | application/vnd.ms-xpsdocument |
+| odt         | application/vnd.oasis.opendocument.text |
+| odp         | application/vnd.oasis.opendocument.presentation |
+| ods         | application/vnd.oasis.opendocument.spreadsheet |
+| odg         | application/vnd.oasis.opendocument.graphics |
+| odc         | application/vnd.oasis.opendocument.chart |
+| odb         | application/vnd.oasis.opendocument.database |
+| odf         | application/vnd.oasis.opendocument.formula |
+| wp          | application/wordperfect    |
+| wpd         | application/wordperfect    |
+| key         | application/vnd.apple.keynote |
+| numbers     | application/vnd.apple.numbers |
+| pages       | application/vnd.apple.pages |
+
+</details>
+
+
+By default, the size of uploaded files is unrestricted. To limit the maximum size of uploads, set the following Spring
+Boot system properties:
+```ini title="scoold-application.conf"
+spring.servlet.multipart.max-file-size = "2MB"
+spring.servlet.multipart.max-request-size = "10MB"
+```
+
+Scoold Pro also allows users to capture and upload video and audio from their input devices (mic/webcam).
+This functionality is enabled by default:
+```ini title="scoold-application.conf"
+scoold.media_recording_allowed = true
+```
+
+Profile pictures (avatars) can also be changed by dragging a new image on top of the existing profile picture on a
+user's `/profile` page. For best results, use a square image here.
+
+### Local storage
+Local file storage is used by default. To configure the directory on the server where files will be stored, set:
+```ini title="scoold-application.conf"
+scoold.file_uploads_dir = "uploads"
+```
+
+### AWS S3 storage provider
+
+To use S3 for file storage, specify the name of the S3 bucket where you want the files to be uploaded. AWS credentials
+and region settings are optional as they can be picked up from the environment automatically.
+```ini title="scoold-application.conf"
+# required
+scoold.s3_bucket = ""
+# path within the bucket (object prefix)
+scoold.s3_path = "uploads"
+# these are optional
+scoold.s3_region = ""
+scoold.s3_access_key = ""
+scoold.s3_secret_key = ""
+```
+
+### Azure Blob storage provider
+
+To use Azure Blob storage for storing uploaded files, first you'll need to create a storage account and get a SAS URL
+and token. Scoold Pro will need full permissions to your storage container so it's best that you dedicate a container
+just for Scoold files.
+
+```ini title="scoold-application.conf"
+# required
+scoold.blob_storage_account = ""
+scoold.blob_storage_token = ""
+# name of the container
+scoold.blob_storage_container = ""
+# path prefix within a container (subfolder)
+scoold.blob_storage_path = "uploads"
+```
+
+## Uploading custom avatars
+
+This feature is available in both Scoold and Scoold Pro. You can configure Scoold to upload custom profile pictures to a
+cloud-based image hosting service like Imgur or Cloudinary. In Scoold Pro, avatars are uploaded to the configured storage
+provider, but by configuring Imgur or Cloudinary for avatars, you will essentially change where avatars are stored and
+served from.
+
+### To Imgur
+
+To use Imgur for storing images, specify your Imgur API client id:
+```ini title="scoold-application.conf"
+scoold.imgur_client_id = "x23e8t0askdj"
+scoold.avatar_repository = "imgur"
+```
+Keep in mind that *only images* can be uploaded to Imgur and other restrictions may apply.
+
+### To Cloudinary
+
+To use Cloudinary for storing images, specify your Cloudinary API client id:
+```ini title="scoold-application.conf"
+scoold.cloudinary_url = "cloudinary://123456:abcdefaddd@scoold"
+scoold.avatar_repository = "cloudinary"
+```
+Keep in mind that *only images* can be uploaded to Cloudinary and other restrictions may apply.
+
+You must create several presets on your cloudinary account:
+- `avatar` (upload preset): for processing when receiving a file (example: `c_thumb,g_face,h_404,q_auto:good,w_404,z_0.4`)
+- `square25`: for the display in 25x25 format (example: `c_scale,h_25,q_auto:eco,w_25`)
+- `square32`: for displaying in 32x32 format (example: `c_scale,h_32,q_auto:eco,w_32`)
+- `square50`: for displaying in 50x50 format (example: `c_scale,h_50,q_auto:good,w_50`)
+- `square127`: for displaying in 127x127 format (example: `c_scale,h_127,q_auto:good,w_127`)
+- `profile`: for displaying in 404x404 format (example: `c_scale,h_404,q_auto:good,w_404`)
+
+
+

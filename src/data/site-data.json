@@ -80,76 +80,76 @@
       "href": "/"
     },
     "links": [
-      { "label": "Features", "href": "/features" },
+      { "label": "Features", "href": "/features/" },
       { "label": "Solutions", "dropdown": "solutions" },
       { "label": "Integrations", "dropdown": "integrations" },
       { "label": "Comparisons", "dropdown": "comparisons" },
       { "label": "Resources" },
-      { "label": "Pricing", "href": "/pricing" },
-      { "label": "Docs", "href": "/documentation" }
+      { "label": "Pricing", "href": "/pricing/" },
+      { "label": "Docs", "href": "/documentation/" }
     ],
     "solutions": [
       { 
         "label": "Knowledge Base", 
-        "href": "/solutions/scoold-as-knowledge-base", 
+        "href": "/solutions/scoold-as-knowledge-base/", 
         "desc": "Searchable institutional knowledge for your whole team.", 
         "color": "bg-blue-50 text-blue-600 border-blue-100",
         "icon": "book"
       },
       { 
         "label": "Community Forum", 
-        "href": "/solutions/scoold-as-community-forum", 
+        "href": "/solutions/scoold-as-community-forum/", 
         "desc": "Build a thriving community around your product or project.", 
         "color": "bg-emerald-50 text-emerald-600 border-emerald-100", 
         "icon": "users"
       },
       { 
         "label": "Developer Hub", 
-        "href": "/solutions/scoold-as-developer-hub", 
+        "href": "/solutions/scoold-as-developer-hub/", 
         "desc": "The engineering team's permanent home for technical Q&A.",
         "color": "bg-violet-50 text-violet-600 border-violet-100",
         "icon": "code"
       },
       { 
         "label": "Support Center", 
-        "href": "/solutions/scoold-as-support-center", 
+        "href": "/solutions/scoold-as-support-center/", 
         "desc": "Reduce ticket volume with searchable self-service answers.", 
         "color": "bg-orange-50 text-orange-600 border-orange-100",
         "icon": "headset"
       },
       { 
         "label": "Q&A Platform", 
-        "href": "/solutions/scoold-as-questions-and-answers-platform", 
+        "href": "/solutions/scoold-as-questions-and-answers-platform/", 
         "desc": "Stack Overflow-style Q&A running on your own infrastructure.", 
         "color": "bg-pink-50 text-pink-600 border-pink-100",
         "icon": "question"
       },
       { 
         "label": "Issue Tracker", 
-        "href": "/solutions/scoold-as-issue-tracker", 
+        "href": "/solutions/scoold-as-issue-tracker/", 
         "desc": "Break down silos and create a culture of sharing.", 
         "color": "bg-amber-50 text-amber-600 border-amber-100",
         "icon": "issue" 
       }
     ],
     "integrations": [
-      { "label": "Slack", "href": "/integration-with/slack"},
-      { "label": "Microsoft Teams", "href": "/integration-with/microsoft-teams"},
-      { "label": "Mattermost", "href": "/integration-with/mattermost"},
-      { "label": "Zapier", "href": "/integration-with/zapier", "icon": "zap" },
-      { "label": "n8n", "href": "/integration-with/n8n", "icon": "zap" }
+      { "label": "Slack", "href": "/integration-with/slack/"},
+      { "label": "Microsoft Teams", "href": "/integration-with/microsoft-teams/"},
+      { "label": "Mattermost", "href": "/integration-with/mattermost/"},
+      { "label": "Zapier", "href": "/integration-with/zapier/", "icon": "zap" },
+      { "label": "n8n", "href": "/integration-with/n8n/", "icon": "zap" }
     ],
     "comparisons": [
-      { "label": "vs. Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business", "icon": "check" },
-      { "label": "vs. Apache Answer", "href": "/comparison/scoold-vs-apache-answer", "icon": "check" },
-      { "label": "vs. Discourse", "href": "/comparison/scoold-vs-discourse", "icon": "check" },
-      { "label": "vs. Talkyard", "href": "/comparison/scoold-vs-talkyard", "icon": "check" },
-      { "label": "vs. Askbot", "href": "/comparison/scoold-vs-askbot", "icon": "check" },
-      { "label": "vs. Question2Answer", "href": "/comparison/scoold-vs-question2answer", "icon": "check" }
+      { "label": "vs. Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business/", "icon": "check" },
+      { "label": "vs. Apache Answer", "href": "/comparison/scoold-vs-apache-answer/", "icon": "check" },
+      { "label": "vs. Discourse", "href": "/comparison/scoold-vs-discourse/", "icon": "check" },
+      { "label": "vs. Talkyard", "href": "/comparison/scoold-vs-talkyard/", "icon": "check" },
+      { "label": "vs. Askbot", "href": "/comparison/scoold-vs-askbot/", "icon": "check" },
+      { "label": "vs. Question2Answer", "href": "/comparison/scoold-vs-question2answer/", "icon": "check" }
     ],
     "cta": {
       "label": "Get Started",
-      "href": "/download"
+      "href": "/download/"
     },
     "demo": {
       "label": "Demo",
@@ -158,13 +158,13 @@
     }
   },
   "hero": {
-    "badge": "Deploy Scoold in minutes on <a class=\"underline\" href=\"/cloud-hosting\">Scoold Cloud</a>!",
+    "badge": "Deploy Scoold in minutes on <a class=\"underline\" href=\"/cloud-hosting/\">Scoold Cloud</a>!",
     "title": "The most effective way to share <span class=\"text-brand-500\">knowledge</span> within your team or organization",
     "title_highlight": "knowledge",
     "subtitle": "Scoold is a privacy-first, self-hosted Q&A platform, forum, and knowledge base platform for your team. ",
     "primary_cta": {
       "label": "Download Free",
-      "href": "/download"
+      "href": "/download/"
     },
     "secondary_cta": {
       "label": "Try Demo",
@@ -201,7 +201,7 @@
     "title_highlight": "knowledge",
     "subtitle": "Packed with powerful features designed to help your team capture, organize, and share knowledge effectively.",
     "view_all_label": "View all features",
-    "view_all_href": "/features",
+    "view_all_href": "/features/",
     "items": [
       {
         "icon": "search",
@@ -300,7 +300,7 @@
       "headers": ["Feature", "Scoold", "Scoold Pro", "Pro + Source"],
       "rows": [
         ["Price per instance", "Free", "{pricePro} one-time", "{priceProPlus} one-time"],
-        ["License", "<a href=\"/legal/licenses\">Apache 2.0</a>", "<a href=\"/legal/licenses\">Commercial</a>", "<a href=\"/legal/licenses\">Commercial</a>"],
+        ["License", "<a href=\"/legal/licenses/\">Apache 2.0</a>", "<a href=\"/legal/licenses/\">Commercial</a>", "<a href=\"/legal/licenses/\">Commercial</a>"],
         ["Source code included", true, false, true],
         ["Deployment options", "on premises", "cloud, on premises", "cloud, on premises"],
         ["Full-featured Q&A platform", true, true, true],
@@ -354,12 +354,12 @@
     "subtitle": "No subscriptions. No per-seat fees. A one-time license fee and it's yours forever.",
     "note": "🛈 Scoold Pro licenses include free updates and support for 12 months after purchase. Prices shown above are for a single license valid for one Scoold Pro instance running in production.",
     "compare_features_label": "Compare all features",
-    "compare_features_href": "/features",
+    "compare_features_href": "/features/",
     "enterprise": {
       "title": "Need a custom enterprise arrangement?",
       "description": "Unlimited instance licensing, priority support, or custom procurement - we can work with your procurement team.",
       "cta_label": "Talk to sales",
-      "cta_href": "/imprint/contact-us"
+      "cta_href": "/imprint/contact-us/"
     },
     "pricing_faq": {
       "title": "Pricing FAQ",
@@ -393,7 +393,7 @@
         "price_note": "forever",
         "description": "Everything you need to get started. Self-hosted, open source, fully customizable.",
         "cta_label": "Download Free",
-        "cta_href": "/download",
+        "cta_href": "/download/",
         "cta_style": "outline",
         "popular": false,
         "features": [
@@ -462,7 +462,7 @@
       "title": "Still have questions?",
       "subtitle": "Can't find the answer you're looking for? Our support team is here to help.",
       "cta_label": "Contact support",
-      "cta_href": "/imprint/contact-us"
+      "cta_href": "/imprint/contact-us/"
     },
     "items": [
       {
@@ -524,7 +524,7 @@
     },
     "secondary": {
       "label": "Deploy on Scoold Cloud",
-      "href": "/cloud-hosting"
+      "href": "/cloud-hosting/"
     }
   },
   "footer": {
@@ -534,17 +534,17 @@
     "made_by_href": "https://erudika.com",
     "open_source_label": "Open Source",
     "license_label": "License",
-    "license_href": "/legal/licenses",
+    "license_href": "/legal/licenses/",
     "columns": [
       {
         "heading": "Product",
         "links": [
-          { "label": "Features", "href": "/features" },
-          { "label": "Pricing", "href": "/pricing" },
-          { "label": "Download", "href": "/download" },
-          { "label": "Live Demo", "href": "/demo" },
-          { "label": "Scoold Cloud", "href": "/cloud-hosting" },
-          { "label": "Changelog", "href": "/changelog" }
+          { "label": "Features", "href": "/features/" },
+          { "label": "Pricing", "href": "/pricing/" },
+          { "label": "Download", "href": "/download/" },
+          { "label": "Live Demo", "href": "/demo/" },
+          { "label": "Scoold Cloud", "href": "/cloud-hosting/" },
+          { "label": "Changelog", "href": "/changelog/" }
         ]
       },
       {
@@ -559,12 +559,12 @@
       {
         "heading": "Resources",
         "links": [
-          { "label": "Documentation", "href": "/documentation" },
-          { "label": "Blog", "href": "/blog" },
-          { "label": "FAQ", "href": "/faq" },
-          { "label": "Open Source", "href": "/open-source" },
+          { "label": "Documentation", "href": "/documentation/" },
+          { "label": "Blog", "href": "/blog/" },
+          { "label": "FAQ", "href": "/faq/" },
+          { "label": "Open Source", "href": "/open-source/" },
           { "label": "GitHub", "href": "https://github.com/Erudika/scoold" },
-          { "label": "API Reference", "href": "/documentation/scoold-api" }
+          { "label": "API Reference", "href": "/documentation/scoold-api/" }
         ]
       }
     ],
@@ -660,7 +660,7 @@
       "effective_date": "Effective date: 2024-04-09",
       "questions_cta": "Questions about the EULA?",
       "contact_label": "Contact us",
-      "contact_href": "/imprint/contact-us",
+      "contact_href": "/imprint/contact-us/",
       "before_purchasing": "before purchasing."
     }
   },
@@ -680,14 +680,14 @@
     },
     "comparison_page": {
       "cta_label": "Get Started for Free",
-      "cta_href": "/download"
+      "cta_href": "/download/"
     },
     "integration_page": {
       "highlights_label": "Integration highlights",
       "setup_label": "How to set it up",
       "docs_cta_text": "Need detailed setup instructions?",
       "docs_link_label": "Read the documentation →",
-      "docs_href": "/documentation"
+      "docs_href": "/documentation/"
     }
   },
   "solutions": [
@@ -704,7 +704,7 @@
         { "title": "Version History", "description": "Full edit history for every post. Track who changed what and when. Any revision can be restored if something goes wrong." }
       ],
       "use_cases": ["Onboarding New Employees", "Engineering Notes", "Product Documentation", "Customer Cupport Escalations"],
-      "cta": { "label": "Build your knowledge base", "href": "/download" }
+      "cta": { "label": "Build your knowledge base", "href": "/download/" }
     },
     {
       "title": "Scoold as a Community Forum",
@@ -719,7 +719,7 @@
         { "title": "Self-hosted or Cloud", "description": "You own your community data. Deploy anywhere, migrate anytime. Zero vendor lock-in." }
       ],
       "use_cases": ["Open-source project support", "Product Feedback Forums", "Developer Communities", "Alumni Networks"],
-      "cta": { "label": "Start your community", "href": "/download" }
+      "cta": { "label": "Start your community", "href": "/download/" }
     },
     {
       "title": "Scoold as a Developer Hub",
@@ -734,7 +734,7 @@
         { "title": "API Documentation Hub", "description": "Use Scoold alongside your OpenAPI docs to handle developer Q&A." }
       ],
       "use_cases": ["Self-Hosted Stack Overflow Alternative", "Architecture Decision Records", "Incident Post-mortems", "Headless Questions and Answers API"],
-      "cta": { "label": "Deploy for your team", "href": "/download" }
+      "cta": { "label": "Deploy for your team", "href": "/download/" }
     },
     {
       "title": "Scoold as a Support Center",
@@ -749,7 +749,7 @@
         { "title": "Weekly Digests & Insights", "description": "Get a weekly digest of the most recent posts. See which questions get asked most and identify gaps in your product documentation." }
       ],
       "use_cases": ["Product Support Hub", "Self-service Portal", "Customer FAQ Center", "Internal IT Helpdesk"],
-      "cta": { "label": "Reduce your ticket volume", "href": "/download" }
+      "cta": { "label": "Reduce your ticket volume", "href": "/download/" }
     },
     {
       "title": "Scoold as a Q&A Platform",
@@ -764,7 +764,7 @@
         { "title": "Unanswered Queue", "description": "Dedicated view for unanswered questions ensures no questions are left behind without attention." }
       ],
       "use_cases": ["Stack Overflow for Teams Alternative", "Internal Engineering Q&A", "Product Team Knowledge Sharing", "Partner Knowledge Base"],
-      "cta": { "label": "Migrate from Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business" }
+      "cta": { "label": "Migrate from Stack Overflow Business", "href": "/comparison/scoold-vs-stack-overflow-business/" }
     },
     {
       "title": "Scoold as an Issue Tracker",
@@ -779,7 +779,7 @@
         { "title": "Webhooks and MCP", "description": "When new reports arrive, Scoold can ping your software, subject matter experts or AI, via webhooks. Scoold MCP server adds context to your LLM agents." }
       ],
       "use_cases": ["Bug Tracking Software", "Ticket Management Hub", "GitHub Issues Alternative", "Incident Reporting Tool"],
-      "cta": { "label": "Create an issue tracker", "href": "/download" }
+      "cta": { "label": "Create an issue tracker", "href": "/download/" }
     }
   ],
   "comparisons": [
@@ -1341,7 +1341,7 @@
     "impressum_page": {
       "badge": "LEGAL",
       "title": "Imprint",
-      "href": "/imprint/impressum",
+      "href": "/imprint/impressum/",
       "subtitle": "Legal information about Erudika, the company behind Scoold.",
       "labels": {
         "company_name": "Company Name",
@@ -1356,7 +1356,7 @@
       "badge": "GET IN TOUCH",
       "title": "Contact us",
       "title_short": "Get in touch",
-      "href": "/imprint/contact-us",
+      "href": "/imprint/contact-us/",
       "description": "Contact the Scoold team - email, GitHub issues, or Gitter chat. We're here to help.",
       "subtitle": "Have a question or want to work together? We'd love to hear from you.",
       "channels": [
@@ -1381,28 +1381,28 @@
   "legal_index": {
     "badge": "LEGAL",
     "title": "Legal",
-    "href": "/legal",
+    "href": "/legal/",
     "subtitle": "Our legal documents — privacy, terms of use, and software licenses.",
     "cards": [
       {
         "label": "Privacy Policy",
         "description": "How we collect, use, and protect your personal data. GDPR compliant.",
-        "href": "/legal/privacy-policy"
+        "href": "/legal/privacy-policy/"
       },
       {
         "label": "Terms of Use",
         "description": "Conditions for using scoold.com and the Scoold software.",
-        "href": "/legal/terms-of-use"
+        "href": "/legal/terms-of-use/"
       },
       {
         "label": "Licenses",
         "description": "Open-source license notices and the Scoold Pro EULA.",
-        "href": "/legal/licenses"
+        "href": "/legal/licenses/"
       },
       {
         "label": "Imprint",
         "description": "Legal details about the company behind Scoold.",
-        "href": "/imprint/impressum"
+        "href": "/imprint/impressum/"
       }
     ]
   },
@@ -1553,7 +1553,7 @@
     "requirements_title": "System requirements",
     "docs_cta": "Need the full setup guide?",
     "docs_link_label": "Read the documentation →",
-    "docs_href": "/documentation",
+    "docs_href": "/documentation/getting-started/installation/",
     "options": [
       {
         "title": "Docker",
@@ -1571,8 +1571,8 @@
     "requirements": [
       "Java runtime environment (21 or higher)",
       "Para backend (see documentation for setup)",
-      "512 MB RAM minimum (2 GB recommended for production)",
-      "Any operating system"
+      "512 MB RAM minimum (1 GB recommended for production)",
+      "Any operating system / Docker v28 or higher"
     ],
     "github_releases_url": "https://github.com/Erudika/scoold/releases"
   }

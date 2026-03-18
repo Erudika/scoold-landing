@@ -35,7 +35,7 @@ const pagePosts = posts.slice(start, start + pageSize).map((post) => ({
   }),
   img: post.data.img,
   tags: post.data.tags,
-  href: `/blog/${post.slug}`
+  href: `/blog/${post.id}/`
 }));
 
 const breadcrumbJsonLd = {
@@ -59,7 +59,7 @@ const breadcrumbJsonLd = {
       <Breadcrumbs items={[
         { label: breadcrumbs.home, href: "/" },
         { label: breadcrumbs.blog, href: "/blog" },
-        { label: `${breadcrumbs.pagePrefix} ${page}`, href: `/blog/page/${page}` }
+        { label: `${breadcrumbs.pagePrefix} ${page}`, href: `/blog/page/${page}/` }
       ]} />
       <h1 class="mt-6 font-semibold text-base-content text-4xl">{blogPage.title}</h1>
       <p class="mt-4 max-w-2xl text-base-content/70 text-lg">{blogPage.body}</p>

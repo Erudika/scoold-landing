@@ -2,7 +2,166 @@
 title: Microsoft Teams
 description: Getting started with the Microsoft Teams integration in Scoold
 sidebar:
+  badge:
+    text: Pro
+    variant: tip
   order: 1
 ---
 
-todo
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+
+**This is a <Badge text="Pro" variant="tip" /> feature**
+
+This page goes into detail how Scoold Pro integrates with Microsoft Teams. Scoold users can sign in with a Microsoft account,
+use bot commands to interact with Scoold and also get in-chat notification for mentions and new posts on Scoold.
+Scoold allows you to map spaces to teams or channels. By default, each team in MS Teams is mapped to a single Scoold
+space when people sign in with Microsoft.
+
+<Aside type="caution" title="Important">
+Most of the Teams operations require a **valid Microsoft ID stored in your Scoold profile** which enables the
+mapping of Teams users to Scoold accounts and vice versa. Microsoft IDs are added to each profile automatically when a
+Scoold user signs in with a Microsoft account.
+</Aside>
+
+The integration endpoint for Teams is `/teams` - this is where Scoold will accept and process requests from
+MS Teams. To enable the Teams integration you first need to create a new bot for your app.
+After creating the bot, take note of its ID and client secret and add those to your Scoold configuration file.
+Then sideload (upload) the `Scoold.zip` app package in the [↗ Teams Developer Portal](https://dev.teams.microsoft.com).
+The app package can be downloaded from the Administration page after your bot has been created.
+Also set `scoold.ms_app_id` and `scoold.ms_secret` as you normally would for an OAuth2 authentication with Microsoft.
+
+<Aside type="note">
+Clicking the "Ask on Scoold" message extension button will also save the full message thread on Scoold.
+The action will create a new question from the first message of the thread and save each reply as an answer on Scoold.
+</Aside>
+
+## Getting started
+
+<Steps>
+1. Visit the [↗ Azure Poral > App registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 
+    page and create a new **multitenant app** registration called "Scoold" with the "Web" type selected under "Redirect URI". 
+    If you choose to create a **single tenant app** registration, you must specify your tenant ID and explicitly add the 
+    following API permissions to your app registration: 
+    ```
+    ChannelMessage.Read.All 
+    Channel.ReadBasic.All
+    User.ReadBasic.All
+    Group.Read.All
+    offline_access 
+    profile
+    email
+    openid 
+    ```
+    <Image src={import(`../../../../images/microsoft-teams/teams_step1.png`)}
+      alt="Teams Integration Screenshot"
+      class="py-5 border border-neutral-400 rounded"
+      loading="eager"
+    />
+2. In the "Certificates and Secrets" tab, create a new client secret and take note of the secret key. 
+    Then go to the "Overview" tab and take note of the "Application (client) ID". 
+    <Image src={import(`../../../../images/microsoft-teams/teams_step2.png`)}
+      alt="Teams Integration Screenshot"
+      class="py-5 border border-neutral-400 rounded"
+      loading="lazy"
+    />
+    Add those three values to your Scoold configuration:
+    ```ini title=scoold-application.conf
+    scoold.ms_app_id = "{Client ID}"
+    scoold.ms_secret = "{Client Secret}"
+    scoold.ms_tenant_id = "{Tenant (client) ID}"
+    ```
+3. Visit the [↗ Teams Developer Portal > Tools > Bot management](https://dev.teams.microsoft.com/bots) page and create a new Bot. 
+    Name the bot "Scoold" and take a note of the bot's ID and secret key. 
+    <Image src={import(`../../../../images/microsoft-teams/teams_step3.png`)}
+      alt="Teams Integration Screenshot"
+      class="py-5 border border-neutral-400 rounded"
+      loading="lazy"
+    />
+    Configure the Bot endpoint address to be the URL of your Scoold Pro server, for example `https://demo.cloud.scoold.com/teams` 
+    and click "Save".
+4. Copy the Bot ID and secret to your Scoold configuration file and restart Scoold: 
+    <Image src={import(`../../../../images/microsoft-teams/teams_step4.png`)}
+      alt="Teams Integration Screenshot"
+      class="py-5 border border-neutral-400 rounded"
+      loading="lazy"
+    />
+    ```ini title=scoold-application.conf
+    scoold.teams.bot_id = "{Bot ID}"
+    scoold.teams.bot_secret = "{Bot Secret}"
+    ```
+5. Visit the **Administration** page in Scoold and click the "Add to Microsoft Teams" 
+    button. You will then be able to select the Teams channel where you would like 
+    Scoold to send notifications. Add a notification webhook for each of the channels 
+    you want. Up to 10 channels can be configured for notifications in this way.
+    <Image src={import(`../../../../images/microsoft-teams/teams_step5.png`)}
+      alt="Teams Integration Screenshot"
+      class="py-5 border border-neutral-400 rounded"
+      loading="lazy"
+    />
+6. On the same page, click the **Download app package** button. 
+    Download the Zip file and sideload it in [↗ Teams Admin Center > Apps > Upload a custom app](https://admin.teams.microsoft.com/policies/manage-apps) 
+    and select the `Scoold.zip` package. 
+    *Repeat this step for every team where you want to receive notifications from Scoold.*
+7. Scoold should now be available in your Teams chat as a custom application. 
+    **Optionally**, if you want the app to be installed org-wide, 
+    click "Upload a custom app > Upload for my org".  This will add the app to your 
+    organization's app catalog. After approving the app in the Teams Admin Center, 
+    you will then be able to install it as a Teams app for any of your teams.
+</Steps>
+
+## Configuration properties
+
+Here are all configuration properties for MS Teams:
+
+```ini title=scoold-application.conf
+# Microsoft OAuth2 client id
+scoold.ms_app_id = ""
+# Microsoft OAuth2 secret
+scoold.ms_secret = ""
+
+scoold.teams.bot_id = ""
+scoold.teams.bot_secret = ""
+scoold.teams.map_workspaces_to_spaces = true
+scoold.teams.map_channels_to_spaces = false
+scoold.teams.post_to_space = "workspace|scooldspace:myspace|default"
+
+scoold.teams.notify_on_new_question = true
+scoold.teams.notify_on_new_answer = true
+scoold.teams.notify_on_new_comment = true
+scoold.teams.dm_on_new_comment = false
+scoold.teams.default_question_tags = "via-teams"
+```
+
+You can type `@Scoold help` to get a list of all supported actions. All the other bot commands and notifications work
+just like with Slack and Mattermost, described above. A bot registration is required for the Teams integration
+and it has to be created manually from the [↗ Teams Developer Portal](https://dev.teams.microsoft.com/bots).
+
+When `scoold.teams.dm_on_new_comment` is enabled, Scoold will send a direct message notification to the author of
+the post on which somebody commented. By default, DMs are turned off and the notification is sent to the channel instead.
+
+If you wish to hide the Microsoft login button "Continue with Microsoft", you can do it by adding this to your configuration:
+```ini title=scoold-application.conf
+scoold.teams.auth_enabled = false
+```
+
+## In-chat notifications
+
+Scoold will notify the channels where you have it installed, whenever a new question or answer is created, and also
+whenever a user is mentioned. To install the application on multiple channels go to the Administration page and click
+one of the "Add to Teams" buttons for each channel where you wish to get notifications. You can receive
+notification on up to 10 channels simultaneously. Notifications for new posts will go to the channel associated with the
+space in which the post was created. For example, when using Slack, if `scoold.slack.map_workspaces_to_spaces` is `true`,
+and a question is created in space "Team1 #general", Scoold will search for webhook registrations matching that
+team/channel combination and only send a notification there. Direct message webhooks will be used only if there's no
+space-matching channel found.
+
+## Approving new posts from chat
+
+To enable this feature add this to your configuration:
+```ini title=scoold-application.conf
+scoold.posts_need_approval = true
+```
+When a new question or answer is created by a user with less
+reputation than the threshold, a notification message will be sent to Slack/Mattermost/Teams, giving you the option to
+either approve or delete that post. The action can only be performed by moderators.

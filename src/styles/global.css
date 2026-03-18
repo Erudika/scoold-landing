@@ -74,9 +74,15 @@
 }
 
 @layer starlight.base {
-  ol, ul, menu {
-    list-style: disc;
-    list-style-position: inside
+  .sl-markdown-content ol {
+    list-style: decimal;
+    list-style-position: inherit;
+    padding-left: 1rem;
+  }
+
+  .sl-markdown-content ul {
+    list-style: inherit;
+    list-style-position: inside;
   }
 }
 

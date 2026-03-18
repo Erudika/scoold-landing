@@ -4,67 +4,53 @@ description: Core configuration options for Scoold - branding, authentication, a
 sidebar:
   order: 2
 ---
+import { Aside, Badge, LinkCard, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Scoold is configured primarily through environment variables or a `application.conf` file in the working directory.
 
-## Core settings
+Scoold is configured primarily through the configuration file `scoold-application.conf`.
+All configuration can be overridden with system properties or environment variables.
 
-```properties
-# Application name displayed in the header
-scoold.app_name = "My Team Knowledge Base"
+Scoold requires a **persistent and direct connection to a Para** backend.
+By default, Scoold will load its configuration from a file named `scoold-application.conf` but that file can be 
+renamed to `app.conf`, for example, and then loaded with the system property `-Dconfig.file=app.conf`.
+The configuration can also be loaded from a [↗ JSON file or a URL](https://github.com/lightbend/config#standard-behavior).
 
-# Public URL of your Scoold instance
-scoold.server_url = "https://scoold.mycompany.com"
-
-# Admin email address(es), comma-separated
-scoold.admins = "admin@mycompany.com"
-
-# Support email address
-scoold.support_email = "support@mycompany.com"
+Copy this Scoold basic configuration to your **`scoold-application.conf`** (edit the values if needed):
+```ini title=scoold-application.conf
+# the name of the application
+scoold.app_name = "Scoold"
+# the port for Scoold
+scoold.port = 8000
+# environment - "production" or "development"
+scoold.env = "production"
+# the public-facing URL where Scoold is hosted
+scoold.host_url = "http://localhost:8000"
+# the URL of Para - can also be "https://paraio.com"
+scoold.para_endpoint = "http://localhost:8080"
+# access key for your Para app
+scoold.para_access_key = "app:scoold"
+# secret key for your Para app
+scoold.para_secret_key = "{secret}"
+# the email or identifier of the admin user - check Para user object
+scoold.admins = "admin@domain.com"
+# Enable/disable password authentication
+scoold.password_auth_enabled = true
 ```
 
-## Authentication
+## Startup
 
-Scoold supports multiple authentication methods that can be enabled simultaneously.
+On startup, Scoold tries to connect to Para every 10 seconds, 10 times in total. (default). If the connection is unsuccessful, the settings will not be persisted.
 
-### Social login (OAuth)
-
-```properties
-# Google
-scoold.gp_app_id = "your-google-client-id"
-scoold.gp_secret = "your-google-client-secret"
-
-# GitHub
-scoold.gh_app_id = "your-github-client-id"
-scoold.gh_secret = "your-github-client-secret"
-
-# Microsoft (Azure AD)
-scoold.ms_app_id = "your-microsoft-client-id"
-scoold.ms_secret = "your-microsoft-client-secret"
+```ini
+scoold.connection_retries_max = 10
+scoold.connection_retry_interval_sec = 10
 ```
 
-### LDAP (Scoold Pro)
+For an infinite number of attempts to connect to Para, set `scoold.connection_retries_max` to `-1`.
 
-```properties
-scoold.security.ldap.server = "ldap://ldap.mycompany.com:389"
-scoold.security.ldap.base_dn = "dc=mycompany,dc=com"
-scoold.security.ldap.bind_dn = "cn=scoold,dc=mycompany,dc=com"
-scoold.security.ldap.bind_pass = "ldap-password"
-scoold.security.ldap.user_search_base = "ou=users"
-scoold.security.ldap.user_search_filter = "(sAMAccountName={0})"
-```
+## SMTP configuration
 
-### SAML 2.0 (Scoold Pro)
-
-```properties
-scoold.security.saml.idp.metadata_url = "https://your-idp/metadata"
-scoold.security.saml.sp.entity_id = "https://scoold.mycompany.com"
-scoold.security.saml.attributes.id = "NameID"
-scoold.security.saml.attributes.name = "displayName"
-scoold.security.saml.attributes.email = "mail"
-```
-
-## Email configuration
+It's recommended to configure SMTP as soon as possible in order for the transactional emails to work properly.
 
 ```properties
 spring.mail.host = smtp.sendgrid.net
@@ -78,12 +64,20 @@ spring.mail.properties.mail.smtp.starttls.enable = true
 ## Branding
 
 ```properties
+scoold.show_branding = true
 # Custom logo URL
 scoold.logo_url = "https://cdn.mycompany.com/logo.png"
-
 # Custom CSS (URL to a stylesheet)
 scoold.stylesheet_url = "https://cdn.mycompany.com/scoold-custom.css"
-
 # Welcome message on login page
 scoold.welcome_message = "Welcome to MyCompany's knowledge base"
 ```
+
+For details on all customization options, visit the "Customization" section.
+
+
+<LinkCard
+  title="Configuration Reference"
+  href="/documentation/reference/configuration"
+  description="For the complete list of configuration options, visit the configuration reference page."
+/>

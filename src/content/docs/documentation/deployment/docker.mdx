@@ -5,93 +5,135 @@ sidebar:
   order: 1
 ---
 
-This guide covers deploying Scoold to production using Docker.
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import RemoteFile from '../../../../components/RemoteFile.astro';
 
-## Production Docker Compose
 
-A production-grade setup with PostgreSQL as the Para backend:
+## Docker Compose
 
-```yaml
-version: '3.8'
+The *easiest way* to run Scoold locally is with Docker Compose:
 
-services:
-  postgres:
-    image: postgres:16-alpine
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: para
-      POSTGRES_USER: para
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  para:
-    image: erudikaltd/para:latest
-    restart: unless-stopped
-    environment:
-      SPRING_PROFILES_ACTIVE: production
-      PARA_DB_TYPE: postgres
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/para
-      SPRING_DATASOURCE_USERNAME: para
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
-    depends_on:
-      - postgres
-
-  scoold:
-    image: erudikaltd/scoold:latest
-    restart: unless-stopped
-    ports:
-      - "8000:8000"
-    environment:
-      PARA_ENDPOINT: http://para:8080
-      PARA_ACCESS_KEY: ${PARA_ACCESS_KEY}
-      PARA_SECRET_KEY: ${PARA_SECRET_KEY}
-      SCOOLD_APP_NAME: "${APP_NAME}"
-      SCOOLD_SERVER_URL: "https://${DOMAIN}"
-      SCOOLD_ADMINS: "${ADMIN_EMAIL}"
-    depends_on:
-      - para
-
-volumes:
-  postgres_data:
+```bash
+docker compose -f https://github.com/Erudika/scoold.git up
 ```
 
-## Reverse proxy with Nginx
+## Manual setup
 
-```nginx
-server {
-    listen 80;
-    server_name scoold.mycompany.com;
-    return 301 https://$host$request_uri;
-}
+**Alternatively**, if the command above fails, here are the steps to manually compose the stack from scratch:
+<Steps>
+1. Copy the `docker-compose.yml` file locally:
+    <Tabs>
+      <TabItem label="Scoold">
+        <details>
+          <summary><code>docker-compose.yml</code> for Scoold</summary>
+          <RemoteFile url="https://raw.githubusercontent.com/Erudika/scoold/master/docker-compose.yml" lang="yaml" title="docker-compose.yml" />
+        </details>
+      </TabItem>
+      <TabItem label="Scoold Pro">
+        <details>
+          <summary><code>docker-compose.yml</code>  for Scoold Pro</summary>
+          <RemoteFile url="https://raw.githubusercontent.com/Erudika/scoold-pro/master/docker-compose.yml" lang="yaml" title="docker-compose.yml" />
+        </details>
+      </TabItem>
+    </Tabs>
+2. Create **two blank** configuration files, for Scoold and Para, in the same directory:
+    ```bash
+    touch para-application.conf scoold-application.conf
+    ```
+    Since the configuration files do not define `scoold.app_secret_key` and `scoold.para_secret_key`, these secrets will be populated automatically upon initialization.
+3. In the same directory, execute this terminal command to start Scoold and Para:
+    ```bash
+    docker compose up
+    ```
+</Steps>
 
-server {
-    listen 443 ssl http2;
-    server_name scoold.mycompany.com;
 
-    ssl_certificate /etc/letsencrypt/live/scoold.mycompany.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/scoold.mycompany.com/privkey.pem;
+Finally, open `localhost:8000/signin/register` and create a new account. If you've configured your email with
+`scoold.admins = "email@domain.com"` and you sign up with the same email, you will become admin automatically.
 
-    location / {
-        proxy_pass http://localhost:8000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
+To stop the containers press <kbd class="kbd">Ctrl + C</kbd>.
+
+<Aside type="caution" title="Important">
+Scoold will connect to Para on `http://para:8080`, inside the Docker container environment.
+That hostname may not be accessible from your local machine or the Internet, which will break authentication redirects.
+For example, when signing in with Google, you will be redirected to Google and then back to Para, on the address
+specified in `scoold.security.redirect_uri`. Para must be a publicly accessible on that address or the authentication
+requests will fail.
+</Aside>
+
+## Standalone Docker container
+
+<Aside>
+Tagged Docker images for Scoold and Para are published on [↗ Docker Hub](https://hub.docker.com/r/erudikaltd/scoold/tags).
+The `:latest_stable` tag is recommended as it points to the latest stable release version. The `:latest` tag can be broken/unstable.
+</Aside>
+
+If you prefer, you can run the Scoold container outside of Docker Compose.
+First, have your Scoold `scoold-application.conf` configuration file ready in the current directory and run this command:
+
+```bash
+docker run -ti -p 8000:8000 --rm \
+  -v $(pwd)/scoold-application.conf:/scoold/application.conf \
+  -e JAVA_OPTS="-Dconfig.file=/scoold/application.conf" \
+  erudikaltd/scoold:latest_stable
 ```
 
-## Kubernetes (Helm)
+For **Scoold Pro** the images are located in a private registry. You can get access to it once you purchase a Pro license.
+The run command for **Scoold Pro** is similar with the only difference being the uploads volume:
 
-A community Helm chart is available for Kubernetes deployments. See the [GitHub repository](https://github.com/Erudika/scoold) for the latest chart values.
-
-## Health check
-
-Scoold exposes a health endpoint at `/v1/_health`. Use this for load balancer health checks:
-
+```bash
+docker run -ti -p 8000:8000 --rm \
+  -v $(pwd)/scoold-application.conf:/scoold-pro/application.conf \
+  -v scoold-uploads:/scoold-pro/uploads \
+  -e JAVA_OPTS="-Dconfig.file=/scoold-pro/application.conf" \
+  374874639893.dkr.ecr.eu-west-1.amazonaws.com/scoold-pro:latest_stable
 ```
-GET https://scoold.mycompany.com/v1/_health
+
+**Environment variables**
+
+- `JAVA_OPTS` - Java system properties, e.g. `-Dscoold.port=8000`
+- `BOOT_SLEEP` - Startup delay, in seconds
+
+## Docker registry for Scoold Pro images
+
+If you purchase Scoold Pro you can get access to the private Docker registry hosted on the AWS Elastic Container Registry.
+Access to the private registry is not given automatically upon purchase - you have to request it. You will then be issued
+a special access key and secret for AWS ECR. Then execute the following BASH commands (these require
+[AWS CLI v2.x](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)):
+<Steps>
+1. Configure AWS CLI to use the new credentials or instruct AWS CLI to use an existing credentials profile, e.g. `export AWS_PROFILE=docker`:
+    ```bash
+    aws configure
+    ```
+2. Authenticate with our ECR registry - a temporary access token will be issued for 12h:
+    ```bash
+    aws ecr get-login-password --region eu-west-1 | \
+      docker login --username AWS \
+        --password-stdin 374874639893.dkr.ecr.eu-west-1.amazonaws.com
+    ```
+    If the command above doesn't succeed, you won't be able to pull the latest Scoold Pro image or run `docker compose`.
+3. Pull a Scoold Pro image with a specific tag:
+    ```bash
+    aws ecr list-images --repository-name scoold-pro;
+    docker pull 374874639893.dkr.ecr.eu-west-1.amazonaws.com/scoold-pro:latest_stable
+    ```
+</Steps>
+
+Once you have access to Scoold Pro container images, you can bring up a Scoold Pro instance with Docker Compose as well:
+```bash
+docker compose -f https://github.com/Erudika/scoold-pro.git up
 ```
 
-Expected response: `{ "healthy": true }`
+The `:latest` tag is not supported but you can use `:latest_stable`. The command `aws get-login-password`
+gives you an access token to the private Docker registry which is valid for **12 hours**.
+
+In case you don't want to use AWS CLI for logging into the Scoold Pro registry, install the
+[AWS ECR Docker Credentials Helper](https://github.com/awslabs/amazon-ecr-credential-helper).
+
+
+
+<LinkCard
+  title="Configuration Reference"
+  href="/documentation/reference/configuration"
+  description="For the complete list of configuration options, visit the configuration reference page."
+/>

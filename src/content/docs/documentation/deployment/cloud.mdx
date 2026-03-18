@@ -2,28 +2,177 @@
 title: Cloud Deployment
 description: Deploy Scoold to AWS, Azure, Google Cloud, Heroku, and other cloud providers.
 sidebar:
-  order: 2
+  order: 3
 ---
+import { Aside, Badge, LinkCard, Card, LinkButton, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import RemoteFile from '../../../../components/RemoteFile.astro';
 
 Scoold can be deployed to any cloud provider that supports Docker containers or Java applications.
 
-## AWS (Elastic Container Service)
 
-The recommended AWS deployment uses ECS Fargate:
+## Scoold Cloud <Badge text="fully managed" variant="note" />
 
-1. Push the `erudikaltd/scoold` image to ECR or use it directly
-2. Create a Fargate task definition with the required environment variables
-3. Set up an Application Load Balancer pointing to your ECS service
-4. Use RDS PostgreSQL as the Para backend database
+We offer managed cloud hosting for Scoold Pro at [↗ cloud.scoold.com](https://cloud.scoold.com).
+Scoold Cloud offers fully managed Scoold hosting with automatic updates, backups, and security patches.
+With Scoold Cloud you can get a Scoold Pro server up and running in minutes, without worrying about deployment or maintainance.
+
+<Card title="On Scoold Cloud you get:" icon="star">
+  - A dedicated Scoold Pro instance with all features
+  - Dedicated subdomain with SSL
+  - Data encryption at rest
+  - Custom domain support
+  - Web admin console for easy configuration
+  - 2 months free, for annual subscriptions
+  
+  <LinkButton href="https://cloud.scoold.com">Visit Scoold Cloud &rarr;</LinkButton>
+</Card>
+
+
+## Heroku
+
+<Steps>
+1. Click the button to open Heroku [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Erudika/scoold)
+2. Launch a new node by filling in the required parameters
+</Steps>
+
+
+
+### Manual deployment - code push
+<Steps>
+1. Clone this repository and create a new Heroku app
+2. Add Heroku as a Git remote target and push your changes with `git push heroku master`
+3. Go to the Heroku admin panel, under "Settings", "Reveal Config Vars" and set all the configuration variables shown above but **replace all dots in the variable names with underscores**, e.g. `scoold.para_endpoint` -> `scoold_para_endpoint`.
+4. Open the app in your browser at `https://{appname}.herokuapp.com`.
+</Steps>
+
+### Manual deployment - JAR push
+
+<Steps>
+1. Build the Scoold JAR file or [↗ buy a Scoold Pro license](https://paraio.com/scoold-pro)
+2. [↗ Download and install the Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+3. Create a Heroku app or use the id of an existing Heroku app where you want Scoold deployed
+4. Add the `heroku/jvm` and `heroku/java` buildpacks to your Heroku app from the Settings page
+5. Create a file `Procfile` containing this line:
+    ```txt title=Procfile
+    web: java -Dserver.port=$PORT $JAVA_OPTS -jar scoold-*.jar $JAR_OPTS
+    ```
+6. Open a terminal in the directory containing the JAR file and execute:
+    ```bash
+    heroku plugins:install java
+    heroku deploy:jar scoold-x.y.z.jar --app myscooldapp
+    ```
+</Steps>
+Pushing JARs to Heroku is useful in cases where you have an existing Heroku app which hosts a free version of Scoold,
+deployed through the "one-click" Heroku button, and you want to upgrade it to Scoold Pro.
+
+On Heroku you don't have a configuration file, instead you use Heroku's environment variables to configure Scoold.
+You can add each Scoold configuration property as an environment variable on the Settings page of your Heroku admin page.
+Click "Reveal Config Vars". Configuration variables (config vars) **must not** contain dots ".", for example `scoold.para_endpoint`
+becomes `para_endpoint`. You **must** replace every dot with an underscore in order to convert a Scoold configuration
+property to a Heroku environment variable.
+
+Installing the **Heroku CLI** tool allows you to watch the Scoold logs with:
+```bash
+heroku logs --tail --app myscooldapp
+```
+Or you can restart your dyno with:
+```bash
+heroku restart --app myscooldapp
+```
+### Heroku container
+
+You can also run Scoold as a Docker container on Heroku:
 
 ```bash
-# Pull and tag for ECR
-docker pull erudikaltd/scoold:latest
-docker tag erudikaltd/scoold:latest YOUR_ACCOUNT.dkr.ecr.REGION.amazonaws.com/scoold:latest
-docker push YOUR_ACCOUNT.dkr.ecr.REGION.amazonaws.com/scoold:latest
+heroku create my-scoold-app
+heroku container:login
+heroku container:push web -a my-scoold-app
+heroku container:release web -a my-scoold-app
+heroku config:set PARA_ENDPOINT=https://my-para.herokuapp.com -a my-scoold-app
 ```
 
-## Azure Container Instances
+## DigitalOcean
+
+<Steps>
+1. Create a droplet running Ubuntu and SSH into it
+2. Create a user `ubuntu` with `adduser ubuntu`
+3. Execute the install script (as root): 
+    ```bash 
+    curl https://raw.githubusercontent.com/Erudika/scoold/master/installer.sh | bash
+    ```
+4. Copy the configuration file to your droplet: 
+    ```bash
+    scp scoold-application.conf root@{droplet_ip}:/home/ubuntu
+    ```
+5. Restart Scoold: 
+    ```bash 
+    ssh root@{droplet_ip} "systemctl restart scoold.service"
+    ```
+6. Go to `http://{droplet_ip}:8000` and verify that Scoold is running
+7. Configure SSL on DigitalOcean or install nginx + letsencrypt on your droplet (see instructions below)
+</Steps>
+
+## AWS
+
+### EC2 & Lightsail
+
+<Steps>
+1. Click the button, or open EC2 console [![Deploy](https://s3-eu-west-1.amazonaws.com/com.scoold.files/awsdeploy.svg)](https://lightsail.aws.amazon.com/ls/webapp/create/instance)
+2. Choose a "Linux" AMI (e.g. "Ubuntu 24.04 LTS" or later)
+3. Click *"Add launch script"* (user data) and copy the contents of `installer.sh`:
+    <details>
+      <summary><code>installer.sh</code></summary>
+      <RemoteFile url="https://raw.githubusercontent.com/Erudika/scoold/master/installer.sh" lang="bash" title="installer.sh" />
+    </details>
+4. Download the default SSH key pair or upload your own
+5. Choose the 512MB instance or larger (1GB recommended)
+6. Wait for the instance to start and open the IP address in your browser at port `8000`
+</Steps>
+
+### Elatic Beanstalk
+
+<Steps>
+1. Clone this repo and change directory to it
+2. Generate a WAR package with `mvn -Pwar package`
+3. [↗ Create a new Beanstalk web app](https://console.aws.amazon.com/elasticbeanstalk/home?region=eu-west-1#/newApplication?applicationName=Scoold&platform=Tomcat&tierName=WebServer&instanceType=t1.micro)
+4. Upload the WAR package `target/scoold-x.y.z.war` to Beanstalk, modify any additional options and hit "Create"
+</Steps>
+
+### Authentication with Cognito
+
+Scoold is fully compatible with Amazon Cognito because Cognito is just another OAuth 2.0 service provider. Here's how to
+configure Scoold to work with Amazon Cognito:
+
+<Steps>
+1. Create a Cognito user pool (if you don't have one already)
+2. Create a Cognito App client with the OAuth 2.0 authorization code grant enabled:
+3. Create a Cognito login subdomain for your app client (e.g.`https://scoold.auth.eu-west-1.amazoncognito.com`)
+4. Add the new OAuth 2.0 authentication provider to your Scoold configuration:
+    ```ini title=scoold-application.conf
+    scoold.oa2_app_id = "cognito_app_client_id"
+    scoold.oa2_secret = "cognito_app_client_secret"
+    scoold.security.oauth.authz_url = "https://scoold.auth.eu-west-1.amazoncognito.com/login"
+    scoold.security.oauth.token_url = "https://scoold.auth.eu-west-1.amazoncognito.com/oauth2/token"
+    scoold.security.oauth.profile_url = "https://scoold.auth.eu-west-1.amazoncognito.com/oauth2/userInfo"
+    scoold.security.oauth.provider = "Continue with Cognito"
+    ```
+5. Restart Scoold and login with a user from your Cognito user pool
+6. Whitelist your Para auth endpoint with Cognito `https://para_url/oauth2_auth` as a valid `redirect_uri`.
+</Steps>
+
+## Azure
+
+<Steps>
+1. Click the button to open Azure [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FErudika%2Fscoold%2Fmaster%2Fazuredeploy.json)
+2. Launch a new container by filling in the required parameters
+3. Go to your container and press "Connect" using `/bin/sh`
+4. In the terminal type in `vi scoold-application.conf`, hit `i` and paste in your configuration, 
+  hit `Esc` and type in `:wq` then restart your container **OR**, attach a 
+  [secret volume](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-volume-secret) 
+  to your container, containing the configuration. It should be mounted as `/scoold/application.conf`.
+</Steps>
+
+### Azure Container Instances
 
 ```bash
 az container create \
@@ -38,7 +187,18 @@ az container create \
     PARA_SECRET_KEY=your-secret
 ```
 
-## Google Cloud Run
+## Google App Engine
+
+<Steps>
+1. Download the Scoold JAR package to a local folder and rename it to `scoold.jar`
+2. Copy the file `app.gae.yaml` from this repository to the same folder and rename it to `app.yaml`
+3. Create a project in the Google Cloud Platform Console
+4. Install the Google Cloud SDK
+5. Edit `app.gae.yaml` and fill in the correct configuration properties
+6. Deploy it with `gcloud preview app deploy app.yaml`
+</Steps>
+
+### Google Cloud Run
 
 ```bash
 gcloud run deploy scoold \
@@ -50,31 +210,29 @@ gcloud run deploy scoold \
   --port 8000
 ```
 
-## Heroku
+## Servlet containers (Tomcat, Jetty, Undertow)
 
-```bash
-heroku create my-scoold-app
-heroku container:login
-heroku container:push web -a my-scoold-app
-heroku container:release web -a my-scoold-app
-heroku config:set PARA_ENDPOINT=https://my-para.herokuapp.com -a my-scoold-app
+The instructions for Tomcat in particular are:
+
+<Steps>
+1. Generate a WAR package with: `mvn -Pwar package`
+2. Rename the WAR package to `ROOT.war` if you want it deployed to the root context or leave it as is
+3. Put the WAR package in `Tomcat/webapps/` & start Tomcat
+4. Copy config file 
+    ```bash 
+    cp scoold-application.conf Tomcat/webapps/scoold-folder/WEB-INF/classes/application.conf;
+    ./catalina.sh stop
+    ./catalina.sh start
+    ```
+</Steps>
+
+Scoold is compatible with Tomcat, Jetty, Undertow and Payara.
+
+### Deploying Scoold under a specific context path
+
+To deploy Scoold at a different path instead of the root path, set:
+```ini title=scoold-application.conf
+scoold.context_path = "/newpath
 ```
+The default value for this setting is blank, meaning Scoold will be deployed at the root directory.
 
-## Render
-
-Render supports Docker deployments directly from GitHub. Create a `render.yaml`:
-
-```yaml
-services:
-  - type: web
-    name: scoold
-    env: docker
-    dockerfilePath: ./Dockerfile
-    envVars:
-      - key: PARA_ENDPOINT
-        value: https://para.onrender.com
-      - key: PARA_ACCESS_KEY
-        fromDatabase:
-          name: scoold-db
-          property: connectionString
-```

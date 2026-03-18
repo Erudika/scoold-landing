@@ -1,0 +1,72 @@
+---
+title: Building from source
+description: Building Scoold and Scoold Pro from source code
+sidebar:
+  order: 3
+---
+import { Aside, Steps, LinkCard, Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+## Building Scoold
+
+To build Scoold from source code you'll need JDK 21+ and Maven. 
+Then just clone the repo and build the project:
+
+```sh
+git clone https://github.com/erudika/scoold.git
+cd scoold
+mvn clean install
+```
+To run a local instance of Scoold for development, use:
+```sh
+mvn -Dconfig.file=./scoold-application.conf spring-boot:run
+```
+
+To generate a WAR package, run:
+```sh
+mvn -Pwar package
+```
+
+## Building Scoold Pro
+
+To build Scoold Pro, you will need access to the Scoold Pro source code repo.
+For license holders with access to the Scoold Pro source code, the steps are as follows:
+
+<Steps>
+1. Clone the Scoold Pro repository:
+    ```sh
+    git clone https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/scoold-pro
+    ```
+2. Enter your username and password for the Git repository.
+3. Build Scoold Pro:
+    ```sh
+    git clone https://github.com/erudika/scoold.git
+    cd scoold-pro
+    mvn clean install
+    ```
+</Steps>
+
+You should be able to browse the source code with any of the Git graphic interface tools out there.
+Keep in mind that the repository is read-only, so you can only work with local branches and 
+merge the latest changes from the main branch to your local branch.
+
+## Contributing
+
+1. Fork this repository and clone the fork to your machine
+2. Create a branch (`git checkout -b my-new-feature`)
+3. Implement a new feature or fix a bug and add some tests
+4. Commit your changes (`git commit -am 'Added a new feature'`)
+5. Push the branch to **your fork** on GitHub (`git push origin my-new-feature`)
+6. Create new Pull Request from your fork
+
+Please try to respect the code style of this project. To check your code, run it through the style checker:
+
+```sh
+mvn validate
+```
+
+<LinkCard
+  title="Contribute on GitHub"
+  href="https://github.com/Erudika/scoold/blob/master/CONTRIBUTING.md"
+  description="Contributions to the project are welcome on GitHub. Follow the guide to get started."
+/>
