@@ -1,0 +1,42 @@
+---
+title: SCIM Support
+description: SCIM 2.0 Support in Scoold for user provisioning
+sidebar:
+  badge:
+    text: Pro
+    variant: tip
+  order: 4
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+**This is a <Badge text="Pro" variant="tip" /> feature**
+
+Scoold Pro has a dedicated SCIM 2.0 API endpoint for automatic user provisioning at `http://localhost:8000/scim`.
+This allows you to manage Scoold Pro users externally, on an identity management platform of your choice.
+Here's an example configuration for enabling SCIM 2.0 in Scoold:
+
+```ini  title="scoold-application.conf"
+scoold.scim_enabled = true
+scoold.scim_secret_token = "secret"
+scoold.scim_map_groups_to_spaces = true
+scoold.scim_allow_provisioned_users_only = false
+```
+By default, Scoold Pro will create a space for each SCIM `Group` it receives from your identity platform and assign the
+members of that group to the corresponding space. Just make sure that groups are pushed from your IdM platform to Scoold.
+
+If you set `scoold.scim_allow_provisioned_users_only = true`, user accounts which have not been SCIM-provisioned will be blocked
+even if those users are members of your identity pool. This allows system administrators to provision a subset of the
+user pool in Scoold.
+
+<Aside type="caution" title="Important">
+When users are provisioned from a SCIM client (Azure AD, Okta, OneLogin, etc.) ensure that the SCIM
+`userName` attribute is unique. This means that when a SCIM client sends an update to Scoold Pro,
+the user will be matched based on their `userName`.
+</Aside>
+
+You can also map groups from your identity pool to Para user groups. For example:
+```ini  title="scoold-application.conf"
+scoold.security.scim.mods_group_equivalent_to = "Moderators"
+scoold.security.scim.admins_group_equivalent_to = "Administrators"
+```

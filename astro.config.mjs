@@ -69,7 +69,7 @@ export default defineConfig({
     }),
     mdx()
   ],
-  vite: {
-    plugins: [tailwind()],
-  },
+  // vite: {
+  //   plugins: [tailwind()],
+  // },
 });

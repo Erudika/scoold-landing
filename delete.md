@@ -21,40 +21,6 @@ IMPROVE!
 
 
 
-## Content-Security-Policy header
-
-This header is enabled by default for enhanced security. It can be disabled with `scoold.csp_header_enabled = false`.
-The default value is modified through `scoold.csp_header = "new_value"`. The default CSP header is:
-```ini
-default-src 'self';
-base-uri 'self';
-connect-src 'self' scoold.com www.google-analytics.com www.googletagmanager.com accounts.google.com;
-frame-src 'self' accounts.google.com staticxx.facebook.com;
-font-src cdnjs.cloudflare.com fonts.gstatic.com fonts.googleapis.com;
-style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com static.scoold.com accounts.google.com;
-img-src 'self' https: data:;
-object-src 'none;
-report-uri /reports/cspv;
-script-src 'unsafe-inline' https: 'nonce-{{nonce}}' 'strict-dynamic';
-```
-
-The placeholder `{{nonce}}` will get replaced by the CSP nonce value used for whitelisting scripts.
-
-**Note:** If you get CSP violation errors, check your `scoold.host_url` and `scoold.cdn_url` configuration,
-or edit the value of `scoold.csp_header`.
-
-Additionally, there are 4 options to extend the values of `connect-src`, `frame-src`, `font-src` and `style-src`
-respectively:
-```ini
-scoold.csp_connect_sources = "connect-domain1.com connect-domain2.com"
-scoold.csp_frame_sources = "frame-domain1.com frame-domain2.com"
-scoold.csp_font_sources = "font-domain1.com font-domain2.com"
-scoold.csp_style_sources = "style-domain1.com style-domain2.com"
-```
-
-You can also enable or disable CSP violation reports (visible only to admins) by setting `scoold.csp_reports_enabled = true`.
-Keep in mind that if your website has a lot of traffic, this will result in hundreds of new reports being created each hour.
-
 ## External scripts and JS snippets
 
 You can append external scripts and JS snippets to the end of the page by setting the `scoold.external_scripts` property.
@@ -106,43 +72,8 @@ You can also override the default dark stylesheet which is only loaded if dark m
 scoold.dark_stylesheet_url = "https://public.cdn.com/dark.css"
 ```
 
-## Serving static files from local disk
-
-By default, Scoold will only serve static files from the `/static` folder on the classpath (inside the JAR).
-If you want to configure it to serve additional resources from a local directory, set this system property:
-```ini
-spring.web.resources.static-locations = "classpath:/static/, file:/home/scoold/static-folder/"
-```
-Then, for example, a file located at `/home/scoold/static-folder/file.png` will be served from `localhost:8000/file.png`.
-For more information, check the
-[Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#web.servlet.spring-mvc.static-content).
-
-## Serving static files from a CDN
-
-Scoold will serve static files (JS, CSS, fonts) from the same domain where it is deployed. You can configure the
-`scoold.cdn_url` to enable serving those files from a CDN. The value of the CDN URL *must not* end in "/".
 
 
-
-## reCAPTCHA support
-
-You can protect signups and password reset functionality with reCAPTCHA v3. First, you will need to register a new domain
-at [Google reCAPTCHA](https://www.google.com/recaptcha/admin). Create a new reCAPTCHA v3, add your site to the whitelist
-and copy the two keys - a clientside key (site key) and a serverside key (secret). Then, protect the pages
-`/signin/register` and `/signin/iforgot` by adding these properties to your configuration:
-```ini
-scoold.signup_captcha_site_key = "site-key-from-google"
-scoold.signup_captcha_secret_key = "secret-from-google"
-```
-
-## Delete protection for valuable content
-
-By default, Scoold will protect valuable questions and answers from accidental deletion. If a question has at least one
-answer, the author of that question will not be able to delete it. Or, if an answer is accepted by the author of the
-question, the person who wrote the answer won't be able to delete it. You can turn this off with:
-```ini
-scoold.delete_protection_enabled = false
-```
 
 
 ## Social login
@@ -643,35 +574,6 @@ You can also configure users to be redirected to an external location when they 
 scoold.signout_url = "https://homepage.com"
 ```
 
-## SCIM 2.0 support
-
-**PRO** Scoold Pro has a dedicated SCIM API endpoint for automatic user provisioning at `http://localhost:8000/scim`.
-This allows you to manage Scoold Pro users externally, on an identity management platform of your choice.
-Here's an example configuration for enabling SCIM in Scoold:
-
-```ini
-scoold.scim_enabled = true
-scoold.scim_secret_token = "secret"
-scoold.scim_map_groups_to_spaces = true
-scoold.scim_allow_provisioned_users_only = false
-```
-By default, Scoold Pro will create a space for each SCIM `Group` it receives from your identity platform and assign the
-members of that group to the corresponding space. Just make sure that groups are pushed from your IdM platform to Scoold.
-
-If `scoold.scim_allow_provisioned_users_only = true`, user accounts which have not been SCIM-provisioned will be blocked
-even if those users are members of your identity pool. This allows system administrators to provision a subset of the
-user pool in Scoold.
-
-**Important:** When users are provisioned from a SCIM client (Azure AD, Okta, OneLogin, etc.) ensure that the SCIM
-`userName` attribute is unique. This means that when a SCIM client sends an update to Scoold Pro,
-the user will be matched based on their `userName`.
-
-You can also map groups from your identity pool to Para user groups. For example:
-```ini
-scoold.security.scim.mods_group_equivalent_to = "Moderators"
-scoold.security.scim.admins_group_equivalent_to = "Administrators"
-```
-
 ## Spaces (a.k.a. Teams)
 
 Spaces are a way to organize users and questions into isolated groups. There's a default space, which is publicly
@@ -725,145 +627,8 @@ When the above is set to `false`, administrators can go to the profile page of a
 spaces they choose. For all other spaces, the user in question will be a regular user.
 Only administrators can promote users to moderators, no matter how the option above is configured.
 
-## Webhooks
 
-Webhooks are enabled by default in Scoold. To disable this functionality set `scoold.webhooks_enabled = false`. If you
-are self-hosting Para, you need to also enable webhooks there using the same configuration option.
-You can add or remove webhooks in the "Administration" page. Webhooks can also be disabled and they will be
-disabled automatically when the target URL doesn't respond to requests from Para.
 
-Para will notify your target URL with a `POST` request containing the payload and a `X-Webhook-Signature` header. This
-header should be verified by the receiving party by computing `Base64(HmacSHA256(payload, secret))`.
-
-The standard events emitted by Scoold are:
-
-- `question.create` - whenever a new question is created
-- `question.close` - whenever a question is closed
-- `question.view` - whenever a question is viewed by anyone
-- `question.approve` - whenever a question is approved by moderator
-- `answer.create` - whenever a new answer is created
-- `answer.accept` - whenever an answer is accepted
-- `answer.approve` - whenever an answer is approved by moderator
-- `report.create` - whenever a new report is created
-- `comment.create` - whenever a new comment is created
-- `user.signin` - whenever a user signs in to the system
-- `user.signup` - whenever a new user is created
-- `user.search` - whenever a user performs a search
-- `revision.restore` - whenever a revision is restored
-- `user.ban` -  <kbd>Pro</kbd> whenever a user is banned
-- `user.mention` -  <kbd>Pro</kbd> whenever a user is mentioned
-- `question.like` - <kbd>Pro</kbd> whenever a question is favorited
-
-The event playloads for events `user.signin`, `question.view` and `user.search` contain extra information about the
-client which made the original request, e.g. IP address, `User-Agent` and `Referrer` headers.
-
-In addition to the standard event, Para also sends webhooks to the following core (CRUD) events, for all object types:
-`create`, `update`, `delete`, `createAll`, `updateAll`, `deleteAll`.
-
-You can subscribe to any of these custom events in Scoold using the REST API like so:
-```POST /api/webhooks
-{
-  "targetUrl": "https://myurl",
-  "typeFilter": "revision",
-  "urlEncoded": false,
-  "create": true,
-  "update": false,
-  "delete": false,
-  "createAll": true,
-  "updateAll": false,
-  "deleteAll": false,
-  "customEvents": ["revision.create"]
-}
-```
-This will create a new custom event `revision.create` which will fire whenever a new revision is created.
-This makes it easy to integrate Scoold with services like Zapier because it implements the
-[RESTHooks](https://resthooks.org/) best practices.
-
-Finally, you can configure a webhook so that it is only fired when the payload matches a certain filter.
-A filter could contain one or more values of a property, e.g. `tags:tag1,tag2`. If the payload inside the webhook matches
-the filter, then the payload is sent to the target URL, otherwise it is ignored.
-Here are some examples of webhook property filters:
-- `tags:tag1,tag2` - payload must contain a **list** property `tags` and it must have **both** `tag1` and `tag2` in it
-- `tags:tag1|tag2` - payload must contain a **list** property `tags` and it must have **either** `tag1` or `tag2` in it
-- `name:Gordon` - payload must contain a **String** property and it must be `Gordon`
-- `name:Gordon|Joe` - payload must contain a **String** property and it must be **either** `Gordon` or `Joe`
-- `tags:-` - payload must contain a **list** or **string** property `tags` and it **must be empty**
-
-For more details about webhooks, please read the [Para docs on webhooks](https://paraio.org/docs/#011-webhooks).
-
-## Session management and duration
-
-By default, only one session is allowed per user/browser. When a user logs in from one device, they will automatically be
-logged out from every other device. This can be disabled to allow multiple simultaneous sessions with:
-
-```ini
-scoold.security.one_session_per_user = false
-```
-
-User session cookies in Scoold expire after 24h. To change the session duration period to 6h for example, set
-`scoold.session_timeout = 21600` (6h in seconds) and restart. In 6h the Scoold authentication cookie will expire and so
-will the access token (JWT) inside the cookie.
-
-## Domain-restricted user registrations
-
-You can restrict signups only to users from a particular identity domain, say `acme-corp.com`. To do so, set the
-following configuration property:
-```ini
-scoold.approved_domains_for_signups = "acme-corp.com"
-```
-Then a user with email `john@acme-corp.com` will be allowed to login (the identity provider is irrelevant), but user
-`bob@gmail.com` will be denied access.
-
-**PRO** In Scoold Pro, this setting can also contain a comma-separated list of identity domains:
-```ini
-scoold.approved_domains_for_signups = "acme-corp.com,gmail.com"
-```
-
-## Admins
-
-You can specify the user with administrative privileges in your `scoold-application.conf` file:
-```ini
-scoold.admins = "joe@example.com"
-```
-**PRO** In Scoold Pro, you can have multiple admin users by specifying a comma-separated list of user identifiers.
-This works both for new and existing users.
-```ini
-scoold.admins = "joe@example.com,fb:1023405345366,gh:1234124"
-```
-
-If you remove users who are already admins from the list of admins `scoold.admins`, they will be *demoted* to regular
-users. Similarly, existing regular users will be *promoted* to admins if they appear in the list above.
-
-## Anonymous posts
-
-**PRO** This feature is enabled with `scoold.anonymous_posts_enabled = true`. It allows everyone to ask questions and write
-replies, without having a Scoold account. Posting to the "Feedback" section will also be open without requiring users
-to sign in. This feature is disabled by default.
-
-## Anonymous profiles
-
-People may wish to make their profile details anonymous from the Settings page. To allow this option set:
-```ini
-scoold.profile_anonimity_enabled = true
-```
-
-## Spam protection
-
-Scoold can be configured to detect and block spam content with the help of the Akismet API. To enable this functionality,
-specify your Akismet API key like this:
-
-```ini
-scoold.akismet_api_key = "xyz123"
-```
-
-By default, all content published on the site will be scanned for spam by Akismet and if spam is detected, that content
-will be ignored and the user will get an error, preventing them from posting it. If you turn off automatic protection,
-a report will be created each time a spam post is detected so that mods/admins can take action on it. In the meantime
-the post would be marked as "pending approval".
-
-```ini
-scoold.automatic_spam_protection_enabled = false
-```
 
 ## Enabling the "Feedback" section
 
@@ -1085,34 +850,3 @@ until the user gives their explicit consent.**
 
 Note: Any other script can be used instead, as long as it set a cookie `cookieconsent_status = "allow"`.
 
-## REST API
-
-The REST API can be enabled with the following configuration:
-```ini
-scoold.api_enabled = true
-# A random string min. 32 chars long
-scoold.app_secret_key = "change_to_long_random_string"
-```
-The API can be accessed from `/api/*` and the OpenAPI documentation and console are located at `/apidocs`.
-API keys can be generated from the "Administration" page and can be made to expire after a number of hours or never
-(validity period = 0). Keys are in the JWT format and signed with the secret defined in `scoold.app_secret_key`.
-API keys can also be generated with any JWT library. The body of the key should contain the `iat`, `appid` and `exp`
-claims and must be signed with the secret `scoold.app_secret_key`.
-
-**Note:** The Scoold API also accepts Para "super" tokens (manually generated) or JWTs generated using the
-[Para CLI tool](https://github.com/Erudika/para-cli).
-
-You can use the public endpoint `http://localhost:8000/api` to check the health of the server. A `GET /api` will
-return `200` if the server is healthy and connected to Para, otherwise status code `500` is returned.
-The response body is similar to this:
-```
-{
-  "healthy": true,
-  "message": "Scoold API, see docs at http://localhost:8000/apidocs",
-  "pro": false
-}
-```
-
-API clients can be auto-generated using [Swagger Codegen](https://github.com/swagger-api/swagger-codegen). You can
-also open the [API schema file](src/main/resources/templates/api.yaml) in [the Swagger Editor](https://editor.swagger.io/)
-and generate the clients from there.

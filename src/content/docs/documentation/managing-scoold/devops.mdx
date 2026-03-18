@@ -188,7 +188,7 @@ server {
 
 As an alternative, you can enable SSL and HTTP2 directly in Scoold:
 <Steps>
-1. Run the script [`gencerts.sh`](gencerts.sh) to generate the required self-signed certificates
+1. Run the script [↗ `gencerts.sh`](https://github.com/Erudika/scoold/blob/master/gencerts.sh) to generate the required self-signed certificates
 	```bash
 	echo "scoold.local" | sudo tee -a /etc/hosts
 	./gencerts.sh scoold.local secret
@@ -364,12 +364,12 @@ For end-to-end encryption of traffic, you can enable mTLS between your TLS-termi
 
 In some rare cases, your Scoold server may be behind more than one proxy servers. In these cases you have configuration like
 this:
-```ini
+```ini title="scoold-application.conf"
 scoold.host_url = "http://192.168.3.4:8000"
 scoold.host_url = "http://192.168.3.4:8080"
 ```
 This would work except for transactional emails where inbound links point to the wrong address. The solution is to add this
 to your configuration:
-```ini
+```ini title="scoold-application.conf"
 scoold.rewrite_inbound_links_with_fqdn = "https://public-scoold-domain.com"
 ```

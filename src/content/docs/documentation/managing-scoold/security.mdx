@@ -1,0 +1,136 @@
+---
+title: Security
+description: Securing your Scoold server instance
+sidebar:
+  order: 3
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+## Content-Security-Policy header
+
+This header is enabled by default for enhanced security. It can be disabled like this:
+
+```ini  title="scoold-application.conf"
+scoold.csp_header_enabled = false
+```
+
+The default value of the CSP header can be modified like so:
+
+```ini  title="scoold-application.conf"
+scoold.csp_header = "default-src 'self'; base-uri 'self'; connect-src 'self' script-src 'unsafe-inline' https: 'nonce-{{nonce}}' 'strict-dynamic';"
+```
+
+The placeholder `{{nonce}}` will get replaced by the CSP nonce value used for whitelisting scripts.
+
+<Aside type="note">
+If you get CSP violation errors, check your `scoold.host_url` and `scoold.cdn_url` configuration,
+or edit the value of `scoold.csp_header`.
+</Aside>
+
+Additionally, there are 4 options to extend the values of `connect-src`, `frame-src`, `font-src` and `style-src`
+respectively:
+```ini title="scoold-application.conf"
+scoold.csp_connect_sources = "connect-domain1.com connect-domain2.com"
+scoold.csp_frame_sources = "frame-domain1.com frame-domain2.com"
+scoold.csp_font_sources = "font-domain1.com font-domain2.com"
+scoold.csp_style_sources = "style-domain1.com style-domain2.com"
+```
+
+You can also enable or disable CSP violation reports (visible only to admins) by setting `scoold.csp_reports_enabled = true`.
+Keep in mind that if your website has a lot of traffic, this will result in hundreds of new reports being created each hour.
+
+## reCAPTCHA support
+
+You can protect signups and password reset functionality with reCAPTCHA v3. First, you will need to register a new domain
+at [Google reCAPTCHA](https://www.google.com/recaptcha/admin). Create a new reCAPTCHA v3, add your site to the whitelist
+and copy the two keys - a clientside key (site key) and a serverside key (secret). Then, protect the pages
+`/signin/register` and `/signin/iforgot` by adding these properties to your configuration:
+```ini
+scoold.signup_captcha_site_key = "site-key-from-google"
+scoold.signup_captcha_secret_key = "secret-from-google"
+```
+
+## Delete protection for valuable content
+
+By default, Scoold will protect valuable questions and answers from accidental deletion. If a question has at least one
+answer, the author of that question will not be able to delete it. Or, if an answer is accepted by the author of the
+question, the person who wrote the answer won't be able to delete it. You can turn this off with:
+```ini
+scoold.delete_protection_enabled = false
+```
+
+## Session management and duration
+
+By default, only one session is allowed per user/browser. When a user logs in from one device, they will automatically be
+logged out from every other device. This can be disabled to allow multiple simultaneous sessions with:
+
+```ini
+scoold.security.one_session_per_user = false
+```
+
+User session cookies in Scoold expire after 24h. To change the session duration period to 6h for example, set
+`scoold.session_timeout = 21600` (6h in seconds) and restart. In 6h the Scoold authentication cookie will expire and so
+will the access token (JWT) inside the cookie.
+
+## Domain-restricted user registrations
+
+You can restrict signups only to users from a particular identity domain, say `acme-corp.com`. To do so, set the
+following configuration property:
+```ini
+scoold.approved_domains_for_signups = "acme-corp.com"
+```
+Then a user with email `john@acme-corp.com` will be allowed to login (the identity provider is irrelevant), but user
+`bob@gmail.com` will be denied access.
+
+**PRO** In Scoold Pro, this setting can also contain a comma-separated list of identity domains:
+```ini
+scoold.approved_domains_for_signups = "acme-corp.com,gmail.com"
+```
+
+## Admins
+
+You can specify the user with administrative privileges in your `scoold-application.conf` file:
+```ini
+scoold.admins = "joe@example.com"
+```
+**PRO** In Scoold Pro, you can have multiple admin users by specifying a comma-separated list of user identifiers.
+This works both for new and existing users.
+```ini
+scoold.admins = "joe@example.com,fb:1023405345366,gh:1234124"
+```
+
+If you remove users who are already admins from the list of admins `scoold.admins`, they will be *demoted* to regular
+users. Similarly, existing regular users will be *promoted* to admins if they appear in the list above.
+
+## Anonymous posts
+
+**PRO** This feature is enabled with `scoold.anonymous_posts_enabled = true`. It allows everyone to ask questions and write
+replies, without having a Scoold account. Posting to the "Feedback" section will also be open without requiring users
+to sign in. This feature is disabled by default.
+
+## Anonymous profiles
+
+People may wish to make their profile details anonymous from the Settings page. To allow this option set:
+```ini
+scoold.profile_anonimity_enabled = true
+```
+
+## Spam protection
+
+Scoold can be configured to detect and block spam content with the help of the Akismet API. To enable this functionality,
+specify your Akismet API key like this:
+
+```ini
+scoold.akismet_api_key = "xyz123"
+```
+
+By default, all content published on the site will be scanned for spam by Akismet and if spam is detected, that content
+will be ignored and the user will get an error, preventing them from posting it. If you turn off automatic protection,
+a report will be created each time a spam post is detected so that mods/admins can take action on it. In the meantime
+the post would be marked as "pending approval".
+
+```ini
+scoold.automatic_spam_protection_enabled = false
+```
