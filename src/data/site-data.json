@@ -42,10 +42,10 @@
   },
   "authors": [
     {
-      "name": "Alexander Bogdanovski",
+      "name": "Alex Bogdanovski",
       "role": "Founder & Indie Hacker",
       "email": "alex@erudika.com",
-      "avatar": "https://gravatar.com/avatar/6888890e3e742a7c7357a4c74be405b8?s=200&d=robohash&r=x"
+      "avatar": "ab"
     }
   ],
   "blogIndex": {
@@ -402,7 +402,7 @@
           "Social login, OAuth 2.0, LDAP",
           "Custom user badges",
           "Light, dark and custom themes",
-          "White-labeling and custom domain",
+          "Branding and custom domain",
           "Easy backup and restore",
           "Email notifications",
           "Unlimited users",
@@ -499,7 +499,7 @@
       },
       {
         "q": "Can I customize the look and feel?",
-        "a": "Yes. The styling is fully customizable. Scoold also supports white-labeling: custom logo, brand colors, custom domain, and the ability to embed Scoold within your existing intranet or portal."
+        "a": "Yes. The styling is fully customizable. Scoold also supports custom branding: custom logo, brand colors, custom domain, and the ability to embed Scoold within your existing intranet or portal."
       },
       {
         "q": "What kind of support is included?",
@@ -666,7 +666,7 @@
   },
   "blog_page": {
     "badge": "BLOG",
-    "title": "Guides & insights",
+    "title": "Engineering notes and product updates",
     "title_short": "Blog",
     "description": "The Scoold blog - guides, tutorials, and insights on knowledge management, team collaboration, and enterprise Q&A.",
     "subtitle": "Tutorials, best practices, and insights on knowledge sharing, team collaboration, and getting the most from Scoold.",

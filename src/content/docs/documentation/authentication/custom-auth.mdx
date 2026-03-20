@@ -1,0 +1,82 @@
+---
+title: Custom Authentication
+description: Custom authentication support in Scoold for enterprise SSO
+sidebar:
+  badge:
+    text: Pro
+    variant: tip
+  order: 6
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+
+**This is a <Badge text="Pro" variant="tip" /> feature**
+
+Scoold supports custom authentication providers through Para's "passwordless" filter. This means that you can send any
+user info to Para and it will authenticate that user automatically without passwords. The only verification done here is
+on this secret key value which you provide in your Scoold Pro configuration file:
+
+```ini title="scoold-application.conf"
+scoold.app_secret_key = "change_to_long_random_string"
+```
+
+This key is used to protect requests to the passwordless filter and it's different from the Para secret key for your app.
+Here's the basic authentication flow:
+
+
+## Example: Custom auth flow
+
+<Steps>
+1. A user wants to sign in to Scoold Pro and clicks a login button
+2. The button redirects the user to a remote login page hosted by you or your company
+3. The user enters their credentials and logs in
+4. If the credentials are valid, your auth server sends back a special JSON Web Token (JWT) to Scoold with the user's basic information
+5. Scoold verifies the token and the user is signed in to Scoold
+</Steps>
+
+<Image src={import(`../../../../images/documentation/auth_flow.png`)}
+  alt="Custom auth flow diagram"
+  class="py-5 border border-neutral-400 rounded"
+  loading="eager"
+/>
+
+The JWT must contain the following claims:
+
+- `email` - user's email address
+- `name` - user's display name
+- `identifier` - a unique user id in the format `custom:123`
+- `appid` - the app id (optional)
+
+The JWT is signed with the value of `scoold.app_secret_key` and should have a short validity period (e.g. 10 min).
+The JWT should also contain the claims `iat` and `exp` and, optionally, `nbf`. Supported signature algorithms for the JWT
+are `HS256`, `HS384` or `HS512`.
+Once you generate the JWT on your backend (step 4 above), redirect the successful login request back to Scoold:
+```
+GET https://scoold-host/signin/success?jwt=eyJhbGciOiJIUzI1NiI..&passwordless=true
+```
+
+The UI button initiating the authentication flow above can be customized like this:
+```ini
+scoold.security.custom.provider = "Continue with Acme Co."
+# location of your company's login page
+scoold.security.custom.login_url = ""
+```
+
+There's an [example login page](https://albogdano.github.io/scoold-login-page/) implementing this sort of authentication.
+
+## Login and logout redirects
+
+You can configure Scoold to redirect users straight to the identity provider when they click the "Sign in" button.
+This feature is disabled by default:
+```ini
+scoold.redirect_signin_to_idp = false
+```
+This works only for social login identity providers and SAML. It won't work for LDAP or
+basic password authentication. When enabled and combined with `scoold.is_default_space_public = false`,
+unauthenticated users will be sent directly to the IDP without seeing the "Sign in" page or any other page on Scoold.
+
+You can also configure users to be redirected to an external location when they log out:
+```ini
+scoold.signout_url = "https://homepage.com"
+```

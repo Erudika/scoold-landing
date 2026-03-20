@@ -88,8 +88,16 @@
 
 /* Custom component classes */
 @layer components {
+  .section-shell {
+    @apply mx-auto px-6 sm:px-8 w-full max-w-6xl;
+  }
+
   .section-label {
     @apply inline-flex items-center gap-2 mb-4 font-semibold text-slate-600 text-xs uppercase tracking-widest;
+  }
+
+  .chip {
+    @apply rounded-[3px] border border-base-300 bg-base-100 px-4 py-2 text-sm font-medium text-base-content/90 shadow-sm transition hover:border-sky-400 hover:text-sky-700;
   }
 
   .highlight {

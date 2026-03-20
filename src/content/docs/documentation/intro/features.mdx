@@ -5,38 +5,39 @@ sidebar:
   order: 3
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 
-### Core features
+## Core features
 
 - Full featured Q&A platform
+- Spring Boot application (single JAR/WAR)
 - Database-agnostic, optimized for cloud deployment
 - Full-text search
-- Distributed object cache
+- Reputation and voting system with badges
 - Location-based search and "near me" filtering of posts
 - I18n with RTL language support
-- Reputation and voting system with badges
 - Custom badges - add your own text, icon and color
 - Spaces - private groups of isolated questions and users
+- Powerful Markdown editor supporting GFM, tables, task lists and strikethrough
+- Syntax highlighting for code snippets
+- Social login (Facebook, Google, GitHub, LinkedIn, Microsoft, Slack, Amazon, Twitter) with Gravatar support
+- LDAP authentication support
+- Import data from Stack Overflow for Teams
+- RESTful API defined with OpenAPI 3.0
 - Webhooks with signature signing
 - Zapier & n8n integration
-- Minimal frontend JS code based on jQuery
-- Modern, responsive layout powered by Materialize CSS
+- Minimal frontend code without a build step
+- Modern, responsive UI layout 
 - Suggestions for similar questions and hints for duplicate posts
 - Email notifications for post replies and comments
 - Backup and Restore
-- RESTful API defined with OpenAPI 3.0
-- Spring Boot project (single JAR)
 - Mutual authentication support (mTLS)
-- LDAP authentication support
-- Social login (Facebook, Google, GitHub, LinkedIn, Microsoft, Slack, Amazon, Twitter) with Gravatar support
-- Syntax highlighting for code in posts, GFM markdown support with tables, task lists and strikethrough
-- Import data from Stack Overflow for Teams
-- Emojis! - using shortcodes from the [cheat sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet/) or inline Unicode
+- Emojis! - both emoji shortcodes and inline Unicode emojis are supported
 - Support for uploading custom avatars (to Imgur, Cloudinary)
-- SEO friendly
+- SEO friendly - server-side rendering of all content
 - Cookie consent (for GDPR, CCPA, etc.)
 
-### Premium features
+## Premium features <Badge text="Pro" variant="tip" />
 [Buy Scoold Pro](https://paraio.com/scoold-pro) and also get these premium features:
 
 - Slack integration

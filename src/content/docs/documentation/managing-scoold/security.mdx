@@ -10,15 +10,16 @@ import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight
 
 ## Content-Security-Policy header
 
-This header is enabled by default for enhanced security. It can be disabled like this:
+The `Content-Security-Policy` header is enabled by default for enhanced security on the clientside. 
+While *not* recommended, it can be disabled like this:
 
-```ini  title="scoold-application.conf"
+```ini title="scoold-application.conf"
 scoold.csp_header_enabled = false
 ```
 
-The default value of the CSP header can be modified like so:
+The default value of the `Content-Security-Policy` header can be modified like so:
 
-```ini  title="scoold-application.conf"
+```ini title="scoold-application.conf"
 scoold.csp_header = "default-src 'self'; base-uri 'self'; connect-src 'self' script-src 'unsafe-inline' https: 'nonce-{{nonce}}' 'strict-dynamic';"
 ```
 
@@ -41,16 +42,42 @@ scoold.csp_style_sources = "style-domain1.com style-domain2.com"
 You can also enable or disable CSP violation reports (visible only to admins) by setting `scoold.csp_reports_enabled = true`.
 Keep in mind that if your website has a lot of traffic, this will result in hundreds of new reports being created each hour.
 
+## Security headers
+
+Scoold attaches several security headers to each response. These can be enabled or disabled with the following configuration
+properties:
+
+```ini
+# Strict-Transport-Security
+scoold.hsts_header_enabled = true
+
+# X-Frame-Options
+scoold.framing_header_enabled = true
+
+# X-XSS-Protection
+scoold.xss_header_enabled = true
+
+# X-Content-Type-Options
+scoold.contenttype_header_enabled = true
+
+# Referrer-Policy
+scoold.referrer_header_enabled = true
+```
+
 ## reCAPTCHA support
 
-You can protect signups and password reset functionality with reCAPTCHA v3. First, you will need to register a new domain
-at [Google reCAPTCHA](https://www.google.com/recaptcha/admin). Create a new reCAPTCHA v3, add your site to the whitelist
-and copy the two keys - a clientside key (site key) and a serverside key (secret). Then, protect the pages
-`/signin/register` and `/signin/iforgot` by adding these properties to your configuration:
-```ini
-scoold.signup_captcha_site_key = "site-key-from-google"
-scoold.signup_captcha_secret_key = "secret-from-google"
-```
+You can protect signups and password reset functionality with reCAPTCHA v3. 
+
+<Steps>
+1. First, you will need to register a new domain at [↗ Google reCAPTCHA](https://www.google.com/recaptcha/admin). 
+2. Create a new reCAPTCHA v3 site and add your site's domain to the whitelist 
+3. Copy the two keys - a clientside key (site key) and a serverside key (secret) into your Scoold configuration:
+    ```ini title="scoold-application.conf"
+    scoold.signup_captcha_site_key = "site-key-from-google"
+    scoold.signup_captcha_secret_key = "secret-from-google"
+    ```
+4. Restart Scoold and that should enable reCAPTCHA protection for the pages `/signin/register` and `/signin/iforgot`.
+</Steps>
 
 ## Delete protection for valuable content
 
@@ -84,7 +111,7 @@ scoold.approved_domains_for_signups = "acme-corp.com"
 Then a user with email `john@acme-corp.com` will be allowed to login (the identity provider is irrelevant), but user
 `bob@gmail.com` will be denied access.
 
-**PRO** In Scoold Pro, this setting can also contain a comma-separated list of identity domains:
+In Scoold Pro, this setting can also contain a comma-separated list of identity domains:
 ```ini
 scoold.approved_domains_for_signups = "acme-corp.com,gmail.com"
 ```
@@ -95,7 +122,7 @@ You can specify the user with administrative privileges in your `scoold-applicat
 ```ini
 scoold.admins = "joe@example.com"
 ```
-**PRO** In Scoold Pro, you can have multiple admin users by specifying a comma-separated list of user identifiers.
+In Scoold Pro, you can have multiple admin users by specifying a comma-separated list of user identifiers.
 This works both for new and existing users.
 ```ini
 scoold.admins = "joe@example.com,fb:1023405345366,gh:1234124"
@@ -104,9 +131,9 @@ scoold.admins = "joe@example.com,fb:1023405345366,gh:1234124"
 If you remove users who are already admins from the list of admins `scoold.admins`, they will be *demoted* to regular
 users. Similarly, existing regular users will be *promoted* to admins if they appear in the list above.
 
-## Anonymous posts
+## Anonymous posts <Badge text="Pro" variant="tip" />
 
-**PRO** This feature is enabled with `scoold.anonymous_posts_enabled = true`. It allows everyone to ask questions and write
+This feature is enabled with `scoold.anonymous_posts_enabled = true`. It allows everyone to ask questions and write
 replies, without having a Scoold account. Posting to the "Feedback" section will also be open without requiring users
 to sign in. This feature is disabled by default.
 

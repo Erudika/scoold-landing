@@ -1,0 +1,54 @@
+---
+import logo from '../../images/logo.svg?raw';
+import { site } from '../../data/site-data.json';
+import docs from '../../images/navdocs.svg?raw';
+import line from '../../images/line.svg';
+const self = '/documentation/';
+---
+<span class="sl-flex site-title">
+    <a class="scoold-logo" href="/" set:html={logo} aria-label="Scoold" />
+    <img class="line" src={line.src} alt="line"/>
+    <a class="docs-logo" href={self} set:html={docs} aria-label="Docs" />
+</span>
+
+<style>
+	.site-title {
+		gap: 1rem;
+	}
+	.site-title a {
+		display: flex;
+	}
+	.scoold-logo {
+        width: 150px;
+		color: var(--sl-color-white);
+	}
+	.docs-logo {
+		color: var(--sl-color-text-accent);
+        width: 70px;
+        height: 74px;
+	}
+    .line {
+        margin-top: 7px;
+        height: 60px;
+        width: 1px;
+    }
+
+	/* On focus, outline <img> and <svg> rather than <a> */
+	.site-title a:focus-visible {
+		outline: 0;
+	}
+	.site-title a:focus-visible > :global(*) {
+		outline: auto;
+		outline-offset: 0.33rem;
+		border-radius: 1px;
+	}
+	/* Adjust svg sizes to full nav height */
+	.site-title :global(svg) {
+		--display-height: 1.75rem;
+		/* `auto` ensures the `<svg>` scales down on really narrow viewports */
+		width: auto;
+		height: auto;
+		margin-block: calc((var(--sl-nav-height) - var(--display-height)) / 2);
+		transition: transform 0.18s cubic-bezier(0.23, 1, 0.32, 1);
+	}
+</style>

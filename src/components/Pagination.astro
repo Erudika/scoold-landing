@@ -5,7 +5,7 @@ const { pagination } = components;
 const { currentPage = 1, totalPages = 1, basePath = "/blog/page" } = Astro.props;
 
 const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
-const pageLink = (page) => (page === 1 ? "/blog" : `${basePath}/${page}`);
+const pageLink = (page:Number) => (page === 1 ? "/blog/" : `${basePath}/${page}/`);
 ---
 
 <nav class="flex flex-wrap items-center gap-2 mt-10 text-sm">

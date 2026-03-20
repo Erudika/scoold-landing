@@ -1,0 +1,2008 @@
+{
+    "version": "1.0.0",
+    "platformVersion": "18.0.1",
+    "authentication":
+    {
+        "type": "custom",
+        "test":
+        {
+            "url": "{{bundle.authData.url}}/api/stats",
+            "method": "GET",
+            "params":
+            {
+                "url": "{{bundle.authData.url}}",
+                "jwt": "{{bundle.authData.jwt}}"
+            },
+            "headers":
+            {
+                "Authorization": "Bearer {{bundle.authData.jwt}}",
+                "X-URL": "{{bundle.authData.url}}",
+                "X-JWT": "{{bundle.authData.jwt}}"
+            },
+            "body":
+            {},
+            "removeMissingValuesFrom":
+            {}
+        },
+        "fields":
+        [
+            {
+                "computed": false,
+                "key": "url",
+                "required": true,
+                "label": "Scoold URL",
+                "type": "string",
+                "helpText": "This is the URL to your Scoold server, e.g. `https://qna.scoold.com`. Remove `/` from the end of the URL."
+            },
+            {
+                "computed": false,
+                "key": "jwt",
+                "required": true,
+                "label": "Scoold API key",
+                "type": "string",
+                "helpText": "Go to the [Administration page](https://scoold/admin) of Scoold to get an API key."
+            }
+        ],
+        "customConfig":
+        {},
+        "connectionLabel": "Scoold [{{bundle.authData.url}}]"
+    },
+    "triggers":
+    {
+        "new_question":
+        {
+            "operation":
+            {
+                "perform":
+                {
+                    "source": "bundle.cleanedRequest.items[0][\"address\"] = \"\";\nbundle.cleanedRequest.items[0][\"answerid\"] = \"\";\nbundle.cleanedRequest.items[0][\"closerid\"] = \"\";\nbundle.cleanedRequest.items[0][\"commentIds\"] = [];\nbundle.cleanedRequest.items[0][\"deletereportid\"] = \"\";\nbundle.cleanedRequest.items[0][\"followers\"] = [];\nbundle.cleanedRequest.items[0][\"lastactivity\"] = 0;\nbundle.cleanedRequest.items[0][\"lasteditby\"] = \"\";\nbundle.cleanedRequest.items[0][\"lastedited\"] = 0;\nbundle.cleanedRequest.items[0][\"latlng\"] = \"\";\nbundle.cleanedRequest.items[0][\"parentid\"] = \"\";\nbundle.cleanedRequest.items[0][\"updated\"] = 0;\nbundle.cleanedRequest.items[0][\"location\"] = \"\";\nreturn bundle.cleanedRequest.items;"
+                },
+                "type": "hook",
+                "performSubscribe":
+                {
+                    "source": "const options = {\n  url: `${bundle.authData.url}/api/webhooks`,\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json',\n    'Authorization': `Bearer ${bundle.authData.jwt}`\n  },\n  params: {\n\n  },\n  body: {\n    'targetUrl': bundle.targetUrl,\n    'customEvents': [\"question.create\"],\n    'urlEncoded': 'false'\n  }\n}\n\nreturn z.request(options)\n  .then((response) => {\n    response.throwForStatus();\n    const results = z.JSON.parse(response.content);\n\n    // You can do any parsing you need for results here before returning them\n\n    return results;\n  });"
+                },
+                "performUnsubscribe":
+                {
+                    "headers":
+                    {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Authorization": "Bearer {{bundle.authData.jwt}}"
+                    },
+                    "method": "DELETE",
+                    "url": "{{bundle.authData.url}}/api/webhooks/{{bundle.subscribeData.id}}"
+                },
+                "performList":
+                {
+                    "source": "const options = {\n  url: `${bundle.authData.url}/api/posts`,\n  method: 'GET',\n  headers: {\n    'Accept': 'application/json',\n    'Authorization': `Bearer ${bundle.authData.jwt}`\n  },\n  params: {\n\n  }\n}\n\nreturn z.request(options)\n  .then((response) => {\n    response.throwForStatus();\n    const results = z.JSON.parse(response.content);\n\n    // You can do any parsing you need for results here before returning them\n\n    return results;\n  });"
+                },
+                "sample":
+                {
+                    "body": "question body",
+                    "title": "How are you?",
+                    "tags":
+                    [
+                        "question"
+                    ],
+                    "viewcount": 0,
+                    "revisionid": "1157715720734248960",
+                    "answercount": 0,
+                    "location": "",
+                    "space": "scooldspace:default",
+                    "id": "1157715720390316032",
+                    "timestamp": 1586105521751,
+                    "type": "question",
+                    "appid": "scoold",
+                    "creatorid": "1157676641833455616:profile",
+                    "name": "Hellow",
+                    "votes": 0,
+                    "version": 0,
+                    "stored": true,
+                    "indexed": true,
+                    "cached": true,
+                    "properties":
+                    {},
+                    "author":
+                    {
+                        "id": "1157676641833455616:profile",
+                        "timestamp": 1586096204697,
+                        "type": "profile",
+                        "appid": "scoold",
+                        "creatorid": "1157676641833455616",
+                        "updated": 1586096396252,
+                        "name": "Alexander Bogdanovski",
+                        "votes": 0,
+                        "version": 0,
+                        "stored": true,
+                        "indexed": true,
+                        "cached": true,
+                        "originalName": "Alexander Bogdanovski",
+                        "lastseen": 1586105522000,
+                        "location": "",
+                        "status": "",
+                        "aboutme": "",
+                        "badges": "",
+                        "groups": "admins",
+                        "upvotes": 0,
+                        "downvotes": 0,
+                        "comments": 0,
+                        "picture": "https://lh3.googleusercontent.com/a-/AOh14Ghh6xkk5J63Ff2gpSro_JTYR5n4t7pWcZWBkG5Tww",
+                        "website": "",
+                        "favtags":
+                        [],
+                        "spaces":
+                        [],
+                        "replyEmailsEnabled": false,
+                        "commentEmailsEnabled": false,
+                        "favtagsEmailsEnabled": false,
+                        "anonymityEnabled": false,
+                        "yearlyVotes": 0,
+                        "quarterlyVotes": 0,
+                        "monthlyVotes": 0,
+                        "weeklyVotes": 0,
+                        "totalVotes": 0,
+                        "badgesMap":
+                        {},
+                        "favtagsString": "",
+                        "complete": false,
+                        "objectURI": "/profile/1157676641833455616%3Aprofile",
+                        "plural": "profiles",
+                        "key": "1157676641833455616:profile"
+                    }
+                },
+                "outputFields":
+                [
+                    {
+                        "key": "body"
+                    },
+                    {
+                        "key": "title"
+                    },
+                    {
+                        "key": "tags[]0"
+                    },
+                    {
+                        "key": "tags[]1"
+                    },
+                    {
+                        "key": "tags[]2"
+                    },
+                    {
+                        "key": "tags[]3"
+                    },
+                    {
+                        "key": "tags[]4"
+                    },
+                    {
+                        "key": "tags[]5"
+                    },
+                    {
+                        "key": "tags[]6"
+                    },
+                    {
+                        "key": "tags[]7"
+                    },
+                    {
+                        "key": "viewcount",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "revisionid"
+                    },
+                    {
+                        "key": "answercount",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "location"
+                    },
+                    {
+                        "key": "space"
+                    },
+                    {
+                        "key": "id"
+                    },
+                    {
+                        "key": "timestamp",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "type"
+                    },
+                    {
+                        "key": "appid"
+                    },
+                    {
+                        "key": "creatorid"
+                    },
+                    {
+                        "key": "name"
+                    },
+                    {
+                        "key": "votes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "version",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "stored",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "indexed",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "cached",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__id"
+                    },
+                    {
+                        "key": "author__timestamp",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__type"
+                    },
+                    {
+                        "key": "author__appid"
+                    },
+                    {
+                        "key": "author__creatorid"
+                    },
+                    {
+                        "key": "author__updated",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__name"
+                    },
+                    {
+                        "key": "author__votes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__version",
+                        "type": "number"
+                    },
+                    {
+                        "key": "author__stored",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__indexed",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__cached",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__originalName"
+                    },
+                    {
+                        "key": "author__lastseen",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__location"
+                    },
+                    {
+                        "key": "author__status"
+                    },
+                    {
+                        "key": "author__aboutme"
+                    },
+                    {
+                        "key": "author__badges"
+                    },
+                    {
+                        "key": "author__groups"
+                    },
+                    {
+                        "key": "author__upvotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__downvotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__comments",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__picture"
+                    },
+                    {
+                        "key": "author__website"
+                    },
+                    {
+                        "key": "author__replyEmailsEnabled"
+                    },
+                    {
+                        "key": "author__commentEmailsEnabled"
+                    },
+                    {
+                        "key": "author__favtagsEmailsEnabled"
+                    },
+                    {
+                        "key": "author__anonymityEnabled"
+                    },
+                    {
+                        "key": "author__yearlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__quarterlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__monthlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__weeklyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__totalVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__favtagsString"
+                    },
+                    {
+                        "key": "author__complete"
+                    },
+                    {
+                        "key": "author__objectURI"
+                    },
+                    {
+                        "key": "author__plural"
+                    },
+                    {
+                        "key": "author__key"
+                    },
+                    {
+                        "key": "address",
+                        "type": "string"
+                    },
+                    {
+                        "key": "answerid",
+                        "type": "string"
+                    },
+                    {
+                        "key": "closerid",
+                        "type": "string"
+                    },
+                    {
+                        "key": "commentIds[]0",
+                        "type": "string"
+                    },
+                    {
+                        "key": "deletereportid",
+                        "type": "string"
+                    },
+                    {
+                        "key": "followers[]0",
+                        "type": "string"
+                    },
+                    {
+                        "key": "lastactivity",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "lasteditby",
+                        "type": "string"
+                    },
+                    {
+                        "key": "latlng",
+                        "type": "string"
+                    },
+                    {
+                        "key": "parentid",
+                        "type": "string"
+                    },
+                    {
+                        "key": "updated",
+                        "type": "integer"
+                    }
+                ],
+                "inputFields":
+                []
+            },
+            "key": "new_question",
+            "noun": "Question",
+            "display":
+            {
+                "label": "New Question",
+                "description": "Triggers when a new question is created.",
+                "hidden": false
+            }
+        },
+        "list_users":
+        {
+            "operation":
+            {
+                "perform":
+                {
+                    "url": "{{bundle.authData.url}}/api/users",
+                    "method": "GET",
+                    "params":
+                    {
+                        "page": "{{bundle.meta.page}}"
+                    },
+                    "headers":
+                    {
+                        "Accept": "application/json",
+                        "Authorization": "Bearer {{bundle.authData.jwt}}"
+                    },
+                    "body":
+                    {},
+                    "removeMissingValuesFrom":
+                    {}
+                },
+                "canPaginate": true
+            },
+            "key": "list_users",
+            "noun": "Users",
+            "display":
+            {
+                "label": "List Users",
+                "description": "Lists users for dynamic dropdown",
+                "hidden": true
+            }
+        },
+        "new_answer":
+        {
+            "operation":
+            {
+                "perform":
+                {
+                    "source": "bundle.cleanedRequest.items[0][\"address\"] = \"\";\nbundle.cleanedRequest.items[0][\"answerid\"] = \"\";\nbundle.cleanedRequest.items[0][\"closerid\"] = \"\";\nbundle.cleanedRequest.items[0][\"commentIds\"] = [];\nbundle.cleanedRequest.items[0][\"deletereportid\"] = \"\";\nbundle.cleanedRequest.items[0][\"followers\"] = [];\nbundle.cleanedRequest.items[0][\"lastactivity\"] = 0;\nbundle.cleanedRequest.items[0][\"lasteditby\"] = \"\";\nbundle.cleanedRequest.items[0][\"lastedited\"] = 0;\nbundle.cleanedRequest.items[0][\"latlng\"] = \"\";\nbundle.cleanedRequest.items[0][\"parentid\"] = \"\";\nbundle.cleanedRequest.items[0][\"updated\"] = 0;\nbundle.cleanedRequest.items[0][\"location\"] = \"\";\nreturn bundle.cleanedRequest.items;"
+                },
+                "type": "hook",
+                "performSubscribe":
+                {
+                    "source": "const options = {\n  url: `${bundle.authData.url}/api/webhooks`,\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json',\n    'Authorization': `Bearer ${bundle.authData.jwt}`\n  },\n  params: {\n\n  },\n  body: {\n    'targetUrl': bundle.targetUrl,\n    'customEvents': [\"answer.create\"],\n    'urlEncoded': 'false'\n  }\n}\n\nreturn z.request(options)\n  .then((response) => {\n    response.throwForStatus();\n    const results = z.JSON.parse(response.content);\n\n    // You can do any parsing you need for results here before returning them\n\n    return results;\n  });"
+                },
+                "performUnsubscribe":
+                {
+                    "body":
+                    {
+                        "hookUrl": "{{bundle.subscribeData.id}}"
+                    },
+                    "headers":
+                    {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    "method": "DELETE",
+                    "url": "{{bundle.authData.url}}/api/webhooks/{{bundle.subscribeData.id}}"
+                },
+                "sample":
+                {
+                    "body": "answer body",
+                    "title": "How are you?",
+                    "tags":
+                    [
+                        "answer"
+                    ],
+                    "parentid": "1157715720734240000",
+                    "viewcount": 0,
+                    "revisionid": "1157715720734248960",
+                    "answercount": 0,
+                    "location": "",
+                    "space": "scooldspace:default",
+                    "id": "1157715720390316032",
+                    "timestamp": 1586105521751,
+                    "type": "reply",
+                    "appid": "scoold",
+                    "creatorid": "1157676641833455616:profile",
+                    "name": "Hellow",
+                    "votes": 0,
+                    "version": 0,
+                    "stored": true,
+                    "indexed": true,
+                    "cached": true,
+                    "properties":
+                    {},
+                    "author":
+                    {
+                        "id": "1157676641833455616:profile",
+                        "timestamp": 1586096204697,
+                        "type": "profile",
+                        "appid": "scoold",
+                        "creatorid": "1157676641833455616",
+                        "updated": 1586096396252,
+                        "name": "Alexander Bogdanovski",
+                        "votes": 0,
+                        "version": 0,
+                        "stored": true,
+                        "indexed": true,
+                        "cached": true,
+                        "originalName": "Alexander Bogdanovski",
+                        "lastseen": 1586105522000,
+                        "location": "",
+                        "status": "",
+                        "aboutme": "",
+                        "badges": "",
+                        "groups": "admins",
+                        "upvotes": 0,
+                        "downvotes": 0,
+                        "comments": 0,
+                        "picture": "https://lh3.googleusercontent.com/a-/AOh14Ghh6xkk5J63Ff2gpSro_JTYR5n4t7pWcZWBkG5Tww",
+                        "website": "",
+                        "favtags":
+                        [],
+                        "spaces":
+                        [],
+                        "replyEmailsEnabled": false,
+                        "commentEmailsEnabled": false,
+                        "favtagsEmailsEnabled": false,
+                        "anonymityEnabled": false,
+                        "yearlyVotes": 0,
+                        "quarterlyVotes": 0,
+                        "monthlyVotes": 0,
+                        "weeklyVotes": 0,
+                        "totalVotes": 0,
+                        "badgesMap":
+                        {},
+                        "favtagsString": "",
+                        "complete": false,
+                        "objectURI": "/profile/1157676641833455616%3Aprofile",
+                        "plural": "profiles",
+                        "key": "1157676641833455616:profile"
+                    }
+                },
+                "outputFields":
+                [
+                    {
+                        "key": "body"
+                    },
+                    {
+                        "key": "title"
+                    },
+                    {
+                        "key": "tags[]0"
+                    },
+                    {
+                        "key": "tags[]1"
+                    },
+                    {
+                        "key": "tags[]2"
+                    },
+                    {
+                        "key": "tags[]3"
+                    },
+                    {
+                        "key": "tags[]4"
+                    },
+                    {
+                        "key": "tags[]5"
+                    },
+                    {
+                        "key": "parentid"
+                    },
+                    {
+                        "key": "viewcount"
+                    },
+                    {
+                        "key": "revisionid"
+                    },
+                    {
+                        "key": "answercount"
+                    },
+                    {
+                        "key": "location"
+                    },
+                    {
+                        "key": "space"
+                    },
+                    {
+                        "key": "id"
+                    },
+                    {
+                        "key": "timestamp"
+                    },
+                    {
+                        "key": "type"
+                    },
+                    {
+                        "key": "appid"
+                    },
+                    {
+                        "key": "creatorid"
+                    },
+                    {
+                        "key": "name"
+                    },
+                    {
+                        "key": "votes"
+                    },
+                    {
+                        "key": "version"
+                    },
+                    {
+                        "key": "stored"
+                    },
+                    {
+                        "key": "indexed"
+                    },
+                    {
+                        "key": "cached"
+                    },
+                    {
+                        "key": "author__id"
+                    },
+                    {
+                        "key": "author__timestamp"
+                    },
+                    {
+                        "key": "author__type"
+                    },
+                    {
+                        "key": "author__appid"
+                    },
+                    {
+                        "key": "author__creatorid"
+                    },
+                    {
+                        "key": "author__updated"
+                    },
+                    {
+                        "key": "author__name"
+                    },
+                    {
+                        "key": "author__votes"
+                    },
+                    {
+                        "key": "author__version"
+                    },
+                    {
+                        "key": "author__stored"
+                    },
+                    {
+                        "key": "author__indexed"
+                    },
+                    {
+                        "key": "author__cached"
+                    },
+                    {
+                        "key": "author__originalName"
+                    },
+                    {
+                        "key": "author__lastseen"
+                    },
+                    {
+                        "key": "author__location"
+                    },
+                    {
+                        "key": "author__status"
+                    },
+                    {
+                        "key": "author__aboutme"
+                    },
+                    {
+                        "key": "author__badges"
+                    },
+                    {
+                        "key": "author__groups"
+                    },
+                    {
+                        "key": "author__upvotes"
+                    },
+                    {
+                        "key": "author__downvotes"
+                    },
+                    {
+                        "key": "author__comments"
+                    },
+                    {
+                        "key": "author__picture"
+                    },
+                    {
+                        "key": "author__website"
+                    },
+                    {
+                        "key": "author__replyEmailsEnabled"
+                    },
+                    {
+                        "key": "author__commentEmailsEnabled"
+                    },
+                    {
+                        "key": "author__favtagsEmailsEnabled"
+                    },
+                    {
+                        "key": "author__anonymityEnabled"
+                    },
+                    {
+                        "key": "author__yearlyVotes"
+                    },
+                    {
+                        "key": "author__quarterlyVotes"
+                    },
+                    {
+                        "key": "author__monthlyVotes"
+                    },
+                    {
+                        "key": "author__weeklyVotes"
+                    },
+                    {
+                        "key": "author__totalVotes"
+                    },
+                    {
+                        "key": "author__favtagsString"
+                    },
+                    {
+                        "key": "author__complete"
+                    },
+                    {
+                        "key": "author__objectURI"
+                    },
+                    {
+                        "key": "author__plural"
+                    },
+                    {
+                        "key": "author__key"
+                    }
+                ],
+                "performList":
+                {
+                    "source": "const options = {\n  url: `${bundle.authData.url}/api/posts`,\n  method: 'GET',\n  headers: {\n    'Accept': 'application/json',\n    'Authorization': `Bearer ${bundle.authData.jwt}`\n  },\n  params: {\n\n  }\n}\n\nreturn z.request(options)\n  .then((response) => {\n    response.throwForStatus();\n    const results = z.JSON.parse(response.content);\n\n    // You can do any parsing you need for results here before returning them\n\n    return results;\n  });"
+                }
+            },
+            "display":
+            {
+                "description": "Triggers when a new answer is created.",
+                "hidden": false,
+                "label": "New Answer"
+            },
+            "key": "new_answer",
+            "noun": "Answer"
+        }
+    },
+    "creates":
+    {
+        "create_question":
+        {
+            "operation":
+            {
+                "perform":
+                {
+                    "source": "const options = {\n  url: `${bundle.authData.url}/api/posts`,\n  method: 'POST',\n  headers: {\n    'Authorization': `Bearer ${bundle.authData.jwt}`\n  },\n  params: {\n\n  },\n  body: {\n    'title': bundle.inputData.title,\n    'body': bundle.inputData.body,\n    'tags': (bundle.inputData.tags || \"\").split(','),\n    'space': bundle.inputData.space,\n    'creatorid': bundle.inputData.creatorid\n  }\n}\n\nreturn z.request(options)\n  .then((response) => {\n    response.throwForStatus();\n    const results = z.JSON.parse(response.content);\n\n    // You can do any parsing you need for results here before returning them\n\n    return results;\n  });"
+                },
+                "inputFields":
+                [
+                    {
+                        "key": "title",
+                        "label": "Title",
+                        "type": "string",
+                        "required": true,
+                        "list": false,
+                        "altersDynamicFields": false
+                    },
+                    {
+                        "key": "body",
+                        "label": "Text",
+                        "type": "text",
+                        "helpText": "The body of the question",
+                        "required": false,
+                        "list": false,
+                        "altersDynamicFields": false
+                    },
+                    {
+                        "key": "tags",
+                        "label": "Tags",
+                        "type": "string",
+                        "helpText": "Comma-separated tags",
+                        "required": false,
+                        "list": false,
+                        "altersDynamicFields": false
+                    },
+                    {
+                        "key": "creatorid",
+                        "label": "Author",
+                        "type": "string",
+                        "helpText": "The `id` of the user who created this question. Defaults to the System account.",
+                        "dynamic": "list_users.creatorid",
+                        "search": "search_users.creatorid",
+                        "required": false,
+                        "list": false,
+                        "altersDynamicFields": true
+                    },
+                    {
+                        "key": "space",
+                        "label": "Space",
+                        "type": "string",
+                        "helpText": "The name of the space where this question is going to be posted.",
+                        "required": false,
+                        "list": false,
+                        "altersDynamicFields": false
+                    }
+                ],
+                "sample":
+                {
+                    "body": "This is the body",
+                    "title": "Hello from Zapier",
+                    "tags":
+                    [
+                        "question"
+                    ],
+                    "viewcount": 0,
+                    "answerid": null,
+                    "revisionid": "1158746744306012160",
+                    "closerid": null,
+                    "answercount": 0,
+                    "lastactivity": null,
+                    "lastedited": null,
+                    "lasteditby": null,
+                    "deletereportid": null,
+                    "location": null,
+                    "address": null,
+                    "latlng": null,
+                    "commentIds": null,
+                    "space": "scooldspace:test:Test",
+                    "followers": null,
+                    "id": "1158746744113074176",
+                    "timestamp": 1586351336962,
+                    "type": "question",
+                    "appid": "scoold",
+                    "parentid": null,
+                    "creatorid": "741392982594293760:profile",
+                    "updated": null,
+                    "name": "Hello from Zapier",
+                    "votes": 0,
+                    "version": 0,
+                    "stored": true,
+                    "indexed": true,
+                    "cached": true,
+                    "properties":
+                    {},
+                    "author":
+                    {
+                        "id": "741392982594293760:profile",
+                        "timestamp": 1486846446158,
+                        "type": "profile",
+                        "appid": " albogdano",
+                        "parentid": null,
+                        "creatorid": "741392982594293760",
+                        "updated": 1584905369672,
+                        "name": "Alex Bogdanovski",
+                        "tags": null,
+                        "votes": 823,
+                        "version": 0,
+                        "stored": true,
+                        "indexed": true,
+                        "cached": true,
+                        "originalName": "Alexander Bogdanovski",
+                        "originalPicture": null,
+                        "lastseen": 1586351337206,
+                        "location": "",
+                        "latlng": "37.51884870122135,127.056884765625",
+                        "status": "",
+                        "aboutme": "",
+                        "badges": ",editor,reporter,reporter,enthusiast,freshman,scholar,noob,",
+                        "groups": "admins",
+                        "upvotes": 41,
+                        "downvotes": 8,
+                        "comments": 12,
+                        "picture": "https://www.gravatar.com/avatar/5aee63b92a66153f25798ad494255b33?size=400&d=retro",
+                        "website": "",
+                        "favtags":
+                        [],
+                        "spaces":
+                        [
+                            "scooldspace:test:Test",
+                            "scooldspace:test2:Test2"
+                        ],
+                        "replyEmailsEnabled": false,
+                        "commentEmailsEnabled": false,
+                        "favtagsEmailsEnabled": false,
+                        "anonymityEnabled": false,
+                        "yearlyVotes": 9,
+                        "quarterlyVotes": 9,
+                        "monthlyVotes": 7,
+                        "weeklyVotes": -3,
+                        "newbadges": null,
+                        "totalVotes": 49,
+                        "complete": false,
+                        "favtagsString": "",
+                        "badgesMap":
+                        {
+                            "editor": 1,
+                            "freshman": 1,
+                            "noob": 1,
+                            "reporter": 2,
+                            "enthusiast": 1,
+                            "scholar": 1
+                        },
+                        "objectURI": "/profile/741392982594293760%3Aprofile",
+                        "plural": "profiles",
+                        "firstname": "Alex",
+                        "spacesSet":
+                        [],
+                        "key": "albogdano_741392982594293760:profile",
+                        "lastname": "Bogdanovski"
+                    }
+                },
+                "outputFields":
+                [
+                    {
+                        "key": "body"
+                    },
+                    {
+                        "key": "title"
+                    },
+                    {
+                        "key": "tags[]0"
+                    },
+                    {
+                        "key": "tags[]1"
+                    },
+                    {
+                        "key": "tags[]2"
+                    },
+                    {
+                        "key": "tags[]3"
+                    },
+                    {
+                        "key": "tags[]4"
+                    },
+                    {
+                        "key": "tags[]5"
+                    },
+                    {
+                        "key": "tags[]6"
+                    },
+                    {
+                        "key": "tags[]7"
+                    },
+                    {
+                        "key": "viewcount",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "answerid"
+                    },
+                    {
+                        "key": "revisionid"
+                    },
+                    {
+                        "key": "closerid"
+                    },
+                    {
+                        "key": "answercount",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "lastactivity"
+                    },
+                    {
+                        "key": "lastedited",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "lasteditby"
+                    },
+                    {
+                        "key": "deletereportid"
+                    },
+                    {
+                        "key": "location"
+                    },
+                    {
+                        "key": "address"
+                    },
+                    {
+                        "key": "latlng"
+                    },
+                    {
+                        "key": "commentIds"
+                    },
+                    {
+                        "key": "space"
+                    },
+                    {
+                        "key": "followers"
+                    },
+                    {
+                        "key": "id"
+                    },
+                    {
+                        "key": "timestamp",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "type"
+                    },
+                    {
+                        "key": "appid"
+                    },
+                    {
+                        "key": "parentid"
+                    },
+                    {
+                        "key": "creatorid"
+                    },
+                    {
+                        "key": "updated",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "name"
+                    },
+                    {
+                        "key": "votes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "version",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "stored",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "indexed",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "cached",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__id"
+                    },
+                    {
+                        "key": "author__timestamp",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__type"
+                    },
+                    {
+                        "key": "author__appid"
+                    },
+                    {
+                        "key": "author__parentid"
+                    },
+                    {
+                        "key": "author__creatorid"
+                    },
+                    {
+                        "key": "author__updated",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__name"
+                    },
+                    {
+                        "key": "author__tags"
+                    },
+                    {
+                        "key": "author__votes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__version",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__stored",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__indexed",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__cached",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__originalName"
+                    },
+                    {
+                        "key": "author__originalPicture"
+                    },
+                    {
+                        "key": "author__lastseen",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__location"
+                    },
+                    {
+                        "key": "author__latlng"
+                    },
+                    {
+                        "key": "author__status"
+                    },
+                    {
+                        "key": "author__aboutme"
+                    },
+                    {
+                        "key": "author__badges"
+                    },
+                    {
+                        "key": "author__groups"
+                    },
+                    {
+                        "key": "author__upvotes"
+                    },
+                    {
+                        "key": "author__downvotes"
+                    },
+                    {
+                        "key": "author__comments",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__picture"
+                    },
+                    {
+                        "key": "author__website"
+                    },
+                    {
+                        "key": "author__spaces[]0"
+                    },
+                    {
+                        "key": "author__spaces[]1"
+                    },
+                    {
+                        "key": "author__spaces[]2"
+                    },
+                    {
+                        "key": "author__spaces[]3"
+                    },
+                    {
+                        "key": "author__spaces[]4"
+                    },
+                    {
+                        "key": "author__spaces[]5"
+                    },
+                    {
+                        "key": "author__spaces[]6"
+                    },
+                    {
+                        "key": "author__spaces[]7"
+                    },
+                    {
+                        "key": "author__spaces[]8"
+                    },
+                    {
+                        "key": "author__spaces[]9"
+                    },
+                    {
+                        "key": "author__spaces[]10"
+                    },
+                    {
+                        "key": "author__spaces[]11"
+                    },
+                    {
+                        "key": "author__spaces[]12"
+                    },
+                    {
+                        "key": "author__spaces[]13"
+                    },
+                    {
+                        "key": "author__spaces[]14"
+                    },
+                    {
+                        "key": "author__spaces[]15"
+                    },
+                    {
+                        "key": "author__spaces[]16"
+                    },
+                    {
+                        "key": "author__spaces[]17"
+                    },
+                    {
+                        "key": "author__spaces[]18"
+                    },
+                    {
+                        "key": "author__spaces[]19"
+                    },
+                    {
+                        "key": "author__spaces[]20"
+                    },
+                    {
+                        "key": "author__spaces[]21"
+                    },
+                    {
+                        "key": "author__spaces[]22"
+                    },
+                    {
+                        "key": "author__replyEmailsEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__commentEmailsEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__favtagsEmailsEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__anonymityEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__yearlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__quarterlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__monthlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__weeklyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__newbadges"
+                    },
+                    {
+                        "key": "author__totalVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "author__complete",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "author__favtagsString"
+                    },
+                    {
+                        "key": "author__objectURI"
+                    },
+                    {
+                        "key": "author__plural"
+                    },
+                    {
+                        "key": "author__firstname"
+                    },
+                    {
+                        "key": "author__key"
+                    },
+                    {
+                        "key": "author__lastname"
+                    }
+                ]
+            },
+            "key": "create_question",
+            "noun": "Question",
+            "display":
+            {
+                "label": "Create Question",
+                "description": "Creates a new Question on Scoold",
+                "hidden": false
+            }
+        }
+    },
+    "searches":
+    {
+        "search_users":
+        {
+            "operation":
+            {
+                "perform":
+                {
+                    "source": "const options = {\n  url: `${bundle.authData.url}/api/search/user/${bundle.inputData.query}`,\n  method: 'GET',\n  headers: {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json',\n    'Authorization': `Bearer ${bundle.authData.jwt}`\n  },\n  params: {\n\n  }\n}\n\nreturn z.request(options)\n  .then((response) => {\n    response.throwForStatus();\n    const results = z.JSON.parse(response.content);\n\n    // You can do any parsing you need for results here before returning them\n\n    return results.items;\n  });"
+                },
+                "inputFields":
+                [
+                    {
+                        "key": "query",
+                        "label": "Full-text search query",
+                        "type": "string",
+                        "default": "*",
+                        "helpText": "You can use Lucene query syntax here.",
+                        "required": false,
+                        "list": false,
+                        "altersDynamicFields": false
+                    }
+                ],
+                "sample":
+                {
+                    "id": "1158699029060653056:profile",
+                    "timestamp": 1586339960807,
+                    "type": "profile",
+                    "appid": " albogdano",
+                    "parentid": null,
+                    "creatorid": "1158699029060653056",
+                    "updated": 1586339961587,
+                    "name": "Bernhard Hörmann",
+                    "tags": null,
+                    "votes": 0,
+                    "version": 0,
+                    "stored": true,
+                    "indexed": true,
+                    "cached": true,
+                    "originalName": "Bernhard Hörmann",
+                    "originalPicture": null,
+                    "lastseen": 1586339961458,
+                    "location": "",
+                    "latlng": null,
+                    "status": "",
+                    "aboutme": "",
+                    "badges": "",
+                    "groups": "users",
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "comments": 0,
+                    "picture": "https://lh3.googleusercontent.com/-hnT5wmeD3ME/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJNwRK4VZl5vHiYwadQ0laT-E5yKwg/photo.jpg",
+                    "website": "",
+                    "favtags":
+                    [],
+                    "spaces":
+                    [],
+                    "replyEmailsEnabled": false,
+                    "commentEmailsEnabled": false,
+                    "favtagsEmailsEnabled": false,
+                    "anonymityEnabled": false,
+                    "yearlyVotes": 0,
+                    "quarterlyVotes": 0,
+                    "monthlyVotes": 0,
+                    "weeklyVotes": 0,
+                    "newbadges": null,
+                    "totalVotes": 0,
+                    "complete": false,
+                    "favtagsString": "",
+                    "badgesMap":
+                    {},
+                    "objectURI": "/profile/1158699029060653056%3Aprofile",
+                    "plural": "profiles",
+                    "key": "albogdano_1158699029060653056:profile"
+                },
+                "outputFields":
+                [
+                    {
+                        "key": "id"
+                    },
+                    {
+                        "key": "timestamp",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "type"
+                    },
+                    {
+                        "key": "appid"
+                    },
+                    {
+                        "key": "parentid"
+                    },
+                    {
+                        "key": "creatorid"
+                    },
+                    {
+                        "key": "updated",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "name"
+                    },
+                    {
+                        "key": "tags"
+                    },
+                    {
+                        "key": "votes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "version",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "stored",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "indexed",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "cached",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "originalName",
+                        "type": "string"
+                    },
+                    {
+                        "key": "originalPicture"
+                    },
+                    {
+                        "key": "lastseen",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "location"
+                    },
+                    {
+                        "key": "latlng"
+                    },
+                    {
+                        "key": "status"
+                    },
+                    {
+                        "key": "aboutme"
+                    },
+                    {
+                        "key": "badges"
+                    },
+                    {
+                        "key": "groups"
+                    },
+                    {
+                        "key": "upvotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "downvotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "comments",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "picture"
+                    },
+                    {
+                        "key": "website"
+                    },
+                    {
+                        "key": "replyEmailsEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "commentEmailsEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "favtagsEmailsEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "anonymityEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "yearlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "quarterlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "monthlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "weeklyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "newbadges",
+                        "type": "string"
+                    },
+                    {
+                        "key": "totalVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "complete",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "favtagsString"
+                    },
+                    {
+                        "key": "objectURI"
+                    },
+                    {
+                        "key": "plural"
+                    },
+                    {
+                        "key": "key"
+                    }
+                ]
+            },
+            "key": "search_users",
+            "noun": "Users",
+            "display":
+            {
+                "label": "Find Users",
+                "description": "Searches for users (`user` objects)",
+                "hidden": false
+            }
+        },
+        "search_profiles":
+        {
+            "operation":
+            {
+                "perform":
+                {
+                    "source": "const options = {\n  url: `${bundle.authData.url}/api/search/profile/${bundle.inputData.query}`,\n  method: 'GET',\n  headers: {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json',\n    'Authorization': `Bearer ${bundle.authData.jwt}`\n  },\n  params: {\n\n  }\n}\n\nreturn z.request(options)\n  .then((response) => {\n    response.throwForStatus();\n    const results = z.JSON.parse(response.content);\n\n    // You can do any parsing you need for results here before returning them\n\n    return results.items;\n  });"
+                },
+                "inputFields":
+                [
+                    {
+                        "key": "query",
+                        "label": "Full-text search query",
+                        "type": "string",
+                        "default": "*",
+                        "helpText": "You can use Lucene query syntax here.",
+                        "required": false,
+                        "list": false,
+                        "altersDynamicFields": false
+                    }
+                ],
+                "sample":
+                {
+                    "id": "1158699029060653056:profile",
+                    "timestamp": 1586339960807,
+                    "type": "profile",
+                    "appid": " albogdano",
+                    "parentid": null,
+                    "creatorid": "1158699029060653056",
+                    "updated": 1586339961587,
+                    "name": "Bernhard Hörmann",
+                    "tags": null,
+                    "votes": 0,
+                    "version": 0,
+                    "stored": true,
+                    "indexed": true,
+                    "cached": true,
+                    "originalName": "Bernhard Hörmann",
+                    "originalPicture": null,
+                    "lastseen": 1586339961458,
+                    "location": "",
+                    "latlng": null,
+                    "status": "",
+                    "aboutme": "",
+                    "badges": "",
+                    "groups": "users",
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "comments": 0,
+                    "picture": "https://lh3.googleusercontent.com/-hnT5wmeD3ME/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJNwRK4VZl5vHiYwadQ0laT-E5yKwg/photo.jpg",
+                    "website": "",
+                    "favtags":
+                    [],
+                    "spaces":
+                    [],
+                    "replyEmailsEnabled": false,
+                    "commentEmailsEnabled": false,
+                    "favtagsEmailsEnabled": false,
+                    "anonymityEnabled": false,
+                    "yearlyVotes": 0,
+                    "quarterlyVotes": 0,
+                    "monthlyVotes": 0,
+                    "weeklyVotes": 0,
+                    "newbadges": null,
+                    "totalVotes": 0,
+                    "complete": false,
+                    "favtagsString": "",
+                    "badgesMap":
+                    {},
+                    "objectURI": "/profile/1158699029060653056%3Aprofile",
+                    "plural": "profiles",
+                    "key": "albogdano_1158699029060653056:profile"
+                },
+                "outputFields":
+                [
+                    {
+                        "key": "id"
+                    },
+                    {
+                        "key": "timestamp",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "type"
+                    },
+                    {
+                        "key": "appid"
+                    },
+                    {
+                        "key": "parentid"
+                    },
+                    {
+                        "key": "creatorid"
+                    },
+                    {
+                        "key": "updated",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "name"
+                    },
+                    {
+                        "key": "tags"
+                    },
+                    {
+                        "key": "votes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "version",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "stored",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "indexed",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "cached",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "originalName"
+                    },
+                    {
+                        "key": "originalPicture"
+                    },
+                    {
+                        "key": "lastseen",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "location"
+                    },
+                    {
+                        "key": "latlng"
+                    },
+                    {
+                        "key": "status"
+                    },
+                    {
+                        "key": "aboutme"
+                    },
+                    {
+                        "key": "badges"
+                    },
+                    {
+                        "key": "groups"
+                    },
+                    {
+                        "key": "upvotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "downvotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "comments",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "picture"
+                    },
+                    {
+                        "key": "website"
+                    },
+                    {
+                        "key": "replyEmailsEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "commentEmailsEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "favtagsEmailsEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "anonymityEnabled",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "yearlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "quarterlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "monthlyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "weeklyVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "newbadges"
+                    },
+                    {
+                        "key": "totalVotes",
+                        "type": "integer"
+                    },
+                    {
+                        "key": "complete",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "favtagsString"
+                    },
+                    {
+                        "key": "objectURI"
+                    },
+                    {
+                        "key": "plural"
+                    },
+                    {
+                        "key": "key"
+                    }
+                ]
+            },
+            "key": "search_profiles",
+            "noun": "Profiles",
+            "display":
+            {
+                "label": "Find Profiles",
+                "description": "Searches for user `profile` objects",
+                "hidden": false
+            }
+        },
+        "search":
+        {
+            "operation":
+            {
+                "perform":
+                {
+                    "source": "const options = {\n  url: `${bundle.authData.url}/api/search/${bundle.inputData.type}/${bundle.inputData.query}`,\n  method: 'GET',\n  headers: {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json',\n    'Authorization': `Bearer ${bundle.authData.jwt}`\n  },\n  params: {\n\n  },\n  removeMissingValuesFrom: {\n    'body': false,\n    'params': false\n  },\n}\n\nreturn z.request(options)\n  .then((response) => {\n    const results = z.JSON.parse(response.content);\n\n    // You can do any parsing you need for results here before returning them\n\n    return results.items;\n  });"
+                },
+                "inputFields":
+                [
+                    {
+                        "key": "type",
+                        "label": "Post Type",
+                        "type": "string",
+                        "helpText": "Specify the type of content to search for, e.g. \"question\", \"comment\", \"reply\".",
+                        "default": "question",
+                        "choices":
+                        [
+                            "question",
+                            "reply",
+                            "user",
+                            "profile",
+                            "comment",
+                            "report",
+                            "revision",
+                            "badge",
+                            "feedback"
+                        ],
+                        "required": true,
+                        "list": false,
+                        "altersDynamicFields": false
+                    },
+                    {
+                        "key": "query",
+                        "label": "Query",
+                        "type": "string",
+                        "helpText": "Enter the search query.",
+                        "default": "*",
+                        "required": true,
+                        "list": false,
+                        "altersDynamicFields": false
+                    }
+                ],
+                "sample":
+                {
+                    "id": "1940468733843607552",
+                    "timestamp": 1772728383114,
+                    "type": "question",
+                    "appid": " scoold-pro",
+                    "parentid": null,
+                    "creatorid": "1749640748585717760:profile",
+                    "updated": 1773220933983,
+                    "name": "file upload test",
+                    "tags":
+                    [
+                        ""
+                    ],
+                    "votes": 0,
+                    "version": 0,
+                    "stored": true,
+                    "indexed": true,
+                    "cached": true,
+                    "body": ":paperclip: [Book1.xlsx](https://demo.scoold.com/upload/files/1772728365824_Book1.xlsx) \r\n\r\n:paperclip: [Book1.xlsx](https://demo.scoold.com/upload/files/1772728376145_Book1.xlsx) ",
+                    "title": "file upload test",
+                    "viewcount": 54,
+                    "answerid": null,
+                    "revisionid": null,
+                    "closerid": null,
+                    "answercount": 0,
+                    "lastactivity": 1772728383114,
+                    "lastedited": 1772728383114,
+                    "lasteditby": null,
+                    "deletereportid": null,
+                    "location": "",
+                    "address": null,
+                    "latlng": null,
+                    "commentIds":
+                    [],
+                    "space": "scooldspace:default",
+                    "followers": null,
+                    "wiki": false,
+                    "mentions":
+                    [],
+                    "deprecated": false,
+                    "approvalTimestamp": null,
+                    "approvedby": null,
+                    "vote": null,
+                    "spam": false,
+                    "tagsString": "",
+                    "postLinkForRedirect": "/question/1940468733843607552/file-upload-test",
+                    "closed": false,
+                    "objectURI": "/question/1940468733843607552",
+                    "plural": "questions",
+                    "key": "scoold-pro_1940468733843607552"
+                },
+                "outputFields":
+                [
+                    {
+                        "key": "id"
+                    },
+                    {
+                        "key": "timestamp"
+                    },
+                    {
+                        "key": "type"
+                    },
+                    {
+                        "key": "appid"
+                    },
+                    {
+                        "key": "parentid"
+                    },
+                    {
+                        "key": "creatorid"
+                    },
+                    {
+                        "key": "updated"
+                    },
+                    {
+                        "key": "name"
+                    },
+                    {
+                        "key": "votes"
+                    },
+                    {
+                        "key": "version"
+                    },
+                    {
+                        "key": "stored"
+                    },
+                    {
+                        "key": "indexed"
+                    },
+                    {
+                        "key": "cached"
+                    },
+                    {
+                        "key": "body"
+                    },
+                    {
+                        "key": "title"
+                    },
+                    {
+                        "key": "viewcount"
+                    },
+                    {
+                        "key": "answerid"
+                    },
+                    {
+                        "key": "revisionid"
+                    },
+                    {
+                        "key": "closerid"
+                    },
+                    {
+                        "key": "answercount"
+                    },
+                    {
+                        "key": "lastactivity"
+                    },
+                    {
+                        "key": "lastedited"
+                    },
+                    {
+                        "key": "lasteditby"
+                    },
+                    {
+                        "key": "deletereportid"
+                    },
+                    {
+                        "key": "location"
+                    },
+                    {
+                        "key": "address"
+                    },
+                    {
+                        "key": "latlng"
+                    },
+                    {
+                        "key": "space"
+                    },
+                    {
+                        "key": "followers"
+                    },
+                    {
+                        "key": "wiki"
+                    },
+                    {
+                        "key": "deprecated"
+                    },
+                    {
+                        "key": "approvalTimestamp"
+                    },
+                    {
+                        "key": "approvedby"
+                    },
+                    {
+                        "key": "vote"
+                    },
+                    {
+                        "key": "spam"
+                    },
+                    {
+                        "key": "tagsString"
+                    },
+                    {
+                        "key": "postLinkForRedirect"
+                    },
+                    {
+                        "key": "closed"
+                    },
+                    {
+                        "key": "objectURI"
+                    },
+                    {
+                        "key": "plural"
+                    },
+                    {
+                        "key": "key"
+                    }
+                ]
+            },
+            "display":
+            {
+                "description": "Search for content on Scoold",
+                "hidden": false,
+                "label": "Search"
+            },
+            "key": "search",
+            "noun": "Post"
+        }
+    },
+    "flags":
+    {
+        "skipThrowForStatus": true
+    }
+}

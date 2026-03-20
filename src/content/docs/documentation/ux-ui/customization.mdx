@@ -1,0 +1,221 @@
+---
+title: Customizing Scoold
+description: Customizing the look-and-feel of your Scoold server
+sidebar:
+  order: 1
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+
+Scoold is very customizeble and has a number of options which allow you to change its look-and-feel.
+It is also branding-friendly and allows you to add your own logos, colors and assets.
+
+## Customizing the UI
+
+There are a number of settings that let you customize the appearance of the website without changing the code.
+```ini title=scoold-application.conf
+scoold.fixed_nav = false
+scoold.show_branding = true
+scoold.logo_url = "https://static.scoold.com/logo.svg"
+scoold.logo_width = 90
+
+# footer HTML - add your own links, etc., escape double quotes with \"
+scoold.footer_html = "<a href=\"https://my.link\">My Link</a>"
+# show standard footer links
+scoold.footer_links_enabled = true
+# favicon image location
+scoold.favicon_url = "/favicon.ico"
+# add your own external stylesheets
+scoold.external_styles = "https://mydomain.com/style1.css, https://mydomain.com/style2.css"
+# appends extra CSS rules to the main stylesheet
+scoold.inline_css = ""
+# edit the links in the footer of transactional emails
+scoold.emails_footer_html = ""
+# change the logo in transactional emails
+scoold.small_logo_url = "https://scoold.com/logo.png"
+# enable/disable dark mode
+scoold.dark_mode_enabled = true
+# enabled/disable Gravatars
+scoold.gravatars_enabled = true
+# pattern of default image of Gravatars (https://fr.gravatar.com/site/implement/images/)
+scoold.gravatars_pattern = "retro"
+
+# custom navbar links
+scoold.navbar_link1_url = ""
+scoold.navbar_link2_url = ""
+scoold.navbar_link1_text = "Link1"
+scoold.navbar_link2_text = "Link2"
+scoold.navbar_link1_target = "_self"
+scoold.navbar_link2_target = "_self"
+
+# custom navbar menu links (shown to logged in users)
+scoold.navbar_menu_link1_url = ""
+scoold.navbar_menu_link2_url = ""
+scoold.navbar_menu_link1_text = "Menu Link1"
+scoold.navbar_menu_link2_text = "Menu Link2"
+scoold.navbar_menu_link1_target = "_self"
+scoold.navbar_menu_link2_target = "_self"
+
+# default email notification toggles for all users
+scoold.favtags_emails_enabled = false
+scoold.reply_emails_enabled = false
+scoold.comment_emails_enabled = false
+
+# comment input box toggle
+scoold.always_hide_comment_forms = true
+
+# show/hide user profiles and users page
+scoold.users_discoverability_enabled = true
+```
+
+### Uploading a custom Logo <Badge text="Pro" variant="tip" />
+
+In **Scoold Pro**, you can change the logo of the website just by dragging and dropping a new image of your choice.
+This is a premium feature because only Scoold Pro supports file uploads.
+
+If you wish to add just a few simple CSS rules to the `<head>` element, instead of replacing the whole stylesheet,
+simply add them as inline CSS:
+
+```ini title=scoold-application.conf
+scoold.inline_css = ".scoold-logo { width: 100px; }"
+```
+
+### Custom welcome message (banner)
+
+You can set a short welcome message for unauthenticated users which will be displayed on the top of the page and it
+can also contain HTML (**use only single quotes or escape double quotes `\\\"`**):
+```ini title=scoold-application.conf
+scoold.welcome_message = "Hello and welcome to <a href='https://scoold.com'>Scoold</a>!"
+```
+You can also set a custom message for users who are already logged in:
+```ini title=scoold-application.conf
+scoold.welcome_message_onlogin = "<h2>Welcome back <img src=\\\"{{user.picture}}\\\" width=30> <b>{{user.name}}</b>!</h2>"
+```
+Here you can use HTML tags and Mustache placeholders to show data from the `Profile` object of the logged in user.
+For a list of available user properties, take a look at the
+[`Profile`](https://github.com/Erudika/scoold/blob/master/src/main/java/com/erudika/scoold/core/Profile.java)
+and [`Sysprop`](https://github.com/Erudika/para/blob/master/para-core/src/main/java/com/erudika/para/core/Sysprop.java)
+classes.
+
+### Custom links in navbar
+
+There are a total of 4 slots for external links in the navbar area - two links publicly visible can go in the navbar and
+another two links can go in the navbar menu, shown only to logged in users. Here's how to set a private link in the
+navbar menu:
+```ini title=scoold-application.conf
+scoold.navbar_menu_link1_url = "https://homepage.com"
+scoold.navbar_menu_link1_text = "Visit my page"
+```
+
+### Expert-level customization
+
+If you want to completely customize the frontend code, clone this repository and edit the files you want:
+
+- **HTML** templates are in `src/main/resources/templates/`
+- **CSS** stylesheets can be found in `src/main/resources/static/styles/`
+- **JavaScript** files can be found in `src/main/resources/static/scripts/`
+- **Images** are in located in `src/main/resources/static/images/`
+- **Themes** are in located in `src/main/resources/themes/`
+
+In Scoold Pro, you don't have access to the files above but you can purchase the **Pro with Source code**
+license, for full customization capability.
+
+Also, please refer to the documentation for Spring Boot and Spring MVC.
+
+## Third party cookie consent
+
+Some countries have laws that require explicit cookie consent (e.g. GDPR, CCPA). Scoold can be integrated with Osano's
+cookie consent script to enable the consent popup for compliance with those laws. Here's the configuration which enables
+cookie consent:
+```ini title=scoold-application.conf
+scoold.cookie_consent_required = true
+scoold.external_styles = "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
+scoold.external_scripts.bypassconsent1 = "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"
+scoold.external_scripts.bypassconsent2 = "d2luZG93LmNvb2tpZWNvbnNlbnQuaW5pdGlhbGlzZSh7CiAgInBhbGV0dGUiOiB7CiAgICAicG9wdXAiOiB7CiAgICAgICJiYWNrZ3JvdW5kIjogIiM0NDQ0NDQiCiAgICB9LAogICAgImJ1dHRvbiI6IHsKICAgICAgImJhY2tncm91bmQiOiAiIzc3Nzc3NyIKICAgIH0KICB9LAogICJ0aGVtZSI6ICJjbGFzc2ljIiwKICAicG9zaXRpb24iOiAiYm90dG9tLWxlZnQiLAogICJ0eXBlIjogIm9wdC1pbiIsCiAgIm9uU3RhdHVzQ2hhbmdlIjogZnVuY3Rpb24ocyl7bG9jYXRpb24ucmVsb2FkKCk7fQp9KTs="
+```
+That last snippet of code is the Base64-encoded initialization of the cookie consent script:
+```js
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#444444"
+    },
+    "button": {
+      "background": "#777777"
+    }
+  },
+  "theme": "classic",
+  "position": "bottom-left",
+  "type": "opt-in",
+  "onStatusChange": function(s){location.reload();}
+});
+```
+You can customize the above snippet however you like from [Osano's download page (Start coding link)](https://www.osano.com/cookieconsent/download/).
+After you customize the snippet, it is important that you add `"onStatusChange": function(s){location.reload();}` at the end.
+
+**Enabling cookie consent will automatically disable all external scripts (like Google Analytics, etc.),
+until the user gives their explicit consent.**
+
+Note: Any other script can be used instead, as long as it set a cookie `cookieconsent_status = "allow"`.
+
+
+
+## Mentions <Badge text="Pro" variant="tip" />
+
+In **Scoold Pro**, you can mention anyone in a question, answer or comment with `@Name`. A popup menu will appear once you
+start typing after `@` giving you a list of names to choose from. The selected user will be mentioned with a special
+mention tag in the form of `@<userID|John Doe>`. You can edit the name part of that tag (after `|`) but nothing else,
+if you want the mention to work. You can mention up to 10 people in a post.
+
+Users can opt-in to receive email notifications when they are mentioned or that can be switched on/off by admins.
+For the latter option set:
+```ini title=scoold-application.conf
+scoold.mention_emails_controlled_by_admins = true
+```
+
+In certain cases, there may be lots of people with identical or similar names within a team which could make it difficult
+to tell them apart when trying to mention them. For such scenarios, there is an option to show additional details for
+each user, like username and tags. This is enabled like so:
+
+```ini title=scoold-application.conf
+scoold.user_autocomplete_details_enabled = true
+```
+
+## Voting
+
+By default, votes expire after a certain period, meaning the same user can vote again on the same post
+(after 30 days by default). Votes can also be amended within a certain number of seconds (30s by default).
+There are two configurable parameters which allow you to modify the length of those periods:
+```ini title=scoold-application.conf
+scoold.vote_locked_after_sec = 30
+scoold.vote_expires_after_sec = 2592000
+```
+
+## LaTeX & MathML support and advanced highlighting <Badge text="Pro" variant="tip" />
+
+In **Scoold Pro**, you can enable this feature by setting `scoold.mathjax_enabled = true`. Then you can use MathML expressions by surrounding
+them with `$$` signs, e.g. `$$ \frac {1}{2} $$` By default, MathJax is disabled.
+
+The Prism syntax highlighter is included and it supports many different languages. You need to specify the language for
+each code block if you want the highlighting to be more accurate (see [all supported languages](https://prismjs.com/#languages-list)).
+For example:
+```csharp
+```csharp
+var dict = new Dictionary<string>();
+``'
+```
+## Enabling the "Feedback" section
+
+You can enable or disable the "Feedback" page where people can discuss topics about the website itself or submit general
+feedback. This section is disabled by default and can be activated with: 
+```ini title=scoold-application.conf
+scoold.feedback_enabled = true
+```
+
+
+<LinkCard
+  title="Configuration Reference"
+  href="/documentation/reference/configuration/"
+  description="For the complete list of configuration options, visit the configuration reference page."
+/>

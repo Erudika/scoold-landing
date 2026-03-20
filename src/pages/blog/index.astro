@@ -1,6 +1,9 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { blog_page } from '../../data/site-data.json';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Pagination from '@/components/Pagination.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { Image } from 'astro:assets';
+import { blog_page, blogPage } from '../../data/site-data.json';
 import { getCollection } from "astro:content";
 import herobg from '../../images/herobg.svg';
 
@@ -10,6 +13,7 @@ const posts = (await getCollection("blog")).sort(
 );
 const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
 const pagePosts = posts.slice(0, PAGE_SIZE).map((post) => ({
+  // id: post.id,
   title: post.data.title,
   excerpt: post.data.excerpt,
   date: post.data.date.toLocaleDateString("en-US", {
@@ -17,47 +21,22 @@ const pagePosts = posts.slice(0, PAGE_SIZE).map((post) => ({
     month: "short",
     day: "2-digit"
   }),
+  author: post.data.author,
   img: post.data.img,
   tags: post.data.tags,
   href: `/blog/${post.id}/`
 }));
-
-const tagColors: Record<string, string> = {
-  deployment: 'bg-blue-50 text-blue-600',
-  docker: 'bg-sky-50 text-sky-600',
-  guide: 'bg-emerald-50 text-emerald-600',
-  enterprise: 'bg-violet-50 text-violet-600',
-  sso: 'bg-purple-50 text-purple-600',
-  saml: 'bg-indigo-50 text-indigo-600',
-  'knowledge-base': 'bg-amber-50 text-amber-600',
-  comparison: 'bg-orange-50 text-orange-600',
-  culture: 'bg-pink-50 text-pink-600',
-  gamification: 'bg-rose-50 text-rose-600',
-  engineering: 'bg-slate-50 text-slate-600',
-  integration: 'bg-cyan-50 text-cyan-600',
-  slack: 'bg-lime-50 text-lime-600',
-  'open-source': 'bg-teal-50 text-teal-600',
-  'knowledge-management': 'bg-yellow-50 text-yellow-600',
-};
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
 ---
 
 <BaseLayout
   title={blog_page.title_short}
   description={blog_page.description}
 >
-  <section class="relative bg-white border-slate-100 border-b section-padding"  style={`background-image: url(${herobg.src});`}>
+  <section class="relative bg-white border-slate-100 section-padding"  style={`background-image: url(${herobg.src});`}>
     <!-- Gradient fade edges -->
     <div class="absolute inset-0 bg-linear-to-b from-white via-transparent to-white pointer-events-none"></div>
 
-    <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+    <div class="relative mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
       <span class="section-label">{blog_page.badge}</span>
       <h1 class="mb-4 font-extrabold text-slate-900 text-5xl tracking-tight">
         {blog_page.title}
@@ -65,40 +44,17 @@ function formatDate(dateStr: string): string {
       <p class="text-slate-700 text-xl leading-relaxed">
         {blog_page.subtitle}
       </p>
+      <div class="mt-5">
+        <a href="/blog/tags/" class="font-semibold text-sky-700 text-sm">{blogPage.tagsCta}</a>
+      </div>
     </div>
   </section>
 
-  <section class="bg-white section-padding">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-      <div class="space-y-8">
+  <section class="mb-10">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <div class="gap-6">
         {pagePosts.map((post) => (
-          <article class="group">
-            <a href={`/blog/${post.id}/`} class="block">
-              <div class="flex flex-wrap gap-2 mb-3">
-                {post.tags.map((tag) => (
-                  <span class:list={['inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold', tagColors[tag] ?? 'bg-slate-50 text-slate-600']}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <h2 class="mb-2 font-bold text-slate-900 group-hover:text-brand-600 text-xl leading-tight transition-colors">
-                {post.title}
-              </h2>
-              <p class="mb-3 text-slate-700 text-sm leading-relaxed">
-                {post.excerpt}
-              </p>
-              <div class="flex items-center gap-3 text-slate-600 text-xs">
-                <span>{post.author}</span>
-                <span>·</span>
-                <time datetime={post.date}>{formatDate(post.date)}</time>
-                <span class="flex items-center gap-1 group-hover:gap-2 ml-auto font-semibold text-brand-600 transition-all">
-                  {blog_page.read_more_label}
-                  &rarr;
-                </span>
-              </div>
-            </a>
-            <hr class="mt-8 border-slate-100"/>
-          </article>
+          <BlogCard {...post} />
         ))}
       </div>
     </div>

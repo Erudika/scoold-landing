@@ -33,6 +33,7 @@ const pagePosts = posts.slice(start, start + pageSize).map((post) => ({
     month: "short",
     day: "2-digit"
   }),
+  author: post.data.author,
   img: post.data.img,
   tags: post.data.tags,
   href: `/blog/${post.id}/`
@@ -43,7 +44,7 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
-    { "@type": "ListItem", position: 2, name: breadcrumbs.blog, item: `${baseUrl}/blog` },
+    { "@type": "ListItem", position: 2, name: breadcrumbs.blog, item: `${baseUrl}/blog/`},
     { "@type": "ListItem", position: 3, name: `${breadcrumbs.pagePrefix} ${page}`, item: `${baseUrl}/blog/page/${page}` }
   ]
 };
@@ -58,7 +59,7 @@ const breadcrumbJsonLd = {
     <div class="section-shell">
       <Breadcrumbs items={[
         { label: breadcrumbs.home, href: "/" },
-        { label: breadcrumbs.blog, href: "/blog" },
+        { label: breadcrumbs.blog, href: "/blog/" },
         { label: `${breadcrumbs.pagePrefix} ${page}`, href: `/blog/page/${page}/` }
       ]} />
       <h1 class="mt-6 font-semibold text-base-content text-4xl">{blogPage.title}</h1>

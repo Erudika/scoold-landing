@@ -1,0 +1,102 @@
+---
+title: SAML
+description: SAML 2.0 Support in Scoold for enterprise SSO
+sidebar:
+  badge:
+    text: Pro
+    variant: tip
+  order: 4
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+**This is a <Badge text="Pro" variant="tip" /> feature**
+
+First, you have to setup Para as a SAML 2.0 service provider using the config below. Then you can exchange SAML metadata with
+your SAML identity provider (IDP). The SP metadata endpoint is `/saml_metadata/{appid}`. For example, if your Para
+endpoint is `paraio.com` and your `appid` is `scoold`, then the metadata is available at
+`https://paraio.com/saml_metadata/scoold`.
+
+SAML authentication is initiated by sending users to the Para SAML authentication endpoint `/saml_auth/{appid}`.
+For example, if your Para endpoint is `paraio.com` and your `appid` is `scoold`, then the user should be sent to
+`https://paraio.com/saml_auth/scoold`. Para (the service provider) will handle the request and redirect to the SAML IDP.
+Finally, upon successful authentication, the user is redirected back to `https://paraio.com/saml_auth/scoold` which is
+also the assertion consumer service (ACS).
+
+<Aside>
+The X509 certificate and private key must be encoded as Base64 in the configuration file. Additionally,
+the private key must be in the **PKCS#8 format** (`---BEGIN PRIVATE KEY---`).
+</Aside>
+
+To convert from PKCS#1 to PKCS#8, use this:
+```sh
+openssl pkcs8 -topk8 -inform pem -nocrypt \
+    -in sp.rsa_key -outform pem -out sp.pem
+```
+For simplicity, you can generate the certificates for SAML by executing the Bash script 
+[↗ `gencerts.sh`](https://github.com/Erudika/scoold/blob/master/gencerts.sh),
+located in the Scoold repository:
+```sh
+./gencerts.sh localhost secret
+```
+Then, simply Base64-encode the contents of the public key `localhost.pem` and private key `localhost.key`:
+```sh
+base64 localhost.key > localhost_saml_base64.key
+base64 localhost.pem > localhost_saml_base64.pem
+```
+
+## Configuration properties
+
+There are lots of configuration options but Para needs only a few of those in order to successfully
+authenticate with your SAML IDP (listed in the first rows below).
+
+```ini title="scoold-application.conf"
+# minimal setup
+# IDP metadata URL, e.g. https://idphost/idp/shibboleth
+scoold.security.saml.idp.metadata_url = ""
+
+# SP endpoint, e.g. https://paraio.com/saml_auth/scoold
+scoold.security.saml.sp.entityid = ""
+
+# SP public key as Base64(x509 certificate)
+scoold.security.saml.sp.x509cert = ""
+
+# SP private key as Base64(PKCS#8 key)
+scoold.security.saml.sp.privatekey = ""
+
+# attribute mappings (usually required)
+# e.g. urn:oid:0.9.2342.19200300.100.1.1
+scoold.security.saml.attributes.id = ""
+# e.g. urn:oid:0.9.2342.19200300.100.1.3
+scoold.security.saml.attributes.email = ""
+# e.g. urn:oid:2.5.4.3
+scoold.security.saml.attributes.name = ""
+
+
+# extra options (optional)
+# this is usually the same as the "EntityId"
+scoold.security.saml.sp.assertion_consumer_service.url = ""
+scoold.security.saml.sp.nameidformat = ""
+
+# IDP metadata is usually automatically fetched
+scoold.security.saml.idp.entityid = ""
+scoold.security.saml.idp.single_sign_on_service.url = ""
+scoold.security.saml.idp.x509cert = ""
+
+scoold.security.saml.security.authnrequest_signed = false
+scoold.security.saml.security.want_messages_signed = false
+scoold.security.saml.security.want_assertions_signed = false
+scoold.security.saml.security.want_assertions_encrypted = false
+scoold.security.saml.security.want_nameid_encrypted = false
+scoold.security.saml.security.sign_metadata = false
+scoold.security.saml.security.want_xml_validation = true
+scoold.security.saml.security.signature_algorithm = ""
+
+scoold.security.saml.attributes.firstname = ""
+scoold.security.saml.attributes.picture = ""
+scoold.security.saml.attributes.lastname = ""
+scoold.security.saml.domain = "paraio.com"
+
+# Sets the string on the login button
+scoold.security.saml.provider = "Continue with SAML"
+```

@@ -1,0 +1,221 @@
+---
+title: OAuth 2.0
+description: OAuth 2.0 authentication support in Scoold for enterprise SSO
+sidebar:
+  order: 2
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+You can authenticate users against any OAuth 2.0 or OpenID Connect server through the generic OAuth 2 filter in Para.
+Make sure you **whitelist** your Para authentication endpoint `https://para_url/oauth2_auth` as a trusted redirect URL.
+
+## Configuration properties
+
+Here are all the options which you can set in the Scoold configuration file:
+
+```ini title="scoold-application.conf"
+# minimal setup
+scoold.oa2_app_id = ""
+scoold.oa2_secret = ""
+scoold.security.oauth.authz_url = "https://your-idp.com/login"
+scoold.security.oauth.token_url = "https://your-idp.com/token"
+scoold.security.oauth.profile_url = "https://your-idp.com/userinfo"
+scoold.security.oauth.scope = "openid email profile"
+
+# extra options
+scoold.security.oauth.accept_header = ""
+scoold.security.oauth.domain = "paraio.com"
+scoold.security.oauth.parameters.id = "sub"
+scoold.security.oauth.parameters.picture = "picture"
+scoold.security.oauth.parameters.email = "email"
+scoold.security.oauth.parameters.name = "name"
+scoold.security.oauth.parameters.given_name = "given_name"
+scoold.security.oauth.parameters.family_name = "family_name"
+
+# Sets the string on the login button
+scoold.security.oauth.provider = "Continue with OpenID Connect"
+
+# [PRO] Enable/disable access token delegation
+scoold.security.oauth.token_delegation_enabled = false
+
+# [PRO] Assigns spaces to each user from the OAuth2 claim 'spaces'
+scoold.security.oauth.spaces_attribute_name = "spaces"
+
+# [PRO] Assigns moderator/admin roles from the OAuth2 claim 'roles'
+scoold.security.oauth.groups_attribute_name = "roles"
+scoold.security.oauth.mods_equivalent_claim_value = "mod"
+scoold.security.oauth.admins_equivalent_claim_value = "admin"
+# if specified, users who are not admin/mod will be denied access when not members of group
+scoold.security.oauth.users_equivalent_claim_value = ""
+
+# Enable/disable avatar fetching from IDP
+scoold.security.oauth.download_avatars = false
+
+# State parameter in auth requests can be disabled if problematic
+scoold.security.oauth.state_param_enabled = true
+```
+
+## Access token delegation <Badge text="Pro" variant="tip" />
+
+In **Scoold Pro**, there is an additional security feature, where the access token from the identity provider (IDP)
+is stored in the user's `idpAccessToken` field and validated on each authentication request with the IDP. If the IDP
+revokes a delegated access token, then that user would automatically be logged out from Scoold Pro and denied access
+immediately.
+
+## Attribute mapping
+
+The basic profile data attributes (name, email, etc.) can be extracted from a complex response payload that is returned
+from the identity provider's `userinfo` endpoint. You can use JSON pointer syntax to locate attribute values within a
+more complex JSON payload like this one:
+```json
+{
+    "sub": "gfreeman",
+    "attributes": {
+        "DisplayName": "Gordon Freeman",
+        "DN": "uid=gordon,CN=Users,O=BlackMesa",
+        "Email": "gordon.freeman@blackmesa.gov"
+    }
+}
+```
+The corresponding configuration to extract the name and email address would be:
+```ini title="scoold-application.conf"
+scoold.security.oauth.parameters.email = "/attributes/Email"
+scoold.security.oauth.parameters.name = "/attributes/DisplayName"
+```
+
+## Role mapping <Badge text="Pro" variant="tip" />
+
+This feature is available in **Scoold Pro** and requires token delegation to be enabled with `scoold.security.oauth.token_delegation_enabled = true`.
+When working with complex user profile payloads coming from the ID provider, you can specify the exact property
+name where the roles data is contained. For example, let's assume a JSON user profile response like this:
+```json
+{
+    "sub": "gfreeman",
+    "DisplayName": "Gordon Freeman",
+    "Roles": "Staff,Admins,TopSecret",
+    "attributes": {
+        "MemberOf": [
+            "CN=Admins,CN=Lab,O=BlackMesa"
+        ]
+    }
+}
+```
+
+Then, we can map that user to the Scoold admins group with this configuration:
+```ini title="scoold-application.conf"
+scoold.security.oauth.groups_attribute_name = "Roles"
+scoold.security.oauth.admins_equivalent_claim_value = ".*?Admins.*"
+```
+Regular expressions are supported for searching within the roles attribute value. JSON pointers can also be used here
+like so:
+```ini title="scoold-application.conf"
+scoold.security.oauth.groups_attribute_name = "/attributes/MemberOf"
+scoold.security.oauth.admins_equivalent_claim_value = "^CN=Admins.*"
+```
+Additionally, when assigning roles from OAuth2 claims, you can explicitly specify a subset of allowed users who can access
+Scoold by setting `scoold.security.oauth.users_equivalent_claim_value`. For example, if the value of that is set
+to `"scoold_user"`, and a user having the claim of `"roles": ["sales_rep"]` tries to login, they will be denied access.
+By default, all OAuth2 users are allowed to log into Scoold.
+
+## Multiple generic OAuth 2.0 providers
+You can add two additional custom (generic) OAuth 2.0/OpenID connect providers called "second" and "third". 
+Here's what the settings look like for the "second" provider:
+
+```ini title="scoold-application.conf"
+# minimal setup (second provider)
+scoold.oa2second_app_id = ""
+scoold.oa2second_secret = ""
+scoold.security.oauthsecond.authz_url = "https://your-idp.com/login"
+scoold.security.oauthsecond.token_url = "https://your-idp.com/token"
+scoold.security.oauthsecond.profile_url = "https://your-idp.com/userinfo"
+scoold.security.oauthsecond.scope = "openid email profile"
+
+# extra options (second provider)
+scoold.security.oauthsecond.accept_header = ""
+scoold.security.oauthsecond.domain = "paraio.com"
+scoold.security.oauthsecond.parameters.id = "sub"
+scoold.security.oauthsecond.parameters.picture = "picture"
+scoold.security.oauthsecond.parameters.email = "email"
+scoold.security.oauthsecond.parameters.name = "name"
+scoold.security.oauthsecond.parameters.given_name = "given_name"
+scoold.security.oauthsecond.parameters.family_name = "family_name"
+
+# Sets the string on the login button (second provider)
+scoold.security.oauthsecond.provider = "Continue with Second OAuth 2.0 provider"
+
+# Enable/disable access token delegation (second provider)
+scoold.security.oauthsecond.token_delegation_enabled = false
+```
+
+For the "third" OAuth 2.0 provider it's the same configuration but replace "second" with "third".
+
+<Aside> 
+If Para and Scoold are hosted both on the same server and your Para instance is not publicly accessible from
+the Internet, you need to expose `localhost:8080/oauth2_auth` by configuring a proxy server to forward
+`yourdomain/oauth2_auth` requests to `localhost:8080/oauth2_auth`. If Para is publicly accessible this step is not necessary.
+</Aside> 
+
+## Example: Sign in with Okta
+
+This is an example guide for configuring Scoold to work with an authentication provider like Okta. The steps are similar
+for other providers, such as Auth0.
+
+<Steps>
+1. Create a new client application (OAuth 2 client):
+    <Steps>
+    1. Add `http://para-host:8080/oauth2_auth` as a login redirect URI
+    2. Use the "Authorization Code" flow
+    3. Select	that you want **client credentials**
+    </Steps>
+2. Copy the client credentials (client id, secret) to your Scoold `scoold-application.conf` file:
+	```ini title="scoold-application.conf"
+	scoold.oa2_app_id = "0oa123...."
+	scoold.oa2_secret = "secret"
+	scoold.security.oauth.authz_url = "https://${yourOktaDomain}/oauth2/v1/authorize"
+	scoold.security.oauth.token_url = "https://${yourOktaDomain}/oauth2/v1/token"
+	scoold.security.oauth.profile_url = "https://${yourOktaDomain}/oauth2/v1/userinfo"
+	scoold.security.oauth.scope = "openid email profile"
+	scoold.security.oauth.provider = "Continue with Okta"
+	```
+    Make sure to replace `${yourOktaDomain}` with your actual Okta domain name.
+
+3. Restart Scoold, visit the login page and click **"Continue with Okta"**
+</Steps>
+
+## Example: Sign in with Azure (Entra ID)
+
+This is an example guide for configuring Scoold to use Azure Active Directory 
+(a.k.a. Microsoft Identity Platform, Entra ID, AAD)
+as its authentication provider. The steps are similar to other OAuth2.0 identity providers setup.
+
+<Steps>
+1. Go to [Azure Portal](https://portal.azure.com)
+2. Navigate to your *Azure Acive Directory* tenant
+3. Go to *App registrations* (in the left sidebar, under *Manage* section)
+4. Choose *New registration*
+5. Put the name of the new app, and select supported account types (accoding to your requirements)
+6. Provide the *Redirect URI* - it needs to point to Para's `/oauth2_auth` endpoint (make sure that
+   this URL is accessible from your users' devices). For development purposes, `http://localhost:8080/oauth2_auth`
+   is probably sufficient.
+7. Click *Register*.
+8. Copy the *Application (client) ID* that you should be seeing now at the top - it is the value for `scoold.oa2_app_id` 
+    setting in your configuration.
+9. Navigate to *Certificates and Secrets* in the sidebar on the left.
+10. Create a new secret by clicking on *New client secret*.
+11. Copy the generated secret (you will not be able to see that secret anymore on Azure Portal) - it is the value
+    for `scoold.oa2_secret` setting in your configuration.
+12. Update your Scoold configuration:
+	```ini title="scoold-application.conf"
+	scoold.oa2_app_id = "e538..."
+	scoold.oa2_secret = "secret"
+	scoold.security.oauth.authz_url = "https://login.microsoftonline.com/${yourAADTenantId}/oauth2/v2.0/authorize"
+	scoold.security.oauth.token_url = "https://login.microsoftonline.com/${yourAADTenantId}/oauth2/v2.0/token"
+	scoold.security.oauth.profile_url = "https://graph.microsoft.com/oidc/userinfo"
+	scoold.security.oauth.scope = "openid email profile"
+	scoold.security.oauth.provider = "Continue with AAD"
+	```
+    Make sure to replace `${yourAADTenantId}` with your actual AAD tenant ID.
+13. Restart Scoold, visit the login page and click **"Continue with AAD"**
+</Steps>

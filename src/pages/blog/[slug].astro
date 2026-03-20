@@ -6,6 +6,8 @@ import { site, components, authors, blogPage } from "../../data/site-data.json";
 import Prose from '../../components/Prose.astro';
 import PersonCard from "../../components/PersonCard.astro";
 import { getImage } from "astro:assets";
+import herobg from '../../images/herobg.svg';
+import { tagColors } from "@/components/BlogCard.astro";
 
 const { breadcrumbs } = components;
 const baseUrl = site.url;
@@ -53,7 +55,7 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
-    { "@type": "ListItem", position: 2, name: breadcrumbs.blog, item: `${baseUrl}/blog` },
+    { "@type": "ListItem", position: 2, name: breadcrumbs.blog, item: `${baseUrl}/blog/` },
     { "@type": "ListItem", position: 3, name: post.data.title, item: postUrl }
   ]
 };
@@ -65,35 +67,38 @@ const breadcrumbJsonLd = {
   ogImage={heroImageUrl.src}
   jsonLd={[articleJsonLd, breadcrumbJsonLd]}
 >
-  <div class="bg-cover bg-center" style={`background-image: url('${heroImageUrl.src}')`}>
-    <div class="py-24 section-shell">
-      <div class="inline-flex flex-col gap-3 p-6 rounded-[3px] max-w-3xl">&nbsp;
+  <div class="bg-white border-slate-100" style={`background-image: url('${herobg.src}')`}>
+    <div class="py-5">
+      <div class="gap-3 rounded-[3px] text-center">
+        <div class="bg-base-100/65 mx-auto my-6 p-6 rounded-2xl w-4xl">
+          <span class="float-right text-xs text-base-400">
+            {post.data.date.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "2-digit"
+            })}
+          </span>
+          <Breadcrumbs items={[
+            { label: breadcrumbs.home, href: "/" },
+            { label: breadcrumbs.blog, href: "/blog/" }
+          ]} />
+
+          <h1 class="my-7 font-semibold text-base-content text-4xl">{post.data.title}</h1>
+          <div class="flex flex-wrap justify-center gap-3 mt-4 text-slate-700 text-sm">
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags.map((tag) => (
+                <a href={`/blog/tags/${tag}/`} class:list={['inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold', tagColors[tag] ?? 'bg-slate-50 text-slate-600']}>
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <article class="py-12">
     <div class="max-w-3xl section-shell">
-      <span class="float-right text-xs text-base-400">
-        {post.data.date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "2-digit"
-        })}
-      </span>
-      <Breadcrumbs items={[
-        { label: breadcrumbs.home, href: "/" },
-        { label: breadcrumbs.blog, href: "/blog" }
-      ]} />
-      <h1 class="mt-6 font-semibold text-base-content text-4xl">{post.data.title}</h1>
-      <div class="flex flex-wrap gap-3 mt-4 pb-10 text-slate-700 text-sm">
-        <div class="flex flex-wrap gap-2">
-          {post.data.tags.map((tag) => (
-            <a href={`/blog/tags/${tag}/`} class="bg-base-200 px-3 py-1 rounded-[3px] font-medium text-xs text-base-content/70">
-              {tag}
-            </a>
-          ))}
-        </div>
-      </div>
       <Prose>
         <Content />
       </Prose>

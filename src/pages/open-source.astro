@@ -21,7 +21,7 @@ try {
   description={open_source.description}
 >
   <!-- Hero -->
-  <section class="bg-white bg-cover bg-center border-slate-100 border-b section-padding" style={`background-image: url(${ossbg.src});`}>
+  <section class="bg-white bg-cover bg-center border-slate-100 section-padding" style={`background-image: url(${ossbg.src});`}>
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl text-center">
       <span class="section-label">{open_source.hero_badge}</span>
       <h1 class="mb-5 font-extrabold text-slate-900 text-5xl lg:text-6xl tracking-tight">
@@ -72,7 +72,9 @@ try {
       <div class="gap-8 grid grid-cols-2 md:grid-cols-4 text-center">
         {open_source.stats.map((stat) => (
           <div>
-            <div class="mb-1 font-extrabold text-slate-900 text-3xl">{stat.value.replace("{stars}", stars).replace("{issues}", issues)}</div>
+            <div class="mb-1 font-extrabold text-slate-900 text-3xl">
+              {stat.value.replace("{stars}", stars + "").replace("{issues}", issues + "")}
+            </div>
             <div class="font-medium text-slate-600 text-sm">{stat.label}</div>
           </div>
         ))}

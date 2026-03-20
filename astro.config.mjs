@@ -65,11 +65,14 @@ export default defineConfig({
       ],
       plugins: [
         //starlightContextualMenu({actions: ["copy", "view", "chatgpt", "claude"]})
-      ]
+      ],
+      components: {
+        SiteTitle: './src/components/starlight/SiteTitle.astro',
+      }
     }),
     mdx()
   ],
-  // vite: {
-  //   plugins: [tailwind()],
-  // },
+  vite: {
+    plugins: [tailwind()],
+  },
 });

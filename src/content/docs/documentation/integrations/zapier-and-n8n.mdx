@@ -1,0 +1,49 @@
+---
+title: Zapier & n8n
+description: Getting started with the Zapier or n8n integrations in Scoold
+sidebar:
+  order: 4
+---
+import { Aside, Badge, LinkButton, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+
+## Zapier
+
+Zapier connects Scoold's API to thousands of other tools. 
+Automate workflows like notifying Jira when a new question is tagged 'bug', or 
+adding unanswered questions to your team's project management tool.
+
+<Steps>
+1. To get started, sign up for a Zapier account and follow the invite link to
+  [↗ Scoold on Zapier](https://zapier.com/developer/public-invite/96144/50edaaf93a59e5d6fa2673f602bdc438/)
+2. [↗ Create a new "Zap"](https://zapier.com/app/assets/zaps) by selecting the Scoold app as a starting point
+    <Image src={import(`../../../../images/zapier/zapier_intro4.png`)}
+      alt="Zapier Integration Screenshot"
+      class="py-5 border border-neutral-400 rounded"
+      loading="eager"
+    />
+3. Select the trigger event, for example "New Question".
+    <Image src={import(`../../../../images/zapier/zapier_intro2.png`)}
+      alt="Zapier Integration Screenshot"
+      class="py-5 border border-neutral-400 rounded"
+      loading="eager"
+    />
+4. Test your Zap and click "Continue"
+</Steps>
+
+If you prefer, you can use the Zapier CLI tool and install the JSON Schema for the Scoold app manually.
+
+<LinkButton
+  href="/zapier_schema.json"
+  download
+  variant="secondary"
+  icon="download"
+  iconPlacement="start"
+>
+  Download JSON Schema
+</LinkButton>
+
+## n8n
+
+
+work in progress

@@ -1,0 +1,62 @@
+---
+title: Clientside Assets
+description: Details on importing clientside assets into Scoold
+sidebar:
+  order: 3
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Importing external scripts and JS snippets
+
+You can append external scripts and JS snippets to the end of the page by setting the `scoold.external_scripts` property.
+Scripts are loaded in alphabetical order based on their key.
+```ini title="scoold-application.conf"
+# import script from URL
+scoold.external_scripts.myscript1 = "https://mydomain.com/script.js"
+# inline script as Base64 encoded long JavaScript snippet
+scoold.external_scripts.myscript2 = "J2Y2M3VlcH .... enZ2OScpOw=="
+# inline short script as raw JS
+scoold.external_scripts.myscript3 = "var x = 5; console.log('x is', x);"
+```
+
+**Important:** Watch out for console errors in the browser after you add external scripts. In such cases you might have to
+modify the `frame-src` or `connect-src` portions of the CSP header (see the 4 options above).
+
+If 3rd party cookie consent is enabled (for GDPR, CCPA), all external scripts will be disabled until the user gives their
+consent. You can bypass that by prefixing its key with "bypassconsent", e.g. `scoold.external_scripts.bypassconsent_myscript2`.
+
+Additionally, you can put scripts in the `<head>` element by prefixing their name with "head", for example:
+`scoold.external_scripts.head_script`.
+
+## Importing external CSS styles
+
+You can inline short snippets of CSS using `scoold.inline_css`. Keep in mind that any inlined CSS rules **will
+override** any of the previously declared stylesheets, including the main stylesheet rules.
+
+```ini title="scoold-application.conf"
+scoold.inline_css = "body { color: #abcdef; }"
+```
+Another option is to add external stylesheets to the website:
+```ini title="scoold-application.conf"
+scoold.external_styles = "https://mydomain.com/style1.css, https://mydomain.com/style2.css"
+```
+The last option is to completely replace the main stylesheet with a custom one. 
+
+<Steps>
+1. Copy the default CSS file [↗ `style.css`](https://demo.scoold.com/styles/style.css), 
+2. Modify the CSS as needed and upload the modified `style.css` file to a public location
+3. Update your Scoold configuration and restart:
+    ```ini title="scoold-application.conf"
+    scoold.stylesheet_url = "https://public.cdn.com/custom.css"
+    ```
+</Steps>
+
+The order in which CSS rules are loaded is this (each overrides the previous ones):
+1. main stylesheet, 2. external stylesheets, 3. inline CSS or custom theme
+
+You can also override the default dark stylesheet which is only loaded if dark mode is enabled:
+
+```ini
+scoold.dark_stylesheet_url = "https://public.cdn.com/dark.css"
+```

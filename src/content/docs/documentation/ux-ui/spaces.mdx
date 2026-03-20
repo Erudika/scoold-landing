@@ -1,0 +1,72 @@
+---
+title: Spaces (Groups)
+description: Spaces in Scoold are private groups for organizing content around teams/departaments.
+sidebar:
+  order: 2
+---
+
+
+Spaces are a way to organize users and questions into isolated groups (e.g. teams). There's a default space, which is publicly
+accessible by default. Each user can belong to one or more spaces, but a question can only belong to a single space.
+Permission to access a space is given by an administrator. You can bulk edit users' spaces and also move a question to a
+different space.
+
+By default there's a public "default" space where all questions go. When you create a new space and assign users to it
+they will still see all the other questions when they switch to the "default" space. To make the default space private
+set `scoold.is_default_space_public = false`.
+
+In **Scoold Pro**, you can create as many space as you need. The open source version is limited to 10 spaces. Also
+in PRO you can automatically assign multiple spaces to new users, whereas in the OSS version you can only assign one.
+
+## Auto-assigned spaces
+
+If you want to assign space(s) to new users automatically, add this to your configuration:
+```ini title="scoold-application.conf"
+# put space ids here, the "scooldspace:" prefix is optional
+scoold.auto_assign_spaces = "my-space-one,my-other-space"
+```
+You can assign both the default space and a custom space to new users (values can contain spaces):
+```ini title="scoold-application.conf"
+scoold.auto_assign_spaces = "default,My Custom Space"
+```
+When using the option above, new spaces are added to existing spaces for each user. You can configure auto-assigned
+spaces to overwrite the existing user spaces (like the "default" space, assigned to everyone) by setting:
+```ini title="scoold-application.conf"
+scoold.reset_spaces_on_new_assignment = true
+```
+So when you have that set to `false` and you have configured Scoold to assign custom spaces to new users
+(e.g. "my-space-1" and "my-space-2"), those users will become members of  "my-space-1", "my-space-2" **and** the
+default space. If the value is `true`, the default space gets overwritten by the custom spaces you have specified in
+`scoold.auto_assign_spaces` and new users will only be members of "my-space-1" and "my-space-2".
+
+This is turned on for all users authenticated with LDAP, SAML or OAuth 2.0.
+
+## Spaces assigned from IDP via token delegation
+
+Alternatively, **Scoold Pro** can have spaces and roles delegated to users from an OpenID Connect/OAuth 2.0 identity provider.
+You have to enable access token delegation in your configuration:
+```ini title="scoold-application.conf"
+scoold.security.oauth.token_delegation_enabled = true
+```
+**Scoold Pro** will try to obtain spaces from a custom attribute like `spaces`. Such custom attributes can be configured in the IDP and
+pushed to clients (Scoold Pro) embedded in access tokens. 
+
+If you want to change the name of the custom attribute supplied by your IDP, add this configuration: 
+
+```ini title="scoold-application.conf"
+# attribute name where spaces are declared (in OAuth claims)
+scoold.security.oauth.spaces_attribute_name = "spaces"
+```
+The name of the attribute to match is `spaces`, by default. The value of that attribute may contain 
+comma-separated list of spaces. If the spaces pushed from the IDP do not exist, Scoold will
+create them for you.
+
+There are two ways to assign moderators to spaces - a user can be promoted to moderator and be allowed to access all spaces,
+or, every space can have an individually assigned moderator. The option that controls this operation is:
+```ini  title="scoold-application.conf"
+# when false, mods are manually assigned for every space
+scoold.mods_access_all_spaces = true
+```
+When the above is set to `false`, administrators can go to the profile page of a user and make them a moderator in the
+spaces they choose. For all other spaces, the user in question will be a regular user.
+Only administrators can promote users to moderators, no matter how the option above is configured.

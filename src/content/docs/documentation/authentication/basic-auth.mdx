@@ -1,0 +1,113 @@
+---
+title: Basic Authentication
+description: Basic auth and social login in Scoold
+sidebar:
+  order: 1
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Password authentication
+
+This is the standard way of logging in, where users use a combination of email and password to authenticate.
+This authentication method is enabled by default but can also be turned off.
+
+```ini title="scoold-application.conf"
+# Enable/disable password authentication
+scoold.password_auth_enabled = true
+```
+
+<Aside>
+During account registration, Scoold will send a confirmation email for activating new accounts.
+If SMTP is not configured properly, users will be left locked out of their Scoold accounts and logins will fail.
+</Aside>
+
+Check the ["SMTP" section](/documentation/managing-scoold/emails-and-smtp/) on how to configure transactional emails in Scoold.
+
+## Authetication with a social account
+
+For all social identity providers, you need to obtain both the OAuth2 client ID (app `id`) and secret key.
+<Aside>
+If the authentication settings are left blank, the sign in button is hidden for that provider.
+</Aside>
+
+## Configuration properties
+
+```ini title="scoold-application.conf"
+# Facebook
+scoold.fb_app_id = ""
+scoold.fb_secret = ""
+# Google
+scoold.gp_app_id = ""
+scoold.gp_secret = ""
+# GitHub
+scoold.gh_app_id = ""
+scoold.gh_secret = ""
+# LinkedIn
+scoold.in_app_id = ""
+scoold.in_secret = ""
+# Twitter
+scoold.tw_app_id = ""
+scoold.tw_secret = ""
+# Microsoft
+scoold.ms_app_id = ""
+scoold.ms_secret = ""
+scoold.ms_tenant_id = ""
+# Slack
+scoold.sl_app_id = ""
+scoold.sl_secret = ""
+# Amazon
+scoold.az_app_id = ""
+scoold.az_secret = ""
+```
+You also need to set your host URL when running Scoold in production:
+```ini title="scoold-application.conf"
+scoold.host_url = "https://your.scoold.url"
+```
+This is required for authentication requests to be redirected back to the origin.
+
+## Authentication endpoints
+
+<Aside type="caution" title="Important">
+You must whitelist the [↗ Para authentication endpoints](https://paraio.org/docs/#031-github) in the admin consoles of
+each authentication provider as a valid `redirect_uri`. Learn more about [↗ custom authentication in Para](http://paraio.org/docs/#029-passwordless).
+</Aside>
+For example, for GitHub you need to whitelist `https://parahost.com/github_auth` as a
+callback URL (redirect URL). The same thing applies for the other providers. For these two providers you need to whitelist
+these two URLs, containing the public address of Scoold:
+```
+https://myscoold.com
+https://myscoold.com/signin
+```
+
+Other endpoints include:
+- Google: `https://paraio.com/google_auth`
+- Facebook: `https://paraio.com/facebook_auth`
+- Twitter: `https://paraio.com/facebook_auth`
+- Amazon: `https://paraio.com/amazon_auth`
+- Microsoft: `https://paraio.com/microsoft_auth`
+- LinkedIn: `https://paraio.com/linkedin_auth`
+- Slack `https://paraio.com/slack_auth`
+- OAuth 2: `https://paraio.com/oauth2_auth`
+
+For locally hosted authentication providers (SAML, LDAP, Mattermost, etc.) the authentication endpoints will also be
+pointing to the URL of your Scoold server.
+
+**If you skip this step, authentication will most likely not work.**
+
+In some cases ([see related issue](https://github.com/Erudika/scoold/issues/199)) you want to have Scoold connect to
+Para which is hosted somewhere on your local network and logging in with some authentication providers, like Microsoft,
+doesn't work. In such cases, you would see an error "redirect_uri mismatch" or "invalid redirect_uri - must start with
+https:// or http://localhost". To make it work you can set this Scoold configuration: 
+```ini title="scoold-application.conf"
+# public Para hostname
+scoold.security.redirect_uri = "https://public-para.host"
+# keep this pointing to the local Para IP
+scoold.para_endpoint = "http://local-ip:8080"
+```
+
+## Next steps
+
+- [Set up Single Sign-on (SSO) →](/documentation/authentication/ldap/)
+- [Customize the look-and-feel →](/documentation/ux-ui/customization/)
+

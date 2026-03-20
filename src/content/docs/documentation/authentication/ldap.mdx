@@ -1,0 +1,113 @@
+---
+title: LDAP & AD
+description: LDAP Support in Scoold for enterprise SSO
+sidebar:
+  order: 3
+---
+
+import { Aside, Badge, LinkCard, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+LDAP authentication is available in all version of Scoold - both free and paid.
+Authentication flow is initiated with a request like this `POST /signin?provider=ldap&access_token=username:password`.
+
+## Configuration properties
+
+There are several configuration options which Para needs in order to connect to your LDAP server.
+These are the defaults:
+
+```ini title="scoold-application.conf"
+# minimal setup
+scoold.security.ldap.server_url = "ldap://localhost:8389/"
+scoold.security.ldap.base_dn = "dc=springframework,dc=org"
+scoold.security.ldap.user_dn_pattern = "uid={0}"
+# add this ONLY if you are connecting to Active Directory
+scoold.security.ldap.active_directory_domain = ""
+
+# extra options - change only if necessary
+scoold.security.ldap.user_search_base = ""
+scoold.security.ldap.user_search_filter = "(cn={0})"
+scoold.security.ldap.password_attribute = "userPassword"
+scoold.security.ldap.username_as_name = false
+
+# Sets the string on the login button (PRO)
+scoold.security.ldap.provider = "Continue with LDAP"
+
+# automatic groups mapping
+scoold.security.ldap.mods_group_node = ""
+scoold.security.ldap.admins_group_node = ""
+```
+
+The search filter syntax allows you to use the placeholder `{0}` which gets replaced with the person's username.
+
+You can also map LDAP DN nodes to Para user groups. For example, with the following configuration:
+```ini title="scoold-application.conf"
+scoold.security.ldap.mods_group_node = "ou=Moderators"
+scoold.security.ldap.admins_group_node = "cn=Admins"
+```
+LDAP users with a DN `uid=Gordon,ou=Moderators,dc=domain,dc=org` will automatically become part of the `mods` group,
+i.e. `groups: "mods"`. Similarly, if their DN contains `cn=Admins` they will become administrators, i.e. `groups: "admins"`.
+
+## Active Directory (Azure AD, Entra ID)
+
+To enable authentication with an **Active Directory** LDAP server (like Entra ID), add this to Scoold configuration:
+```ini title="scoold-application.conf"
+scoold.security.ldap.ad_mode_enabled = true
+```
+
+In this mode, the search filter defaults to `(&(objectClass=user)(userPrincipalName={0}))`.
+An alternative search filter would be `(&(objectClass=user)(sAMAccountName={1}))`. Keep in mind that the domain you
+put in the configuration is actually the UPN suffix which gets appended to the username as `username@domain.com` if
+the supplied login username doesn't end with a domain. The domain has nothing to do with the AD domain or the location
+of the AD server.
+
+The only valid configuration properties for AD are:
+`user_search_filter`, `base_dn`, `server_url` and `active_directory_domain` - everything else is ignored so don't put
+it in the config file at all!
+
+Here's a working LDAP configuration for AD:
+```ini title="scoold-application.conf"
+scoold.security.ldap.ad_mode_enabled = true
+scoold.security.ldap.user_search_filter = "(&(objectClass=user)(sAMAccountName={1}))"
+scoold.security.ldap.base_dn = "ou=dev,dc=scoold,dc=com"
+scoold.security.ldap.server_url = "ldap://192.168.123.70:389"
+scoold.security.ldap.active_directory_domain = "scoold.com"
+```
+
+For the above configuration the following logins should work, given that a user `joe` exists:
+- `joe@scoold.com` + password
+- `joe@some-other-domain.com` + password
+- `joe` + password
+
+As you can see the domain part is actually ignored because it is irrelevant. You cannot bind an AD user with their email.
+You can bind them based on their `username` a.k.a. `sAMAccountName`. If the user has an email address where the alias is
+the same as the `sAMAccountName` but the domain is different, then the login will succeed. If the user above has an email
+`joe.smith@gmail.com` then the login with that email will fail because a bind is not possible,
+and the LDAP search request will return no results.
+
+The syntax for the search filter allows you to use the placeholders `{0}` (replaced with `username@domain`) and `{1}`
+(replaced with `username` only).
+
+Here's an example **Active Directory** configuration (note that any other settings than the ones below will be ignored):
+```ini title="scoold-application.conf"
+scoold.security.ldap.server_url = "ldap://server:389"
+scoold.security.ldap.active_directory_domain = "domain.com"
+scoold.security.ldap.user_search_filter = "userPrincipalName={0}"
+scoold.security.ldap.base_dn = "ou=dev,dc=domain,dc=com"
+```
+
+## FreeIPA LDAP
+
+Scoold supports authentication with a FreeIPA server over LDAP. Here's a sample configuration for the free demo instance
+provided by FreeIPA - [↗ ipa.demo1.freeipa.org](https://ipa.demo1.freeipa.org):
+
+```ini title="scoold-application.conf"
+scoold.security.ldap.server_url = "ldap://ipa.demo1.freeipa.org:389"
+scoold.security.ldap.base_dn = "cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"
+scoold.security.ldap.user_dn_pattern = "uid={0}"
+```
+To test this, try logging in with user `manager` and password `Secret123`.
+
+To print out debug information about LDAP requests, start Para with `-Dlogging.level.org.springframework.ldap=DEBUG`.
+
+To learn more about the settings above, read the [↗ LDAP section of the Para docs](https://paraio.org/docs/#030-ldap).
+

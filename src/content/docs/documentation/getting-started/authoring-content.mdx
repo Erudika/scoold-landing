@@ -1,0 +1,34 @@
+---
+title: Authoring Content
+description: Adding content with the help of the Markdown editor
+sidebar:
+  order: 5
+---
+
+import { Image } from 'astro:assets';
+
+Scoold supports [↗ Markown](https://markdownlivepreview.dev/cheatsheet) for authoring content, and the GFM flavor in particular.
+There's a rich content editor for writing long text like questions and answers.
+
+<Image src={import(`../../../../images/documentation/markdown.png`)}
+    alt="Markdown editor"
+    class="py-5 border border-neutral-400 rounded"
+    loading="eager"
+/>
+The content supports tables, lists, headings and check lists. Emojis are also supported.
+You can use an [Emoji cheat sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet/) to copy and paste emojis into the content editor.
+
+The written Markdown can be visually previewed before posting.
+
+Each post can have a number of attachments - files (`pro` only), tags, audio, video, geolocation.
+
+<Image src={import(`../../../../images/documentation/attachments.png`)}
+    alt="Markdown editor"
+    class="py-5 border border-neutral-400 rounded"
+    loading="eager"
+/>
+
+
+Every content modification (to question or answer) is preserved in a "revision". Past revisions can be restored by the author or moderators.
+
+

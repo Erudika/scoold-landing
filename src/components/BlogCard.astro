@@ -1,51 +1,74 @@
 ---
-import { components } from "../data/site-data.json";
+import { components, authors, blog_page } from "../data/site-data.json";
 import { Image } from "astro:assets";
 
 interface Props {
   title: string;
   excerpt: string;
-  date: Date;
+  date: string;
   tags: string[];
-  img: string;
+  img?: string;
   href: string;
+  author: string;
 }
-
 const { blogCard } = components;
-const { title, excerpt, date, tags, img, href } = Astro.props;
+const { title, excerpt, date, tags, img, href, author } = Astro.props;
+const authorObj = authors.filter((p) => p.email === author)[0];
+
+export const tagColors: Record<string, string> = {
+  deployment: 'bg-blue-50 text-blue-600',
+  hosting: 'bg-sky-50 text-sky-600',
+  guide: 'bg-emerald-50 text-emerald-600',
+  enterprise: 'bg-violet-50 text-violet-600',
+  g: 'bg-purple-50 text-purple-600',
+  saml: 'bg-indigo-50 text-indigo-600',
+  'knowledge-base': 'bg-amber-50 text-amber-600',
+  comparison: 'bg-orange-50 text-orange-600',
+  release: 'bg-pink-50 text-pink-600',
+  tutorial: 'bg-rose-50 text-rose-600',
+  announcement: 'bg-slate-50 text-slate-600',
+  integration: 'bg-cyan-50 text-cyan-600',
+  slack: 'bg-lime-50 text-lime-600',
+  'open-source': 'bg-teal-50 text-teal-600',
+  'knowledge-management': 'bg-yellow-50 text-yellow-600',
+};
+
+const formatDate = (dateStr: string): string => new Date(dateStr).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
-<article class="isolate relative bg-base-100 shadow-sm hover:shadow-soft border border-base-300 rounded-[3px] overflow-hidden transition hover:-translate-y-1">
-  {img && (
-    <a href={href} class="block">
-      <Image
-        src={import(`../images/blog/${img}.png`)} 
-        alt={title}
-        width={350}
-        height={125}
-        class="w-full h-30 object-cover"
-        loading="lazy"
-      />
-    </a>
-  )}
-  <div class="p-6">
-    <div class="text-slate-700 text-xs uppercase tracking-widest">{date}</div>
-    <h3 class="mt-3 font-semibold text-base-content text-lg">
-      <a href={href} class="text-base-content">
-        <span class="z-10 absolute inset-0"></span>
-        {title}
-      </a>
-    </h3>
-    <p class="mt-3 text-sm text-base-content/70">{excerpt}</p>
-    {tags && (
-      <div class="flex flex-wrap gap-2 mt-4">
-        {tags.map((tag) => (
-          <span class="bg-base-200 px-3 py-1 rounded-[3px] font-medium text-xs text-base-content/70">{tag}</span>
-        ))}
-      </div>
-    )}
-    <a href={href} class="inline-flex items-center gap-2 mt-5 font-semibold text-sky-700 text-sm">
-      {blogCard.readMore} <span aria-hidden="true">→</span>
-    </a>
-  </div>
+<article class="group isolate relative bg-base-100 shadow-sm hover:shadow-soft mb-6 p-6 border border-base-300 rounded overflow-hidden transition hover:-translate-y-1">
+  <a href={href} class="block">
+    <div class="flex flex-wrap gap-2 mb-3">
+      {tags.map((tag) => (
+        <span class:list={['inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold', tagColors[tag] ?? 'bg-slate-50 text-slate-600']}>
+          {tag}
+        </span>
+      ))}
+    </div>
+    <h2 class="mb-4 font-bold text-slate-900 group-hover:text-brand-600 text-xl leading-tight transition-colors">
+      {title}
+    </h2>
+    <p class="mb-4 text-slate-700 text-sm leading-relaxed">
+      {excerpt}
+    </p>
+    <div class="flex items-center gap-3 text-slate-600 text-xs">
+      <span>
+          <Image src={import(`../images/blog/${authorObj.avatar}.jpeg`)}
+          alt="Avatar"
+          width=64
+          height=64
+          loading="eager"
+          class="inline-block bg-indigo-600 rounded-full w-6 h-6"/> {authorObj.name.substring(0, authorObj.name.indexOf(" "))}
+      </span>
+      <time datetime={date}>{formatDate(date)}</time>
+      <span class="flex items-center gap-1 group-hover:gap-2 ml-auto font-semibold text-brand-600 transition-all">
+        {blog_page.read_more_label}
+        &rarr;
+      </span>
+    </div>
+  </a>
 </article>
