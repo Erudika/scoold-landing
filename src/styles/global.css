@@ -180,6 +180,9 @@
   @apply list-item list-outside 
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
 /* 
 .prose code {
   @apply bg-slate-100 px-1.5 py-0.5 rounded font-mono text-sm;

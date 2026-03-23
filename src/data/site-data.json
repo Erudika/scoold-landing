@@ -560,11 +560,10 @@
         "heading": "Resources",
         "links": [
           { "label": "Documentation", "href": "/documentation/" },
-          { "label": "Blog", "href": "/blog/" },
-          { "label": "FAQ", "href": "/faq/" },
           { "label": "Open Source", "href": "/open-source/" },
-          { "label": "GitHub", "href": "https://github.com/Erudika/scoold" },
-          { "label": "API Reference", "href": "/documentation/scoold-api/" }
+          { "label": "API Reference", "href": "/documentation/reference/scoold-api/" },
+          { "label": "Blog", "href": "/blog/" },
+          { "label": "FAQ", "href": "/faq/" }
         ]
       }
     ],
@@ -1361,12 +1360,12 @@
       "subtitle": "Have a question or want to work together? We'd love to hear from you.",
       "channels": [
         { "label": "Email", "value": "support@scoold.com", "href": "mailto:support@scoold.com", "icon": "mail" },
-        { "label": "GitHub Issues", "value": "github.com/Erudika/scoold", "href": "https://github.com/Erudika/scoold/issues", "icon": "github" },
+        { "label": "GitHub Issues", "value": "Open a new issue or PR on GitHub", "href": "https://github.com/Erudika/scoold/issues", "icon": "github" },
         { "label": "Gitter", "value": "Join the Chat", "href": "https://gitter.im/Erudika/scoold", "icon": "message-circle" }
       ]
     },
     "contact_form": {
-      "title": "Send a message",
+      "title": "Send us a message",
       "name_label": "Name",
       "name_placeholder": "Your name",
       "email_label": "Email",
@@ -1375,7 +1374,10 @@
       "subject_placeholder": "How can we help?",
       "message_label": "Message",
       "message_placeholder": "Tell us more about your project...",
-      "submit_label": "Send Message"
+      "submit_label": "Send Message",
+      "captcha_key": "6Ldp7-kdAAAAALn1WuUtBGblIQJ9KvqbzoedDVLG",
+      "thanks": "Thank you!",
+      "thanks_msg": "We've received your message and will get back to you soon."
     }
   },
   "legal_index": {

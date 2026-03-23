@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { imprint, site } from '../../data/site-data.json';
+import { imprint } from '../../data/site-data.json';
 const { contact, contact_form } = imprint;
 ---
 
@@ -54,8 +54,27 @@ const { contact, contact_form } = imprint;
 
       <!-- Simple contact form placeholder -->
       <div class="bg-slate-50 p-6 border border-slate-100 rounded-2xl">
-        <h2 class="mb-4 font-bold text-slate-900 text-lg">{contact_form.title}</h2>
-        <form class="space-y-4" action={`mailto:${site.contact}`} method="GET">
+        
+
+        <!-- Thank you message (hidden by default) -->
+        <div id="thank-you-message" class="hidden py-8 text-center">
+          <div class="inline-flex justify-center items-center bg-green-100 mb-4 rounded-full w-16 h-16">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3 class="mb-2 font-bold text-slate-900 text-2xl">{contact_form.thanks}</h3>
+          <p class="text-slate-600">{contact_form.thanks_msg}</p>
+        </div>
+
+        <form
+          class="space-y-4"
+          method="POST"
+          id="contact-form"
+          enctype="multipart/form-data"
+          action="http://localhost:8080/v1/_forms/scoold2/1946266213852123136"
+        >
+          <h2 class="mb-4 font-bold text-slate-900 text-lg text-center">{contact_form.title}</h2>
           <div class="gap-4 grid sm:grid-cols-2">
             <div>
               <label for="name" class="block mb-1.5 font-semibold text-slate-600 text-xs">{contact_form.name_label}</label>
@@ -63,37 +82,44 @@ const { contact, contact_form } = imprint;
                 type="text"
                 id="name"
                 name="name"
+                required
+                minlength="2"
+                maxlength="255"
                 placeholder={contact_form.name_placeholder}
                 class="bg-white px-4 py-2.5 border border-slate-200 focus:border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 w-full text-slate-800 text-sm transition placeholder-slate-400"
-              />
-            </div>
-            <div>
+                />
+              </div>
+              <div>
               <label for="email" class="block mb-1.5 font-semibold text-slate-600 text-xs">{contact_form.email_label}</label>
               <input
                 type="email"
                 id="email"
                 name="email"
+                maxlength="255"
                 placeholder={contact_form.email_placeholder}
                 class="bg-white px-4 py-2.5 border border-slate-200 focus:border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 w-full text-slate-800 text-sm transition placeholder-slate-400"
-              />
+                />
+              </div>
             </div>
-          </div>
-          <div>
+          <!-- <div>
             <label for="subject" class="block mb-1.5 font-semibold text-slate-600 text-xs">{contact_form.subject_label}</label>
             <input
-              type="text"
+            type="text"
               id="subject"
               name="subject"
+              maxlength="255"
               placeholder={contact_form.subject_placeholder}
               class="bg-white px-4 py-2.5 border border-slate-200 focus:border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 w-full text-slate-800 text-sm transition placeholder-slate-400"
             />
-          </div>
+          </div> -->
           <div>
             <label for="message" class="block mb-1.5 font-semibold text-slate-600 text-xs">{contact_form.message_label}</label>
             <textarea
               id="message"
-              name="body"
+              name="message"
+              required
               rows={4}
+              maxlength="5000"
               placeholder={contact_form.message_placeholder}
               class="bg-white px-4 py-2.5 border border-slate-200 focus:border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 w-full text-slate-800 text-sm transition resize-none placeholder-slate-400"
             ></textarea>
@@ -112,3 +138,42 @@ const { contact, contact_form } = imprint;
     </div>
   </section>
 </BaseLayout>
+
+<script is:inline define:vars={{ captchaKey: contact_form.captcha_key }}>
+  // Check for ?thanks query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const form = document.getElementById("contact-form");
+  const thankYouMessage = document.getElementById("thank-you-message");
+
+  if (urlParams.has('thanks')) {
+    // Hide form and show thank you message
+    form.style.display = 'none';
+    thankYouMessage.classList.remove('hidden');
+  } else {
+    // Load reCAPTCHA script only if form is shown
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${captchaKey}`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      grecaptcha.ready(function() {
+        grecaptcha.execute(captchaKey, {action: 'submit'}).then(function(token) {
+          const tokenInput = document.createElement('input');
+          tokenInput.type = 'hidden';
+          tokenInput.name = 'g-recaptcha-response';
+          tokenInput.value = token;
+          form.appendChild(tokenInput);
+          form.submit();
+        });
+      });
+    });
+  }
+</script>
