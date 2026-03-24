@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import scooldLogo from '@/images/logosq.svg';
+import { site, home, nav, comparisons } from '@/data/site-data.json';
+
+const logoSize = 25;
+---
+
+ <!-- Comparison links section -->
+  <section class="bg-white section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div class="mx-auto mb-14 max-w-2xl text-center">
+        <span class="section-label">{home.comparison.badge}</span>
+        <h2 class="mb-4 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
+          {home.comparison.title} <span class="text-brand-600">{home.comparison.title_highlight}</span>
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed">
+          {home.comparison.description}
+        </p>
+      </div>
+      <div class="gap-10 grid sm:grid-cols-2">
+        {nav.comparisons.map((s) => (
+          <a
+            href={s.href}
+            class="group block bg-white hover:shadow-md p-6 border border-slate-300 rounded-2xl transition-all duration-200"
+          >
+            <div class="inline-flex items-center gap-1.5 mb-3 py-1 font-semibold">
+              <div class="avatar-group -space-x-3">
+                <div class="avatar">
+                  <div class="w-7">
+                    <Image src={scooldLogo} 
+                      width={logoSize} 
+                      height={logoSize} 
+                      alt="Scoold Logo" 
+                      class="bg-white border border-neutral-300 rounded-2xl" 
+                      loading="eager"
+                    />
+                  </div>
+                </div>
+                <div class="avatar">
+                  <div class="w-7">
+                    <Image src={import(`../images/${comparisons.filter((f) => "vs. " + f.title === s.label)[0]?.slug}.svg`)} 
+                      width={logoSize} 
+                      height={logoSize} 
+                      alt={`${s.label} Logo`} 
+                      class="bg-white border border-neutral-300 rounded-2xl p" 
+                      loading="eager"
+                    />
+                  </div>
+                </div>
+              </div>
+              {site.title}
+              {s.label}
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed">
+              {comparisons.filter((f) => "vs. " + f.title === s.label)[0]?.description}
+            </p>
+            <div class="flex items-center gap-1 group-hover:gap-2 mt-3 font-semibold text-brand-600 text-xs transition-all">
+              {home.use_cases.learn_more_label}
+              &rarr;
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>

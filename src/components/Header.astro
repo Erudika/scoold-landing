@@ -43,14 +43,11 @@ const icons: Record<string, string> = {
       <div class="hidden md:flex items-center gap-1">
         <ul class="rounded-box menu menu-horizontal">
           <li class="text-lg">
-            <a href={nav.links[0].href} aria-label={nav.links[0].label}>{nav.links[0].label}</a>
-          </li>
-          <li class="text-lg">
             <details>
               <summary>{nav.links[4].label}</summary>
               <ul class="bg-white/97 backdrop-blur-sm lg:-ml-50 border-slate-200 border-b rounded-box md:min-w-max text-lg menu xl:menu-horizontal lg:menu-horizontal">
                 <li>
-                  <span>{nav.links[1].label}</span>
+                  <a href="/solutions/" aria-label="{nav.links[1].label}">{nav.links[1].label}</a>
                   <ul>
                   {nav.solutions.map((item) => (
                     <li>
@@ -68,7 +65,7 @@ const icons: Record<string, string> = {
                   </ul>
                 </li>
                 <li>
-                  <span>{nav.links[2].label}</span>
+                  <a href="/integration-with/" aria-label="{nav.links[2].label}">{nav.links[2].label}</a>
                   <ul>
                   {nav.integrations.map((item) => (
                     <li>
@@ -90,7 +87,7 @@ const icons: Record<string, string> = {
                   </ul>
                 </li>
                 <li>
-                  <span>{nav.links[3].label}</span>
+                  <a href="/comparison/" aria-label="{nav.links[3].label}">{nav.links[3].label}</a>
                   <ul>
                   {nav.comparisons.map((item) => (
                     <li>
@@ -109,6 +106,9 @@ const icons: Record<string, string> = {
                 </li>
               </ul>
             </details>
+          </li>
+          <li class="text-lg">
+            <a href={nav.links[0].href} aria-label={nav.links[0].label}>{nav.links[0].label}</a>
           </li>
           <li class="text-lg">
             <a href={nav.links[5].href} aria-label={nav.links[5].label}>{nav.links[5].label}</a>

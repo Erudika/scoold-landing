@@ -14,7 +14,7 @@ export async function getStaticPaths() {
     }));
 }
 const { comparison } = Astro.props;
-const postUrl = `${baseUrl}/comparison/${prefix}${comparison.slug}`;
+const postUrl = `${baseUrl}/comparison/${prefix}${comparison.slug}/`;
 
 const articleJsonLd = {
   "@context": "https://schema.org",

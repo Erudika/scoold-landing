@@ -6,7 +6,7 @@
 
 @plugin "daisyui" {
   themes: light --default;
-  include: menu, navbar, btn, swap, collapse, dropdown, badge, avatar, card, table, textrotate, kbd, diff, breadcrumbs, tab, timeline;
+  include: menu, navbar, btn, swap, collapse, dropdown, badge, avatar, card, table, textrotate, kbd, diff, breadcrumbs, tab, timeline, fileinput;
 }
 
 @theme {
@@ -180,9 +180,6 @@
   @apply list-item list-outside 
 }
 
-.grecaptcha-badge {
-  visibility: hidden;
-}
 /* 
 .prose code {
   @apply bg-slate-100 px-1.5 py-0.5 rounded font-mono text-sm;
@@ -195,6 +192,10 @@
 /* Dropdown animation */
 .dropdown-menu {
   animation: dropdownFadeIn 0.15s ease-out;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
 }
 
 @keyframes dropdownFadeIn {

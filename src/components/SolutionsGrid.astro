@@ -1,0 +1,35 @@
+---
+import { home, nav } from '@/data/site-data.json';
+---
+
+ <!-- Solutions links section -->
+  <section class="bg-white section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div class="mx-auto mb-14 max-w-3xl text-center">
+        <span class="section-label">{home.use_cases.badge}</span>
+        <h2 class="mb-4 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
+          {home.use_cases.title} <span class="text-brand-600">{home.use_cases.title_highlight}</span>
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed">
+          {home.use_cases.description}
+        </p>
+      </div>
+      <div class="gap-5 grid sm:grid-cols-2 lg:grid-cols-3">
+        {nav.solutions.map((s) => (
+          <a
+            href={s.href}
+            class="group block bg-white hover:shadow-md p-6 border border-slate-300 rounded-2xl transition-all duration-200"
+          >
+            <div class:list={['inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border mb-3', s.color]}>
+              {s.label}
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed">{s.desc}</p>
+            <div class="flex items-center gap-1 group-hover:gap-2 mt-3 font-semibold text-brand-600 text-xs transition-all">
+              {home.use_cases.learn_more_label}
+              &rarr;
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>

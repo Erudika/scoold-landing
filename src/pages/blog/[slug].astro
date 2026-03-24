@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const postUrl = `${baseUrl}/blog/${post.id}`;
+const postUrl = `${baseUrl}/blog/${post.id}/`;
 const heroImageUrl = await getImage({src: import(`../../images/blog/${post.data.img}.png`)});
 const author = authors.filter((p) => p.email === post.data.author)[0];
 
