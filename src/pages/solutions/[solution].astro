@@ -6,12 +6,13 @@ const { breadcrumbs } = components;
 const baseUrl = site.url;
 
 export async function getStaticPaths() {
-    return solutions.map((solution) => ({
+    return solutions.map((solution, i) => ({
         params: { solution: solution.slug },
-        props: { solution }
+        props: { i }
     }));
 }
-const { solution } = Astro.props;
+const { i } = Astro.props;
+const solution = solutions[i];
 const postUrl = `${baseUrl}/solutions/${solution.slug}/`;
 
 const articleJsonLd = {

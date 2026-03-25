@@ -1,4 +1,5 @@
 ---
+import BaseLayout from '@/layouts/BaseLayout.astro';
 import IntegrationPage from '../../components/IntegrationPage.astro';
 import { site, components, integrations } from "../../data/site-data.json";
 
@@ -6,12 +7,13 @@ const { breadcrumbs } = components;
 const baseUrl = site.url;
 
 export async function getStaticPaths() {
-    return integrations.map((integration) => ({
+    return integrations.map((integration, i) => ({
         params: { integration: integration.slug },
-        props: { integration }
+        props: { i }
     }));
 }
-const { integration } = Astro.props;
+const { i } = Astro.props;
+const integration = integrations[i];
 const postUrl = `${baseUrl}/integration-with/${integration.slug}/`;
 
 const articleJsonLd = {

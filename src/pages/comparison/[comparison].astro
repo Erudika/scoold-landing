@@ -8,12 +8,13 @@ const prefix = site.title.toLowerCase() + "-vs-";
 
 export async function getStaticPaths() {
     const prefix = site.title.toLowerCase() + "-vs-";
-    return comparisons.map((comparison) => ({
+    return comparisons.map((comparison, i) => ({
         params: { comparison: prefix + comparison.slug },
-        props: { comparison }
+        props: { i }
     }));
 }
-const { comparison } = Astro.props;
+const { i } = Astro.props;
+const comparison = comparisons[i];
 const postUrl = `${baseUrl}/comparison/${prefix}${comparison.slug}/`;
 
 const articleJsonLd = {
