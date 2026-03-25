@@ -100,35 +100,35 @@
         "label": "Community Forum", 
         "href": "/solutions/scoold-as-community-forum/", 
         "desc": "Build a thriving community around your product or project.", 
-        "color": "bg-emerald-50 text-emerald-600 border-emerald-100", 
+        "color": "bg-emerald-50 text-emerald-800 border-emerald-100", 
         "icon": "users"
       },
       { 
         "label": "Developer Hub", 
         "href": "/solutions/scoold-as-developer-hub/", 
         "desc": "The engineering team's permanent home for technical Q&A.",
-        "color": "bg-violet-50 text-violet-600 border-violet-100",
+        "color": "bg-violet-50 text-violet-800 border-violet-100",
         "icon": "code"
       },
       { 
         "label": "Support Center", 
         "href": "/solutions/scoold-as-support-center/", 
         "desc": "Reduce ticket volume with searchable self-service answers.", 
-        "color": "bg-orange-50 text-orange-600 border-orange-100",
+        "color": "bg-orange-50 text-orange-800 border-orange-100",
         "icon": "headset"
       },
       { 
         "label": "Q&A Platform", 
         "href": "/solutions/scoold-as-questions-and-answers-platform/", 
         "desc": "Stack Overflow-style Q&A running on your own infrastructure.", 
-        "color": "bg-pink-50 text-pink-600 border-pink-100",
+        "color": "bg-pink-50 text-pink-800 border-pink-100",
         "icon": "question"
       },
       { 
         "label": "Issue Tracker", 
         "href": "/solutions/scoold-as-issue-tracker/", 
         "desc": "Break down silos and create a culture of sharing.", 
-        "color": "bg-amber-50 text-amber-600 border-amber-100",
+        "color": "bg-amber-50 text-amber-800 border-amber-100",
         "icon": "issue" 
       }
     ],

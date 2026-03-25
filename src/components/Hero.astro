@@ -123,7 +123,7 @@ import companies from '../images/companies.png';
               <div class="flex gap-3 py-3 border-slate-100 last:border-0 border-b">
                 <!-- Vote/answer counts -->
                 <div class="flex flex-col items-center gap-1 shrink-0">
-                  <div class:list={['text-center text-xs font-semibold rounded px-1.5 py-0.5', q.accepted ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-600']}>
+                  <div class:list={['text-center text-xs font-semibold rounded px-1.5 py-0.5', q.accepted ? 'bg-emerald-100 text-emerald-900' : 'bg-slate-100 text-slate-900']}>
                     {q.votes}
                   </div>
                   <div class="text-slate-600 text-xs">{q.answers} {hero.mockup_answers_label}</div>
@@ -133,7 +133,7 @@ import companies from '../images/companies.png';
                   <p class="mb-1.5 font-medium text-slate-800 text-xs line-clamp-1 leading-tight">{q.title}</p>
                   <div class="flex gap-1">
                     {q.tags.map((tag) => (
-                      <span class="inline-block bg-brand-50 px-1.5 py-0.5 rounded font-medium text-brand-600 text-xs">{tag}</span>
+                      <span class="inline-block bg-slate-100 px-1.5 py-0.5 rounded font-medium text-slate-900 text-xs">{tag}</span>
                     ))}
                   </div>
                 </div>
