@@ -28,7 +28,7 @@ nbbuild/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-.astro
+.astro/
 
 bun.lock
 .vscode

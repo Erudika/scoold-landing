@@ -275,7 +275,7 @@
         "features": [
           { "title": "RESTful API", "description": "A fully-fledged RESTful JSON API defined with an OpenAPI spec. All CRUD operations can be executed through the API from your code." },
           { "title": "Slack, Mattermost & Teams Integration {pro}", "description": "Create questions and answers from Slack, Mattermost or Microsoft Teams, get real-time in-channel notification of new posts and mentions, approve posts and perform searches. Scoold can map your teams and chat channels to spaces." },
-          { "title": "Zapier Integration {pro}", "description": "Zapier makes it easy to integrate Scoold with thousands of other applications. Thanks to the power of REST hooks, you can have questions created automatically based on data from an external app or configure Scoold to notify other apps when a new question is posted." },
+          { "title": "Zapier & n8n Integration", "description": "Zapier and n8n make it easy to integrate Scoold with thousands of other applications. Thanks to the power of REST hooks, you can have questions created automatically based on data from an external app or configure Scoold to notify other apps when a new question is posted." },
           { "title": "Import from Stack Overflow", "description": "Migrating from Stack Overflow for Teams (Business) to Scoold is effortless and seamless. Simply download your data from Stack Overflow and import it into Scoold." },
           { "title": "Akismet Integration", "description": "With automatic anti-spam protection powered by Akismet's advanced AI filters, Scoold gives you a peace of mind. Spam can be deleted instantly if detected or you can choose to leave it to moderators for review." },
           { "title": "Webhooks", "description": "HTTP webhooks for all major events: new questions, answers, votes, and more. The payloads are signed with HMAC-SHA256 for extra security." }
@@ -1158,15 +1158,41 @@
     },
     {
       "title": "n8n",
-      "subtitle": "Connect Scoold to thousands of apps - no code required.",
+      "subtitle": "Automate Scoold workflows with real-time event triggers and search - no code required.",
       "slug": "n8n",
-      "description": "🚧 This integration is under active development. Stay tuned! 🚧",
+      "description": "The official Scoold community node for n8n connects your Q&A community to hundreds of other tools. React to new questions, answers, and comments in real time, or search Scoold content from anywhere in a workflow.",
       "features": [
+        {
+          "img": "n8n_intro1",
+          "title": "One-click connection to any Scoold instance",
+          "description": "Generate a JWT API key from the Scoold Admin panel and paste it into n8n. The credential test hits your live instance immediately so you know it works before building any workflow."
+        },
+        {
+          "img": "n8n_intro2",
+          "title": "Trigger workflows on any Scoold event",
+          "description": "The Scoold Trigger node subscribes to events like question.create, answer.accept, comment.create, and report.create. Webhooks are registered and removed automatically when you activate or deactivate a workflow - nothing to configure in Scoold manually."
+        },
+        {
+          "img": "n8n_intro3",
+          "title": "Secure payload delivery with signature validation",
+          "description": "Every incoming webhook payload is verified against an HMAC-SHA256 signature using a per-webhook secret stored in n8n. Tampered or unsigned requests are rejected before any workflow data is emitted."
+        },
+        {
+          "img": "n8n_intro4",
+          "title": "Search Scoold content from any workflow step",
+          "description": "The Scoold node lets you query questions, answers, users, comments, reports, and more using Scoold's full-text search API. Paginate automatically through all results or fetch a single page, then pass each item downstream as a separate n8n item."
+        },
+        {
+          "img": "n8n_intro5",
+          "title": "Filter and route events with precision",
+          "description": "Subscribe to multiple events in a single trigger node and narrow them further with a property filter (e.g. space:engineering or tags:bug). Each event payload is split into individual items enriched with event name, timestamp, and app ID metadata."
+        }
       ],
       "setup_steps": [
-        "You'll need Scoold Pro and n8n up and running first.",
-        "Connect Scoold to n8n app using your Scoold API key",
-        "Create an integration by choosing the provided Scoold triggers and actions in n8n",
+        "Enable webhooks in Scoold",
+        "Install the n8n-nodes-scoold community package from Settings → Community Nodes in n8n.",
+        "Create a Scoold API key from the Scoold Admin panel.",
+        "Add a Scoold Trigger node to your workflow, choose the events to listen for, and activate.",
         "Follow the documentation to get started."
       ]
     }
@@ -1397,7 +1423,7 @@
     "badge": "LEGAL",
     "title": "Legal",
     "href": "/legal/",
-    "subtitle": "Our legal documents — privacy, terms of use, and software licenses.",
+    "subtitle": "Our legal documents - privacy, terms of use, and software licenses.",
     "cards": [
       {
         "label": "Privacy Policy",

@@ -1,0 +1,108 @@
+---
+title: n8n
+description: Getting started with the Zapier or n8n integrations in Scoold
+sidebar:
+  order: 5
+---
+import { Aside, Badge, LinkButton, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+
+The official Scoold community node for **n8n** lets you trigger workflows from Scoold events
+and search Scoold content - all without writing any code.
+
+The package provides two nodes:
+- **Scoold Trigger** - starts a workflow when a Scoold event fires (new question, answer, comment, report, etc.)
+- **Scoold** - searches Scoold for questions, answers, users, and other content types
+
+<Aside type="caution" title="Prerequisite">
+The Scoold Trigger node requires webhooks to be enabled in your Scoold Pro instance:
+```ini title=scoold-application.conf
+scoold.webhooks.enabled = true
+```
+</Aside>
+
+### Installation
+
+<Tabs>
+  <TabItem label="n8n Cloud / GUI">
+    <Steps>
+    1. In n8n, go to **Settings → Community Nodes**
+    2. Click **Install** and enter:
+       ```
+       n8n-nodes-scoold
+       ```
+    3. Confirm the installation and restart n8n if prompted
+    </Steps>
+  </TabItem>
+  <TabItem label="Self-hosted (CLI)">
+    ```bash
+    npm install n8n-nodes-scoold
+    ```
+    Then restart your n8n instance.
+  </TabItem>
+</Tabs>
+
+### Setting up credentials
+
+<Steps>
+1. In your Scoold Admin panel, go to the **API** section and generate a new JWT API key. Copy it.
+2. In n8n, go to **Credentials → New → Scoold API** and fill in:
+   - **Base URL** - the root URL of your Scoold instance, e.g. `https://community.example.com` (no trailing slash)
+   - **API Key** - the JWT key you just copied
+3. Click **Test credential**. n8n calls `/api/stats` to verify the key is valid.
+</Steps>
+
+### Scoold Trigger
+
+The Scoold Trigger node automatically registers a webhook in Scoold when the workflow is activated,
+and removes it when the workflow is deactivated. No manual webhook setup is required.
+
+**Configuration**
+
+| Parameter | Description |
+|-----------|-------------|
+| Event Names or IDs | One or more Scoold events to subscribe to. Loaded from your Scoold instance at `/api/events`. |
+| Property Filter *(optional)* | Narrow events by object property, e.g. `space:general` or `tags:bug\|security` |
+
+**Supported events** (partial list):
+
+| Event | Fires when… |
+|-------|-------------|
+| `question.create` | A question is posted |
+| `answer.create` | An answer is posted |
+| `comment.create` | A comment is posted |
+| `answer.accept` | An answer is accepted as the solution |
+| `answer.approve` | An answer is approved by a moderator |
+| `report.create` | A report is submitted |
+| `question.close` | A question is closed |
+| `user.signup` | A new user registers |
+
+Each trigger execution emits **one n8n item per object** in the event payload.
+Every item includes a `_scoold` metadata field with the event name, timestamp, app ID, and webhook ID.
+
+<Aside type="tip">
+The default selection covers the six most common events. You can add or remove events at any time -
+saving the workflow deactivates the old webhook and registers a new one automatically.
+</Aside>
+
+### Scoold (search node)
+
+Use the **Scoold** node to search for content in your community from anywhere in a workflow.
+
+**Resource: Search - Operation: Query**
+
+| Parameter | Description |
+|-----------|-------------|
+| Type | Object type to search: `question`, `answer`, `user`, `profile`, `comment`, `report`, `revision`, `badge`, `feedback` |
+| Query | Full-text search string (supports Lucene syntax) |
+| Return All | Automatically page through all results using cursor pagination |
+| Limit | Max results per page (default 50, used when Return All is off) |
+| Page | Page number to fetch (used when Return All is off) |
+| Sort By | Field to sort by, e.g. `timestamp` or `votes` |
+| Descending | Sort order (default: newest first) |
+| Split Out Items | **On** (default): emit one item per result. **Off**: emit one item with the raw `{ items, page, totalHits }` envelope |
+
+**Example: find all unanswered questions tagged "bug"**
+
+Set Type to `question`, Query to `tags:bug AND answercount:0`, enable **Return All**, and leave Split Out Items on.
+Each question becomes a separate n8n item ready for further processing.

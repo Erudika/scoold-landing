@@ -27,7 +27,7 @@ const plugSize = 100;
 const { title, subtitle, slug, description, features, setup_steps } = Astro.props;
 ---
 
-<BaseLayout title={`${site.title} + $(title) Integration`} description={description}>
+<BaseLayout title={`${site.title} + ${title} Integration`} description={description}>
   <!-- Hero -->
   <section class="relative bg-white py-15 border-slate-100 border-b animate-fade-in" style={`background-image: url(${herobg.src});`}>
      <!-- Gradient fade edges -->
@@ -60,7 +60,7 @@ const { title, subtitle, slug, description, features, setup_steps } = Astro.prop
           <Image src={import(`../images/${slug}.svg`)} 
             width={logoSize - 10} 
             height={logoSize - 10} 
-            alt={`$(slug) Logo`} 
+            alt={`${slug} Logo`} 
             class="bg-white p-2 border border-neutral-300 rounded-2xl" 
             loading="eager"
           />
