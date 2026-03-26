@@ -30,7 +30,6 @@ nbactions.xml
 nb-configuration.xml
 .astro/
 
-bun.lock
 .vscode
 old_website/
 dist/
