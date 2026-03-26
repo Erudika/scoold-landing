@@ -75,4 +75,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwind()],
   },
+  redirects: {
+    "/teams.html": "/integration-with/microsoft-teams/",
+    "/mattermost.html": "/integration-with/mattermost/",
+    "/slack.html": "/integration-with/slack/"
+  }
 });

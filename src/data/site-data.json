@@ -1165,12 +1165,12 @@
         {
           "img": "n8n_intro1",
           "title": "One-click connection to any Scoold instance",
-          "description": "Generate a JWT API key from the Scoold Admin panel and paste it into n8n. The credential test hits your live instance immediately so you know it works before building any workflow."
+          "description": "Generate a JWT API key from the Scoold Admin panel and paste it into n8n. The credential test hits your live instance immediately so you know it works before building a workflow."
         },
         {
           "img": "n8n_intro2",
           "title": "Trigger workflows on any Scoold event",
-          "description": "The Scoold Trigger node subscribes to events like question.create, answer.accept, comment.create, and report.create. Webhooks are registered and removed automatically when you activate or deactivate a workflow - nothing to configure in Scoold manually."
+          "description": "The Scoold Trigger node subscribes to events like question.create, answer.accept and comment.create. Webhooks are registered and removed automatically when you activate or deactivate a workflow - nothing to configure in Scoold manually."
         },
         {
           "img": "n8n_intro3",
