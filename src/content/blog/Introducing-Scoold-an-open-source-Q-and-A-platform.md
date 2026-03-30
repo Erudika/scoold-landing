@@ -1,7 +1,7 @@
 ---
 title: "Introducing Scoold - an open source Q&A platform"
 date: 2017-04-27
-tags: ["scoold", "stackoverflow", "clone"]
+tags: ["stackoverflow", "clone", "open-source"]
 author: "alex@erudika.com"
 excerpt: "Scoold brings Stack Overflow-style Q&A to your site and showcases the Para backend. It's a lightweight, cloud-ready Java app that runs without a database."
 img: "blogpost_media9"

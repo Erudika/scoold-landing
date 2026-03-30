@@ -1,7 +1,7 @@
 ---
 title: "Scoold Pro now integrates with Microsoft Teams"
 date: 2021-07-23
-tags: ["scoold", "ms-teams", "integration"]
+tags: ["ms-teams", "integration", "chat"]
 author: "alex@erudika.com"
 excerpt: "Scoold Pro now integrates with Microsoft Teams and is rolling out to licensed users and Scoold Cloud instances. It's the third official chat integration after Slack and Mattermost."
 img: "blogpost_media18"

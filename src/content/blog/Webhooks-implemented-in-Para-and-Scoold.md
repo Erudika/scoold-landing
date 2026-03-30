@@ -1,7 +1,7 @@
 ---
 title: "Webhooks implemented in Para and Scoold"
 date: 2019-07-04
-tags: ["scoold", "para", "webhooks", "release"]
+tags: ["para", "webhooks", "release"]
 author: "alex@erudika.com"
 excerpt: "Para 1.32.0 introduces webhooks for all apps, available on ParaIO.com. Webhooks enable near real-time notifications for create, update, and delete events."
 img: "blogpost_media13"

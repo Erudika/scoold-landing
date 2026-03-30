@@ -20,7 +20,7 @@ export default defineConfig({
       },
       disable404Route: true,
       customCss: [
-        './src/styles/global.css',
+        './src/styles/starlight.css',
       ],
       expressiveCode: {
         styleOverrides: { 

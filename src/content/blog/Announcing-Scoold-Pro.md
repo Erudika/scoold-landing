@@ -1,7 +1,7 @@
 ---
 title: "Announcing Scoold Pro"
 date: 2018-10-15
-tags: ["enterprise", "release"]
+tags: ["enterprise", "release", "scoold-pro"]
 author: "alex@erudika.com"
 excerpt: "Scoold Pro is now available with new features and easier integration into enterprise environments. It supports SAML auth and unlimited spaces for team separation on intranets."
 img: "blogpost_media10"

@@ -8,11 +8,11 @@ import { Aside, Badge, LinkButton, Steps, Tabs, TabItem } from '@astrojs/starlig
 import { Image } from 'astro:assets';
 
 The official Scoold community node for **n8n** lets you trigger workflows from Scoold events
-and search Scoold content - all without writing any code.
+and manage Scoold content - all without writing any code.
 
 The package provides two nodes:
 - **Scoold Trigger** - starts a workflow when a Scoold event fires (new question, answer, comment, report, etc.)
-- **Scoold** - searches Scoold for questions, answers, users, and other content types
+- **Scoold** - create, read, update, and delete posts, comments, tags, and reports; search Scoold content
 
 <Aside type="caution" title="Prerequisite">
 The Scoold Trigger node requires webhooks to be enabled in your Scoold Pro instance:
@@ -27,9 +27,9 @@ scoold.webhooks.enabled = true
   <TabItem label="n8n Cloud / GUI">
     <Steps>
     1. In n8n, go to **Settings → Community Nodes**
-    2. Click **Install** and enter:
+    2. Click **Install** and enter the package name:
        ```
-       n8n-nodes-scoold
+       @erudika/n8n-nodes-scoold
        ```
     3. Confirm the installation and restart n8n if prompted
     </Steps>
@@ -46,8 +46,8 @@ scoold.webhooks.enabled = true
 
 <Steps>
 1. In your Scoold Admin panel, go to the **API** section and generate a new JWT API key. Copy it.
-2. In n8n, go to **Credentials → New → Scoold API** and fill in:
-   - **Base URL** - the root URL of your Scoold instance, e.g. `https://community.example.com` (no trailing slash)
+2. In n8n, go to **Credentials → Create → Scoold API** and fill in:
+   - **Base URL** - the public URL of your Scoold instance, e.g. `https://qna.cloud.scoold.com` (without the trailing slash)
    - **API Key** - the JWT key you just copied
 3. Click **Test credential**. n8n calls `/api/stats` to verify the key is valid.
 </Steps>
@@ -64,36 +64,90 @@ and removes it when the workflow is deactivated. No manual webhook setup is requ
 | Event Names or IDs | One or more Scoold events to subscribe to. Loaded from your Scoold instance at `/api/events`. |
 | Property Filter *(optional)* | Narrow events by object property, e.g. `space:general` or `tags:bug\|security` |
 
-**Supported events** (partial list):
-
-| Event | Fires when… |
-|-------|-------------|
-| `question.create` | A question is posted |
-| `answer.create` | An answer is posted |
-| `comment.create` | A comment is posted |
-| `answer.accept` | An answer is accepted as the solution |
-| `answer.approve` | An answer is approved by a moderator |
-| `report.create` | A report is submitted |
-| `question.close` | A question is closed |
-| `user.signup` | A new user registers |
-
+You can subscribe to any Scoold event, e.g. `question.create`, `answer.create` etc. 
 Each trigger execution emits **one n8n item per object** in the event payload.
 Every item includes a `_scoold` metadata field with the event name, timestamp, app ID, and webhook ID.
 
 <Aside type="tip">
-The default selection covers the six most common events. You can add or remove events at any time -
-saving the workflow deactivates the old webhook and registers a new one automatically.
+You can also subscribe to low-level CRUD events coming from Para with an n8n expression, e.g. `{{ ["update", "updateAll"] }}` 
+and a property filter, for example, `type:sysprop`.
+<Image src={import(`../../../../images/n8n/n8n_tip.png`)}
+      alt="n8n integration screenshot"
+      class="m-auto py-5"
+      loading="eager"
+    />
 </Aside>
 
-### Scoold (search node)
+### Scoold node
 
-Use the **Scoold** node to search for content in your community from anywhere in a workflow.
+The **Scoold** node lets you manage content and search your community from anywhere in a workflow.
+Select a **Resource** and an **Operation** to configure what the node does.
 
-**Resource: Search - Operation: Query**
+#### Resource: Post
+
+| Operation | Description |
+|-----------|-------------|
+| Create | Create a question, answer (reply), or sticky post |
+| Get | Fetch a post by ID, including its children and similar posts |
+| Update | Edit the title, body, tags, or other fields of a post |
+| Delete | Delete a post permanently |
+| List | List questions on the front page with optional filters |
+| Get Answers | Fetch the answers for a given question |
+| Get Comments | Fetch the comments on a post |
+| Get Revisions | Fetch the edit history of a post |
+
+**Post: Create** — key parameters:
 
 | Parameter | Description |
 |-----------|-------------|
-| Type | Object type to search: `question`, `answer`, `user`, `profile`, `comment`, `report`, `revision`, `badge`, `feedback` |
+| Post Type | `question`, `reply` (answer), or `sticky` |
+| Title | Title of the post |
+| Body | Post body; supports GitHub-flavored Markdown |
+| Tags | Comma-separated tags, e.g. `java, spring` |
+| Parent Post ID | Required when Post Type is `reply` — the ID of the parent question |
+| Additional Fields | `creatorid`, `space`, `wiki`, `location`, `disable notifications` |
+
+#### Resource: Comment
+
+| Operation | Description |
+|-----------|-------------|
+| Create | Add a comment to a post |
+| Get | Fetch a comment by ID |
+| Delete | Delete a comment |
+| List | List comments for a given post (paginated) |
+
+#### Resource: Tag
+
+| Operation | Description |
+|-----------|-------------|
+| Create | Create a new tag |
+| Get | Fetch a tag by ID |
+| Update | Rename a tag or update its description |
+| Delete | Delete a tag |
+| List | List all tags (paginated) |
+
+#### Resource: Report
+
+| Operation | Description |
+|-----------|-------------|
+| Create | Submit a report for a piece of content |
+| Get | Fetch a report by ID |
+| Delete | Delete a report |
+| List | List all reports (paginated) |
+| Close | Close a report with an optional resolution note |
+
+**Report: Create** — key parameters:
+
+| Parameter | Description |
+|-----------|-------------|
+| Link | URL of the content being reported |
+| Report Type | `SPAM`, `OFFENSIVE`, `DUPLICATE`, `INCORRECT`, or `OTHER` |
+
+#### Resource: Search — Operation: Query
+
+| Parameter | Description |
+|-----------|-------------|
+| Type | Object type: `question`, `answer`, `user`, `profile`, `comment`, `report`, `revision`, `badge`, `feedback` |
 | Query | Full-text search string (supports Lucene syntax) |
 | Return All | Automatically page through all results using cursor pagination |
 | Limit | Max results per page (default 50, used when Return All is off) |
@@ -104,5 +158,5 @@ Use the **Scoold** node to search for content in your community from anywhere in
 
 **Example: find all unanswered questions tagged "bug"**
 
-Set Type to `question`, Query to `tags:bug AND answercount:0`, enable **Return All**, and leave Split Out Items on.
+Set Resource to `Search`, Type to `question`, Query to `tags:bug AND answercount:0`, enable **Return All**, and leave Split Out Items on.
 Each question becomes a separate n8n item ready for further processing.
