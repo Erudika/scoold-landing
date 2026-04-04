@@ -6,6 +6,7 @@ import HeroFeatures from '@/components/HeroFeatures.astro';
 import FAQ from '@/components/FAQ.astro';
 import CTA from '@/components/CTA.astro';
 import SolutionsGrid from '@/components/SolutionsGrid.astro';
+import Mission from '@/components/Mission.astro';
 import { site, imprint } from '@/data/site-data.json';
 
 const jsonLd = {
@@ -46,6 +47,7 @@ const jsonLd = {
   <Hero />
   <Stats />
   <HeroFeatures />
+  <Mission />
   <SolutionsGrid />
   <FAQ limit={5} />
   <CTA />
