@@ -42,6 +42,7 @@ This page contains a full list of all configuration properties available in Scoo
 - Most of the configuration can be updated on-the-fly, at runtime via the API or via system properties, except those settings marked with `requires restart`
 - Configuration properties marked with `pro` will only work in Scoold Pro and *will be ignored* by Scoold.
 - The `preview` badge indicates features that are new and may need more work.
+
 ## Core
 
 | Property key & Description | Default Value | Type |
@@ -59,6 +60,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.context_path` <kbd>requires restart</kbd><br/>The context path (subpath) of the web application, defaults to the root path `/`. | ` ` | `String`|
 |`scoold.webhooks_enabled`<br/>Enable/disable webhooks support for events like `question.create`, `user.signup`, etc. | `true` | `Boolean`|
 |`scoold.api_enabled`<br/>Enable/disable the Scoold RESTful API. Disabled by default. | `false` | `Boolean`|
+|`scoold.api_user_access_enabled`<br/>Enable/disable the ability for users to get personal access tokens for accessing the Scoold API or MCP server. Disabled by default. | `false` | `Boolean`|
 |`scoold.feedback_enabled`<br/>Enable/disable the feedback page on the site. It is intended for internal discussion about the website itself. | `false` | `Boolean`|
 
 ## Emails
@@ -228,7 +230,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.security.oauth.domain`<br/>OAauth 2.0 domain name for constructing user email addresses in case they are missing. Alternatives: `security.oauthsecond.domain`, `security.oauththird.domain` | ` ` | `String`|
 |`scoold.security.oauth.provider`<br/>The text on the button for signing in with OAuth2 or OIDC. | `Continue with OpenID Connect` | `String`|
 |`scoold.security.oauth.appid_in_state_param_enabled`<br/>Enable/disable the use of the OAauth 2.0 state parameter to designate your Para app id. Some OAauth 2.0 servers throw errors if the length of the state parameter is less than 8 chars. | `true` | `Boolean`|
-|`scoold.security.oauth.send_scope_to_token_endpoint`<br/>Enable/disable sending the OAauth 2.0 scope parameter in the token request. Some OAuth 2.0 servers require this to be turned off. | `true` | `Boolean`|
+|`scoold.security.oauth.send_scope_to_token_endpoint`<br/>Enable/disable sending the OAauth 2.0 scope in the token request. Some OAuth 2.0 servers require this to be turned off. | `true` | `Boolean`|
 
 ## Posts
 
@@ -261,6 +263,7 @@ This page contains a full list of all configuration properties available in Scoo
 | Property key & Description | Default Value | Type |
 |  ---                       | ---           | ---  |
 |`scoold.auto_assign_spaces`<br/>A comma-separated list of spaces to assign to all new users. | ` ` | `String`|
+|`scoold.default_starting_space`<br/>The starting space to be selected for all users upon sign in. | ` ` | `String`|
 |`scoold.reset_spaces_on_new_assignment`<br/>Spaces delegated from identity providers will overwrite the existing ones for users. | `true` | `Boolean`|
 |`scoold.mods_access_all_spaces`<br/>By default, moderators have access to and can edit content in all spaces. When disabled, moderators can only access the spaces they are assigned to by admins. | `true` | `Boolean`|
 

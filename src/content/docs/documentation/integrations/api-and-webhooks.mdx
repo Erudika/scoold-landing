@@ -15,7 +15,7 @@ scoold.api_enabled = true
 scoold.app_secret_key = "change_to_long_random_string"
 ```
 The API can be accessed from `/api/*` and the OpenAPI documentation and console are located at `/apidocs`.
-API keys can be generated from the "Administration" page and can be made to expire after a number of hours or never
+API keys can be generated from the **Administration** page and can be made to expire after a number of hours or never
 (validity period = 0). Keys are in the JWT format and signed with the secret defined in `scoold.app_secret_key`.
 API keys can also be generated with any JWT library. The body of the key should contain the `iat`, `appid` and `exp`
 claims and must be signed with the secret `scoold.app_secret_key`.
@@ -38,6 +38,23 @@ The response body is similar to this:
 
 API clients can be auto-generated using Swagger Codegen. You can also explore the API documentation reference
 and generate the clients from there.
+
+### Personal API Tokens
+
+API tokens generated from the **Administration** page are considered admin-level tokens and have full access permissions
+for the Scoold API and MCP server. They are not linked to any user profile and actions performed through the API using
+those tokens are recognized as if they were done by the "System" - a dummy user profile with ID `1`.
+
+With the addition of the Scoold MCP server, we thought it would be nice to allow user to have their own personal tokens,
+which would give AI agents the ability to interact with Scoold on behalf of the user.
+This is where personal API tokens come in. This feature is disabled by default. To enable them, add this to your configuration:
+
+```ini title=scoold-application.conf
+scoold.api_user_access_enabled = true
+```
+
+That will unlock a new section on the **Settings** page, where each user can generate one API token at a time.
+For security reasons, personal tokens have a fixed expiration period of 7 days.
 
 <LinkCard
   title="Explore API docs"
