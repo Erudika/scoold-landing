@@ -1,0 +1,334 @@
+# Scoold
+
+Scoold is a privacy-first, self-hosted Q&A / forum / knowledge-base platform for teams, built as a lightweight Java web app that relies on a separate backend service (Para) for data persistence, search indexing, and other backend operations. It is available as an open-source (Apache 2.0) Community Edition and as commercial editions (Scoold Pro and Pro + Source) that add enterprise SSO/provisioning, chat integrations, file uploads, and additional admin/security features; alternatively it can be consumed as a fully managed Scoold Pro Hosting subscription via Scoold Cloud, which includes automatic updates, backups, and security patches. 
+
+## Product Overview
+
+Name: Scoold (software product; Community + Pro editions)  
+Primary website: scoold.com   
+Demo: demo.scoold.com (linked from Scoold site navigation)   
+
+Positioning (as stated on site)
+- Privacy-first and self-hosted knowledge-sharing platform combining Q&A + forum + knowledge base for teams. 
+- Designed for running on your infrastructure (Docker/JAR/native executable) - your data, your rules. 
+
+Core architectural dependency
+- Scoold is a client application of the Para backend server; most Scoold requests result in at least one Para request, and Scoold communicates with Para over HTTP(S). 
+
+Edition overview (high-level)
+- Community Edition: free, open source (Apache 2.0). 
+- Scoold Pro: commercial edition adding enterprise and premium features (e.g., SAML, SCIM, chat integrations, mentions, file uploads, security notifications, account suspensions). 
+- Pro + Source: Scoold Pro plus access to the private source repository and allowance for custom features, plus architecture consulting (per pricing page). 
+
+## Problems Solved / Use Cases
+
+Knowledge base and internal enablement
+- Addresses the problem where teams lose countless hours searching for answers that already exist somewhere, by maintaining a searchable, structured repository where content is ranked via voting and organized via tags/spaces. 
+
+Community support and discussion
+- Provides a Q&A-style community forum that emphasizes concise, structured discussions (Q&A + comments) with optional public/private operation and self-hosted or cloud deployment without vendor lock‑in. 
+
+Developer knowledge hub
+- Targets engineering knowledge loss in chat by creating a permanent searchable record, with Markdown + syntax highlighting, chat routing, and API/webhook integration for developer toolchains. 
+
+Customer support deflection
+- Positions as a customer-facing Q&A portal to reduce ticket volume by enabling customers to search before asking; supports escalations and “Spaces” for public plus internal escalations.
+
+Issue tracking / incident intake (lightweight)
+- Marketed as a way to centralize issue reports, increase cross-team visibility, and trigger workflows via webhooks and upcoming MCP support. 
+
+Solutions pages listed on site (use-case packaging)
+- “Knowledge Base”, “Community Forum”, “Developer Hub”, “Support Center”, “Q&A Platform”, “Issue Tracker”. 
+
+## Key Features
+
+Feature availability note: Scoold documentation distinguishes “Core features” (generally available) from “Premium features Pro” that require Scoold Pro licensing. 
+
+Collaboration
+- Stack Overflow-inspired Q&A workflow: ask/answer, voting, accepted answers, reputation, badges, and revision history for edits. 
+- Spaces (groups) for isolating users/questions by team or topic; admins can manage access. 
+- Rich content authoring: Markdown (GFM) editor, tables/task lists, multimedia attachments, and syntax highlighting for code. 
+- Notifications: email notifications for replies/comments; digest emails (Pro); plus chat notifications via official chat integrations. 
+- Mentions (@Name) with notifications (Pro) and cross-posted mention notifications in chat integrations. 
+- Backup & Restore: admin-exportable archive and import into another instance. 
+
+Moderation
+- Reputation-driven privileges and moderation signaling: high-scoring users can earn moderation privileges (stated on Q&A Platform solution page). 
+- Account suspensions / bans (Pro). 
+- Anti-spam via Akismet integration; can auto-block or route for moderator approval. 
+- Chat-based moderation: Slack/Teams/Mattermost integrations support “Approve” or “Delete” for posts requiring moderation approval. 
+- Reports and moderation workflows can be automated via n8n actions (blog describes using “reports” resources and “Close” operation for moderation workflows). 
+
+Search
+- Full-text search across content; content is indexed by Para. 
+- Similar-post suggestions and duplicate hints (core feature list). 
+- Location-based search and “near me” filtering (core feature list). 
+- Chat-integrated search commands (Slack/Mattermost slash commands; Teams message box search options). 
+- Demo API UI explicitly documents advanced query syntax (fuzzy search, term boost, field grouping, range search). 
+
+Auth / SSO
+- Built-in email/password auth (toggleable), requiring SMTP for confirmation emails. 
+- Social login configuration is supported for multiple providers, including Facebook, Google, GitHub, LinkedIn, Microsoft, Slack, Amazon, and Twitter (configuration properties listed). 
+- Generic OAuth 2.0 / OpenID Connect via Para’s OAuth2 filter; includes examples for Okta and Azure Entra ID, Pro adds token delegation and role mapping. 
+- LDAP & Active Directory support (available in free and paid), with configuration options for LDAP server connection. 
+- SAML 2.0 SSO is a Pro feature, implemented by configuring Para as a SAML service provider; SP metadata and auth endpoints are described. 
+- SCIM 2.0 user provisioning is a Pro feature; provides a dedicated SCIM endpoint and can map SCIM groups to spaces and admin/mod roles. 
+- Custom authentication (Pro) supports passwordless auth via Para “passwordless” filter, using a JWT issued by an external login page. 
+- Two-factor authentication (TOTP) is described on the Features page in the “Social Login & 2FA” section. 
+
+Integrations
+- Official chat integrations: Slack, Microsoft Teams and Mattermost. These enable creating Q&A from chat, searching, and receiving notifications/mentions. 
+- Automation integrations: Zapier and n8n. 
+- Webhooks: HTTP webhooks for major events with signed payloads (HMAC‑SHA256) and support for custom events/filters. 
+- Import/migration: import data from Stack Overflow for Teams (core feature list + feature page mention). 
+
+API
+- RESTful JSON API defined with OpenAPI 3.x; can be enabled via configuration, accessed under `/api/*`, with an interactive console at `/apidocs`. 
+- API keys are JWTs signed with `scoold.app_secret_key`, can expire or never expire, and can also be produced with standard JWT tooling; Para “super” tokens are also accepted. 
+- Ability to auto-generate API clients via Swagger Codegen. 
+
+UI / Customization
+- Themes, dark mode, and branding/white-label options (custom CSS, logos, domain). 
+- Configuration-driven UI customization: favicon, external styles, inline CSS, custom navbar links, email footer HTML, discoverability toggles, etc. 
+- Pro supports drag‑and‑drop logo upload (because Pro supports file uploads). 
+- Open-source edition supports expert-level full frontend customization by editing templates/static assets in the repository. 
+
+Deployment / Ops
+- Multiple packaging/deployment modes: Docker, standalone JAR, and native executable (GraalVM build) are documented. 
+- Kubernetes deployment (Helm chart). 
+- Backup & restore export/import workflow (admin). 
+- Minimal frontend code without a build step (core feature list). 
+
+Security
+- Mutual TLS (mTLS) support is listed as a feature and described as mutual authentication between proxy, Scoold, and Para. 
+- HTTP security controls: CSP enabled by default with configurable nonce and extension points; standard security headers (HSTS, X‑Frame‑Options, X‑XSS‑Protection, X‑Content‑Type‑Options, Referrer‑Policy) are configurable. 
+- Signup/password reset protection via Google reCAPTCHA v3. 
+- Webhooks are signed via HMAC‑SHA256; n8n integration blog emphasizes signature verification to mitigate MITM/tampering. 
+- Domain-restricted signups, one-session-per-user toggle, and session duration controls. 
+
+## Technical Details & Architecture
+
+Scoold operates as a client of the Para backend; Para handles database/search/cache; Scoold talks to Para over HTTP(S).
+
+Core components (as documented)
+- Scoold: client-facing web application (Java; Spring Boot single JAR/WAR per feature overview). 
+- Para backend: stores data and provides search; can sit on same host or separate networks; supports multiple databases (via Para docs link) and multi-tenancy via “apps”. 
+
+Multi-tenancy + scaling semantics
+- Para is multi-tenant: isolated environments are “apps”; multiple Scoold instances (a cluster) can connect to the same Para app; multiple independent Scoold sites can share the same Para backend by using different Para apps; each app has its own DB table and search index. 
+
+Official architecture diagrams (from documentation)
+- Simple (1 Scoold node + 1 Para node): https://scoold.com/_astro/single.D-frGb8l_2qYjp3.webp 
+- Multiple Scoold nodes + single Para backend: https://scoold.com/_astro/hybrid.Ba0Q33ou_Z1dcwD0.webp 
+- Multi-tenant / multi-node with load balancer: https://scoold.com/_astro/multinode.BG87GPqV_2l7wL7.webp 
+
+## Deployment Options
+
+Self-hosted (Community or Pro)
+- Docker (Docker Compose quick start documented): `docker compose -f https://github.com/Erudika/scoold.git up`. 
+- Standalone JAR executable: download from GitHub releases; run with config file; can connect to Para Cloud or self-hosted Para. 
+- Native executable: build via GraalVM + Maven (advanced). 
+- Kubernetes: Helm chart for Kubernetes, and docs include a Kubernetes deployment section. 
+
+Minimum system requirements (download page)
+- Java runtime 21+; Para backend required; 512MB RAM minimum (1GB recommended for production); OS/Docker v28+ for container path. 
+
+Managed hosting: Scoold Cloud (Scoold Pro Hosting)
+- Fully managed hosting with automatic updates, backups, security patches; includes a dedicated subdomain with SSL and a web admin console; supports custom domain. 
+- Built on Amazon Web Services with regional availability of 20 regions worldwide.
+- Cloud FAQ states hosted servers typically run the latest stable Scoold Pro with upgrades handled by provider with zero service downtime. 
+
+## Pricing & Licensing
+
+Pricing is time-sensitive. Prices below are captured from scoold.com pages and reflect on-site statements as of Last verified 2026-04-07.
+
+Self-hosted licensing (scoold.com/pricing)
+- Billing model: No subscriptions. No per-seat fees. A one-time license fee and it’s yours forever.
+- License validity: Scoold Pro licenses are per production instance; include free updates and support for 12 months; license continues working indefinitely; extended updates can be purchased after 12 months. 
+- Refund policy: 14‑day money-back guarantee; contact support@scoold.com within 14 days. 
+- Payments: card payments handled by Braintree (Ireland), plus SEPA bank transfers; VAT invoices available upon request. 
+
+Table: self-hosted editions and prices
+| Edition | Price | Billing | Scope note | License | Source |
+|---|---:|---|---|---|---|
+| Scoold (Community) | Free | Free forever | Unlimited users | Apache 2.0 |  |
+| Scoold Pro | €499 | One-time fee | 1 production instance per license | Commercial (EULA governs) |  |
+| Pro + Source | €1999 | One-time fee | 1 production instance per license; includes source access + custom features allowed (per page) | Commercial (EULA governs) |  |
+| Pro Unlimited | contact us for pricing | contact us for pricing | Mentioned in FAQ as tier for unlimited production hosts; details in EULA | Commercial (EULA governs) |  |
+
+VAT notes (self-hosted)
+- Pro + Source bullets mention VAT invoicing available, and pricing FAQ mentions VAT invoices upon request; VAT treatment is excluded for non-EU companies. 
+
+Licensing details (EULA summary; legal/licenses)
+- The licenses page defines Host as any physical/virtual machine running a single instance, and describes three license types: Basic Server License (no source), Server License with Source Code, and Unlimited Server License with Source Code. 
+- EULA also states priority support/maintenance services are not included by default and are purchased separately. 
+
+Scoold Cloud subscription pricing (scoold.com/cloud-hosting)
+- Plans and prices:
+  - Para App: €25 per app per month. 
+  - Small Instance: €49 per server per month (for teams less than 1000 members per page). 
+  - Large Instance: €99 per server per month (for up to 10000 concurrent users per page). 
+- Billing:
+  - Monthly billing; annual billing available (pay 10 months and get 2 months free). 
+  - EU VAT excluded (prices don’t include European Union VAT; not applicable to customers outside EU). 
+- Trial:
+  - 5-day trial; no credit card required. 
+- License bundling:
+  - Cloud FAQ states Scoold Pro license fees are included in the Scoold Cloud price. 
+
+Historical note: a 2020 blog post references older Cloud price points (€49/€79/€129 per month) that differ from the current Cloud Hosting page; treat the Cloud Hosting page as current. 
+
+## Integrations & APIs
+
+Official integrations listed on scoold.com
+- Chat: Slack, Microsoft Teams, Mattermost. 
+- Automation: Zapier, n8n. 
+
+What chat integrations support (high-level, per integration pages)
+- Create questions and answers from chat (slash commands in Slack/Mattermost; @Scoold commands in Teams). 
+- Search Scoold from chat (search query, search people, search tags). 
+- Real-time channel notifications for new questions/answers; moderation actions for approving/deleting; mentions propagation. 
+
+Zapier integration notes (per integration page)
+- Uses Scoold API + API key; provides triggers for new questions/answers/tags and actions for creating content; promotes use with external tools such as Jira (example). 
+
+n8n integration notes (current, 2026 announcement)
+- Official n8n community node published as `@erudika/n8n-nodes-scoold` with two nodes (Scoold + Scoold Trigger). 
+- Trigger node registers/removes webhooks automatically; supports subscribing to named events and low-level CRUD events; describes signing verification to prevent tampering. 
+
+REST API (Scoold)
+- Enablement and access:
+  - Enable with `scoold.api_enabled = true`; API reachable at `/api/*`; OpenAPI docs/console at `/apidocs`. 
+- Auth:
+  - Bearer token generated on admin page; token is JWT signed with `scoold.app_secret_key`. 
+- OpenAPI / Swagger links
+  - On-instance interactive console: `https://<your-scoold-host>/apidocs` (path described in docs). 
+  - Example/demo API UI (interactive docs): https://demo.scoold.com/apidocs 
+  - Scoold API Reference docs: https://scoold.com/documentation/reference/scoold-api/ 
+
+Webhooks
+- Enabled by default; configurable disable flag; managed from Admin UI; auto-disabled when target URL fails to respond. 
+- Security: signed payloads via `X-Webhook-Signature` header verified as Base64(HmacSHA256(payload, secret)). 
+- Event coverage includes question/answer/comment/report lifecycle events, user signup/signin/search, and Pro-only events (ban, mention, like). 
+- Custom webhook events allow subscribing to Para CRUD events with filters and creating custom names like `revision.create`. 
+
+Webhook support with RESTHooks best practices
+- Docs explicitly relate custom events to integrating with services like Zapier, stating it implements the RESTHooks best practices. 
+
+## Documentation & Support
+
+Primary documentation
+- Docs home: https://scoold.com/documentation/ 
+- Key docs pages referenced in this report:
+  - What is Scoold? https://scoold.com/documentation/intro/what-is-scoold/ 
+  - Architecture: https://scoold.com/documentation/intro/architecture/ 
+  - Installation: https://scoold.com/documentation/getting-started/installation/ 
+  - API & Webhooks: https://scoold.com/documentation/integrations/api-and-webhooks/ 
+  - Security: https://scoold.com/documentation/managing-scoold/security/ 
+  - Customization: https://scoold.com/documentation/ux-ui/customization/ 
+
+Support channels (on scoold.com)
+- Email support: support@scoold.com 
+- Community/dev channels: GitHub Issues and Gitter chat are linked from contact page. 
+
+Support scope / SLA
+- Self-hosted Pro: free updates and support for 12 months, and EULA states priority support/maintenance services are purchased separately.
+- Scoold Cloud: Cloud customers get priority support with a dedicated support contact
+
+Table: contact/support points
+| Purpose | Channel | Details | Source |
+|---|---|---|---|
+| General support / sales contact | Email | support@scoold.com |  |
+| Refund request (Pro) | Email | contact support@scoold.com within 14 days |  |
+| Open-source issues/PRs | GitHub Issues | Link provided on contact page |  |
+| Community chat | Gitter | Link provided on contact page |  |
+
+## Customers / Case Studies
+
+Trusted by teams worldwide: IBM, Roblox, Asos, Hitachi, DBS Bank, Cisco, Groupe Mutuel, Liberty Mutual, Axiros, Home Depot, Thales Digital, et. al.
+
+## Legal
+
+Legal hub
+- https://scoold.com/legal/ lists Privacy Policy, Terms of Use, and Licenses / Scoold Pro EULA. 
+
+Privacy
+- Privacy Policy effective date: 2026-02-22; identifies data controller address in Sofia, Bulgaria; states use of Matomo with highest privacy settings and commitment to not using tracking cookies; includes DPO contact. 
+- Privacy policy link: https://scoold.com/legal/privacy-policy/ 
+
+Terms
+- Terms of Use effective date: 2026-02-22; Community edition is Apache 2.0; Pro is governed by Scoold Pro EULA; governed by laws of England and Wales. 
+- Terms link: https://scoold.com/legal/terms-of-use/ 
+
+Licensing / EULA
+- Licenses page includes Apache 2.0 statement for open-source edition and full Scoold Pro EULA (effective 2024-04-09). 
+- Licenses/EULA link: https://scoold.com/legal/licenses/ 
+
+Imprint / company behind Scoold
+- The imprint identifies the company behind Scoold as Erudika, an independent EU-based company, with address 4 Lelinska Chuka Street, Sofia 1618, Bulgaria, VAT number BG-200368755, and legally authorized representative “Alexander Bogdanovski. 
+- Imprint link: https://scoold.com/imprint/impressum/ 
+
+## Sources
+
+Core product pages (scoold.com)
+- Home / positioning: https://scoold.com/ 
+- Features: https://scoold.com/features/ 
+- Pricing (self-hosted): https://scoold.com/pricing/ 
+- Download + requirements: https://scoold.com/download/ 
+- Open source positioning: https://scoold.com/open-source/ 
+- Scoold Cloud hosting + pricing: https://scoold.com/cloud-hosting/ 
+- Changelog (latest release listed): https://scoold.com/changelog/ 
+- Blog index + latest post list: https://scoold.com/blog/ 
+- Contact: https://scoold.com/imprint/contact-us/ 
+
+Solution/use-case pages (scoold.com)
+- Knowledge Base: https://scoold.com/solutions/scoold-as-knowledge-base/ 
+- Community Forum: https://scoold.com/solutions/scoold-as-community-forum/ 
+- Developer Hub: https://scoold.com/solutions/scoold-as-developer-hub/ 
+- Support Center: https://scoold.com/solutions/scoold-as-support-center/ 
+- Q&A Platform: https://scoold.com/solutions/scoold-as-questions-and-answers-platform/ 
+- Issue Tracker: https://scoold.com/solutions/scoold-as-issue-tracker/ 
+
+Integrations pages (scoold.com)
+- Slack integration: https://scoold.com/integration-with/slack/ 
+- Microsoft Teams integration: https://scoold.com/integration-with/microsoft-teams/ 
+- Mattermost integration: https://scoold.com/integration-with/mattermost/ 
+- Zapier integration: https://scoold.com/integration-with/zapier/ 
+- n8n integration: https://scoold.com/integration-with/n8n/ 
+
+Documentation (scoold.com)
+- Docs home: https://scoold.com/documentation/ 
+- What is Scoold: https://scoold.com/documentation/intro/what-is-scoold/ 
+- Architecture: https://scoold.com/documentation/intro/architecture/ 
+- Features overview: https://scoold.com/documentation/intro/features/ 
+- Installation: https://scoold.com/documentation/getting-started/installation/ 
+- API & Webhooks: https://scoold.com/documentation/integrations/api-and-webhooks/ 
+- Scoold API reference: https://scoold.com/documentation/reference/scoold-api/ 
+- Security: https://scoold.com/documentation/managing-scoold/security/ 
+- Basic auth: https://scoold.com/documentation/authentication/basic-auth/ 
+- OAuth2/OIDC: https://scoold.com/documentation/authentication/oauth2/ 
+- LDAP/AD: https://scoold.com/documentation/authentication/ldap/ 
+- SAML (Pro): https://scoold.com/documentation/authentication/saml/ 
+- SCIM (Pro): https://scoold.com/documentation/authentication/scim/ 
+- Custom auth (Pro): https://scoold.com/documentation/authentication/custom-auth/ 
+- Customization: https://scoold.com/documentation/ux-ui/customization/ 
+
+Legal (scoold.com)
+- Legal hub: https://scoold.com/legal/ 
+- Privacy policy: https://scoold.com/legal/privacy-policy/ 
+- Terms of use: https://scoold.com/legal/terms-of-use/ 
+- Licenses + EULA: https://scoold.com/legal/licenses/ 
+- Imprint: https://scoold.com/imprint/impressum/ 
+
+Architecture images (scoold.com)
+- https://scoold.com/_astro/single.D-frGb8l_2qYjp3.webp 
+- https://scoold.com/_astro/hybrid.Ba0Q33ou_Z1dcwD0.webp 
+- https://scoold.com/_astro/multinode.BG87GPqV_2l7wL7.webp 
+
+News/announcements (scoold.com blog)
+- “Scoold now integrates with n8n” (2026-03-30): https://scoold.com/blog/scoold-now-integrates-with-n8n/ 
+- “Scoold Pro now integrates with Microsoft Teams” (2021-07-23): https://scoold.com/blog/scoold-pro-now-integrates-with-microsoft-teams/ 
+- “Announcing Scoold Cloud” (2020-09-22): https://scoold.com/blog/announcing-scoold-cloud/ 
+
+Interactive API UI example (official/demo)
+- https://demo.scoold.com/apidocs 
