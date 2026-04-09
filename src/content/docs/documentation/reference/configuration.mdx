@@ -101,6 +101,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.security.allow_unverified_emails`<br/>Enable/disable email verification after the initial user registration. Users with unverified emails won't be able to sign in, unless they use a social login provider. | `false` | `Boolean`|
 |`scoold.session_timeout`<br/>The validity period of the authentication cookie, in seconds. Default is 24h. | `86400` | `Integer`|
 |`scoold.jwt_expires_after`<br/>The validity period of the session token (JWT), in seconds. Default is 24h. | `86400` | `Integer`|
+|`scoold.personal_token_expires_after`<br/>The validity period of personal API keys (Bearer tokens) for use with API/MCP. Default is 168h. | `604800` | `Integer`|
 |`scoold.security.one_session_per_user`<br/>If disabled, users can sign in from multiple locations and devices, keeping a few open sessions at once. Otherwise, only one session will be kept open, others will be closed. | `true` | `Boolean`|
 |`scoold.min_password_length`<br/>The minimum length of passwords. | `8` | `Integer`|
 |`scoold.min_password_strength`<br/>The minimum password strength - one of 3 levels: `1` good enough, `2` strong, `3` very strong. | `2` | `Integer`|
@@ -121,6 +122,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.csp_frame_sources`<br/>Additional sources to add to the `frame-src` CSP directive. Used when adding external scripts to the site. | ` ` | `String`|
 |`scoold.csp_font_sources`<br/>Additional sources to add to the `font-src` CSP directive. Used when adding external fonts to the site. | ` ` | `String`|
 |`scoold.csp_style_sources`<br/>Additional sources to add to the `style-src` CSP directive. Used when adding external fonts to the site. | ` ` | `String`|
+|`scoold.cors_enabled` <kbd>requires restart</kbd><br/>Enable/disable the CORS filter. It adds CORS headers to API responses. | `true` | `Boolean`|
 
 ## Basic Authentication
 
@@ -469,3 +471,4 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.data_import_export_enabled`<br/>Enable/disable backup and restore features on the Administration page. | `true` | `Boolean`|
 |`scoold.config_editing_enabled`<br/>Enable/disable live configuration editing for admins on the Administration page. | `true` | `Boolean`|
 |`scoold.ai_training_allowed`<br/>Enable/disable permission for AI training on content from the website, using the new RSL standard. | `false` | `Boolean`|
+|`scoold.mcp_server_mode`<br/>Enable/disable the MCP server. Possible values: `off`, `r` - read-only, `rw` - full access. | `off` | `String`|
