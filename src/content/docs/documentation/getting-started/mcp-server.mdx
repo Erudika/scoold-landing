@@ -1,0 +1,74 @@
+---
+title: MCP Server
+description: Scoold works as MCP server and allows your AI agent to pull data from Scoold or interact with Scoold on your behalf.
+sidebar:
+  order: 5
+---
+import { Aside, Badge, LinkCard, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Scoold has a built-in MCP server which has the full capabilities of the API. It works in two modes -
+read-only or full access (read and write). The MCP server is disabled by default - to enable it 
+add this to your **`scoold-application.conf`**:
+
+```ini title=scoold-application.conf
+# MCP server mode:
+# off - disabled, r - read-only, rw - read and write
+scoold.mcp_server_mode = "rw"
+```
+If you want to restrict MCP clients and prevent them from modifying any data, set `scoold.mcp_server_mode = "r"`.
+
+Configuring the MCP client is simple - add this JSON to your MCP client configuration (for example a local `.mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "scoold": {
+      "type": "http",
+      "url": "http://localhost:8000/api/mcp",
+      "mode": "streamable",
+      "headers": {
+        "Authorization": "Bearer {SCOOLD_API_TOKEN}"
+      }
+    }
+  }
+}
+```
+Modify the `url` to match the public URL for your Scoold server and replace `{SCOOLD_API_TOKEN}` with a
+valid API token (admin or personal).
+
+Scoold's MCP server is centered around **tools**. In practice, this means your AI client can search, 
+read, create, update, or moderate content in Scoold through dedicated actions instead of browsing a large 
+set of resources.
+
+It includes tools for common Scoold tasks such as:
+
+- searching content
+- working with posts, comments, tags, and reports
+- managing users, spaces, and webhooks
+- reading stats and configuration
+
+Resources are intentionally kept to a minimum:
+
+- `scoold:///` gives a quick server index and a list of available tools
+- `scoold:///metadata` shows basic server and session information
+- `scoold:///config` provides the full configuration reference in Markdown
+
+If the server is running in **read-only** mode, tools that modify data are automatically hidden from the MCP client.
+
+<Aside>
+Testing the MCP server with the **MCP Inspector** requires CORS. You can enable CORS with the following configuration:
+```ini title=scoold-application.conf
+scoold.cors_enabled = true
+```
+</Aside>
+
+## Allowing users to interact with the MCP server
+
+By default, the MCP server works with admin API tokens issued on the **Administration** page.
+Yo can allow user to have their own personal tokens, which would give AI agents the ability to interact with Scoold on behalf of the user. 
+Personal API tokens are disabled by default. To enable them, add this to your configuration:
+
+```ini title=scoold-application.conf
+scoold.api_user_access_enabled = true
+```
+That will unlock a new section on the Settings page, where each user can generate one API token and use it to configure an MCP client of their choice.
