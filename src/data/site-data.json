@@ -1423,7 +1423,7 @@
     "badge": "LEGAL",
     "title": "Legal",
     "href": "/legal/",
-    "subtitle": "Our legal documents - privacy, terms of use, and software licenses.",
+    "subtitle": "Our legal documents - privacy, terms of service, and software licenses.",
     "cards": [
       {
         "label": "Privacy Policy",
@@ -1431,9 +1431,14 @@
         "href": "/legal/privacy-policy/"
       },
       {
-        "label": "Terms of Use",
-        "description": "Conditions for using scoold.com and the Scoold software.",
-        "href": "/legal/terms-of-use/"
+        "label": "Terms of Service",
+        "description": "Conditions for using this website, Scoold Cloud and the Scoold software.",
+        "href": "/legal/terms-of-service/"
+      },
+      {
+        "label": "Data Processing Agreement",
+        "description": "The DPA outlines the handling and protection of personal data.",
+        "href": "/legal/gdpr-dpa/"
       },
       {
         "label": "Licenses",
@@ -1451,137 +1456,17 @@
     "privacy": {
       "title": "Privacy Policy",
       "description": "This document describes how we collect, use, and protect your personal data, in accordance with the European GDPR law.",
-      "effective_date": "2026-02-22",
-      "sections": [
-        {
-          "title": "1. Data Controller",
-          "paragraphs": [
-            "Erudika Ltd., 4 Lelinska Chuka Street, Sofia 1618, Bulgaria.",
-            "Erudika Ltd. acts as the Data Controller for the purposes of Regulation (EU) 2016/679 (General Data Protection Regulation - GDPR)."
-          ],
-          "emailLabel": "Email",
-          "email": "contact@erudika.com"
-        },
-        {
-          "title": "2. Personal Data We Collect",
-          "paragraphs": ["We collect personal data directly from you when you contact us or use our services, and automatically through technical means when you visit our website."],
-          "items": [
-            "Contact details you provide (name, email, company, message).",
-            "Account or contract details when you request support or services.",
-            "Technical data such as IP address, browser type, and basic device information.",
-            "Usage data from analytics (pages visited, time on site, referral source)."
-          ]
-        },
-        {
-          "title": "3. Legal Bases for Processing",
-          "paragraphs": [
-            "Our legitimate interests include maintaining website security, preventing fraud, improving our services, and managing customer relationships. Where we rely on legitimate interests, we ensure that such interests are not overridden by your rights and freedoms.",
-            "Where personal data is required for contract performance, failure to provide such data may result in our inability to provide the requested services. Other reasons for collecting and processing data may include: "
-          ],
-          "items": [
-            "Consent (e.g., marketing emails, optional analytics).",
-            "Contract performance (e.g., providing support or services you request).",
-            "Legitimate interests (e.g., securing our site, improving our services).",
-            "Legal obligations (e.g., accounting and compliance requirements).",
-            "Technical information (e.g. server logs, cookies identifiers, communication records)"
-          ]
-        },
-        {
-          "title": "4. How We Use Your Data",
-          "items": [
-            "Respond to inquiries and provide support.",
-            "Deliver products or services you request.",
-            "Improve our website and user experience.",
-            "Maintain security, prevent fraud, and comply with legal obligations."
-          ]
-        },
-        {
-          "title": "5. Cookies and Analytics",
-          "paragraphs": [
-            "We use essential cookies for site functionality. We may use privacy-friendly analytics to understand site usage. Where required, we ask for consent before placing non-essential cookies.",
-            "We are committed to not using tracking cookies. For traffic analysis we use Matomo with the highest privacy settings."
-          ]
-        },
-        {
-          "title": "6. Sharing and International Transfers",
-          "paragraphs": [
-            "We share data only with service providers who process data on our behalf (e.g., hosting, email, analytics). If data is transferred outside the EEA, we use appropriate safeguards such as Standard Contractual Clauses.",
-            "Where personal data is transferred outside the European Economic Area (EEA), we ensure appropriate safeguards in accordance with Chapter V GDPR, including the use of Standard Contractual Clauses approved by the European Commission. You may request a copy of these safeguards by contacting us."
-          ]
-        },
-        {
-          "title": "7. Data Retention",
-          "paragraphs": [
-            "We retain personal data only as long as needed for the purposes described, or as required by law. We periodically review and delete data that is no longer necessary."
-          ], 
-          "items": [
-            "Contact inquiries: retained for up to 24 months after resolution.",
-            "Contractual data: retained for the duration of the contract plus applicable statutory limitation periods.",
-            "Accounting data: retained as required under Bulgarian accounting law (10 years).",
-            "Analytics data: retained for 12 months."
-          ]
-        },
-        {
-          "title": "8. Your Rights",
-          "paragraphs": [
-            "You have the right to lodge a complaint with the Bulgarian Commission for Personal Data Protection (КЗЛД) or your local supervisory authority within the EU."
-          ],
-          "items": [
-            "Access your personal data and request a copy.",
-            "Correct inaccurate or incomplete data.",
-            "Request deletion of your data (subject to legal requirements).",
-            "Object to processing or request restriction.",
-            "Data portability where applicable.",
-            "Withdraw consent at any time where processing is based on consent.",
-            "Lodge a complaint with your local data protection authority.",
-            "To exercise your rights, please contact us. We may request verification of your identity before responding."
-          ]
-        },
-        {
-          "title": "9. Security",
-          "paragraphs": [
-            "We implement appropriate technical and organizational measures to protect personal data against unauthorized access, alteration, disclosure, or destruction."
-          ]
-        },
-        {
-          "title": "10. Children's Privacy",
-          "paragraphs": [
-            "Our services are not directed to children under 16, and we do not knowingly collect data from children. If you believe a child has provided us data, please contact us."
-          ]
-        },
-        {
-          "title": "11. Changes to This Policy",
-          "paragraphs": [
-            "We may update this Privacy Policy from time to time. We will post the updated version on this page and update the effective date above."
-          ]
-        },
-        {
-          "title": "12. Data Protection Officer",
-          "contactIntro": "Erudika Ltd. has appointed a Data Protection Officer in accordance with Article 37 of GDPR: Alexander Bogdanovski",
-          "email": "alex@erudika.com"
-        },
-        {
-          "title": "13. Mandatory disclosure under Article 13 (2) (e)",
-          "paragraphs": ["Providing certain personal data is necessary for entering into and performing a contract. Where data is required, we will indicate this. Failure to provide required data may prevent us from providing services."]
-        },
-        {
-          "title": "14. Automated Decision-Making Disclosure",
-          "paragraphs": ["We do not use personal data for automated decision-making or profiling that produces legal or similarly significant effects."]
-        }
-      ]
+      "effective_date": "2026-02-22"
     },
     "terms": {
-      "title": "Terms of Use",
-      "description": "Scoold terms of use - conditions for using scoold.com and Scoold software.",
-      "effective_date": "2026-02-22",
-      "sections": [
-        { "heading": "Acceptance", "content": "By accessing scoold.com, you agree to these Terms of Use. If you do not agree, please do not use this site." },
-        { "heading": "License", "content": "Scoold (Community edition) is open source software licensed under the Apache 2.0 License. Scoold Pro is commercial software governed by the Scoold Pro EULA." },
-        { "heading": "Permitted Use", "content": "You may use this site to download, evaluate, and purchase Scoold software for your own use in accordance with the applicable license terms." },
-        { "heading": "Prohibited Use", "content": "You may not use this site for unlawful purposes, to transmit malicious code, or to violate the rights of others." },
-        { "heading": "Disclaimer", "content": "Scoold is provided 'as is' without warranty of any kind. Erudika disclaims all warranties, express or implied, to the extent permitted by law." },
-        { "heading": "Governing Law", "content": "These terms are governed by the laws of England and Wales. Disputes shall be resolved in the courts of England and Wales." }
-      ]
+      "title": "Terms of Service",
+      "description": "Scoold terms of service - conditions for using this website, Scoold Cloud and the Scoold software.",
+      "effective_date": "2026-02-22"
+    },
+    "dpa": {
+      "title": "Data Processing Agreement",
+      "description": "The DPA outlines the rights and obligations of customers and us, as data processor, regarding the handling and protection of personal data.",
+      "effective_date": "2026-03-10"
     }
   },
   "download": {

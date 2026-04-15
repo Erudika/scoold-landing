@@ -1,19 +1,35 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { imprint } from '../../data/site-data.json';
+import { site, components, imprint, licenses_page } from '../../data/site-data.json';
 import { object } from 'astro:schema';
 const { impressum, impressum_page } = imprint;
+
+const { breadcrumbs } = components;
+const baseUrl = site.url;
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
+    { "@type": "ListItem", position: 2, name: breadcrumbs.faq, item: `${baseUrl}/imprint/` },
+    { "@type": "ListItem", position: 2, name: breadcrumbs.faq, item: `${baseUrl}/imprint/impressum/` }
+  ]
+};
 ---
 
 <BaseLayout
   title={impressum_page.title}
   description={impressum_page.subtitle}
+  jsonLd={[breadcrumbJsonLd]}
   noindex={true}
 >
   <section class="bg-white section-padding">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
       <div class="mb-10">
-        <span class="section-label">{impressum_page.badge}</span>
+        <span class="section-label">
+          <a href="/">{breadcrumbs.home}</a> / <a href="/legal/">{licenses_page.badge}</a>
+        </span>
         <h1 class="mb-4 font-extrabold text-slate-900 text-4xl tracking-tight">{impressum_page.title}</h1>
         <p class="text-slate-700">{impressum_page.subtitle}</p>
       </div>

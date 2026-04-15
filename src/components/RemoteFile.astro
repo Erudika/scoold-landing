@@ -13,4 +13,4 @@ try {
     data = "";
 }
 ---
-<Code code={data} lang={lang} title={title} />
+{raw ? <pre class="text-wrap">{data}</pre> : <Code code={data} lang={lang} title={title} />}
