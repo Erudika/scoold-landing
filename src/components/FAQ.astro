@@ -6,6 +6,8 @@ interface Props {
 }
 const { limit } = Astro.props;
 const items = limit ? faq.items.slice(0, limit) : faq.items;
+const faqClasses = "mb-4 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight";
+const faqTitle = `${faq.title} <span class="text-brand-600">${faq.title_highlight}</span>`;
 ---
 
 <section class="bg-white section-padding" id="faq">
@@ -13,9 +15,10 @@ const items = limit ? faq.items.slice(0, limit) : faq.items;
     <!-- Section header -->
     <div class="mb-14 text-center">
       <span class="section-label">{faq.badge}</span>
-      <h2 class="mb-4 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
-        {faq.title} <span class="text-brand-600">{faq.title_highlight}</span>
-      </h2>
+      {Astro.originPathname === '/' ? 
+        <h2 class:list={faqClasses} set:html={faqTitle}></h2> :
+        <h1 class:list={faqClasses} set:html={faqTitle}></h1>
+      }
       <p class="text-slate-700 text-lg leading-relaxed">
         {faq.subtitle}
       </p>
