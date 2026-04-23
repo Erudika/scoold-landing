@@ -35,8 +35,24 @@ tableOfContents: true
             max-width: 100% !important; 
         }
     }
+    @keyframes rowHighlight {
+        0%, 80% { background-color: rgba(255, 200, 50, 0.25); }
+        100%     { background-color: transparent; }
+    }
+    tr.row-highlight {
+        animation: rowHighlight 7s ease forwards;
+    }
+    a.prop-anchor {
+        color: inherit;
+        text-decoration: none;
+    }
+    a.prop-anchor:hover::after {
+        content: ' #';
+        opacity: 0.4;
+    }
 `}
 </style>
+<script src="/scripts/row-highlight.js" is:inline></script>
 
 This page contains a full list of all configuration properties available in Scoold and Scoold Pro.
 - Most of the configuration can be updated on-the-fly, at runtime via the API or via system properties, except those settings marked with `requires restart`

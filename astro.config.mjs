@@ -4,10 +4,14 @@ import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 import tailwind from '@tailwindcss/vite';
 import { site } from "./src/data/site-data.json";
+import rehypeTableRowIds from './src/plugins/rehype-table-row-ids.mjs';
 
 export default defineConfig({
   site: site.url,
   output: 'static',
+  markdown: {
+    rehypePlugins: [rehypeTableRowIds],
+  },
   trailingSlash: 'always', // if hosted on GitHub: always !
   integrations: [// Register sitemap BEFORE Starlight to prevent Starlight adding its own version
     sitemap(), 
