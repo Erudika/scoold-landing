@@ -24,7 +24,7 @@ const {
 
 const pageTitle = title
   ? `${title} - ${site.title}`
-  : `${site.title} — ${site.tagline}`;
+  : `${site.title} - ${site.tagline}`;
 
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, site.url).toString();
 
