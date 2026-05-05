@@ -74,7 +74,7 @@
   }
 
   .sl-markdown-content ul {
-    list-style: inherit;
+    list-style: disc;
     list-style-position: inside;
   }
 }

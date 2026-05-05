@@ -38,30 +38,41 @@ scoold.mattermost.auth_enabled = false
 ## Getting started
 
 <Steps>
-1.  From the System Console, enable OAuth 2.0 Service Provider. 
-    Then, create a new trusted Mattermost OAuth 2.0 application from the Integrations 
-    section with name "Scoold". The URL of the application can be the same as your Scoold server URL. 
-    Add these two callback URLs (change them to match your Scoold server URL):
+1.  From the **System Console > Bot Accounts**, enable **Bot Account Creation**.<br/>
+    From the **System Console > Integration Management**, enable the following features:
+    - OAuth 2.0 Service Provider
+    - Incoming and Outgoing Webhooks
+    - Custom Slash commands
+    - Enable integrations to override usernames
+    - Enable integrations to override profile pictures
+
     <Image src={import(`../../../../images/mattermost/mm_step1.png`)}
       alt="Mattermost Integration Screenshot"
       class="py-5 border border-neutral-400 rounded"
       loading="eager"
     />
-2. Copy the Client ID and Client Secret of your Mattermost OAuth 2.0 application to your Scoold 
+    
+2. Go to the **Integrations Menu > OAuth 2.0 Applications**, and create a new trusted OAuth 2.0 application named **Scoold**.
+    The URL of the application can be the same as your Scoold server URL. 
+    Add these two callback URLs (change them to match your Scoold server URL):
+    ```
+    https://scoold_host/mattermost_auth
+    https://scoold_host/admin/mattermost_auth
+    ```
+    <Image src={import(`../../../../images/mattermost/mm_step2.png`)}
+      alt="Mattermost Integration Screenshot"
+      class="py-5 border border-neutral-400 rounded"
+      loading="eager"
+    />
+    Click **Save**.
+3. Copy the Client ID and Client Secret of your Mattermost OAuth 2.0 application to your Scoold 
     configuration file and also configure the location of your Mattermost server:
     ```ini title=scoold-application.conf
     scoold.mm_app_id = "{Client ID}"
     scoold.mm_secret = "{Client Secret}"
     scoold.mattermost.server_url = "http://mattermost-host:8065"
     ```
-3. Go to System Console > Integration Management and enable Incoming Webhooks, integrations to 
-    override usernames, integrations to override profile picture icons and click "Save changes":
-    <Image src={import(`../../../../images/mattermost/mm_step2.png`)}
-      alt="Mattermost Integration Screenshot"
-      class="py-5 border border-neutral-400 rounded"
-      loading="eager"
-    />
-4. Visit the "Administration" page in Scoold and click the "Add to Mattermost" button. 
+4. Go to **Scoold > Administration page** (as admin) and click the **Add to Mattermost** button. 
     This will authorize Scoold to call the Mattermost API. Then add a notification webhook 
     for each channel that you wan to receive notifications from Scoold. 
     Repeat this step for up to 10 channels.
@@ -70,10 +81,12 @@ scoold.mattermost.auth_enabled = false
       class="py-5 border border-neutral-400 rounded"
       loading="lazy"
     />
-5. You're all set! Restart Scoold and it should be fully integrated with your Mattermost workspace. 
+5. **You're all set!** Restart Scoold and it should be fully integrated with your Mattermost workspace. 
     For local testing, you may need to allow connections to `http://localhost:8000` by setting 
    `AllowedUntrustedInternalConnections: localhost` in your Mattermost `config.json`.
+   Additionally, you may have to set the Site URL in **Environment > Web Server** to `https://localhost:8065`.
 </Steps>
+
 
 ## Configuration properties
 
@@ -101,7 +114,7 @@ scoold.mattermost.default_question_tags = "via-mattermost"
 
 <Aside type="note"> 
 At the time of writing, Mattermost did not support message actions like in Slack. This means that you can't create a question from
-a any chat message. The reply dialog box can be opened from a "Reply" button under each question notification message or
+any chat message. The reply dialog box can be opened from a "Reply" button under each question notification message or
 via the `/scoold answer-form` command.
 The dialog box for new questions is opened via the new slash command `/scoold ask-form`.
 </Aside>
