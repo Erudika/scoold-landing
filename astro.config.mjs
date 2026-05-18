@@ -38,34 +38,37 @@ export default defineConfig({
         { label: 'Docs Home', link: '/documentation/' },
         { 
           label: 'Introduction',
-          autogenerate: { directory: 'documentation/intro' }
+          items: [{ autogenerate: { "directory": "documentation/intro" } }]
         },
         
         {
           label: 'Getting Started',
-          autogenerate: { directory: 'documentation/getting-started' },
+          items: [{ autogenerate: { "directory": "documentation/getting-started" } }]
         },
         {
           label: 'Deployment',
-          autogenerate: { directory: 'documentation/deployment' },
+          items: [{autogenerate: { directory: 'documentation/deployment' } }],
         },
         {
           label: 'Authentication & SSO',
-          autogenerate: { directory: 'documentation/authentication' },
+          items: [{autogenerate: { directory: 'documentation/authentication' } }],
         },
         {
           label: 'Managing Your Server',
-          autogenerate: { directory: 'documentation/managing-scoold' },
+          items: [{autogenerate: { directory: 'documentation/managing-scoold' } }],
         },
         {
           label: 'UX & UI',
-          autogenerate: { directory: 'documentation/ux-ui' },
+          items: [{autogenerate: { directory: 'documentation/ux-ui' } }],
         },
         {
           label: 'Integrations',
-          autogenerate: { directory: 'documentation/integrations' },
+          items: [{autogenerate: { directory: 'documentation/integrations' } }],
         },
-        { label: 'Reference', autogenerate: { directory: 'documentation/reference' } },
+        { 
+          label: 'Reference', 
+          items: [{autogenerate: { directory: 'documentation/reference' } }] 
+        },
       ],
       plugins: [
         //starlightContextualMenu({actions: ["copy", "view", "chatgpt", "claude"]})
