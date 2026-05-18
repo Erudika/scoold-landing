@@ -45,6 +45,31 @@ base64 localhost.key > localhost_saml_base64.key
 base64 localhost.pem > localhost_saml_base64.pem
 ```
 
+### Role mapping
+
+You can also map SAML attributes to Para user groups (roles). For example, with the following configuration:
+
+```ini title="scoold-application.conf"
+scoold.security.saml.token_delegation_enabled = true
+scoold.security.saml.groups_attribute_name = "roles"
+scoold.security.saml.mods_equivalent_attribute_value = "moderator"
+scoold.security.saml.admins_equivalent_attribute_value = "administrator"
+scoold.security.saml.users_equivalent_attribute_value = "staff"
+```
+SAML users with attribute `roles: "administrator"` will become admins in Scoold, after they log in.
+Also, if the attribute does not contain the specified value of "staff", those users will be denied access as they are not from staff.
+
+### Automatic space assignment from SAML attributes
+
+To allow Scoold to automatically pick up and assing spaces from SAML attributes, enable attribute data delegation from Para to Scoold.
+Also, specify which SAML attribute contains the space name (e.g. `spaces`). The attribute value may contain comma-separated
+list of spaces (departaments) which will be added to the user profile on login.
+
+```ini title="scoold-application.conf"
+scoold.security.saml.token_delegation_enabled = true
+scoold.security.saml.spaces_attribute_name = "spaces"
+```
+
 ## Configuration properties
 
 There are lots of configuration options but Para needs only a few of those in order to successfully

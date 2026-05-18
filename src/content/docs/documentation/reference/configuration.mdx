@@ -189,6 +189,8 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.security.ldap.password_param`<br/>LDAP password parameter name. | `password` | `String`|
 |`scoold.security.ldap.username_param`<br/>LDAP username parameter name. | `username` | `String`|
 |`scoold.security.ldap.displayname_attribute`<br/>Maps an LDAP property to the full name of the person. By default, the value of CN is used as the name of the Para user. Acceptable values are `cn`, `displayname`, `uid`, `username`, `sn`. | `cn` | `String`|
+|`scoold.security.ldap.spaces_attribute_name`<br/>LDAP attribute mapping for users' `spaces`. The spaces can be comma-separated. | `ou` | `String`|
+|`scoold.security.ldap.token_delegation_enabled`<br/>Enable/disable LDAP attributes data delegation to Scoold. | `false` | `Boolean`|
 
 ## SAML Authentication
 
@@ -220,6 +222,12 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.security.saml.security.want_xml_validation` <kbd>Pro</kbd><br/>Enable/disable SAML XML validation. | `true` | `Boolean`|
 |`scoold.security.saml.security.signature_algorithm` <kbd>Pro</kbd><br/>SAML signature algorithm. | ` ` | `String`|
 |`scoold.security.saml.domain` <kbd>Pro</kbd><br/>SAML domain name. | `paraio.com` | `String`|
+|`scoold.security.saml.spaces_attribute_name` <kbd>Pro</kbd><br/>SAML attribute mapping for users' `spaces`. The spaces can be comma-separated. | `spaces` | `String`|
+|`scoold.security.saml.token_delegation_enabled` <kbd>Pro</kbd><br/>Enable/disable SAML attributes data delegation to Scoold. | `false` | `Boolean`|
+|`scoold.security.saml.groups_attribute_name` <kbd>Pro</kbd><br/>SAML attribute mapping for users' `groups`. Use this for mapping `admin`, `mod` and `user` roles to Scoold users. | ` ` | `String`|
+|`scoold.security.saml.mods_equivalent_attribute_value` <kbd>Pro</kbd><br/>SAML attribute used for mapping SAML users having it, to moderators on Scoold. | `mod` | `String`|
+|`scoold.security.saml.admins_equivalent_attribute_value` <kbd>Pro</kbd><br/>SAML attribute used for mapping SAML users having it, to administrators on Scoold. | `admin` | `String`|
+|`scoold.security.saml.users_equivalent_attribute_value` <kbd>Pro</kbd><br/>SAML attribute used for **denying access** to SAML users **not** having it, *unless*they already have the admin or moderator roles assigned. | ` ` | `String`|
 
 ## OAuth 2.0 Authentication
 
@@ -340,7 +348,8 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.meta_description`<br/>The content inside the description `<meta>` tag. | `Scoold is friendly place for knowledge sharing and collaboration...` | `String`|
 |`scoold.meta_keywords`<br/>The content inside the keywords `<meta>` tag. | `knowledge base, knowledge sharing, collaboration, wiki...` | `String`|
 |`scoold.show_branding`<br/>Enable/disable the 'Powered by Scoold' branding in the footer. | `true` | `Boolean`|
-|`scoold.mathjax_enabled` <kbd>Pro</kbd><br/>Enable/disable support for MathJax and LaTeX for scientific expressions in Markdown. | `false` | `Boolean`|
+|`scoold.mathjax_enabled` <kbd>Pro</kbd><br/>Enable/disable support for MathJax/KaTeX/LaTeX for scientific expressions in Markdown. | `false` | `Boolean`|
+|`scoold.mermaid_enabled`<br/>Enable/disable support for Mermaid diagrams in Markdown. | `false` | `Boolean`|
 |`scoold.gravatars_enabled`<br/>Enable/disable support for Gravatars. | `true` | `Boolean`|
 |`scoold.gravatars_pattern`<br/>The pattern to use when displaying empty/anonymous gravatar pictures. | `retro` | `String`|
 |`scoold.avatar_repository` <kbd>preview</kbd><br/>The avatar repository - one of `imgur`, `cloudinary`. | ` ` | `String`|
@@ -470,6 +479,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.vote_locked_after_sec`<br/>Vote locking period, in seconds. Vote cannot be changed after this period has elapsed. Default is 30 sec. | `30` | `Integer`|
 |`scoold.downvotes_enabled`<br/>Enable/disable negative votes. | `true` | `Boolean`|
 |`scoold.import_batch_size`<br/>Maximum number objects to read and send to Para when importing data from a backup. | `100` | `Integer`|
+|`scoold.import_via_s3_enabled`<br/>Enable/disable importing archives via S3 to overcome the request size limitations. | `false` | `Boolean`|
 |`scoold.connection_retries_max`<br/>Maximum number of connection retries to Para. | `10` | `Integer`|
 |`scoold.connection_retry_interval_sec`<br/>Para connection retry interval, in seconds. | `10` | `Integer`|
 |`scoold.rewrite_inbound_links_with_fqdn`<br/>If set, links to Scoold in emails will be replaced with a public-facing FQDN. | ` ` | `String`|

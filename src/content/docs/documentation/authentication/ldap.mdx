@@ -39,13 +39,26 @@ scoold.security.ldap.admins_group_node = ""
 
 The search filter syntax allows you to use the placeholder `{0}` which gets replaced with the person's username.
 
-You can also map LDAP DN nodes to Para user groups. For example, with the following configuration:
+### Role mapping
+
+You can also map LDAP DN nodes to Para user groups (roles). For example, with the following configuration:
 ```ini title="scoold-application.conf"
 scoold.security.ldap.mods_group_node = "ou=Moderators"
 scoold.security.ldap.admins_group_node = "cn=Admins"
 ```
 LDAP users with a DN `uid=Gordon,ou=Moderators,dc=domain,dc=org` will automatically become part of the `mods` group,
 i.e. `groups: "mods"`. Similarly, if their DN contains `cn=Admins` they will become administrators, i.e. `groups: "admins"`.
+
+### Automatic space assignment from LDAP attributes
+
+To allow Scoold to automatically pick up and assing spaces from LDAP attributes, enable attribute data delegation from Para to Scoold.
+Also, specify which LDAP attribute contains the space name (e.g. `ou` - org. unit). The attribute value may contain comma-separated
+list of spaces (departaments) which will be added to the user profile on login.
+
+```ini title="scoold-application.conf"
+scoold.security.ldap.token_delegation_enabled = true
+scoold.security.ldap.spaces_attribute_name = "ou"
+```
 
 ## Active Directory (Azure AD, Entra ID)
 
