@@ -21,6 +21,17 @@ and translating it, or click the "Edit file" on GitHub.
 3. When the file is translated, [open a pull request on GitHub](https://github.com/Erudika/scoold/pulls) containing the new file
 </Steps>
 
+## Changing the language of the site
+
+You can also change the default language of Scoold for all users by adding this to your Scoold configuration:
+```ini title=scoold-application.conf
+scoold.default_language_code = "en"
+```
+Replace `"en"` with the two-letter language code of your choice.
+
+
+## List of available translations
+
 | Language | File | Progress
 --- | --- | ---
 **Albanian** | [lang_sq.properties](https://github.com/Erudika/scoold/blob/master/src/main/resources/lang_sq.properties) | ✅ [Robo Translator](https://robotranslator.ai)
@@ -70,8 +81,3 @@ and translating it, or click the "Edit file" on GitHub.
 **Ukrainian** | [lang_uk.properties](https://github.com/Erudika/scoold/blob/master/src/main/resources/lang_uk.properties) | 0%
 **Vietnamese** | [lang_vi.properties](https://github.com/Erudika/scoold/blob/master/src/main/resources/lang_vi.properties) | 0%
 
-You can also change the default language of Scoold for all users by adding this to your Scoold configuration:
-```ini title=scoold-application.conf
-scoold.default_language_code = "en"
-```
-Replace `"en"` with the two-letter language code of your choice.
