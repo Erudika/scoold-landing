@@ -16,8 +16,8 @@
     "@astrojs/starlight-tailwind": "^5.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.5",
-    "daisyui": "^5.5.19",
+    "astro": "^6.3.7",
+    "daisyui": "^5.5.20",
     "tailwindcss": "^4.3.0"
   }
 }
