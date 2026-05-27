@@ -38,10 +38,10 @@ Here are some of the highlights in this release:
 - added 🇭🇷 Croatian and 🇨🇿 Czech translations (👋🏼 Bok! Ahoj!)
 - lots of bug fixes and minor patches
 
-You can see the full changelog or download the latest `1.68.1` release here:
+You can see the full changelog or download the latest release here:
+
+👉🏼 [Download the latest version on GitHub](https://github.com/Erudika/scoold/releases/)
 
 👉🏼 [Scoold 1.68.0 Release Notes](https://github.com/Erudika/scoold/releases/tag/1.68.0)
-
-👉🏼 [Download the latest version on GitHub](https://github.com/Erudika/scoold/releases/tag/1.68.1)
 
 *Need more features?* [Scoold Pro](https://scoold.com/pricing/) combines a modern Q&A workflow inspired by Stack Overflow with enterprise-ready features like SSO, spaces, REST APIs, chat integrations, moderation tools, and cloud-ready deployment options.
