@@ -285,7 +285,7 @@
         "name": "Additional Premium Features",
         "features": [
           { "title": "Mentions {pro}", "description": "Mention anyone in your posts with @Name. Administrators can turn on an mention notifications for all users or have each user decide if they want to opt-in. Mentions make discussions better by allowing you to engage the right people." },
-          { "title": "File Uploads {pro}", "description": "Easily attach images and documents to posts. Files can either be uploaded to the local file system or to Microsoft Azure Blob Storage, AWS S3 or Imgur." },
+          { "title": "File Uploads {pro}", "description": "Easily attach images, videos and documents to posts. Files can either be uploaded to the local file system or to Microsoft Azure Blob Storage, AWS S3 or Imgur." },
           { "title": "Sticky & Favorite Posts", "description": "Questions marked as \"sticky\" will always appear on top, before all the others. You can also mark your favorite questions with ♥ and they'll be saved to your profile." },
           { "title": "Anonymous Posts", "description": "This can either be enabled or disabled. When enabled, anybody will be able to ask a question or submit an answer. This lowers the barrier for new users and increases engagement." },
           { "title": "Wiki-Style Answers", "description": "Make your answers editable by everyone by checking the \"wiki\" checkbox. This is useful if you want to allow everyone to contribute to the knowledge around a question, regardless of their reputation points." },
@@ -334,7 +334,7 @@
         ["Maximum number of spaces", "10", "unlimited", "unlimited"],
         ["Maximum number of admins", "1", "unlimited", "unlimited"],
         ["Whitelisted identity domains", "1", "unlimited", "unlimited"],
-        ["File uploads", false, true, true],
+        ["File uploads (any file)", false, true, true],
         ["Security notifications", false, true, true],
         ["Account suspension", false, true, true],
         ["Slack / Mattermost / Teams integration", false, true, true],
