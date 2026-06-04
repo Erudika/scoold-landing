@@ -122,6 +122,9 @@ scoold.ms_secret = ""
 
 scoold.teams.bot_id = ""
 scoold.teams.bot_secret = ""
+# alternative service paths: /amer/ or /in/
+scoold.teams.bot_service_url = "https://smba.trafficmanager.net/emea/"
+scoold.teams.bot_tenant_id = "common" # separate from ms_tenant_id
 scoold.teams.map_workspaces_to_spaces = true
 scoold.teams.map_channels_to_spaces = false
 scoold.teams.post_to_space = "workspace|scooldspace:myspace|default"
@@ -165,3 +168,33 @@ scoold.posts_need_approval = true
 When a new question or answer is created by a user with less
 reputation than the threshold, a notification message will be sent to Slack/Mattermost/Teams, giving you the option to
 either approve or delete that post. The action can only be performed by moderators.
+
+## Troubleshooting
+
+There is a common issue with the MS Teams integration where users report `401` errors when using the Scoold bot. These errors
+are usually due to the fact that their app registration is of the wrong tenancy type.
+
+You should see `401` errors like this one in the Scoold logs:
+```
+[ERROR] Bot Framework API request to 
+  https://smba.trafficmanager.net/emea/v3/conversations failed with status 401: 
+  {message=Authorization has been denied for this request.}
+```
+The Teams bot integration requires a **multi-tenant** app registration, **not single-tenant**.
+
+<Image src={import(`../../../../images/microsoft-teams/teams_tenancy.png`)}
+  alt="Teams Integration Screenshot"
+  class="py-5 border border-neutral-400 rounded"
+  loading="lazy"
+/>
+You can check that by going to your Azure Portal > App registrations or find it by UUID (same as for `scoold.ms_app_id`).  > Go to Manifest sub menu > Check signInAudience:
+<Image src={import(`../../../../images/microsoft-teams/teams_tenancy2.png`)}
+  alt="Teams Integration Screenshot"
+  class="py-5 border border-neutral-400 rounded"
+  loading="lazy"
+/>
+
+**Solutions:**
+
+- Change app registration to **multi-tenant**
+- Remove the `scoold.ms_tenant_id` property from your Scoold configuration
