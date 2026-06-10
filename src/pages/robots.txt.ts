@@ -6,6 +6,22 @@ Allow: /
 Disallow: /imprint
 Disallow: /imprint/impressum
 
+# AI crawler directives
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: ${sitemapURL.href}
 `;
 

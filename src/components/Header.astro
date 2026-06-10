@@ -131,7 +131,7 @@ const icons: Record<string, string> = {
       </div>
 
       <!-- Mobile menu button -->
-      <label class="md:hidden bg-transparent hover:bg-transparent rounded-lg transition-all animate-fade-in btn btn-circle swap swap-rotate">
+      <label class="md:hidden bg-transparent hover:bg-transparent rounded-lg transition-all animate-fade-in btn btn-circle swap swap-rotate" aria-label="Toggle navigation menu">
         <!-- this hidden checkbox controls the state -->
         <input id="mobile-menu-btn" type="checkbox" />
         <svg
@@ -249,7 +249,8 @@ const icons: Record<string, string> = {
     btn.setAttribute('aria-expanded', String(!isOpen));
   });
 
-  // Add shadow on scroll
+  // Respect reduced motion when adding shadow on scroll
+  const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
   const header = document.getElementById('nav-header');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 10) {
@@ -257,5 +258,5 @@ const icons: Record<string, string> = {
     } else {
       header?.classList.remove('shadow-sm');
     }
-  });
+  }, { passive: true });
 </script>

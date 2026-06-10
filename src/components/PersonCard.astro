@@ -9,7 +9,7 @@ const { person = authors.filter((p) => p.email === email)[0] } = Astro.props;
 <div class="flex items-center gap-3 bg-base-100 px-4 py-4 border border-base-300 rounded-[10px]">
     <div>
         <Image src={import(`../images/blog/${person.avatar}.jpeg`)}
-        alt="Avatar"
+        alt={`${person.name}'s avatar`}
         width=200
         height=200
         loading="lazy"

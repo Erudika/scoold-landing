@@ -1,4 +1,6 @@
 {
+    "name": "Scoold",
+    "short_name": "Scoold",
     "orientation": "any",
     "display": "standalone",
     "dir": "auto",
@@ -7,6 +9,7 @@
     "scope": "https://scoold.com",
     "description": "Scoold is an open source Q&A platform for your team.",
     "id": "https://scoold.com",
+    "categories": ["business", "productivity", "education"],
     "icons":
     [
         {

@@ -63,13 +63,33 @@ const defaultJsonLd = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preconnect" href="https://matomo.fixproperty.eu" />
+    <link rel="dns-prefetch" href="https://matomo.fixproperty.eu" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <SEOHead title={pageTitle} description={description} canonical={canonical} image={ogImage} jsonLd={jsonLd ?? defaultJsonLd} />
+    <script type="speculationrules">
+      {
+        "prefetch": [{
+          "source": "document",
+          "where": { "href_matches": "/*" },
+          "eagerness": "moderate"
+        }]
+      }
+    </script>
   </head>
 
-  <body class="bg-white min-h-screen text-base-content antialiased">
+  <body class="bg-white min-h-screen text-base-content antialiased scrollbar-gutter-stable">
+    <a href="#main-content" class="fixed -top-40 left-4 z-[100] bg-slate-900 px-4 py-2 rounded-b-lg font-semibold text-white text-sm focus:top-0 transition-all duration-200 focus:outline-2 focus:outline-brand-400 focus:outline-offset-2">
+      Skip to main content
+    </a>
     <div class="flex flex-col min-h-screen">
       <Header />
-      <main class="flex-1">
+      <main id="main-content" class="flex-1" tabindex="-1">
         <slot />
       </main>
       <Footer />

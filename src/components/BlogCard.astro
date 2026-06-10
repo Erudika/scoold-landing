@@ -58,14 +58,14 @@ const formatDate = (dateStr: string): string => new Date(dateStr).toLocaleDateSt
     <div class="flex items-center gap-3 text-slate-600 text-xs">
       <span>
           <Image src={import(`../images/blog/${authorObj.avatar}.jpeg`)}
-          alt="Avatar"
+          alt={`${authorObj.name}'s avatar`}
           width=64
           height=64
           loading="eager"
           class="inline-block bg-indigo-600 rounded-full w-6 h-6"/> {authorObj.name.substring(0, authorObj.name.indexOf(" "))}
       </span>
       <time datetime={date}>{formatDate(date)}</time>
-      <span class="flex items-center gap-1 group-hover:gap-2 ml-auto font-semibold text-brand-600 transition-all">
+      <span class="flex items-center gap-1 group-hover:gap-2 ml-auto font-semibold text-brand-600 transition-all" aria-label={`Read more about ${title}`}>
         {blog_page.read_more_label}
         &rarr;
       </span>

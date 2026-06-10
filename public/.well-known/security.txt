@@ -1,0 +1,10 @@
+# Security contact for scoold.com
+# This file makes it easy for security researchers to report vulnerabilities
+# See https://securitytxt.org/
+
+Canonical: https://scoold.com/.well-known/security.txt
+Contact: mailto:support@scoold.com
+Contact: https://github.com/Erudika/scoold/security/advisories/new
+Policy: https://github.com/Erudika/scoold/security/policy
+Preferred-Languages: en, de
+Expires: 2027-06-10T00:00:00.000Z

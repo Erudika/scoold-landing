@@ -145,25 +145,6 @@
   }
 }
 
-/* Smooth scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
-}
-
-*::-webkit-scrollbar {
-  width: 6px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
-  border-radius: 3px;
-}
-
 /* Typography prose overrides */
 .prose a {
   @apply text-brand-600 hover:underline no-underline;
@@ -200,4 +181,68 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Accessibility: visible focus indicators */
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Remove default outline for mouse users only */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch target minimum size for interactive elements */
+/* a, button, summary, input, select, textarea, [tabindex]:not([tabindex="-1"]) {
+  min-height: 44px;
+}
+a, button, summary, [tabindex]:not([tabindex="-1"]) {
+  min-width: 44px;
+} */
+
+/* Scrollbar gutter stability */
+.scrollbar-gutter-stable {
+  scrollbar-gutter: stable;
+}
+
+/* Dynamic viewport units for mobile */
+.min-h-screen {
+  min-height: 100dvh;
+}
+.h-screen {
+  height: 100dvh;
+}
+
+/* Smooth scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
 }

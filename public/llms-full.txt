@@ -1,0 +1,41 @@
+# Scoold - Full Content Index
+
+This file contains the complete content of scoold.com for LLM consumption.
+
+## About
+
+Scoold is a privacy-first, self-hosted Q&A / forum / knowledge-base platform for teams, built as a lightweight Java web app that relies on a separate backend service (Para) for data persistence, search indexing, and other backend operations.
+
+## Quick Links
+
+- Website: https://scoold.com
+- Demo: https://demo.scoold.com
+- Documentation: https://scoold.com/documentation/
+- GitHub: https://github.com/Erudika/scoold
+- Pricing: https://scoold.com/pricing/
+- Blog: https://scoold.com/blog/
+
+## Key Pages
+
+- Features: https://scoold.com/features/
+- Pricing: https://scoold.com/pricing/
+- Download: https://scoold.com/download/
+- Documentation: https://scoold.com/documentation/
+- FAQ: https://scoold.com/faq/
+
+## Solutions
+
+- Knowledge Base: https://scoold.com/solutions/scoold-as-knowledge-base/
+- Community Forum: https://scoold.com/solutions/scoold-as-community-forum/
+- Developer Hub: https://scoold.com/solutions/scoold-as-developer-hub/
+- Support Center: https://scoold.com/solutions/scoold-as-support-center/
+- Q&A Platform: https://scoold.com/solutions/scoold-as-questions-and-answers-platform/
+- Issue Tracker: https://scoold.com/solutions/scoold-as-issue-tracker/
+
+## Integrations
+
+- Slack: https://scoold.com/integration-with/slack/
+- Microsoft Teams: https://scoold.com/integration-with/microsoft-teams/
+- Mattermost: https://scoold.com/integration-with/mattermost/
+- Zapier: https://scoold.com/integration-with/zapier/
+- n8n: https://scoold.com/integration-with/n8n/

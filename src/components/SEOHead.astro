@@ -16,13 +16,13 @@ const jsonLdList = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
 <link rel="canonical" href={canonical} />
 
 
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; frame-ancestors 'none'">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
-<!-- <meta http-equiv="X-Frame-Options" content="DENY"> -->
-<meta http-equiv="Permissions-Policy" content="geolocation 'self' https://scoold.com; microphone 'none'">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Permissions-Policy" content="geolocation=(self &quot;https://scoold.com&quot;), microphone=(), camera=(), usb=(), payment=(), fullscreen=(self)">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta http-equiv="Strict-Transport-Security" content="max-age=2592000; includeSubDomains; preload">
-<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+<meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
+<meta name="robots" content="index, follow, max-image-preview:large">
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
@@ -43,6 +43,10 @@ const jsonLdList = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-title" content={site.title} />
 <link rel="manifest" href="/manifest.json" />
+
+<!-- Feed discovery -->
+<link rel="alternate" type="application/rss+xml" title="Scoold Blog" href="/blog/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Scoold Blog (Atom)" href="/blog/atom.xml" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -66,10 +70,9 @@ const jsonLdList = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
     <script type="application/ld+json" set:html={JSON.stringify(entry)} />
   ))}
 
-<!-- Matomo -->
+<!-- Matomo - privacy-respecting analytics (cookieless) -->
 <script>
   var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   _paq.push(["setDoNotTrack", true]);
   _paq.push(["disableCookies"]);
   _paq.push(['trackPageView']);
@@ -79,7 +82,7 @@ const jsonLdList = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
     _paq.push(['setTrackerUrl', u+'matomo.php']);
     _paq.push(['setSiteId', '2']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
 <noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="https://matomo.fixproperty.eu/matomo.php?idsite=2&amp;rec=1" style="border:0;" alt="" /></p></noscript>
