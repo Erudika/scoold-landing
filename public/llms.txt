@@ -1,5 +1,7 @@
 # Scoold
 
+> Full content index: https://scoold.com/llms-full.txt
+
 Scoold is a privacy-first, self-hosted Q&A / forum / knowledge-base platform for teams, built as a lightweight Java web app that relies on a separate backend service (Para) for data persistence, search indexing, and other backend operations. It is available as an open-source (Apache 2.0) Community Edition and as commercial editions (Scoold Pro and Pro + Source) that add enterprise SSO/provisioning, chat integrations, file uploads, and additional admin/security features; alternatively it can be consumed as a fully managed Scoold Pro Hosting subscription via Scoold Cloud, which includes automatic updates, backups, and security patches. 
 
 ## Product Overview

@@ -59,6 +59,7 @@ const breadcrumbJsonLd = {
   title={blogTag.titleTemplate.replace("{tag}", tag)}
   description={blogTag.descriptionTemplate.replace("{tag}", tag)}
   jsonLd={breadcrumbJsonLd}
+  noindex={true}
 >
   <section class="py-16">
     <div class="section-shell">
@@ -66,7 +67,7 @@ const breadcrumbJsonLd = {
         { label: breadcrumbs.home, href: "/" },
         { label: breadcrumbs.tags, href: "/blog/tags/" },
         { label: tag, href: `/blog/tags/${tag}/` }
-      ]} />
+      ]} noSchema={true} />
       <h1 class="mt-6 font-semibold text-base-content text-4xl">{tag}</h1>
       <p class="mt-4 max-w-2xl text-base-content/70 text-lg">
         {blogTag.body.replace("{tag}", tag)}

@@ -54,6 +54,7 @@ const breadcrumbJsonLd = {
   title={blogPage.titleTemplate.replace("{page}", String(page))}
   description={blogPage.description}
   jsonLd={breadcrumbJsonLd}
+  noindex={true}
 >
   <section class="py-16">
     <div class="section-shell">
@@ -61,7 +62,7 @@ const breadcrumbJsonLd = {
         { label: breadcrumbs.home, href: "/" },
         { label: breadcrumbs.blog, href: "/blog/" },
         { label: `${breadcrumbs.pagePrefix} ${page}`, href: `/blog/page/${page}/` }
-      ]} />
+      ]} noSchema={true} />
       <h1 class="mt-6 font-semibold text-base-content text-4xl">{blogPage.title}</h1>
       <p class="mt-4 max-w-2xl text-base-content/70 text-lg">{blogPage.body}</p>
       <div class="mt-4">

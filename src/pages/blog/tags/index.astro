@@ -41,9 +41,10 @@ const breadcrumbJsonLd = {
   <section class="py-16">
     <div class="section-shell">
       <Breadcrumbs items={[
-        { label: components.breadcrumbs.home, href: "/" }, 
-        { label: components.breadcrumbs.blog, href: "/blog/" }, 
-        { label: components.breadcrumbs.tags, href: "/blog/tags/" }]} 
+        { label: components.breadcrumbs.home, href: "/" },
+        { label: components.breadcrumbs.blog, href: "/blog/" },
+        { label: components.breadcrumbs.tags, href: "/blog/tags/" }]}
+        noSchema={true}
       />
       <h1 class="mt-6 font-semibold text-base-content text-4xl">{blogTags.title}</h1>
       <p class="mt-4 max-w-2xl text-base-content/70 text-lg">{blogTags.body}</p>

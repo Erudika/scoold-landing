@@ -1,9 +1,24 @@
 ---
-import { components } from "../data/site-data.json";
+import { components, site } from "../data/site-data.json";
 
 const { breadcrumbs } = components;
-const { items = [] } = Astro.props;
+const { items = [], noSchema = false } = Astro.props;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.label,
+    item: item.href.startsWith("http") ? item.href : `${site.url}${item.href}`
+  }))
+};
 ---
+
+{!noSchema && items.length > 0 && (
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+)}
 
 <nav aria-label="Breadcrumb" class="text-slate-700 text-xs uppercase tracking-widest">
   <ol class="flex flex-wrap items-center gap-2">

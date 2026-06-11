@@ -10,6 +10,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  ogType?: string;
   jsonLd?: object;
   canonicalUrl?: string;
 }
@@ -20,6 +21,8 @@ const {
   ogImage = '/og-default.png',
   jsonLd,
   canonicalUrl,
+  noindex = false,
+  ogType = 'website',
 } = Astro.props;
 
 const pageTitle = title
@@ -28,34 +31,72 @@ const pageTitle = title
 
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, site.url).toString();
 
-const defaultJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: site.title,
-  description: site.description,
-  url: site.url,
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Any',
-  offers: [
-    {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'EUR',
-      description: 'Scoold Community - free, open source',
-    },
-    {
-      '@type': 'Offer',
-      price: '499',
-      priceCurrency: 'EUR',
-      description: 'Scoold Pro - one-time license',
-    },
-  ],
-  author: {
+const siteSchemas = [
+  {
+    '@context': 'https://schema.org',
     '@type': 'Organization',
     name: site.company,
-    url: imprint.impressum.website,
-  }
-};
+    url: site.url,
+    logo: `${site.url}/logo.png`,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: site.contact,
+      contactType: 'customer support',
+    },
+    sameAs: [
+      site.github,
+      site.dockerhub,
+      'https://x.com/getscoold',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: site.title,
+    url: site.url,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${site.url}/documentation/?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  },
+];
+
+const defaultJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: site.title,
+    description: site.description,
+    url: site.url,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Any',
+    offers: [
+      {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'EUR',
+        description: 'Scoold Community - free, open source',
+      },
+      {
+        '@type': 'Offer',
+        price: '499',
+        priceCurrency: 'EUR',
+        description: 'Scoold Pro - one-time license',
+      },
+    ],
+    author: {
+      '@type': 'Organization',
+      name: site.company,
+      url: imprint.impressum.website,
+    }
+  },
+  ...siteSchemas,
+];
+
+const pageJsonLd = jsonLd
+  ? [...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]), ...siteSchemas]
+  : defaultJsonLd;
 ---
 
 <!DOCTYPE html>
@@ -71,7 +112,7 @@ const defaultJsonLd = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <SEOHead title={pageTitle} description={description} canonical={canonical} image={ogImage} jsonLd={jsonLd ?? defaultJsonLd} />
+    <SEOHead title={pageTitle} description={description} canonical={canonical} image={ogImage} jsonLd={pageJsonLd} noindex={noindex} ogType={ogType} />
     <script type="speculationrules">
       {
         "prefetch": [{

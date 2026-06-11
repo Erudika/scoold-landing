@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Scoold",
-    "tagline": "The most efficient way to share knowledge within your team or organization",
+    "tagline": "Self-Hosted Q&A Platform & Knowledge Base for Teams",
     "description": "Scoold is open source and works great as a Q&A platform, forum, knowledge base or customer support tool. Deploy on-premises or to any cloud in minutes.",
     "url": "https://scoold.com",
     "github": "https://github.com/Erudika/scoold",
@@ -10,7 +10,7 @@
     "cloud": "https://cloud.scoold.com",
     "contact": "support@scoold.com",
     "company": "Erudika Ltd.",
-    "companyUrl": "",
+    "companyUrl": "https://erudika.com",
     "companyLogo": "https://erudika.com/logo.png",
     "pricePro": "499",
     "priceProPlus": "1999",
@@ -159,9 +159,9 @@
   },
   "hero": {
     "badge": "Deploy Scoold in minutes on <a class=\"underline\" href=\"/cloud-hosting/\">Scoold Cloud</a>!",
-    "title": "The most effective way to share <span class=\"text-brand-500\">knowledge</span> within your team or organization",
+    "title": "The self-hosted Q&amp;A platform and <span class=\"text-brand-500\">knowledge base</span> for your team",
     "title_highlight": "knowledge",
-    "subtitle": "Scoold is a privacy-first, self-hosted Q&A platform, forum, and knowledge base platform for your team. ",
+    "subtitle": "Scoold is a privacy-first, self-hosted Q&A platform, forum, and knowledge base for your team.",
     "primary_cta": {
       "label": "Download Free",
       "href": "/download/"
@@ -190,7 +190,7 @@
     }
   },
   "stats": [
-    { "value": "1000+", "label": "Instanced deployed" },
+    { "value": "1000+", "label": "Instances deployed" },
     { "value": "5M+", "label": "Downloads on Docker Hub" },
     { "value": "4.9/5", "label": "Customers satisfaction" },
     { "value": "{years}", "label": "Years active" }
@@ -352,7 +352,7 @@
     "title_short": "Pricing",
     "description": "Simple one-time pricing for Scoold. Free open-source Community edition, Scoold Pro, or Scoold Pro with Source. No subscriptions, no per-seat fees.",
     "subtitle": "No subscriptions. No per-seat fees. A one-time license fee and it's yours forever.",
-    "note": "🛈 Scoold Pro licenses include free updates and support for 12 months after purchase. Prices shown above are for a single license valid for one Scoold Pro instance running in production.",
+    "note": "🛈 Scoold Pro licenses include free updates and support for 12 months after purchase. Prices shown above are for a single license valid for one Scoold Pro instance running in production. You'll  be redirected to our secure checkout page (paraio.com).",
     "compare_features_label": "Compare all features",
     "compare_features_href": "/features/",
     "enterprise": {
@@ -612,7 +612,7 @@
       "badge": "INTEGRATIONS",
       "title": "Scoold works with the tools",
       "title_highlight": "you love",
-      "description": "Connect Scoold to the tools your team already uses and loves. There are limitless integration points with Scood's flexible API."
+      "description": "Connect Scoold to the tools your team already uses and loves. There are limitless integration points with Scoold's flexible API."
     },
     "comparison": {
       "badge": "COMPARISONS",
@@ -714,7 +714,7 @@
         { "title": "Expert Identification", "description": "Reputation system surfaces your internal experts. Additionally, you can add expert badges to highlight top talent." },
         { "title": "Version History", "description": "Full edit history for every post. Track who changed what and when. Any revision can be restored if something goes wrong." }
       ],
-      "use_cases": ["Onboarding New Employees", "Engineering Notes", "Product Documentation", "Customer Cupport Escalations"],
+      "use_cases": ["Onboarding New Employees", "Engineering Notes", "Product Documentation", "Customer Support Escalations"],
       "cta": { "label": "Build your knowledge base", "href": "/download/" }
     },
     {

@@ -35,7 +35,8 @@ const articleJsonLd = {
   dateModified: post.data.date.toISOString(),
   author: {
     "@type": "Person",
-    name: author.name
+    name: author.name,
+    url: `${baseUrl}/blog/`
   },
   publisher: {
     "@type": "Organization",
@@ -66,6 +67,7 @@ const breadcrumbJsonLd = {
   description={post.data.excerpt}
   ogImage={heroImageUrl.src}
   jsonLd={[articleJsonLd, breadcrumbJsonLd]}
+  ogType="article"
 >
   <div class="bg-white border-slate-100" style={`background-image: url('${herobg.src}')`}>
     <div class="py-5">
@@ -81,7 +83,7 @@ const breadcrumbJsonLd = {
           <Breadcrumbs items={[
             { label: breadcrumbs.home, href: "/" },
             { label: breadcrumbs.blog, href: "/blog/" }
-          ]} />
+          ]} noSchema={true} />
 
           <h1 class="my-7 font-semibold text-base-content text-4xl">{post.data.title}</h1>
           <div class="flex flex-wrap justify-center gap-3 mt-4 text-slate-700 text-sm">
