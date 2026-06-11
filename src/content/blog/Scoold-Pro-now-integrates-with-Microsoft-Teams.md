@@ -30,7 +30,7 @@ can compose questions and answers, search for content, people and tags on Scoold
 Notifications from Scoold to Teams are sent as proactive messages and there's even support for personal DMs when you 
 somebody comments on your posts in Scoold.
 
-You can follow the [mini getting started page](https://scoold.com/teams.html) for detailed installation instructions.
+You can follow the [mini getting started page](https://scoold.com/integration-with/microsoft-teams/) for detailed installation instructions.
 The main steps to get Scoold working with Teams are as follows:
 
 1. Visit the Azure Poral and create an OAuth 2.0 web application client so that Scoold users can login with Microsoft

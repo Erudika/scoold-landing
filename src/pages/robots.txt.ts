@@ -8,7 +8,7 @@ Disallow: /imprint/impressum
 
 # AI crawler directives
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: Claude-Web
 Allow: /
@@ -17,7 +17,7 @@ User-agent: Google-Extended
 Allow: /
 
 User-agent: CCBot
-Disallow: /
+Allow: /
 
 User-agent: PerplexityBot
 Allow: /
