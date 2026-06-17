@@ -16,7 +16,7 @@ export default defineConfig({
   integrations: [// Register sitemap BEFORE Starlight to prevent Starlight adding its own version
     sitemap(), 
     starlight({
-      title: 'Documentation',
+      title: 'Scoold Documentation',
       logo: {
         light: './src/images/logo.svg',
         dark: './src/images/footer-logo.svg',

@@ -6,6 +6,7 @@ sidebar:
 ---
 
 import { Image } from 'astro:assets';
+import { Code } from '@astrojs/starlight/components';
 
 Scoold supports [↗ Markown](https://markdownlivepreview.dev/cheatsheet) for authoring content, and the GFM flavor in particular.
 There's a rich content editor for writing long text like questions and answers.
@@ -28,7 +29,42 @@ Each post can have a number of attachments - files (`pro` only), tags, audio, vi
     loading="eager"
 />
 
-
 Every content modification (to question or answer) is preserved in a "revision". Past revisions can be restored by the author or moderators.
+
+### Diagrams and formulas
+
+You can also add Mermaid diagrams directly in your Markdown posts. This feature makes it super easy to share your diagrams 
+and drawings with your team, or ask your AI assistant to save them for you inside Scoold. This feature is enabled with the following configuration:
+
+```ini title=scoold-application.conf
+scoold.mermaid_enabled = true
+```
+
+An inside your post you can add the diagram syntax like so:
+
+<Code code="```mermaid
+graph TD
+    accTitle: Basic Mermaid diagram example
+    accDescr: Simple flowchart showing nodes A, B, C, and D with connections between them.
+
+A-->B;
+A-->C;
+B-->D;
+C-->D;
+```" lang="markdown" title="Mermaid syntax" />
+
+
+Another cool feature is the support for MathML formulas and scientific notation. Scoold integrates with KaTeX, the fastest math typesetting library for the web.
+Previously we used MathJax but recently migrated to KaTeX because it's more lightweight. To enable this feature add the following configuration:
+
+```ini title=scoold-application.conf
+scoold.mathjax_enabled = true
+```
+
+You can add expressions in your Markdown posts like this:
+
+<Code code="$$\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$" lang="text" title="KaTeX syntax" />
+
+
 
 

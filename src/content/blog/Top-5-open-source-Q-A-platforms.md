@@ -22,7 +22,7 @@ in mind that **the list is not ordered in any way**.
 
 ![Blog media](../../images/blog/discourse.png)
 
-**Website:** [https://www.discourse.org](https://www.discourse.org)<br>
+**Website:** [Discourse website](https://www.discourse.org)<br>
 **Language:** Ruby, Rails <br>
 **Database:** PostgreSQL<br>
 **License:** GPL 2 <br>
@@ -33,7 +33,7 @@ in mind that **the list is not ordered in any way**.
 
 ![Blog media](../../images/blog/scoold3.png)
 
-**Website:** [https://scoold.com](https://scoold.com)<br>
+**Website:** [Scoold website](https://scoold.com)<br>
 **Language:** Java, Spring<br>
 **Database:** Any (database agnostic)<br>
 **License:** Apache 2.0<br>
@@ -44,7 +44,7 @@ in mind that **the list is not ordered in any way**.
 
 ![Blog media](../../images/blog/askbot.png)
 
-**Website:** [https://askbot.com](https://askbot.com)<br>
+**Website:** [Askbot website](https://askbot.com)<br>
 **Language:** Python, Django <br>
 **Database:** MySQL, PostgreSQL<br>
 **License:** GPL 3<br>
@@ -55,7 +55,7 @@ in mind that **the list is not ordered in any way**.
 
 ![Blog media](../../images/blog/vanilla.png)
 
-**Website:** [https://open.vanillaforums.com](https://open.vanillaforums.com/)<br>
+**Website:** [Vanilla forums website](https://open.vanillaforums.com/)<br>
 **Language:** PHP <br>
 **Database:** MySQL <br>
 **License:** GPL 2 <br>
@@ -66,7 +66,7 @@ in mind that **the list is not ordered in any way**.
 
 ![Blog media](../../images/blog/q2a.png)
 
-**Website:** [https://www.question2answer.org](https://www.question2answer.org)<br>
+**Website:** [Q2A website](https://www.question2answer.org)<br>
 **Language:** PHP <br>
 **Database:** MySQL<br>
 **License:** GPL 2<br>

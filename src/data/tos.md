@@ -1,4 +1,4 @@
-# Scoold Cloud Terms of Service
+## Scoold Cloud Terms of Service
 
 These Terms of Service ("Agreement") govern your access to and use of this website, Scoold Cloud website, services, and related applications, including Scoold Pro (collectively, the "Service"), operated by Erudika Ltd., 4 Lelinska Chuka Street, 1618 Sofia, Bulgaria ("Erudika", "we", "us").
 

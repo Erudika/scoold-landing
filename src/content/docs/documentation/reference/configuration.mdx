@@ -139,6 +139,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.csp_font_sources`<br/>Additional sources to add to the `font-src` CSP directive. Used when adding external fonts to the site. | ` ` | `String`|
 |`scoold.csp_style_sources`<br/>Additional sources to add to the `style-src` CSP directive. Used when adding external fonts to the site. | ` ` | `String`|
 |`scoold.cors_enabled` <kbd>requires restart</kbd><br/>Enable/disable the CORS filter. It adds CORS headers to API responses. | `true` | `Boolean`|
+|`scoold.cors_allowed_origins` <kbd>requires restart</kbd><br/>Comma-separated list of allowed origins for CORS. Leave empty to allow the same origin only. | ` ` | `String`|
 
 ## Basic Authentication
 
@@ -269,6 +270,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.wiki_answers_enabled` <kbd>Pro</kbd><br/>Enable/disable the ability for users to create wiki-style answers, editable by everyone. | `true` | `Boolean`|
 |`scoold.media_recording_allowed` <kbd>Pro</kbd><br/>Enable/disable support for attaching recorded videos and voice messages to posts. | `true` | `Boolean`|
 |`scoold.delete_protection_enabled`<br/>Enable/disable the ability for authors to delete their own question, when it already has answers and activity. | `true` | `Boolean`|
+|`scoold.rate_limited_posting_enabled`<br/>Enable/disable rate limiting for new posts - 2 per min., 30 per hour, 50 per day (for questions)  and 2 per min., 50 per hour, 100 per day (for answers), per authenticated user. | `true` | `Boolean`|
 |`scoold.max_text_length`<br/>The maximum text length of each post (question or answer). Longer content will be truncated. | `20000` | `Integer`|
 |`scoold.max_tags_per_post`<br/>The maximum number of tags a question can have. The minimum is 0 - then the default tag is used. | `5` | `Integer`|
 |`scoold.min_tags_per_post`<br/>The minimum number of tags a question must have. The minimum is 0. | `0` | `Integer`|
@@ -324,6 +326,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.uploads_enabled` <kbd>Pro</kbd><br/>Enable/disable file uploads. | `true` | `Boolean`|
 |`scoold.file_uploads_dir` <kbd>Pro</kbd><br/>The directory (local or in the cloud) where files will be stored. | `uploads` | `String`|
 |`scoold.uploads_require_auth` <kbd>Pro</kbd><br/>Enable/disable the requirement that uploaded files can only be accessed by authenticated users. | `false` | `Boolean`|
+|`scoold.presigned_uploads_ttl_sec` <kbd>Pro</kbd><br/>Validity period for presigned links to uploaded files, in seconds. If set to 0, the feature is essentially disabled. If set to -1, presigned links never expire. Defaults is 600s. | `600` | `Boolean`|
 |`scoold.allowed_upload_formats` <kbd>Pro</kbd><br/>A comma-separated list of allowed MIME types in the format `extension:mime_type`, e.g.`py:text/plain` or just the extensions `py,yml` | ` ` | `String`|
 |`scoold.s3_bucket` <kbd>Pro</kbd><br/>AWS S3 bucket name as target for storing files. | ` ` | `String`|
 |`scoold.s3_path` <kbd>Pro</kbd><br/>AWS S3 object prefix (directory) inside the bucket. | ` ` | `String`|
@@ -332,6 +335,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.s3_access_key` <kbd>Pro</kbd><br/>AWS S3 access key. | ` ` | `String`|
 |`scoold.s3_secret_key` <kbd>Pro</kbd><br/>AWS S3 secret key. | ` ` | `String`|
 |`scoold.blob_storage_account` <kbd>Pro</kbd><br/>Azure Blob Storage account ID. | ` ` | `String`|
+|`scoold.blob_storage_key` <kbd>Pro</kbd><br/>Azure Blob Storage account key (Base64-encoded) for generating SAS tokens. | ` ` | `String`|
 |`scoold.blob_storage_token` <kbd>Pro</kbd><br/>Azure Blob Storage token. | ` ` | `String`|
 |`scoold.blob_storage_container` <kbd>Pro</kbd><br/>Azure Blob Storage container. | ` ` | `String`|
 |`scoold.blob_storage_path` <kbd>Pro</kbd><br/>Azure Blob Storage path prefix (subfolder) within a container. | ` ` | `String`|
@@ -440,6 +444,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.teams.bot_id` <kbd>Pro</kbd><br/>Teams bot ID. | ` ` | `String`|
 |`scoold.teams.bot_secret` <kbd>Pro</kbd><br/>Teams bot secret key. | ` ` | `String`|
 |`scoold.teams.bot_service_url` <kbd>Pro</kbd><br/>Teams bot service URL. | `https://smba.trafficmanager.net/emea/` | `String`|
+|`scoold.teams.bot_tenant_id` <kbd>Pro</kbd><br/>Teams bot tenant ID - this is separate from `ms_tenant_id` as that one is in conflict with some bot requests. | `common` | `String`|
 |`scoold.teams.notify_on_new_answer` <kbd>Pro</kbd><br/>Enable/disable the ability for Scoold to send notifications to Teams for new answers. | `true` | `Boolean`|
 |`scoold.teams.notify_on_new_question` <kbd>Pro</kbd><br/>Enable/disable the ability for Scoold to send notifications to Teams for new questions. | `true` | `Boolean`|
 |`scoold.teams.notify_on_new_comment` <kbd>Pro</kbd><br/>Enable/disable the ability for Scoold to send notifications to Teams for new comments. | `true` | `Boolean`|
@@ -498,3 +503,4 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.config_editing_enabled`<br/>Enable/disable live configuration editing for admins on the Administration page. | `true` | `Boolean`|
 |`scoold.ai_training_allowed`<br/>Enable/disable permission for AI training on content from the website, using the new RSL standard. | `false` | `Boolean`|
 |`scoold.mcp_server_mode`<br/>Enable/disable the MCP server. Possible values: `off`, `r` - read-only, `rw` - full access. | `off` | `String`|
+|`scoold.onboarding_enabled`<br/>Enable/disable the onboarding wizard when Scoold is initially started without any data. | `true` | `Boolean`|

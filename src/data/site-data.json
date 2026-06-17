@@ -66,7 +66,9 @@
   "blogTags": {
     "eyebrow": "Tags",
     "title": "Browse by topic",
-    "body": "Quick entry points into Para, Scoold, cloud, and release updates."
+    "body": "Quick entry points into Para, Scoold, cloud, and release updates.",
+    "latestHeading": "The latest from our blog",
+    "latestBody": "Catch up on recent posts about Scoold, Para, product updates, and best practices."
   },
   "blogTag": {
     "eyebrow": "Tag",
@@ -682,7 +684,7 @@
     "description": "The Scoold blog - guides, tutorials, and insights on knowledge management, team collaboration, and enterprise Q&A.",
     "subtitle": "Tutorials, best practices, and insights on knowledge sharing, team collaboration, and getting the most from Scoold.",
     "read_more_label": "Read more",
-    "tags": "Tags"
+    "tags": "Browse All Blog Tags and Topics | Scoold Blog"
   },
   "ui": {
     "solution_page": {
