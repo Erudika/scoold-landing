@@ -1,0 +1,74 @@
+---
+import { components, authors, blog_page } from "../data/site-data.json";
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  excerpt: string;
+  date: string;
+  tags: string[];
+  img?: string;
+  href: string;
+  author: string;
+}
+const { blogCard } = components;
+const { title, excerpt, date, tags, img, href, author } = Astro.props;
+const authorObj = authors.filter((p) => p.email === author)[0];
+
+export const tagColors: Record<string, string> = {
+  deployment: "bg-blue-50 text-blue-600",
+  hosting: "bg-sky-50 text-sky-600",
+  guide: "bg-emerald-50 text-emerald-600",
+  enterprise: "bg-violet-50 text-violet-600",
+  g: "bg-purple-50 text-purple-600",
+  saml: "bg-indigo-50 text-indigo-600",
+  "knowledge-base": "bg-amber-50 text-amber-600",
+  comparison: "bg-orange-50 text-orange-600",
+  release: "bg-pink-50 text-pink-600",
+  tutorial: "bg-rose-50 text-rose-600",
+  announcement: "bg-slate-50 text-slate-600",
+  integration: "bg-cyan-50 text-cyan-600",
+  slack: "bg-lime-50 text-lime-600",
+  "open-source": "bg-teal-50 text-teal-600",
+  "knowledge-management": "bg-yellow-50 text-yellow-600",
+};
+
+const formatDate = (dateStr: string): string =>
+  new Date(dateStr).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+---
+
+<article
+  class="group isolate relative flex flex-col bg-base-100 shadow-sm hover:shadow-soft mb-6 p-6 border border-base-300 rounded overflow-hidden transition hover:-translate-y-1"
+>
+  <a href={href} class="flex flex-col h-full">
+    <div class="flex flex-wrap gap-2 mb-3">
+      <Image
+        src={import(`../images/blog/${img}.png`)}
+        alt="Blog post thumbnail"
+        loading="eager"
+        <!-- class="inline-block bg-indigo-600" -->
+      />
+    </div>
+    <h4
+      class="mb-4 font-bold text-md text-slate-900 group-hover:text-brand-600 leading-tight transition-colors"
+    >
+      {title}
+    </h4>
+    <p class="mb-4 text-slate-700 text-sm leading-relaxed grow">
+      {excerpt}
+    </p>
+    <div class="mt-auto ml-auto text-slae-600 text-xs">
+      <span
+        class="group-hover:gap-2 font-semibold text-brand-600 transition-all"
+        aria-label={`Read more about ${title}`}
+      >
+        {blog_page.read_more_label}
+        &rarr;
+      </span>
+    </div>
+  </a>
+</article>

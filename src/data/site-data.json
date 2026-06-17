@@ -686,6 +686,11 @@
     "read_more_label": "Read more",
     "tags": "Browse All Blog Tags and Topics | Scoold Blog"
   },
+  "blogCards": {
+    "heading": "The latest from our blog",
+    "body": "Product updates, technical deep-dives, and best practices for Scoold and Para.",
+    "cta": "View all posts"
+  },
   "ui": {
     "solution_page": {
       "key_capabilities_label": "Key capabilities",

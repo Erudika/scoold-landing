@@ -1,0 +1,37 @@
+---
+import BlogCardSmall from "./BlogCardSmall.astro";
+import { blogCards } from "../data/site-data.json";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4)
+  .map((post) => ({
+    title: post.data.title,
+    excerpt: post.data.excerpt,
+    date: post.data.date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "2-digit"
+    }),
+    author: post.data.author,
+    img: post.data.img,
+    tags: post.data.tags,
+    href: `/blog/${post.id}/`
+  }));
+---
+
+<section class="py-16">
+  <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div class="mb-12 max-w-3xl">
+      <h2 class="mb-2 font-semibold text-base-content text-3xl">{blogCards.heading}</h2>
+      <p class="text-base-content/70 text-lg">{blogCards.body}</p>
+    </div>
+    <div class="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      {posts.map((post) => <BlogCardSmall {...post} />)}
+    </div>
+    <div class="mt-10 text-center">
+      <a href="/blog/" class="btn btn-primary btn-soft">{blogCards.cta} &rarr;</a>
+    </div>
+  </div>
+</section>
