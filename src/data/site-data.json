@@ -2348,11 +2348,11 @@
       "category": "qa-platform"
     },
     {
-      "id": "secure-internal-q-and-a-platform",
-      "title": "Secure Internal Q&A Platform | Scoold",
-      "heading": "Secure Internal Q&A Platform",
-      "description": "Scoold is a secure internal Q&A platform. Self-hosted, encrypted, with LDAP/SAML SSO and access controls. Keep sensitive knowledge behind your firewall.",
-      "intro": "A secure internal Q&A platform protects your organization's sensitive knowledge while making it accessible to authorized team members who need it. Scoold deploys behind your firewall on infrastructure you control, with enterprise authentication, encrypted communications, and granular access controls. Share proprietary information, security procedures, and confidential processes without exposing data to third-party vendors.",
+      "id": "internal-q-and-a-platform",
+      "title": "Internal Q&A Platform | Scoold",
+      "heading": "Internal Q&A Platform",
+      "description": "Scoold is an internal Q&A platform. Self-hosted, secure, with LDAP/SAML SSO and access controls. Keep sensitive knowledge behind your firewall.",
+      "intro": "An internal Q&A platform that protects your organization's sensitive knowledge while making it accessible to authorized team members who need it. Scoold deploys behind your firewall on infrastructure you control, with enterprise authentication, encrypted communications, and granular access controls. Share proprietary information, security procedures, and confidential processes without exposing data to third-party vendors.",
       "cta": {
         "label": "Deploy securely",
         "href": "/download/"
