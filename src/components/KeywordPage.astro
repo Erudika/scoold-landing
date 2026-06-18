@@ -1,7 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from './CTA.astro';
+import { Image } from 'astro:assets';
 import { site, components } from '../data/site-data.json';
+import shot1 from '../images/shot1.png';
+import shot2 from '../images/shot2.png';
+import shot3 from '../images/shot3.png';
+import shot4 from '../images/shot4.png';
+import shot5 from '../images/shot5.png';
+import shot6 from '../images/shot6.png';
+import shot7 from '../images/shot7.png';
 
 interface Props {
   id: string;
@@ -19,6 +27,8 @@ const baseUrl = site.url;
 const { id, title, description, heading, intro, cta, sections } = Astro.props;
 const pageUrl = `${baseUrl}/uses/${id}/`;
 
+const sectionImages = [shot2, shot3, shot4, shot5, shot6, shot7];
+
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -32,32 +42,44 @@ const breadcrumbJsonLd = {
 
 <BaseLayout title={title} description={description} jsonLd={[breadcrumbJsonLd]}>
   <section class="animate-fade-in section-padding">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-      <span class="section-label">USE CASE</span>
-      <h1 class="mb-5 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
-        {heading}
-      </h1>
-      <p class="mx-auto max-w-2xl text-slate-700 text-lg leading-relaxed">
-        {intro}
-      </p>
-      <div class="mt-8">
-        <a
-          href={cta.href}
-          class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 px-7 py-3.5 rounded-xl font-semibold text-white transition-colors"
-        >
-          {cta.label}
-          &rarr;
-        </a>
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div class="flex lg:flex-row flex-col items-center gap-8 lg:gap-20">
+        <div class="flex-1 lg:text-left text-center">
+          <span class="section-label">USE CASE</span>
+          <h1 class="mb-5 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
+            {heading}
+          </h1>
+          <p class="text-slate-700 text-lg leading-relaxed">
+            {intro}
+          </p>
+          <div class="mt-8">
+            <a
+              href={cta.href}
+              class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 px-7 py-3.5 rounded-xl font-semibold text-white transition-colors"
+            >
+              {cta.label}
+              &rarr;
+            </a>
+          </div>
+        </div>
+        <div class="flex-[1.3]">
+          <Image src={shot1} alt="Scoold platform screenshot" class="w-full" />
+        </div>
       </div>
     </div>
   </section>
 
   <section class="bg-slate-50 section-padding">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-      {sections.map((section) => (
-        <div class="mb-10">
-          <h2 class="mb-3 font-bold text-slate-900 text-2xl">{section.h2}</h2>
-          <p class="text-slate-700 text-base leading-relaxed">{section.body}</p>
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      {sections.map((section, i) => (
+        <div class={`flex flex-col lg:flex-row gap-8 lg:gap-10 mb-34 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+          <div class="flex-1">
+            <h2 class="mb-3 font-bold text-slate-900 text-3xl">{section.h2}</h2>
+            <p class="text-slate-700 text-base leading-relaxed">{section.body}</p>
+          </div>
+          <div class="flex-1">
+            <Image src={sectionImages[i]} alt="" class="w-full" />
+          </div>
         </div>
       ))}
       <div class="mt-12 text-center">
