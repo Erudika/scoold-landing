@@ -31,7 +31,7 @@ const posts = (await getCollection("blog"))
       {posts.map((post) => <BlogCardSmall {...post} />)}
     </div>
     <div class="mt-10 text-center">
-      <a href="/blog/" class="btn btn-primary btn-soft">{blogCards.cta} &rarr;</a>
+      <a href="/blog/" class="font-semibold text-brand-600 hover:text-brand-700 text-sm transition-colors">{blogCards.cta} &rarr;</a>
     </div>
   </div>
 </section>

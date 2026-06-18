@@ -1,0 +1,44 @@
+---
+import { keywords } from '../data/site-data.json';
+
+const categoryLabels: Record<string, string> = {
+  "stack-overflow-alternative": "Stack Overflow Alternatives",
+  "knowledge-base": "Knowledge Base",
+  "qa-platform": "Q&A Platforms",
+  "community-forum": "Community & Forum",
+  "ai-mcp-vibe-coding": "AI, MCP & Vibe Coding",
+  "self-hosted-privacy": "Self-Hosted & Privacy"
+};
+
+const categoryOrder = Object.keys(categoryLabels);
+
+const grouped = categoryOrder
+  .map((cat) => ({
+    id: cat,
+    label: categoryLabels[cat],
+    items: keywords.filter((kw) => kw.category === cat)
+  }))
+  .filter((g) => g.items.length > 0);
+---
+
+<div class="space-y-10">
+  {grouped.map((group) => (
+    <div>
+      <h2 class="mb-4 font-bold text-slate-900 text-xl">{group.label}</h2>
+      <ul class="gap-3 grid grid-cols-1 sm:grid-cols-2">
+        {group.items.map((kw) => (
+          <li>
+            <a
+              href={`/uses/${kw.id}/`}
+              class="group flex items-center gap-3"
+            >
+              <span class="font-semibold text-brand-600 hover:text-brand-700 text-sm transition-colors">
+                <span class="text-slate-800">&bull;</span> &MediumSpace; {kw.heading}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

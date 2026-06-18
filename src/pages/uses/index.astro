@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import UsesGrid from '@/components/UsesGrid.astro';
+import CTA from '@/components/CTA.astro';
+import { site, components } from '@/data/site-data.json';
+
+const { breadcrumbs } = components;
+const baseUrl = site.url;
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: breadcrumbs.home, item: baseUrl },
+    { "@type": "ListItem", position: 2, name: "Uses", item: `${baseUrl}/uses/` }
+  ]
+};
+---
+
+<BaseLayout
+  title="Scoold Use Cases and Applications"
+  description="Explore all the ways Scoold can help your team - knowledge base, Q&A platform, community forum, developer hub, and more."
+  jsonLd={[breadcrumbJsonLd]}
+>
+  <section class="section-padding">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <h1 class="mb-4 font-extrabold text-slate-900 text-4xl lg:text-5xl tracking-tight">
+        Scoold <span class="text-brand-600">Use Cases</span>
+      </h1>
+      <p class="mb-12 text-slate-700 text-lg leading-relaxed">
+        From internal knowledge bases to AI-powered developer tools, Scoold adapts to how your team works. Browse the use cases below to find the right fit for your organization.
+      </p>
+      <UsesGrid />
+    </div>
+  </section>
+  <CTA />
+</BaseLayout>

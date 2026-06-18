@@ -1,0 +1,15 @@
+---
+import KeywordPage from '../../components/KeywordPage.astro';
+import { keywords } from "../../data/site-data.json";
+
+export async function getStaticPaths() {
+  return keywords.map((kw) => ({
+    params: { slug: kw.id },
+    props: { kw }
+  }));
+}
+
+const { kw } = Astro.props;
+---
+
+<KeywordPage {...kw} />
