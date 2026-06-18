@@ -1544,7 +1544,7 @@
         },
         {
           "h2": "Spaces for Team Organization",
-          "body": "Create separate knowledge areas for different teams, projects, or departments using Spaces. Engineering, DevOps, product, and support can each maintain focused Q&A collections with appropriate access controls. Search globally when needed or browse within a specific Space. Organize knowledge the way your company actually works without forcing artificial hierarchies on content. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Create separate knowledge areas for different teams, projects, or departments using spaces. Engineering, DevOps, product, and support can each maintain focused Q&A collections with appropriate access controls. Search globally when needed or browse within a specific Space. Organize knowledge the way your company actually works without forcing artificial hierarchies on content. Response times stay consistent regardless of how much content accumulates over time."
         }
       ],
       "category": "stack-overflow-alternative"
@@ -1632,13 +1632,13 @@
       "description": "Scoold is the best free Stack Overflow alternative for business. Open source, self-hosted, unlimited users. Full Q&A with voting, search, and SSO.",
       "intro": "The best free Stack Overflow alternative for business combines proven Q&A mechanics with zero licensing costs and complete data ownership. Scoold Community delivers exactly this: an Apache 2.0 open-source platform with voting, reputation, full-text search, and enterprise authentication. Deploy on your servers, invite unlimited users, and build a knowledge base that grows with your company without ever paying per seat.",
       "cta": {
-        "label": "Download free edition",
+        "label": "Download Scoold",
         "href": "/download/"
       },
       "sections": [
         {
           "h2": "Truly Free, Not Freemium",
-          "body": "Scoold Community is not a trial, not a limited tier, and not a feature-gated teaser for a paid product. It is a complete Q&A platform released under the Apache 2.0 open-source license. Voting, reputation, badges, tags, Spaces, full-text search, and LDAP authentication are all included. Use it commercially without restriction for as long as you need with as many users as you have."
+          "body": "Scoold Community is not a trial, not a limited tier, and not a feature-gated teaser for a paid product. It is a complete Q&A platform released under the Apache 2.0 open-source license. Voting, reputation, badges, tags, spaces, full-text search, and LDAP authentication are all included. Use it commercially without restriction for as long as you need with as many users as you have."
         },
         {
           "h2": "Built for Business, Not Just Developers",
@@ -1676,15 +1676,15 @@
       "sections": [
         {
           "h2": "Built in Europe, Deployed Anywhere",
-          "body": "Scoold is developed by Erudika, headquartered in the European Union. The development team, infrastructure decisions, and product roadmap are European. Self-hosted deployment means you choose exactly where your data lives: an EU cloud region, your own European data center, or on-premises within your office. No transatlantic data transfers, no adequacy decision dependencies, no ambiguity. Resource efficiency means lower infrastructure costs compared to heavier alternatives."
+          "body": "Scoold is developed by Erudika, headquartered in the EU. The development and decisions are aligned with European laws and values. Self-hosted deployment means you choose exactly where your data lives: an EU cloud region, your own European data center, or on-premises within your office. No transatlantic data transfers, no adequacy decision dependencies, no ambiguity. Resource efficiency means lower infrastructure costs compared to heavier alternatives."
         },
         {
-          "h2": "GDPR Compliance by Architecture",
+          "h2": "GDPR-Compliant by Design",
           "body": "Self-hosting inherently simplifies GDPR compliance because you are both data controller and processor. No Data Processing Agreements with third-party vendors to negotiate, audit, or update. User data stays on infrastructure you control. Right-to-erasure requests execute directly against your database. Data portability is trivial when you own the entire storage layer and export tools. Updates are straightforward single-container or single-binary replacements."
         },
         {
           "h2": "Complete Stack Overflow Feature Parity",
-          "body": "Choosing a European alternative means zero compromise on functionality. Scoold delivers questions, answers, voting, accepted solutions, reputation, badges, tags, Spaces, and full-text search. The interface mirrors the Stack Overflow experience your developers know and expect. Feature completeness ensures the switch is about sovereignty, not sacrifice. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Choosing a European alternative means zero compromise on functionality. Scoold delivers questions, answers, voting, accepted solutions, reputation, badges, tags, spaces, and full-text search. The interface mirrors the Stack Overflow experience your developers know and expect. Feature completeness ensures the switch is about sovereignty, not sacrifice. Response times stay consistent regardless of how much content accumulates over time."
         },
         {
           "h2": "Enterprise Authentication Standards",
@@ -1781,20 +1781,20 @@
       "id": "stack-overflow-clone-for-enterprises",
       "title": "Stack Overflow Clone for Enterprises | Scoold",
       "heading": "Stack Overflow Clone for Enterprises",
-      "description": "Scoold is a Stack Overflow clone for enterprises. Self-hosted Q&A with SAML SSO, SCIM, Spaces, and unlimited users. One-time license, no per-seat fees.",
+      "description": "Scoold is a Stack Overflow clone for enterprises. Self-hosted Q&A with SAML SSO, SCIM, spaces, and unlimited users. One-time license, no per-seat fees.",
       "intro": "Stack Overflow clone for enterprises describes what many large organizations seek: the proven Q&A mechanics of Stack Overflow deployed privately with enterprise-grade security and administration. Scoold delivers exactly this with SAML SSO, SCIM provisioning, role-based access, and multi-space organization. Scale to thousands of users across departments while maintaining the familiar experience your developers already trust.",
       "cta": {
-        "label": "Start enterprise trial",
+        "label": "Try Scoold today",
         "href": "/download/"
       },
       "sections": [
         {
           "h2": "Enterprise Authentication and Provisioning",
-          "body": "Integrate with your corporate identity provider through SAML 2.0, OAuth 2.0, or LDAP. SCIM provisioning automates user creation and deactivation synced from your directory. Employees join with their existing credentials and land in appropriate Spaces automatically based on group membership. Offboarding removes access instantly without manual intervention. Zero friction for end users, zero overhead for IT."
+          "body": "Integrate with your corporate identity provider through SAML 2.0, OAuth 2.0, or LDAP. SCIM provisioning automates user creation and deactivation synced from your directory. Employees join with their existing credentials and land in appropriate spaces automatically based on group membership. Offboarding removes access instantly without manual intervention. Zero friction for end users, zero overhead for IT."
         },
         {
           "h2": "Multi-Space Organization at Scale",
-          "body": "Enterprises have hundreds of teams across multiple business units and geographies. Scoold Spaces create logical boundaries for each team, product, region, or initiative. Engineers in Platform see Platform knowledge, sales staff see Sales resources, and cross-functional search works when broader discovery is needed. Access controls ensure sensitive information stays compartmentalized appropriately. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Enterprises have hundreds of teams across multiple business units and geographies. Spaces in Scoold create logical boundaries for each team, product, region, or initiative. Engineers in Platform see Platform knowledge, sales staff see Sales resources, and cross-functional search works when broader discovery is needed. Access controls ensure sensitive information stays compartmentalized appropriately. Response times stay consistent regardless of how much content accumulates over time."
         },
         {
           "h2": "The Q&A Format That Scales",
@@ -1954,7 +1954,7 @@
         },
         {
           "h2": "Integrate with Your Identity Provider",
-          "body": "Connect Scoold to your existing authentication system through LDAP, SAML 2.0, or OAuth 2.0 without complex middleware or custom development. Users sign in with corporate credentials and land in the right Spaces automatically based on directory group membership. SCIM provisioning in Scoold Pro handles employee onboarding and offboarding without manual intervention from your IT team. Authentication failures surface in your existing monitoring dashboards immediately."
+          "body": "Connect Scoold to your existing authentication system through LDAP, SAML 2.0, or OAuth 2.0 without complex middleware or custom development. Users sign in with corporate credentials and land in the right spaces automatically based on directory group membership. SCIM provisioning in Scoold Pro handles employee onboarding and offboarding without manual intervention from your IT team. Authentication failures surface in your existing monitoring dashboards immediately."
         },
         {
           "h2": "Connect to Slack, Teams, and Mattermost",
@@ -1984,7 +1984,7 @@
         },
         {
           "h2": "Separate Spaces for Each Client",
-          "body": "MSPs juggle dozens of client environments with unique configurations, tools, and standard operating procedures. Scoold Spaces isolate knowledge by client account, technology stack, or service tier. Technicians see only relevant information for their assigned clients, reducing noise and preventing accidental cross-client data exposure. Add or archive Spaces as your client roster evolves over time. Flexible organization adapts as your team structure evolves without requiring content migration."
+          "body": "MSPs juggle dozens of client environments with unique configurations, tools, and standard operating procedures. Spaces in Scoold isolate knowledge by client account, technology stack, or service tier. Technicians see only relevant information for their assigned clients, reducing noise and preventing accidental cross-client data exposure. Add or archive spaces as your client roster evolves over time. Flexible organization adapts as your team structure evolves without requiring content migration."
         },
         {
           "h2": "Search Across All Documentation Instantly",
@@ -2026,7 +2026,7 @@
         },
         {
           "h2": "Organize by Team, Service, or Domain",
-          "body": "Use Spaces to create focused knowledge areas for backend, frontend, infrastructure, or individual microservices. Tags provide additional cross-cutting categorization. Engineers navigate directly to their domain or search across the entire organization when investigating cross-service issues. Knowledge structure emerges organically from how your team naturally asks questions rather than imposed top-down taxonomies. Production-ready from the first deployment without complex configuration steps."
+          "body": "Use spaces to create focused knowledge areas for backend, frontend, infrastructure, or individual microservices. Tags provide additional cross-cutting categorization. Engineers navigate directly to their domain or search across the entire organization when investigating cross-service issues. Knowledge structure emerges organically from how your team naturally asks questions rather than imposed top-down taxonomies. Production-ready from the first deployment without complex configuration steps."
         },
         {
           "h2": "Integrate with Your Engineering Toolchain",
@@ -2064,7 +2064,7 @@
         },
         {
           "h2": "Client-Segregated Knowledge Spaces",
-          "body": "MSPs manage diverse client environments with unique configurations and procedures. Scoold Spaces create logical boundaries between client knowledge, preventing information bleed and reducing clutter. Technicians assigned to a specific client see only relevant content without wading through unrelated documentation. Admins maintain full oversight across all Spaces from a single unified dashboard. Flexible organization adapts as your team structure evolves without requiring content migration."
+          "body": "MSPs manage diverse client environments with unique configurations and procedures. Spaces in Scoold create logical boundaries between client knowledge, preventing information bleed and reducing clutter. Technicians assigned to a specific client see only relevant content without wading through unrelated documentation. Admins maintain full oversight across all spaces from a single unified dashboard. Flexible organization adapts as your team structure evolves without requiring content migration."
         },
         {
           "h2": "Unlimited Users at Predictable Cost",
@@ -2076,7 +2076,7 @@
         },
         {
           "h2": "Enterprise Authentication Built In",
-          "body": "Scoold supports LDAP, SAML 2.0, and OAuth 2.0 for single sign-on out of the box. Technicians authenticate with existing corporate credentials and land in their assigned Spaces automatically. SCIM provisioning in Scoold Pro syncs user accounts from your directory service, eliminating manual onboarding steps every time new technical staff join your growing MSP organization. Authentication failures surface in your existing monitoring dashboards immediately."
+          "body": "Scoold supports LDAP, SAML 2.0, and OAuth 2.0 for single sign-on out of the box. Technicians authenticate with existing corporate credentials and land in their assigned spaces automatically. SCIM provisioning in Scoold Pro syncs user accounts from your directory service, eliminating manual onboarding steps every time new technical staff join your growing MSP organization. Authentication failures surface in your existing monitoring dashboards immediately."
         }
       ],
       "category": "knowledge-base"
@@ -2098,7 +2098,7 @@
         },
         {
           "h2": "Isolate Client Knowledge with Spaces",
-          "body": "Managed service providers handle sensitive data across dozens of client environments with strict separation requirements. Scoold Spaces create access-controlled boundaries so technicians see only the clients they are authorized to service. Document client-specific runbooks, network topologies, and escalation procedures without risk of cross-contamination. Add new client Spaces in seconds as your portfolio grows. Authentication failures surface in your existing monitoring dashboards immediately."
+          "body": "Managed service providers handle sensitive data across dozens of client environments with strict separation requirements. Spaces in Scoold create access-controlled boundaries so technicians see only the clients they are authorized to service. Document client-specific runbooks, network topologies, and escalation procedures without risk of cross-contamination. Add new client spaces in seconds as your portfolio grows. Authentication failures surface in your existing monitoring dashboards immediately."
         },
         {
           "h2": "Deploy on Infrastructure You Control",
@@ -2208,7 +2208,7 @@
       "sections": [
         {
           "h2": "Genuinely Free, Not a Trial",
-          "body": "Scoold Community is not a limited free tier designed to push you toward a paid plan. It is a complete Q&A platform with all core features included permanently. Voting, reputation, badges, tags, Spaces, full-text search, LDAP authentication, and REST API access are all free. No usage caps, no time limits, no artificial constraints on team size or content volume."
+          "body": "Scoold Community is not a limited free tier designed to push you toward a paid plan. It is a complete Q&A platform with all core features included permanently. Voting, reputation, badges, tags, spaces, full-text search, LDAP authentication, and REST API access are all free. No usage caps, no time limits, no artificial constraints on team size or content volume."
         },
         {
           "h2": "Stack Overflow-Quality Experience",
@@ -2254,7 +2254,7 @@
         },
         {
           "h2": "Complete Q&A Feature Set",
-          "body": "Questions, answers, voting, accepted solutions, tags, user reputation, badges, and Spaces for organization. Full-text search with similar post detection. User profiles with contribution history. Moderation tools for content quality. Email notifications and digest options. Everything you expect from a mature Q&A platform, included in the free open-source edition without restrictions. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Questions, answers, voting, accepted solutions, tags, user reputation, badges, and spaces for organization. Full-text search with similar post detection. User profiles with contribution history. Moderation tools for content quality. Email notifications and digest options. Everything you expect from a mature Q&A platform, included in the free open-source edition without restrictions. Response times stay consistent regardless of how much content accumulates over time."
         },
         {
           "h2": "Enterprise Authentication Options",
@@ -2296,7 +2296,7 @@
         },
         {
           "h2": "Organized by Team and Topic",
-          "body": "Spaces separate onboarding knowledge by department, role, or technology stack. A backend engineer's onboarding questions differ from a product manager's. Tags provide fine-grained topic organization within Spaces. New hires browse relevant onboarding content or search across the entire organization. Knowledge is structured for discovery rather than buried in linear document collections. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Spaces separate onboarding knowledge by department, role, or technology stack. A backend engineer's onboarding questions differ from a product manager's. Tags provide fine-grained topic organization within spaces. New hires browse relevant onboarding content or search across the entire organization. Knowledge is structured for discovery rather than buried in linear document collections. Response times stay consistent regardless of how much content accumulates over time."
         },
         {
           "h2": "Track What New Hires Actually Need",
@@ -2334,7 +2334,7 @@
         },
         {
           "h2": "Spaces for Departments and Locations",
-          "body": "Create separate Spaces for HR, IT, finance, engineering, or individual office locations. Each department manages its own knowledge area with appropriate visibility controls. Employees browse their relevant Space or search globally. Sensitive information stays compartmentalized while general company knowledge remains accessible to everyone who needs it. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Create separate spaces for HR, IT, finance, engineering, or individual office locations. Each department manages its own knowledge area with appropriate visibility controls. Employees browse their relevant Space or search globally. Sensitive information stays compartmentalized while general company knowledge remains accessible to everyone who needs it. Response times stay consistent regardless of how much content accumulates over time."
         },
         {
           "h2": "Integrates with Corporate Tools",
@@ -2465,7 +2465,7 @@
       "id": "internal-company-forum-software",
       "title": "Internal Company Forum Software | Scoold",
       "heading": "Internal Company Forum Software",
-      "description": "Scoold is internal company forum software for structured discussions. Self-hosted Q&A with voting, search, and Spaces. Replace noisy chat with lasting knowledge.",
+      "description": "Scoold is internal company forum software for structured discussions. Self-hosted Q&A with voting, search, and spaces. Replace noisy chat with lasting knowledge.",
       "intro": "Internal company forum software gives your organization a structured platform for discussions that need to persist beyond the lifespan of a chat message. Scoold provides a Q&A-based forum where employees ask questions, share knowledge, and find answers through search rather than scrolling through months of Slack history. Conversations become organizational assets instead of disposable messages.",
       "cta": {
         "label": "Start your company forum",
@@ -2482,7 +2482,7 @@
         },
         {
           "h2": "Spaces for Every Department",
-          "body": "Create dedicated Spaces for engineering, marketing, HR, sales, and operations. Each department manages its own discussion area with relevant content and appropriate access controls. Cross-functional questions get posted to company-wide Spaces. Employees see content relevant to their role without drowning in information from unrelated departments across the organization. Knowledge quality improves continuously through collective curation and regular contributions."
+          "body": "Create dedicated spaces for engineering, marketing, HR, sales, and operations. Each department manages its own discussion area with relevant content and appropriate access controls. Cross-functional questions get posted to company-wide spaces. Employees see content relevant to their role without drowning in information from unrelated departments across the organization. Knowledge quality improves continuously through collective curation and regular contributions."
         },
         {
           "h2": "Enterprise SSO Integration",
@@ -2503,8 +2503,8 @@
       "id": "private-discussion-forum-for-teams",
       "title": "Private Discussion Forum for Teams | Scoold",
       "heading": "Private Discussion Forum for Teams",
-      "description": "Scoold is a private discussion forum for teams. Self-hosted Q&A with access controls, SSO, and Spaces. Keep team discussions confidential and searchable.",
-      "intro": "A private discussion forum for teams provides a confidential space where your people can ask questions, share ideas, and solve problems without exposing internal conversations to the public internet. Scoold delivers self-hosted Q&A with access controls, enterprise SSO, and team-based Spaces that keep discussions private, organized, and searchable only by authorized members of your organization.",
+      "description": "Scoold is a private discussion forum for teams. Self-hosted Q&A with access controls, SSO, and spaces. Keep team discussions confidential and searchable.",
+      "intro": "A private discussion forum for teams provides a confidential space where your people can ask questions, share ideas, and solve problems without exposing internal conversations to the public internet. Scoold delivers self-hosted Q&A with access controls, enterprise SSO, and team-based spaces that keep discussions private, organized, and searchable only by authorized members of your organization.",
       "cta": {
         "label": "Create your private forum",
         "href": "/download/"
@@ -2541,10 +2541,10 @@
       "id": "enterprise-forum-platform",
       "title": "Enterprise Forum Platform | Scoold",
       "heading": "Enterprise Forum Platform",
-      "description": "Scoold is an enterprise forum platform with SAML SSO, SCIM provisioning, Spaces, and self-hosted deployment. Structured Q&A for large organizations.",
+      "description": "Scoold is an enterprise forum platform with SAML SSO, SCIM provisioning, spaces, and self-hosted deployment. Structured Q&A for large organizations.",
       "intro": "An enterprise forum platform must handle thousands of users across multiple departments while maintaining security, compliance, and administrative control. Scoold delivers structured Q&A discussions with SAML SSO, SCIM provisioning, multi-space organization, and self-hosted deployment. Scale knowledge sharing across your entire enterprise without sacrificing the security and governance standards large organizations require.",
       "cta": {
-        "label": "Start enterprise trial",
+        "label": "Try Scoold today",
         "href": "/download/"
       },
       "sections": [
@@ -2554,7 +2554,7 @@
         },
         {
           "h2": "Multi-Space Organization",
-          "body": "Large organizations need compartmentalized discussion areas. Scoold Spaces create isolated forums for business units, regions, projects, or functional teams. Each Space operates independently with its own content, tags, and membership. Employees participate in relevant Spaces and search globally when needed. Administrative oversight spans all Spaces from a unified management interface. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Large organizations need compartmentalized discussion areas. Spaces in Scoold create isolated forums for business units, regions, projects, or functional teams. Each Space operates independently with its own content, tags, and membership. Employees participate in relevant spaces and search globally when needed. Administrative oversight spans all spaces from a unified management interface. Response times stay consistent regardless of how much content accumulates over time."
         },
         {
           "h2": "Structured Discussions at Scale",
@@ -2655,8 +2655,8 @@
       "id": "internal-it-support-forum-for-msps",
       "title": "Internal IT Support Forum for MSPs | Scoold",
       "heading": "Internal IT Support Forum for MSPs",
-      "description": "Scoold is an internal IT support forum for MSPs. Technicians ask, answer, and search for solutions. Client-isolated Spaces, self-hosted, no per-seat fees.",
-      "intro": "An internal IT support forum for MSPs gives your technicians a dedicated platform to document solutions, ask colleagues for help, and find fixes without escalating every unfamiliar issue. Scoold delivers self-hosted Q&A with client-isolated Spaces where your NOC and field teams capture troubleshooting knowledge that persists across shift changes, staff turnover, and client environment updates.",
+      "description": "Scoold is an internal IT support forum for MSPs. Technicians ask, answer, and search for solutions. Private spaces, self-hosted, no per-seat fees.",
+      "intro": "An internal IT support forum for MSPs gives your technicians a dedicated platform to document solutions, ask colleagues for help, and find fixes without escalating every unfamiliar issue. Scoold delivers self-hosted Q&A with private spaces where your NOC and field teams capture troubleshooting knowledge that persists across shift changes, staff turnover, and client environment updates.",
       "cta": {
         "label": "Start your IT support forum",
         "href": "/download/"
@@ -2667,8 +2667,8 @@
           "body": "Not every ticket needs a senior engineer. Many issues have been solved before by another technician on a different shift or at a different client site. Scoold captures those solutions in a searchable format. When a tier-one tech encounters a problem, they search the forum first. If a documented fix exists, they resolve it independently without escalating and waiting for tier-two availability."
         },
         {
-          "h2": "Client-Isolated Knowledge Spaces",
-          "body": "Each MSP client has unique infrastructure, configurations, and standard procedures. Scoold Spaces create access-controlled areas per client where only assigned technicians see the content. Document client-specific runbooks, known issues, and configuration details without cross-client data leakage. Archive Spaces when contracts end. Add new ones instantly when you onboard new clients. Production-ready from the first deployment without complex configuration steps."
+          "h2": "Private Knowledge Spaces",
+          "body": "Each MSP client has unique infrastructure, configurations, and standard procedures. Spaces in Scoold work as private groups for clients where only assigned technicians see the content. Document client-specific runbooks, known issues, and configuration details without cross-client data leakage. Archive spaces when contracts end. Add new ones instantly when you onboard new clients. Production-ready from the first deployment without complex configuration steps."
         },
         {
           "h2": "Shift-Resistant Knowledge Capture",
@@ -2714,7 +2714,7 @@
         },
         {
           "h2": "Search-First Knowledge Discovery",
-          "body": "Engineers search before asking. Scoold's full-text search delivers relevant results from your entire knowledge base in milliseconds. Similar post suggestions appear while composing questions, often resolving the need before submission. Tags and Spaces provide browseable navigation. Every path leads to existing knowledge, reducing duplicate effort and accelerating problem-solving across teams. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Engineers search before asking. Scoold's full-text search delivers relevant results from your entire knowledge base in milliseconds. Similar post suggestions appear while composing questions, often resolving the need before submission. Tags and spaces provide browseable navigation. Every path leads to existing knowledge, reducing duplicate effort and accelerating problem-solving across teams. Response times stay consistent regardless of how much content accumulates over time."
         },
         {
           "h2": "Integrates with Engineering Tools",
@@ -2731,8 +2731,8 @@
       "id": "corporate-discussion-board-software",
       "title": "Corporate Discussion Board Software | Scoold",
       "heading": "Corporate Discussion Board Software",
-      "description": "Scoold is corporate discussion board software with Q&A, voting, and Spaces. Self-hosted, enterprise SSO, and designed for structured company-wide discussions.",
-      "intro": "Corporate discussion board software provides your organization with a structured platform for company-wide conversations that need to be findable long after they happen. Scoold delivers Q&A-based discussions with voting, Spaces for department separation, and full-text search. Move important conversations out of ephemeral chat into a permanent, searchable corporate knowledge resource.",
+      "description": "Scoold is corporate discussion board software with Q&A, voting, and spaces. Self-hosted, enterprise SSO, and designed for structured company-wide discussions.",
+      "intro": "Corporate discussion board software provides your organization with a structured platform for company-wide conversations that need to be findable long after they happen. Scoold delivers Q&A-based discussions with voting, spaces for department separation, and full-text search. Move important conversations out of ephemeral chat into a permanent, searchable corporate knowledge resource.",
       "cta": {
         "label": "Launch your discussion board",
         "href": "/download/"
@@ -2744,7 +2744,7 @@
         },
         {
           "h2": "Department Spaces with Access Controls",
-          "body": "Create Spaces for each department, office location, or project team. Executive discussions stay restricted to leadership. Engineering debates stay relevant to technical staff. Company-wide announcements reach everyone. Granular access controls ensure information reaches appropriate audiences without over-sharing. Employees participate in relevant conversations without information overload from unrelated areas. Flexible organization adapts as your team structure evolves without requiring content migration."
+          "body": "Create spaces for each department, office location, or project team. Executive discussions stay restricted to leadership. Engineering debates stay relevant to technical staff. Company-wide announcements reach everyone. Granular access controls ensure information reaches appropriate audiences without over-sharing. Employees participate in relevant conversations without information overload from unrelated areas. Flexible organization adapts as your team structure evolves without requiring content migration."
         },
         {
           "h2": "Enterprise Single Sign-On",
@@ -3038,7 +3038,7 @@
       "description": "Scoold provides an MCP server for team knowledge. AI coding assistants query your Q&A directly via Model Context Protocol. Self-hosted, searchable, private.",
       "intro": "An MCP server for team knowledge allows AI coding assistants to query your organization's documented solutions, architecture decisions, and best practices in real time. Scoold provides a self-hosted Q&A platform with MCP server capabilities, turning your team's accumulated knowledge into a live context source that AI tools access autonomously during development sessions.",
       "cta": {
-        "label": "Enable MCP for your team",
+        "label": "Deploy Scoold with MCP for your team",
         "href": "/download/"
       },
       "sections": [
@@ -3076,7 +3076,7 @@
       "description": "Scoold is a knowledge base for AI coding agents. Give your AI tools access to team knowledge via MCP and REST API. Self-hosted, structured, searchable.",
       "intro": "A knowledge base for AI coding agents provides structured, queryable information that automated development tools can access to produce more accurate and context-aware code. Scoold offers self-hosted Q&A content exposed through MCP and REST API, giving AI agents direct access to your team's architecture decisions, coding standards, and documented solutions whenever they generate or modify code.",
       "cta": {
-        "label": "Power your AI agents",
+        "label": "Access knowledge from your AI agents",
         "href": "/download/"
       },
       "sections": [
@@ -3228,7 +3228,7 @@
       "description": "Scoold is a shared context platform for vibe coding teams. Persistent knowledge accessible via MCP. Align AI assistants with team standards and decisions.",
       "intro": "A shared context platform for vibe coding teams ensures every developer's AI assistant has access to the same organizational knowledge, producing consistent outputs aligned with team standards. Scoold provides persistent, searchable Q&A that serves as shared context for AI-assisted development. Document conventions once and every team member's AI sessions benefit from collective organizational wisdom.",
       "cta": {
-        "label": "Align your team's AI tools",
+        "label": "Deploy Scoold with MCP",
         "href": "/download/"
       },
       "sections": [
@@ -3330,7 +3330,7 @@
         },
         {
           "h2": "Knowledge Sharing Without Security Compromise",
-          "body": "Security requirements should not prevent teams from sharing knowledge effectively within authorized boundaries. Scoold delivers full Q&A functionality, voting, reputation, search, and Spaces within your secured environment. Teams collaborate and share knowledge freely knowing the platform meets your organization's security standards without exception. Security and usability coexist. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Security requirements should not prevent teams from sharing knowledge effectively within authorized boundaries. Scoold delivers full Q&A functionality, voting, reputation, search, and spaces within your secured environment. Teams collaborate and share knowledge freely knowing the platform meets your organization's security standards without exception. Security and usability coexist. Response times stay consistent regardless of how much content accumulates over time."
         }
       ],
       "category": "self-hosted-privacy"
@@ -3348,7 +3348,7 @@
       "sections": [
         {
           "h2": "LDAP and Active Directory Integration",
-          "body": "Connect Scoold directly to your LDAP or Active Directory server for user authentication. Employees log in with their existing corporate credentials instantly. No separate knowledge platform accounts to create, no additional passwords to manage or forget. Directory group memberships can map to Scoold Spaces for automatic access control. Authentication stays within your network infrastructure entirely. Updates are straightforward single-container or single-binary replacements."
+          "body": "Connect Scoold directly to your LDAP or Active Directory server for user authentication. Employees log in with their existing corporate credentials instantly. No separate knowledge platform accounts to create, no additional passwords to manage or forget. Directory group memberships can map to spaces in Scoold for automatic access control. Authentication stays within your network infrastructure entirely. Updates are straightforward single-container or single-binary replacements."
         },
         {
           "h2": "SAML 2.0 Single Sign-On",
@@ -3368,7 +3368,7 @@
         },
         {
           "h2": "Q&A Knowledge Sharing for Everyone",
-          "body": "Once authenticated, employees access a full-featured Q&A knowledge platform with voting, reputation, Spaces, tags, and full-text search. The SSO integration removes the adoption barrier of yet another credential. Employees start asking and answering questions immediately using the identity they already use for everything else. Frictionless access drives higher participation and knowledge capture. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "Once authenticated, employees access a full-featured Q&A knowledge platform with voting, reputation, spaces, tags, and full-text search. The SSO integration removes the adoption barrier of yet another credential. Employees start asking and answering questions immediately using the identity they already use for everything else. Frictionless access drives higher participation and knowledge capture. Response times stay consistent regardless of how much content accumulates over time."
         }
       ],
       "category": "self-hosted-privacy"
@@ -3406,7 +3406,7 @@
         },
         {
           "h2": "Full Knowledge Sharing Functionality",
-          "body": "GDPR compliance does not require sacrificing platform capability. Scoold provides complete Q&A functionality with voting, reputation, Spaces, search, and enterprise SSO. Your team shares knowledge effectively within a platform that respects data protection by design and by default. Compliance and productivity coexist without trade-offs because privacy is built into the architecture. Response times stay consistent regardless of how much content accumulates over time."
+          "body": "GDPR compliance does not require sacrificing platform capability. Scoold provides complete Q&A functionality with voting, reputation, spaces, search, and enterprise SSO. Your team shares knowledge effectively within a platform that respects data protection by design and by default. Compliance and productivity coexist without trade-offs because privacy is built into the architecture. Response times stay consistent regardless of how much content accumulates over time."
         }
       ],
       "category": "self-hosted-privacy"
