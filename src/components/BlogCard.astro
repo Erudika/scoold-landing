@@ -42,6 +42,16 @@ const formatDate = (dateStr: string): string => new Date(dateStr).toLocaleDateSt
 
 <article class="group isolate relative bg-base-100 shadow-sm hover:shadow-soft mb-6 p-6 border border-base-300 rounded overflow-hidden transition hover:-translate-y-1">
   <a href={href} class="block">
+    {img && (
+      <div class="float-left mr-6 mb-2 w-56 h-40 overflow-hidden shrink-0">
+        <Image
+          src={import(`../images/blog/${img}.png`)}
+          alt="{title}"
+          loading="lazy"
+          class="rounded-sm"
+        />
+      </div>
+    )}
     <div class="flex flex-wrap gap-2 mb-3">
       {tags.map((tag) => (
         <span class:list={['inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold', tagColors[tag] ?? 'bg-slate-50 text-slate-600']}>
