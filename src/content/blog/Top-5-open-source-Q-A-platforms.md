@@ -1,5 +1,5 @@
 ---
-title: "Top 5 open source Q&A platforms for 2021"
+title: "Top 5 open source Q&A platforms"
 date: 2018-12-30
 tags: ["open-source", "stackoverflow", "comparison", "alternatives"]
 author: "alex@erudika.com"
@@ -7,6 +7,8 @@ excerpt: "This post lists top open-source Q&A platforms that are actively develo
 img: "blogpost_media11"
 thumb: "blogpost_media11"
 ---
+
+***This is an older article, please read the [new article for 2026 here](/blog/best-self-hosted-q-a-platforms-2026/).***
 
 I've assembled a list of the top open source Q&A platforms that are currently available. The list contains
 only projects which are in **active development** and have a working demo site. There are a few similar blog
