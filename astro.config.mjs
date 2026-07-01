@@ -14,7 +14,12 @@ export default defineConfig({
   },
   trailingSlash: 'always', // if hosted on GitHub: always !
   integrations: [// Register sitemap BEFORE Starlight to prevent Starlight adding its own version
-    sitemap(), 
+    sitemap({
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        return !path.startsWith('/blog/tags/') && !path.startsWith('/blog/page/');
+      }
+    }), 
     starlight({
       title: 'Scoold Documentation',
       logo: {
