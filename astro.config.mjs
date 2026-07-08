@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
@@ -10,7 +11,9 @@ export default defineConfig({
   site: site.url,
   output: 'static',
   markdown: {
-    rehypePlugins: [rehypeTableRowIds],
+    processor: unified({
+      rehypePlugins: [rehypeTableRowIds],
+    }),
   },
   trailingSlash: 'always', // if hosted on GitHub: always !
   integrations: [// Register sitemap BEFORE Starlight to prevent Starlight adding its own version

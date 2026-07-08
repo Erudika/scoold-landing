@@ -64,7 +64,7 @@ Scoold uses Lightbend Config (formerly Typesafe Config) for managing application
 
 It's a great library, but it comes with a dangerous default feature out of the box. It supports importing external files into your configuration:
 
-```hocon
+```ini
 include file("/etc/passwd")
 ```
 
