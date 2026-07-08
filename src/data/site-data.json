@@ -685,7 +685,7 @@
     "description": "The Scoold blog - guides, tutorials, and insights on knowledge management, team collaboration, and enterprise Q&A.",
     "subtitle": "Tutorials, best practices, and insights on knowledge sharing, team collaboration, and getting the most from Scoold.",
     "read_more_label": "Read more",
-    "tags": "Browse All Blog Tags and Topics | Scoold Blog"
+    "tags": "Browse All Blog Tags and Topics"
   },
   "blogCards": {
     "heading": "The latest from our blog",
@@ -1513,7 +1513,7 @@
   "keywords": [
     {
       "id": "open-source-stack-overflow-alternative",
-      "title": "Open Source Stack Overflow Alternative | Scoold",
+      "title": "Open Source Stack Overflow Alternative",
       "heading": "Open Source Stack Overflow Alternative",
       "description": "Scoold is the leading open-source Stack Overflow alternative. Apache 2.0 licensed, self-hosted, with full Q&A features and enterprise SSO. Deploy anywhere.",
       "intro": "Open source Stack Overflow alternative software gives your team the familiar Q&A workflow without per-seat subscription costs or vendor lock-in. Scoold Community is fully open source under the Apache 2.0 license, offering voting, reputation, badges, and full-text search on your own infrastructure. Build a private knowledge base your developers already know how to use from day one.",
@@ -1551,7 +1551,7 @@
     },
     {
       "id": "self-hosted-stack-overflow-alternative",
-      "title": "Self-Hosted Stack Overflow Alternative | Scoold",
+      "title": "Self-Hosted Stack Overflow Alternative",
       "heading": "Self-Hosted Stack Overflow Alternative",
       "description": "Scoold is a self-hosted Stack Overflow alternative with full data ownership. Deploy via Docker or JAR, connect enterprise SSO, no per-seat fees.",
       "intro": "Self-hosted Stack Overflow alternative platforms give engineering teams complete control over their knowledge without depending on external vendors. Scoold runs entirely on your infrastructure, keeping proprietary information behind your firewall while delivering the same Q&A workflow your developers use daily on the public Stack Overflow. No data leaves your network, no vendor has access to your content.",
@@ -1589,7 +1589,7 @@
     },
     {
       "id": "stack-overflow-for-teams-alternative",
-      "title": "Stack Overflow for Teams Alternative | Scoold",
+      "title": "Stack Overflow for Teams Alternative",
       "heading": "Stack Overflow for Teams Alternative",
       "description": "Looking for a Stack Overflow for Teams alternative? Scoold offers self-hosted Q&A with no per-seat fees, enterprise SSO, and full data ownership.",
       "intro": "Stack Overflow for Teams alternative solutions are increasingly sought by organizations tired of per-seat pricing and limited control over their knowledge data. Scoold provides the same Q&A experience with a fundamental difference: you own the infrastructure, control the data, and never pay per user. Migrate existing content and give your team a private knowledge platform without monthly subscription anxiety.",
@@ -1627,7 +1627,7 @@
     },
     {
       "id": "best-free-stack-overflow-alternative-for-business",
-      "title": "Best Free Stack Overflow Alternative for Business | Scoold",
+      "title": "Best Free Stack Overflow Alternative for Business",
       "heading": "Best Free Stack Overflow Alternative for Business",
       "description": "Scoold is the best free Stack Overflow alternative for business. Open source, self-hosted, unlimited users. Full Q&A with voting, search, and SSO.",
       "intro": "The best free Stack Overflow alternative for business combines proven Q&A mechanics with zero licensing costs and complete data ownership. Scoold Community delivers exactly this: an Apache 2.0 open-source platform with voting, reputation, full-text search, and enterprise authentication. Deploy on your servers, invite unlimited users, and build a knowledge base that grows with your company without ever paying per seat.",
@@ -1665,7 +1665,7 @@
     },
     {
       "id": "european-alternative-to-stack-overflow",
-      "title": "European Alternative to Stack Overflow | Scoold",
+      "title": "European Alternative to Stack Overflow",
       "heading": "European Alternative to Stack Overflow",
       "description": "Scoold is a European alternative to Stack Overflow. Built in the EU, self-hosted, GDPR-friendly. Full Q&A features with data sovereignty guaranteed.",
       "intro": "European alternative to Stack Overflow options matter for organizations that prioritize data sovereignty, GDPR compliance, and supporting EU-based software vendors. Scoold is built by Erudika, a European company, and designed for self-hosted deployment so your knowledge data never crosses borders you do not control. Get the complete Stack Overflow Q&A experience while keeping data residency fully within your jurisdiction.",
@@ -1703,7 +1703,7 @@
     },
     {
       "id": "european-alternative-to-discourse",
-      "title": "European Alternative to Discourse | Scoold",
+      "title": "European Alternative to Discourse",
       "heading": "European Alternative to Discourse",
       "description": "Scoold is a European alternative to Discourse. Self-hosted Q&A with focused discussions, EU-built, GDPR-friendly. Simpler than forum threads.",
       "intro": "European alternative to Discourse platforms appeal to organizations seeking structured knowledge sharing without the complexity of traditional forum software or US-hosted cloud dependencies. Scoold offers a focused Q&A format instead of sprawling thread-based discussions, built by a European company and designed for self-hosted deployment. Get clear answers instead of endless conversation threads while keeping data in your jurisdiction.",
@@ -1741,7 +1741,7 @@
     },
     {
       "id": "on-premise-stack-overflow-alternative",
-      "title": "On-Premise Stack Overflow Alternative | Scoold",
+      "title": "On-Premise Stack Overflow Alternative",
       "heading": "On-Premise Stack Overflow Alternative",
       "description": "Scoold is an on-premise Stack Overflow alternative. Deploy behind your firewall with LDAP/SAML SSO, full Q&A features, and no external dependencies.",
       "intro": "On-premise Stack Overflow alternative deployments are essential for organizations with strict data residency requirements, air-gapped environments, or regulatory constraints that prohibit cloud-hosted knowledge platforms. Scoold installs entirely within your network perimeter, connecting to your directory services and operating without any external internet dependency. Your knowledge stays physically within your facility at all times.",
@@ -1779,7 +1779,7 @@
     },
     {
       "id": "stack-overflow-clone-for-enterprises",
-      "title": "Stack Overflow Clone for Enterprises | Scoold",
+      "title": "Stack Overflow Clone for Enterprises",
       "heading": "Stack Overflow Clone for Enterprises",
       "description": "Scoold is a Stack Overflow clone for enterprises. Self-hosted Q&A with SAML SSO, SCIM, spaces, and unlimited users. One-time license, no per-seat fees.",
       "intro": "Stack Overflow clone for enterprises describes what many large organizations seek: the proven Q&A mechanics of Stack Overflow deployed privately with enterprise-grade security and administration. Scoold delivers exactly this with SAML SSO, SCIM provisioning, role-based access, and multi-space organization. Scale to thousands of users across departments while maintaining the familiar experience your developers already trust.",
@@ -1817,7 +1817,7 @@
     },
     {
       "id": "q-and-a-platform-inspired-by-stack-overflow",
-      "title": "Q&A Platform Inspired by Stack Overflow | Scoold",
+      "title": "Q&A Platform Inspired by Stack Overflow",
       "heading": "Q&A Platform Inspired by Stack Overflow",
       "description": "Scoold is a Q&A platform inspired by Stack Overflow. Self-hosted, open source, with voting, reputation, and full-text search. Deploy on any infrastructure.",
       "intro": "A Q&A platform inspired by Stack Overflow brings the most effective knowledge-sharing format to your private environment. Scoold takes the core mechanics that made Stack Overflow successful - voting, reputation, accepted answers, and instant search - and packages them as a self-hosted application you control completely. Purpose-built for teams who want structured knowledge exchange without public exposure.",
@@ -1855,7 +1855,7 @@
     },
     {
       "id": "self-hosted-q-and-a-platform-for-developers",
-      "title": "Self-Hosted Q&A Platform for Developers | Scoold",
+      "title": "Self-Hosted Q&A Platform for Developers",
       "heading": "Self-Hosted Q&A Platform for Developers",
       "description": "Scoold is a self-hosted Q&A platform for developers. Stack Overflow-style workflow, full-text search, enterprise SSO. Deploy via Docker in minutes.",
       "intro": "Self-hosted Q&A platform for developers provides your engineering team with a private Stack Overflow experience running entirely on your infrastructure. Scoold combines the ask-answer-vote workflow developers know with self-hosted deployment that keeps proprietary knowledge behind your firewall. No external dependencies, no vendor access to your data, and no per-seat licensing that penalizes team growth.",
@@ -1893,7 +1893,7 @@
     },
     {
       "id": "internal-knowledge-base-software",
-      "title": "Internal Knowledge Base Software | Scoold",
+      "title": "Internal Knowledge Base Software",
       "heading": "Internal Knowledge Base Software",
       "description": "Scoold is internal knowledge base software that uses Q&A, voting, and full-text search to keep institutional knowledge accessible. Self-hosted, no per-seat fees.",
       "intro": "Internal knowledge base software succeeds only when people actually use it consistently. Scoold replaces static wikis with a Q&A-driven approach where asking and answering questions is the natural path to building living documentation. Reputation points, badges, and instant full-text search keep your entire team engaged and your organizational knowledge current, accessible, and growing every day.",
@@ -1931,7 +1931,7 @@
     },
     {
       "id": "self-hosted-knowledge-base-software",
-      "title": "Self-Hosted Knowledge Base Software | Scoold",
+      "title": "Self-Hosted Knowledge Base Software",
       "heading": "Self-Hosted Knowledge Base Software",
       "description": "Scoold is self-hosted knowledge base software with Q&A, full-text search, and enterprise SSO. Deploy on-premises via Docker or JAR. No per-seat fees.",
       "intro": "Self-hosted knowledge base software gives you complete ownership of your organization's intellectual capital without depending on external vendors or trusting third parties with sensitive information. Scoold runs entirely on your infrastructure, whether on-premises or in a private cloud, so documentation and institutional knowledge never leaves your direct control. Combine proven Q&A workflows with powerful search for knowledge that stays alive.",
@@ -1969,7 +1969,7 @@
     },
     {
       "id": "internal-knowledge-hub-for-msps",
-      "title": "Internal Knowledge Hub for MSPs | Scoold",
+      "title": "Internal Knowledge Hub for MSPs",
       "heading": "Internal Knowledge Hub for MSPs",
       "description": "Scoold is an internal knowledge hub for MSPs. Capture troubleshooting procedures, client configurations, and escalation paths in a searchable Q&A platform.",
       "intro": "An internal knowledge hub for MSPs transforms scattered tribal knowledge into a searchable, structured resource your technicians can rely on every day. Scoold gives managed service providers a self-hosted platform where troubleshooting steps, client-specific configurations, and operational procedures are documented through natural Q&A workflows that require no extra editorial effort from busy technical staff.",
@@ -2007,7 +2007,7 @@
     },
     {
       "id": "internal-knowledge-base-for-engineering-teams",
-      "title": "Internal Knowledge Base for Engineering Teams | Scoold",
+      "title": "Internal Knowledge Base for Engineering Teams",
       "heading": "Internal Knowledge Base for Engineering Teams",
       "description": "Scoold is an internal knowledge base for engineering teams. Q&A format, full-text search, self-hosted, and code-friendly. Reduce repeated questions.",
       "intro": "An internal knowledge base for engineering teams must handle code snippets, architectural decisions, and debugging workflows without adding friction to the development process. Scoold provides a Stack Overflow-style experience your engineers already understand intuitively, keeping answers discoverable long after the original conversation ends. Self-hosted, instantly searchable, and purpose-built for technical depth and developer productivity.",
@@ -2045,7 +2045,7 @@
     },
     {
       "id": "best-knowledge-base-software-for-msps",
-      "title": "Best Knowledge Base Software for MSPs | Scoold",
+      "title": "Best Knowledge Base Software for MSPs",
       "heading": "Best Knowledge Base Software for MSPs",
       "description": "Looking for the best knowledge base software for MSPs? Scoold is self-hosted Q&A with unlimited users, full-text search, and no per-seat pricing.",
       "intro": "The best knowledge base software for MSPs eliminates repeated escalations, accelerates ticket resolution, and retains critical expertise when staff turns over. Scoold delivers a self-hosted Q&A platform purpose-built for technical teams who solve complex problems daily. No per-seat fees, no vendor lock-in, and instant full-text search across every documented solution your team has ever captured.",
@@ -2083,7 +2083,7 @@
     },
     {
       "id": "self-hosted-q-and-a-platform-for-msp-teams",
-      "title": "Self-Hosted Q&A Platform for MSP Teams | Scoold",
+      "title": "Self-Hosted Q&A Platform for MSP Teams",
       "heading": "Self-Hosted Q&A Platform for MSP Teams",
       "description": "Scoold is a self-hosted Q&A platform for MSP teams. Capture fixes, isolate client data, integrate with chat tools. No per-seat fees, unlimited technicians.",
       "intro": "A self-hosted Q&A platform for MSP teams keeps troubleshooting knowledge under your control while making it instantly accessible to every technician on every shift. Scoold brings the proven ask-answer-vote format to your own infrastructure, so documented solutions never sit behind a third-party login or leave your network perimeter. Own your operational knowledge completely.",
@@ -2121,7 +2121,7 @@
     },
     {
       "id": "knowledge-base-for-engineering-teams",
-      "title": "Knowledge Base for Engineering Teams | Scoold",
+      "title": "Knowledge Base for Engineering Teams",
       "heading": "Knowledge Base for Engineering Teams",
       "description": "Scoold is a knowledge base for engineering teams. Q&A format, full-text search, reputation system, self-hosted. Integrates with Slack, Teams, and your toolchain.",
       "intro": "A knowledge base for engineering teams needs to match how developers actually share information: through questions and answers, not formal documentation nobody volunteers to maintain. Scoold provides a familiar Stack Overflow-style interface that engineers adopt without resistance, turning everyday problem-solving conversations into permanent, searchable knowledge that compounds over time and scales with your organization.",
@@ -2159,7 +2159,7 @@
     },
     {
       "id": "best-open-source-faq-tool",
-      "title": "Best Open-Source FAQ Tool | Scoold",
+      "title": "Best Open-Source FAQ Tool",
       "heading": "Best Open-Source FAQ Tool",
       "description": "Scoold is the best open-source FAQ tool. Apache 2.0 licensed, self-hosted, with voting, search, and community-driven answers. Free for unlimited users.",
       "intro": "The best open-source FAQ tool combines community-driven answers with powerful search so your users find solutions without submitting support tickets. Scoold delivers a fully open-source FAQ platform under the Apache 2.0 license where questions get answered, voted on, and organized automatically. Deploy on your infrastructure for free and let your community build a living FAQ that improves itself.",
@@ -2197,7 +2197,7 @@
     },
     {
       "id": "best-free-q-and-a-platform",
-      "title": "Best Free Q&A Platform | Scoold",
+      "title": "Best Free Q&A Platform",
       "heading": "Best Free Q&A Platform",
       "description": "Scoold is the best free Q&A platform. Open source, self-hosted, unlimited users. Voting, reputation, full-text search, and enterprise SSO included.",
       "intro": "The best free Q&A platform gives your team or community a structured way to ask questions and get answers without any licensing costs. Scoold Community is completely free under the Apache 2.0 license with no user limits, no feature restrictions, and no trial periods. Get voting, reputation, full-text search, Spaces, and LDAP authentication at zero cost on your own infrastructure.",
@@ -2235,7 +2235,7 @@
     },
     {
       "id": "best-self-hosted-open-source-q-and-a-platform",
-      "title": "Best Self-Hosted Open Source Q&A Platform | Scoold",
+      "title": "Best Self-Hosted Open Source Q&A Platform",
       "heading": "Best Self-Hosted Open Source Q&A Platform",
       "description": "Scoold is the best self-hosted open source Q&A platform. Apache 2.0, Docker-ready, with voting, reputation, SSO, and unlimited users. Deploy in minutes.",
       "intro": "The best self-hosted open source Q&A platform combines data sovereignty with community-driven knowledge sharing and zero licensing costs. Scoold runs entirely on your infrastructure under the Apache 2.0 license, delivering Stack Overflow-style Q&A with full-text search, voting, and reputation. Your data never leaves your servers while your team benefits from a battle-tested knowledge-sharing format.",
@@ -2273,7 +2273,7 @@
     },
     {
       "id": "q-and-a-software-for-team-onboarding",
-      "title": "Q&A Software for Team Onboarding | Scoold",
+      "title": "Q&A Software for Team Onboarding",
       "heading": "Q&A Software for Team Onboarding",
       "description": "Scoold is Q&A software for team onboarding. New hires find answers instantly through search. Senior staff answer once, benefit every future hire.",
       "intro": "Q&A software for team onboarding transforms the repetitive process of answering the same new-hire questions into a permanent, searchable knowledge resource. Scoold captures answers from experienced team members in a format new hires can discover independently through search. Senior staff answer once and that investment compounds with every subsequent onboarding cycle, dramatically reducing ramp-up time.",
@@ -2311,7 +2311,7 @@
     },
     {
       "id": "employee-q-and-a-portal",
-      "title": "Employee Q&A Portal | Scoold",
+      "title": "Employee Q&A Portal",
       "heading": "Employee Q&A Portal",
       "description": "Scoold is an employee Q&A portal where staff ask questions and get answers from colleagues. Self-hosted, searchable, with voting and reputation.",
       "intro": "An employee Q&A portal gives your workforce a single place to ask questions and get reliable answers from knowledgeable colleagues. Scoold provides a structured platform where employees across all departments ask, answer, and vote on the best responses. Institutional knowledge accumulates organically instead of disappearing into email threads, chat messages, and undocumented conversations that nobody else can access.",
@@ -2349,7 +2349,7 @@
     },
     {
       "id": "internal-q-and-a-platform",
-      "title": "Internal Q&A Platform | Scoold",
+      "title": "Internal Q&A Platform",
       "heading": "Internal Q&A Platform",
       "description": "Scoold is an internal Q&A platform. Self-hosted, secure, with LDAP/SAML SSO and access controls. Keep sensitive knowledge behind your firewall.",
       "intro": "An internal Q&A platform that protects your organization's sensitive knowledge while making it accessible to authorized team members who need it. Scoold deploys behind your firewall on infrastructure you control, with enterprise authentication, encrypted communications, and granular access controls. Share proprietary information, security procedures, and confidential processes without exposing data to third-party vendors.",
@@ -2387,7 +2387,7 @@
     },
     {
       "id": "customer-support-q-and-a-platform",
-      "title": "Customer Support Q&A Platform | Scoold",
+      "title": "Customer Support Q&A Platform",
       "heading": "Customer Support Q&A Platform",
       "description": "Scoold is a customer support Q&A platform. Let customers ask questions and get community answers. Reduce tickets with searchable self-service knowledge.",
       "intro": "A customer support Q&A platform deflects support tickets by letting customers find answers from your community and knowledge base before contacting your team. Scoold provides a structured Q&A experience where customers ask questions, other users and staff answer, and voting surfaces the best solutions. Searchable, self-maintaining, and designed to reduce your support burden while improving customer satisfaction.",
@@ -2425,7 +2425,7 @@
     },
     {
       "id": "open-source-community-forum-software",
-      "title": "Open Source Community Forum Software | Scoold",
+      "title": "Open Source Community Forum Software",
       "heading": "Open Source Community Forum Software",
       "description": "Scoold is open source community forum software with Q&A, voting, and reputation. Apache 2.0 licensed, self-hosted. Build engaged communities for free.",
       "intro": "Open source community forum software lets you build and own your community without vendor lock-in or recurring licensing costs. Scoold is a fully open-source platform under the Apache 2.0 license that combines focused Q&A discussions with community engagement features like voting, reputation, and badges. Self-host on your infrastructure and grow your community on your terms.",
@@ -2463,7 +2463,7 @@
     },
     {
       "id": "internal-company-forum-software",
-      "title": "Internal Company Forum Software | Scoold",
+      "title": "Internal Company Forum Software",
       "heading": "Internal Company Forum Software",
       "description": "Scoold is internal company forum software for structured discussions. Self-hosted Q&A with voting, search, and spaces. Replace noisy chat with lasting knowledge.",
       "intro": "Internal company forum software gives your organization a structured platform for discussions that need to persist beyond the lifespan of a chat message. Scoold provides a Q&A-based forum where employees ask questions, share knowledge, and find answers through search rather than scrolling through months of Slack history. Conversations become organizational assets instead of disposable messages.",
@@ -2501,7 +2501,7 @@
     },
     {
       "id": "private-discussion-forum-for-teams",
-      "title": "Private Discussion Forum for Teams | Scoold",
+      "title": "Private Discussion Forum for Teams",
       "heading": "Private Discussion Forum for Teams",
       "description": "Scoold is a private discussion forum for teams. Self-hosted Q&A with access controls, SSO, and spaces. Keep team discussions confidential and searchable.",
       "intro": "A private discussion forum for teams provides a confidential space where your people can ask questions, share ideas, and solve problems without exposing internal conversations to the public internet. Scoold delivers self-hosted Q&A with access controls, enterprise SSO, and team-based spaces that keep discussions private, organized, and searchable only by authorized members of your organization.",
@@ -2539,7 +2539,7 @@
     },
     {
       "id": "enterprise-forum-platform",
-      "title": "Enterprise Forum Platform | Scoold",
+      "title": "Enterprise Forum Platform",
       "heading": "Enterprise Forum Platform",
       "description": "Scoold is an enterprise forum platform with SAML SSO, SCIM provisioning, spaces, and self-hosted deployment. Structured Q&A for large organizations.",
       "intro": "An enterprise forum platform must handle thousands of users across multiple departments while maintaining security, compliance, and administrative control. Scoold delivers structured Q&A discussions with SAML SSO, SCIM provisioning, multi-space organization, and self-hosted deployment. Scale knowledge sharing across your entire enterprise without sacrificing the security and governance standards large organizations require.",
@@ -2577,7 +2577,7 @@
     },
     {
       "id": "developer-community-platform",
-      "title": "Developer Community Platform | Scoold",
+      "title": "Developer Community Platform",
       "heading": "Developer Community Platform",
       "description": "Scoold is a developer community platform with Q&A, voting, and reputation. Open source, self-hosted. Build engaged developer communities around your product.",
       "intro": "A developer community platform built on Q&A gives your users a structured place to ask technical questions, share solutions, and build expertise around your product or technology. Scoold provides the Stack Overflow-style experience developers expect, self-hosted on your infrastructure so you own your community completely. Voting and reputation create engagement that sustains itself organically.",
@@ -2615,7 +2615,7 @@
     },
     {
       "id": "support-forum-software-for-engineering-teams",
-      "title": "Support Forum Software for Engineering Teams | Scoold",
+      "title": "Support Forum Software for Engineering Teams",
       "heading": "Support Forum Software for Engineering Teams",
       "description": "Scoold is support forum software for engineering teams. Self-hosted Q&A where developers ask and answer technical questions. Reduce repeated support requests.",
       "intro": "Support forum software for engineering teams gives developers a self-service platform to find technical answers without waiting for support ticket responses. Scoold provides Stack Overflow-style Q&A where engineers ask questions, peers answer, and voting surfaces the best solutions. Reduce support load while building a searchable knowledge base from real technical interactions your team handles daily.",
@@ -2653,7 +2653,7 @@
     },
     {
       "id": "internal-it-support-forum-for-msps",
-      "title": "Internal IT Support Forum for MSPs | Scoold",
+      "title": "Internal IT Support Forum for MSPs",
       "heading": "Internal IT Support Forum for MSPs",
       "description": "Scoold is an internal IT support forum for MSPs. Technicians ask, answer, and search for solutions. Private spaces, self-hosted, no per-seat fees.",
       "intro": "An internal IT support forum for MSPs gives your technicians a dedicated platform to document solutions, ask colleagues for help, and find fixes without escalating every unfamiliar issue. Scoold delivers self-hosted Q&A with private spaces where your NOC and field teams capture troubleshooting knowledge that persists across shift changes, staff turnover, and client environment updates.",
@@ -2691,7 +2691,7 @@
     },
     {
       "id": "knowledge-sharing-platform-for-engineers",
-      "title": "Knowledge Sharing Platform for Engineers | Scoold",
+      "title": "Knowledge Sharing Platform for Engineers",
       "heading": "Knowledge Sharing Platform for Engineers",
       "description": "Scoold is a knowledge sharing platform for engineers. Q&A format, voting, reputation, and full-text search. Self-hosted and purpose-built for technical teams.",
       "intro": "A knowledge sharing platform for engineers needs to feel natural to technical professionals who already know how Stack Overflow works. Scoold provides Q&A-based knowledge sharing where engineers ask questions, contribute answers, and surface the best information through voting. Self-hosted, instantly searchable, and designed to make sharing knowledge as frictionless as asking a question in chat.",
@@ -2729,7 +2729,7 @@
     },
     {
       "id": "corporate-discussion-board-software",
-      "title": "Corporate Discussion Board Software | Scoold",
+      "title": "Corporate Discussion Board Software",
       "heading": "Corporate Discussion Board Software",
       "description": "Scoold is corporate discussion board software with Q&A, voting, and spaces. Self-hosted, enterprise SSO, and designed for structured company-wide discussions.",
       "intro": "Corporate discussion board software provides your organization with a structured platform for company-wide conversations that need to be findable long after they happen. Scoold delivers Q&A-based discussions with voting, spaces for department separation, and full-text search. Move important conversations out of ephemeral chat into a permanent, searchable corporate knowledge resource.",
@@ -2767,7 +2767,7 @@
     },
     {
       "id": "employee-community-platform",
-      "title": "Employee Community Platform | Scoold",
+      "title": "Employee Community Platform",
       "heading": "Employee Community Platform",
       "description": "Scoold is an employee community platform with Q&A, voting, and reputation. Build company culture through knowledge sharing. Self-hosted, enterprise SSO.",
       "intro": "An employee community platform builds organizational culture by connecting people across departments, locations, and hierarchies through knowledge sharing. Scoold provides a structured Q&A environment where employees help each other, earn recognition for contributions, and build connections through shared expertise. Transform your workforce from siloed teams into a collaborative community that learns together.",
@@ -2805,7 +2805,7 @@
     },
     {
       "id": "self-hosted-developer-portal",
-      "title": "Self-Hosted Developer Portal | Scoold",
+      "title": "Self-Hosted Developer Portal",
       "heading": "Self-Hosted Developer Portal",
       "description": "Scoold is a self-hosted developer portal with Q&A, search, and API access. Build a knowledge hub for internal or external developers on your infrastructure.",
       "intro": "A self-hosted developer portal gives your engineering team or external developer community a centralized hub for technical questions, best practices, and knowledge sharing on infrastructure you control. Scoold provides a Q&A-driven portal with full-text search, reputation, and API access. Keep developer knowledge organized, searchable, and private without depending on third-party platforms.",
@@ -2843,7 +2843,7 @@
     },
     {
       "id": "best-self-hosted-developer-collaboration-platform",
-      "title": "Best Self-Hosted Developer Collaboration Platform | Scoold",
+      "title": "Best Self-Hosted Developer Collaboration Platform",
       "heading": "Best Self-Hosted Developer Collaboration Platform",
       "description": "Scoold is the best self-hosted developer collaboration platform. Q&A, knowledge sharing, reputation, and search. Deploy on your infrastructure for free.",
       "intro": "The best self-hosted developer collaboration platform combines knowledge sharing with the data sovereignty your engineering team requires. Scoold provides Stack Overflow-style Q&A on your infrastructure where developers collaborate through questions, answers, and community voting. No cloud dependency, no vendor lock-in, and no per-seat licensing. Just focused technical collaboration that lives where your code lives.",
@@ -2881,7 +2881,7 @@
     },
     {
       "id": "support-forum-for-vibe-coders",
-      "title": "Support Forum for Vibe Coders | Scoold",
+      "title": "Support Forum for Vibe Coders",
       "heading": "Support Forum for Vibe Coders",
       "description": "Scoold is a support forum for vibe coders. Share prompts, debug AI outputs, and build shared context. Self-hosted Q&A purpose-built for AI-assisted development.",
       "intro": "A support forum for vibe coders gives AI-assisted development teams a place to share working prompts, debug unexpected outputs, and build collective knowledge about effective AI collaboration patterns. Scoold provides Q&A-based knowledge sharing where vibe coders document what works, vote on the best approaches, and search for solutions when their AI assistant produces confusing results.",
@@ -2919,7 +2919,7 @@
     },
     {
       "id": "context-memory-tool-for-vibe-coders",
-      "title": "Context Memory Tool for Vibe Coders | Scoold",
+      "title": "Context Memory Tool for Vibe Coders",
       "heading": "Context Memory Tool for Vibe Coders",
       "description": "Scoold is a context memory tool for vibe coders. Persistent, searchable team knowledge that AI agents can access via MCP. Never lose coding context again.",
       "intro": "A context memory tool for vibe coders solves the fundamental problem of AI-assisted development: context evaporates between sessions, and every new conversation starts from zero. Scoold provides persistent, searchable team knowledge that serves as shared memory for your vibe coding workflow. Document decisions, patterns, and solutions once, then reference them in future AI sessions to maintain continuity.",
@@ -2957,7 +2957,7 @@
     },
     {
       "id": "knowledge-sharing-hub-with-mcp",
-      "title": "Knowledge Sharing Hub with MCP | Scoold",
+      "title": "Knowledge Sharing Hub with MCP",
       "heading": "Knowledge Sharing Hub with MCP",
       "description": "Scoold is a knowledge sharing hub with MCP support. Connect your team knowledge to AI assistants via Model Context Protocol. Self-hosted and searchable.",
       "intro": "A knowledge sharing hub with MCP support bridges human knowledge and AI assistants through the Model Context Protocol standard. Scoold combines proven Q&A-based knowledge sharing with MCP server capabilities, allowing AI coding tools to query your team's documented solutions, decisions, and best practices directly. Your accumulated knowledge becomes accessible to both humans searching and AI agents reasoning.",
@@ -2995,7 +2995,7 @@
     },
     {
       "id": "mcp-ready-knowledge-base",
-      "title": "MCP-Ready Knowledge Base | Scoold",
+      "title": "MCP-Ready Knowledge Base",
       "heading": "MCP-Ready Knowledge Base",
       "description": "Scoold is an MCP-ready knowledge base. Expose team knowledge to AI assistants via Model Context Protocol. Self-hosted Q&A with voting and search.",
       "intro": "An MCP-ready knowledge base connects your team's documented expertise directly to AI development tools through the Model Context Protocol standard. Scoold provides self-hosted Q&A with built-in MCP server capabilities, making your accumulated knowledge instantly accessible to Claude, Cursor, and other AI assistants. Build knowledge once, use it everywhere - by humans searching and AI agents reasoning.",
@@ -3033,7 +3033,7 @@
     },
     {
       "id": "mcp-server-for-team-knowledge",
-      "title": "MCP Server for Team Knowledge | Scoold",
+      "title": "MCP Server for Team Knowledge",
       "heading": "MCP Server for Team Knowledge",
       "description": "Scoold provides an MCP server for team knowledge. AI coding assistants query your Q&A directly via Model Context Protocol. Self-hosted, searchable, private.",
       "intro": "An MCP server for team knowledge allows AI coding assistants to query your organization's documented solutions, architecture decisions, and best practices in real time. Scoold provides a self-hosted Q&A platform with MCP server capabilities, turning your team's accumulated knowledge into a live context source that AI tools access autonomously during development sessions.",
@@ -3071,7 +3071,7 @@
     },
     {
       "id": "knowledge-base-for-ai-coding-agents",
-      "title": "Knowledge Base for AI Coding Agents | Scoold",
+      "title": "Knowledge Base for AI Coding Agents",
       "heading": "Knowledge Base for AI Coding Agents",
       "description": "Scoold is a knowledge base for AI coding agents. Give your AI tools access to team knowledge via MCP and REST API. Self-hosted, structured, searchable.",
       "intro": "A knowledge base for AI coding agents provides structured, queryable information that automated development tools can access to produce more accurate and context-aware code. Scoold offers self-hosted Q&A content exposed through MCP and REST API, giving AI agents direct access to your team's architecture decisions, coding standards, and documented solutions whenever they generate or modify code.",
@@ -3109,7 +3109,7 @@
     },
     {
       "id": "internal-memory-system-for-ai-agents",
-      "title": "Internal Memory System for AI Agents | Scoold",
+      "title": "Internal Memory System for AI Agents",
       "heading": "Internal Memory System for AI Agents",
       "description": "Scoold is an internal memory system for AI agents. Persistent, queryable team knowledge accessible via MCP. Give your AI tools organizational memory.",
       "intro": "An internal memory system for AI agents solves the fundamental limitation of stateless AI tools: they cannot remember your organization's specific context between sessions or across team members. Scoold provides persistent, queryable team knowledge that AI agents access via MCP and API, serving as organizational memory that ensures every AI interaction benefits from your team's accumulated expertise.",
@@ -3147,7 +3147,7 @@
     },
     {
       "id": "team-knowledge-platform-for-ai-workflows",
-      "title": "Team Knowledge Platform for AI Workflows | Scoold",
+      "title": "Team Knowledge Platform for AI Workflows",
       "heading": "Team Knowledge Platform for AI Workflows",
       "description": "Scoold is a team knowledge platform for AI workflows. Self-hosted Q&A with MCP and API access. Feed structured team knowledge into AI-assisted development.",
       "intro": "A team knowledge platform for AI workflows provides the structured context that makes AI-assisted development accurate and consistent with your organization's standards. Scoold combines Q&A-based knowledge capture with MCP and API access, creating a platform where team knowledge flows naturally into AI development workflows. Document once, benefit in every AI-assisted session across your entire team.",
@@ -3185,7 +3185,7 @@
     },
     {
       "id": "agent-friendly-knowledge-repository",
-      "title": "Agent-Friendly Knowledge Repository | Scoold",
+      "title": "Agent-Friendly Knowledge Repository",
       "heading": "Agent-Friendly Knowledge Repository",
       "description": "Scoold is an agent-friendly knowledge repository. Structured Q&A accessible via MCP and REST API. Optimized for both human search and AI agent queries.",
       "intro": "An agent-friendly knowledge repository stores team knowledge in formats that AI agents can query and understand effectively alongside human users. Scoold provides structured Q&A content accessible through MCP and REST API, with vote-scored answers that help agents identify the most reliable information. Build a knowledge repository that serves both your team and their AI development tools equally well.",
@@ -3223,7 +3223,7 @@
     },
     {
       "id": "shared-context-platform-for-vibe-coding-teams",
-      "title": "Shared Context Platform for Vibe Coding Teams | Scoold",
+      "title": "Shared Context Platform for Vibe Coding Teams",
       "heading": "Shared Context Platform for Vibe Coding Teams",
       "description": "Scoold is a shared context platform for vibe coding teams. Persistent knowledge accessible via MCP. Align AI assistants with team standards and decisions.",
       "intro": "A shared context platform for vibe coding teams ensures every developer's AI assistant has access to the same organizational knowledge, producing consistent outputs aligned with team standards. Scoold provides persistent, searchable Q&A that serves as shared context for AI-assisted development. Document conventions once and every team member's AI sessions benefit from collective organizational wisdom.",
@@ -3261,7 +3261,7 @@
     },
     {
       "id": "privacy-first-knowledge-base",
-      "title": "Privacy-First Knowledge Base | Scoold",
+      "title": "Privacy-First Knowledge Base",
       "heading": "Privacy-First Knowledge Base",
       "description": "Scoold is a privacy-first knowledge base. Self-hosted, no telemetry, no third-party data access. EU-built Q&A platform with complete data sovereignty.",
       "intro": "A privacy-first knowledge base keeps your organizational information completely under your control without any third-party data processing, telemetry, or external dependencies. Scoold is built by a European company and designed for self-hosted deployment where no data ever leaves your infrastructure. Combine powerful Q&A knowledge sharing with absolute privacy guarantees that SaaS alternatives cannot match.",
@@ -3299,7 +3299,7 @@
     },
     {
       "id": "on-premise-secure-knowledge-management-software",
-      "title": "On-Premise Secure Knowledge Management Software | Scoold",
+      "title": "On-Premise Secure Knowledge Management Software",
       "heading": "On-Premise Secure Knowledge Management Software",
       "description": "Scoold is on-premise secure knowledge management software. Deploy behind your firewall with mTLS, LDAP/SAML, and full data isolation. Zero cloud dependency.",
       "intro": "On-premise secure knowledge management software gives organizations with strict security requirements a knowledge-sharing platform that operates entirely within their controlled environment. Scoold deploys behind your firewall with enterprise authentication, encrypted communications, and zero external dependencies. Manage organizational knowledge securely without accepting the risk posture of cloud-hosted vendors.",
@@ -3337,7 +3337,7 @@
     },
     {
       "id": "internal-knowledge-platform-with-ldap-and-saml-sso",
-      "title": "Internal Knowledge Platform with LDAP and SAML SSO | Scoold",
+      "title": "Internal Knowledge Platform with LDAP and SAML SSO",
       "heading": "Internal Knowledge Platform with LDAP and SAML SSO",
       "description": "Scoold is an internal knowledge platform with LDAP and SAML SSO. Single sign-on with your directory, self-hosted Q&A, and automatic user provisioning.",
       "intro": "An internal knowledge platform with LDAP and SAML SSO integrates seamlessly with your existing identity infrastructure, eliminating separate credentials and manual user management. Scoold connects directly to your directory service for authentication and optional SCIM provisioning, letting employees access Q&A knowledge sharing with their corporate credentials from day one without IT creating individual accounts.",
@@ -3375,7 +3375,7 @@
     },
     {
       "id": "gdpr-compliant-knowledge-sharing-platform",
-      "title": "GDPR-Compliant Knowledge Sharing Platform | Scoold",
+      "title": "GDPR-Compliant Knowledge Sharing Platform",
       "heading": "GDPR-Compliant Knowledge Sharing Platform",
       "description": "Scoold is a GDPR-compliant knowledge sharing platform. Self-hosted in the EU, built by a European company. Full data control with no third-party processors.",
       "intro": "A GDPR-compliant knowledge sharing platform requires more than a privacy policy - it requires architectural decisions that make compliance straightforward rather than aspirational. Scoold is built by a European company and designed for self-hosted deployment where you are both data controller and processor. No third-party subprocessors, no transatlantic data transfers, and complete technical ability to honor data subject rights.",
@@ -3410,6 +3410,234 @@
         }
       ],
       "category": "self-hosted-privacy"
+    },
+    {
+      "id": "q-and-a-software-for-students",
+      "title": "Q&A Software for Students",
+      "heading": "Q&A Software for Students",
+      "description": "Scoold is free Q&A software for students. Self-hosted, moderated, with voting, full-text search, and per-course spaces. Give learners a place to ask and answer.",
+      "intro": "Q&A software for students gives learners a dedicated space to ask questions, share answers, and build a searchable knowledge base alongside their coursework. Scoold brings the familiar Stack Overflow-style workflow - voting, accepted answers, reputation, and tags - to a self-hosted platform schools deploy for free. Students help each other while instructors moderate and surface the best responses.",
+      "cta": {
+        "label": "Set up Q&A for your class",
+        "href": "/download/"
+      },
+      "sections": [
+        {
+          "h2": "A Familiar Format Students Adopt Instantly",
+          "body": "A familiar format means students need no training to start. They already know the ask-vote-accept pattern from Stack Overflow, so they post questions, upvote helpful answers, and mark accepted solutions instinctively. Reputation points and badges reward consistent contributors, turning passive readers into active participants. The responsive interface works on laptops and phones alike, so learners engage wherever they study."
+        },
+        {
+          "h2": "Per-Course Spaces Keep Discussions Focused",
+          "body": "Spaces in Scoold create isolated areas for each course, cohort, or study group, so questions stay scoped to the right audience. An intro calculus Space never floods a literature seminar's feed. Instructors browse within a specific Space or search globally across the full knowledge base. Granular access controls keep private course materials restricted to enrolled students only."
+        },
+        {
+          "h2": "Free and Self-Hosted, No Per-Student Fees",
+          "body": "Licensing costs never scale with enrollment. Scoold Community is free and open source under Apache 2.0, with unlimited users and no feature gates. Deploy one instance for an entire department or a whole campus and invite every student without a single license conversation. When enterprise needs arise, Scoold Pro adds SSO and integrations as a one-time upgrade."
+        },
+        {
+          "h2": "Full-Text Search Surfaces Existing Answers",
+          "body": "Every question, answer, and comment is indexed for instant retrieval. A student typing an error message or a theorem name finds relevant threads in milliseconds rather than re-asking what a peer already solved. Similar-post suggestions appear while composing new questions, nudging learners toward existing solutions before duplicates fragment the knowledge base. Better search means fewer repeat questions for instructors."
+        },
+        {
+          "h2": "Moderation That Protects Students",
+          "body": "Teachers and TAs moderate content, remove spam, and pin canonical answers at the top of common threads. Reputation-based privileges scale automatically - trustworthy contributors earn edit and moderation rights without admin overhead. Anonymous posting can be enabled or disabled per Space, letting educators choose the right participation level for their classroom environment and student maturity."
+        },
+        {
+          "h2": "Deploy in Minutes on School Infrastructure",
+          "body": "Spin up Scoold with a single Docker container or a standalone JAR on modest school hardware - one gigabyte of RAM handles thousands of students. No external dependencies, no cloud account, no data leaving campus. Back up on your schedule and restore with a single command. Edtech vendors and internal IT alike get a platform running before lunch."
+        }
+      ],
+      "category": "qa-platform"
+    },
+    {
+      "id": "free-forum-software-for-schools",
+      "title": "Free Forum Software for Schools",
+      "heading": "Free Forum Software for Schools",
+      "description": "Scoold is free forum software for schools. Self-hosted, moderated, with Q&A, tags, search, and SSO. No per-seat fees, student privacy preserved.",
+      "intro": "Free forum software for schools gives educators a moderated discussion space without licensing costs or vendor lock-in. Scoold combines a focused Q&A format with self-hosted deployment, so a school runs its own forum on hardware it already owns. Students and teachers discuss assignments, share resources, and organize by class - all behind the school's firewall and under its privacy policy.",
+      "cta": {
+        "label": "Start your school forum",
+        "href": "/download/"
+      },
+      "sections": [
+        {
+          "h2": "A Forum Built for Classroom Conversations",
+          "body": "Scoold's Q&A structure keeps discussions on-topic where sprawling threads lose their value. Each question receives focused answers ranked by helpfulness through voting, with the accepted solution surfaced first. Teachers curate and pin authoritative answers, and tags organize threads by subject, grade, or club. The result is a forum students actually navigate instead of endless chronological threads."
+        },
+        {
+          "h2": "Completely Free, No Hidden Costs",
+          "body": "Scoold Community is Apache 2.0 licensed - not a trial, not a freemium teaser. Voting, reputation, badges, tags, spaces, full-text search, LDAP, and the REST API are all included. Schools deploy once and run indefinitely with no per-seat fees, no renewals, and no procurement hurdles. When budgets are tight, free and open source means sustainable."
+        },
+        {
+          "h2": "Self-Hosted for Student Privacy",
+          "body": "Student data stays on school infrastructure you control - no third-party cloud, no external processor, no analytics phoning home. Deploy behind the school firewall, in a private cloud region, or on an on-premises server. Privacy posture is verifiable through source code inspection, satisfying district compliance reviews without relying on vendor promises about how children's data is handled."
+        },
+        {
+          "h2": "SSO With School Credentials",
+          "body": "Connect Scoold to your existing directory through LDAP, Active Directory, or OAuth 2.0 so students and staff sign in with the credentials they already use. No new password to forget, no separate account database for IT to maintain. Scoold Pro adds SAML 2.0 and SCIM provisioning for districts that need federated identity and automated account lifecycle management."
+        },
+        {
+          "h2": "Spaces for Classes, Clubs, and Departments",
+          "body": "Create a separate Space for each class, club, grade level, or staff department. The drama club never drowns out AP chemistry, and parent-teacher discussions stay scoped to staff. Cross-Space search works when broader discovery is needed, while access controls keep sensitive conversations restricted. Schools organize the forum the way they already organize themselves."
+        },
+        {
+          "h2": "Deploy in Minutes, Maintain Easily",
+          "body": "One Docker container gets a school forum live before the next period begins, with modest hardware - a single server with a gigabyte of RAM handles thousands of users comfortably. Updates are single-container replacements, and backups run on your schedule with a single command. No Redis, no Elasticsearch, no multi-service architecture. Overstretched IT teams spend minutes, not hours, keeping the platform reliable for every classroom and club on campus."
+        }
+      ],
+      "category": "community-forum"
+    },
+    {
+      "id": "self-hosted-q-and-a-platform-for-universities",
+      "title": "Self-Hosted Q&A Platform for Universities",
+      "heading": "Self-Hosted Q&A Platform for Universities",
+      "description": "Scoold is a self-hosted Q&A platform for universities. On-premises, FERPA-friendly, with LDAP/SAML SSO, spaces, and full-text search. No per-seat fees.",
+      "intro": "Self-hosted Q&A platform for universities puts the proven Stack Overflow ask-answer-vote workflow on infrastructure the institution owns and controls. Scoold keeps student questions, answers, and accounts on-campus or in a private cloud, integrates with university identity systems, and scales to tens of thousands of users. Faculty get a focused help forum; IT gets full data sovereignty.",
+      "cta": {
+        "label": "Deploy for your university",
+        "href": "/download/"
+      },
+      "sections": [
+        {
+          "h2": "Data Sovereignty for FERPA and Beyond",
+          "body": "Student records and course content carry regulatory protections that cloud-hosted SaaS struggles to guarantee contractually. Self-hosting Scoold keeps every question, answer, and profile on university infrastructure governed by institutional policy. No third-party subprocessors, no transatlantic transfers, no vendor data access. FERPA, GDPR, and internal review board requirements apply directly because the university controls the entire stack."
+        },
+        {
+          "h2": "Enterprise SSO Across Campus Systems",
+          "body": "Authenticate students and faculty against the university directory through LDAP, SAML 2.0, or OAuth 2.0 - no new credentials, no separate password store. Scoold Pro adds SCIM provisioning so accounts follow enrollment and graduation automatically. Integration with Shibboleth, Azure AD, Okta, and Keycloak works out of the box. IT reduces account administration to near zero at university scale."
+        },
+        {
+          "h2": "Spaces for Departments and Courses",
+          "body": "Universities have hundreds of courses across many departments and campuses. Spaces in Scoold create logical boundaries for each class, major, research group, or administrative unit. Students see the spaces they're enrolled in; cross-Space search works when broader discovery is needed. An entire institution organizes its knowledge the way it already organizes its academic structure."
+        },
+        {
+          "h2": "The Format Students Already Trust",
+          "body": "Students use Stack Overflow daily and understand the ask-vote-accept loop instinctively, so adoption needs no training or change-management program. Voting surfaces the best answer, reputation identifies helpful contributors, and accepted solutions mark definitive responses. A question asked in September 2025 still answers itself in 2027 as new students find the thread via search rather than emailing the professor again."
+        },
+        {
+          "h2": "Lightweight on University Hardware",
+          "body": "Deploy via Docker, standalone JAR, or native binary on a single modest server - one gigabyte of RAM comfortably handles thousands of concurrent students. No PostgreSQL-plus-Redis-plus-Elasticsearch architecture to maintain, no multi-service operations team required. A central IT group stands up a campus-wide knowledge platform in a single afternoon and keeps it running reliably with minimal ongoing attention year over year."
+        },
+        {
+          "h2": "One-Time Licensing, Unlimited Students",
+          "body": "Per-seat SaaS pricing punishes universities every semester as new cohorts enroll. Scoold Community is free and open source; Scoold Pro is a one-time perpetual license covering unlimited users. Admit a thousand freshmen, spin up a new department, or open a satellite campus - the license and budget never adjust. Software costs become predictable regardless of enrollment swings."
+        }
+      ],
+      "category": "qa-platform"
+    },
+    {
+      "id": "q-and-a-software-for-online-courses",
+      "title": "Q&A Software for Online Courses",
+      "heading": "Q&A Software for Online Courses",
+      "description": "Scoold is Q&A software for online courses. Self-hosted, per-lesson spaces, voting, search, and SSO. Reduce support load and lift course completion.",
+      "intro": "Q&A software for online courses turns recurring learner questions into a searchable asset instead of an email backlog in the instructor's inbox. Scoold surrounds each course module with a dedicated Q&A space where students ask, peers answer, and the best responses rise through voting. Course creators reduce support burden while building a knowledge base that compounds in value with every new cohort.",
+      "cta": {
+        "label": "Add Q&A to your course",
+        "href": "/download/"
+      },
+      "sections": [
+        {
+          "h2": "Per-Lesson Spaces for Every Cohort",
+          "body": "Create a separate Space for each course module, lesson, or cohort so questions stay scoped to the right context. Intro modules never drown out advanced topics, and a January cohort's threads stay distinct from September's. Learners search within their own Space or across the whole catalog. Course creators organize discussions the way they already structure their content."
+        },
+        {
+          "h2": "Reduce Instructor Support Load",
+          "body": "The same questions surface every cohort - the same installation snag, the same conceptual sticking point. Scoold captures each answer once. Similar-post suggestions appear while a learner types a new question, often resolving the issue before submission. Instructors answer at the top of their funnel and stop repeating themselves in direct messages. Better search means more time for teaching."
+        },
+        {
+          "h2": "A Format Learners Adopt Instantly",
+          "body": "Voting, accepted answers, reputation, and badges are mechanics students already understand from Stack Overflow, so there's no training overhead. The reward loop keeps learners returning between modules and nudges passive viewers into active contributors. Engagement signals like reputation also surface which students are helping peers - useful signal for instructors and for community-building around a course brand."
+        },
+        {
+          "h2": "Self-Hosted, White-Label, Your Brand",
+          "body": "Deploy Scoold on your own domain with your logo, colors, and course branding. No third-party forum watermark, no co-branded SaaS interface competing with your course identity. Learners stay inside a branded experience that reinforces your course rather than a vendor's. Full white-label control ships in the open-source Community edition - no premium tier required to look professional."
+        },
+        {
+          "h2": "SSO With Your Course Platform",
+          "body": "Authenticate learners against your existing course platform through OAuth 2.0, LDAP, or SAML 2.0 so they never manage a separate login. Scoold Pro adds SCIM provisioning for automated account lifecycle management tied to enrollment. One credential, one branded experience, and zero password friction at the start of every course when dropout risk is highest."
+        },
+        {
+          "h2": "A Knowledge Base That Compounds",
+          "body": "Every cohort's questions enrich the knowledge base for the next. By year three of a course, the most common questions answer themselves through search, leaving instructors free to focus on novel queries and curriculum improvement. The REST API lets you embed Q&A inside your course site or LMS, so discussion happens where learners already work."
+        }
+      ],
+      "category": "qa-platform"
+    },
+    {
+      "id": "self-hosted-q-and-a-platform-for-university-courses",
+      "title": "Self-Hosted Q&A Platform for University Courses",
+      "heading": "Self-Hosted Q&A Platform for University Courses",
+      "description": "Scoold is a self-hosted Q&A platform for university courses. Per-course spaces, university SSO, full-text search. On-premises, no per-seat fees.",
+      "intro": "Self-hosted Q&A platform for university courses gives every class a focused ask-answer space on infrastructure the institution owns and controls. Scoold pairs the Stack Overflow workflow students already know with per-course Spaces, university SSO, and on-premises deployment. Professors reduce email and Slack load while each course accumulates an archive of answers that compound across semesters.",
+      "cta": {
+        "label": "Set up course Q&A spaces",
+        "href": "/download/"
+      },
+      "sections": [
+        {
+          "h2": "A Dedicated Space for Every Course",
+          "body": "Each course gets its own Space with scoped questions, tags, and member lists, so a machine learning seminar never floods a history lecture's feed. Professors moderate, pin canonical answers, and curate tags relevant to their syllabus. Cross-Space search helps when a question spans disciplines, but everyday discussion stays scoped to the right classroom and the right cohort."
+        },
+        {
+          "h2": "Archive That Survives the Semester",
+          "body": "Slack threads vanish and email is unsearchable, but Scoold threads persist across terms. A question answered in fall 2025 still resolves a new student's confusion in spring 2027 through full-text search. Similar-post detection nudges askers toward existing threads before duplicates fragment knowledge. Every cohort enriches the archive the next cohort inherits, compounding the value of participation."
+        },
+        {
+          "h2": "University SSO, No New Passwords",
+          "body": "Authenticate students and instructors against the campus directory through LDAP, SAML 2.0, or OAuth 2.0, so they sign in with credentials they already use for everything else. Scoold Pro adds SCIM provisioning so accounts follow registration and graduation automatically. No separate password to forget, no manual account administration for IT, and offboarding is instant when a student graduates."
+        },
+        {
+          "h2": "On-Premises for FERPA and Data Residency",
+          "body": "Course discussions often include student work and identifiable information protected by FERPA and institutional policy. Self-hosting keeps every question, answer, and profile on university infrastructure under its governance - no third-party cloud processor, no vendor access, no transatlantic transfers. Compliance teams can verify the entire privacy posture through source code inspection rather than relying on vendor attestations alone."
+        },
+        {
+          "h2": "Cut Professor Email and Slack Load",
+          "body": "Faculty answer the same foundational questions every term. Scoold captures each answer once, and search surfaces it for every future student. Similar-post suggestions appear as someone types, resolving issues before they reach the instructor's inbox. Professors spend office hours on novel questions rather than repeating the same setup clarification to thirty separate email threads each September."
+        },
+        {
+          "h2": "Lightweight, Free, and Sustainable",
+          "body": "Scoold Community is free and open source under Apache 2.0 - deploy once for the whole campus with unlimited students and no per-seat fees. Pro is a one-time perpetual license when enterprise SSO and integrations are needed. One modest server with a gigabyte of RAM handles thousands of students. A single IT admin keeps the platform running with minimal operational overhead."
+        }
+      ],
+      "category": "qa-platform"
+    },
+    {
+      "id": "community-software-for-students-and-teachers",
+      "title": "Community Software for Students and Teachers",
+      "heading": "Community Software for Students and Teachers",
+      "description": "Scoold is community software for students and teachers. Self-hosted, moderated, with spaces, search, and SSO. Private, FERPA-friendly, no per-seat fees.",
+      "intro": "Community software for students and teachers gives a school one moderated place where learners and educators discuss, share resources, and collaborate across classes. Scoold pairs a focused Q&A format with self-hosted deployment, so the entire school community lives on infrastructure the institution owns. Discussions stay private, moderation is centralized, and the knowledge base compounds across academic years.",
+      "cta": {
+        "label": "Build your school community",
+        "href": "/download/"
+      },
+      "sections": [
+        {
+          "h2": "One Platform for the Whole School",
+          "body": "Spaces organize the community without forcing one chaotic feed - a Space for each class, club, staff department, or parent committee. Students find the conversations relevant to them; educators keep staff-only discussions scoped. Cross-Space search works when a topic spans groups, and access controls keep sensitive threads restricted to the right audience. Schools mirror their own structure inside the platform."
+        },
+        {
+          "h2": "Q&A Instead of Endless Threads",
+          "body": "Traditional forums bury answers under hundreds of replies, but Scoold's Q&A structure surfaces the best response first through voting and accepted answers. Teachers curate canonical answers and pin them at the top of common threads. A question asked once in September keeps answering itself every term. The format rewards helpful contributors with reputation and badges that build lasting engagement."
+        },
+        {
+          "h2": "Self-Hosted for Student Privacy",
+          "body": "Student and staff data stays on school infrastructure - no third-party cloud processor, no analytics phoning home, no transatlantic data transfers. The Apache 2.0 source code is auditable, so privacy and compliance teams verify exactly what runs on your servers. FERPA and district policy apply directly because the school controls the entire stack from network to application."
+        },
+        {
+          "h2": "SSO With School Credentials",
+          "body": "Students and teachers sign in with the credentials they already use for school systems through LDAP, Active Directory, OAuth 2.0, or SAML 2.0. Scoold Pro adds SCIM provisioning so accounts follow enrollment, graduation, and staff changes automatically. No new passwords to forget, no separate account database for IT, and offboarding is instant when a student or teacher leaves."
+        },
+        {
+          "h2": "Free and Open Source for Schools",
+          "body": "Licensing never scales with enrollment or staff headcount. Scoold Community is free under Apache 2.0 with voting, reputation, badges, spaces, full-text search, LDAP, and the REST API all included - no trial, no feature gates. When federated identity or chat integrations are needed, Scoold Pro is a one-time perpetual license with unlimited users. School budgets stay predictable year over year."
+        },
+        {
+          "h2": "Deploy in Minutes, Maintain Easily",
+          "body": "One Docker container gets the whole school community live before the next period, on a single modest server with a gigabyte of RAM handling thousands of users. No Redis, no Elasticsearch, no multi-service architecture to babysit. Updates are single-container replacements. Overstretched school IT teams spend minutes rather than hours keeping the platform reliable for every classroom and club."
+        }
+      ],
+      "category": "community-forum"
     }
   ]
 }
