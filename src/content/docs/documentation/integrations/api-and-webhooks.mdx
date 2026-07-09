@@ -39,6 +39,11 @@ The response body is similar to this:
 API clients can be auto-generated using Swagger Codegen. You can also explore the API documentation reference
 and generate the clients from there.
 
+<Aside type="tip">
+To revoke **all** existing API tokens, simply change the value of `scoold.app_secret_key` and restart Scoold.
+Changing the Para secret key (`scoold.para_app_secret`) would log out all users.
+</Aside>
+
 ### Personal API Tokens
 
 API tokens generated from the **Administration** page are considered admin-level tokens and have full access permissions

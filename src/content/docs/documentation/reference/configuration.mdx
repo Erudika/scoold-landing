@@ -70,7 +70,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.host_url`<br/>The internet-facing (public) URL of this Scoold server. | `http://localhost:8000` | `String`|
 |`scoold.port` <kbd>requires restart</kbd><br/>The network port of this Scoold server. Port number should be a number above `1024`. | `8000` | `Integer`|
 |`scoold.env` <kbd>requires restart</kbd><br/>The environment profile to be used - possible values are `production` or `development` | `development` | `String`|
-|`scoold.app_secret_key`<br/>A random secret string, min. 32 chars long. *Must be different from the secret key of the Para app*. Used for generating JWTs and passwordless authentication tokens. | ` ` | `String`|
+|`scoold.app_secret_key`<br/>A random secret string, min. 32 chars long. *Must be different from the secret key of the Para app*. Used for generating API tokens (JWT) and passwordless authentication tokens. | ` ` | `String`|
 |`scoold.admins`<br/>A comma-separated list of emails of people who will be promoted to administrators with full rights over the content on the site. This can also contain Para user identifiers. | ` ` | `String`|
 |`scoold.is_default_space_public`<br/>When enabled, all content in the default space will be publicly visible, without authentication, incl. users and tags. Disable to make the site private. | `true` | `Boolean`|
 |`scoold.context_path` <kbd>requires restart</kbd><br/>The context path (subpath) of the web application, defaults to the root path `/`. | ` ` | `String`|
@@ -315,7 +315,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.goodanswer_ifhas`<br/>Votes needed on an answer before its author gets to earn the `good answer` badge. | `10` | `Integer`|
 |`scoold.enthusiast_ifhas`<br/>Reputation points needed for earning the `enthusiast` badge. | `100` | `Integer`|
 |`scoold.freshman_ifhas`<br/>Reputation points needed for earning the `freshman` badge. | `300` | `Integer`|
-|`scoold.scholar_ifhas`<br/>Reputation points needed for earning the `scholar` badge. | `500` | `Boolean`|
+|`scoold.scholar_ifhas`<br/>Reputation points needed for earning the `scholar` badge. | `500` | `Integer`|
 |`scoold.teacher_ifhas`<br/>Reputation points needed for earning the `teacher` badge. | `1000` | `Integer`|
 |`scoold.geek_ifhas`<br/>Reputation points needed for earning the `geek` badge. | `9000` | `Integer`|
 
