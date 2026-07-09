@@ -117,7 +117,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.security.allow_unverified_emails`<br/>Enable/disable email verification after the initial user registration. Users with unverified emails won't be able to sign in, unless they use a social login provider. | `false` | `Boolean`|
 |`scoold.session_timeout`<br/>The validity period of the authentication cookie, in seconds. Default is 24h. | `86400` | `Integer`|
 |`scoold.jwt_expires_after`<br/>The validity period of the session token (JWT), in seconds. Default is 24h. | `86400` | `Integer`|
-|`scoold.personal_token_expires_after`<br/>The validity period of personal API keys (Bearer tokens) for use with API/MCP. Default is 168h. | `604800` | `Integer`|
+|`scoold.personal_token_expires_after`<br/>The validity period of personal API keys (Bearer tokens) for use with API/MCP. Setting this to 0 will show a select combobox in the UI. Default is 168h. | `604800` | `Integer`|
 |`scoold.security.one_session_per_user`<br/>If disabled, users can sign in from multiple locations and devices, keeping a few open sessions at once. Otherwise, only one session will be kept open, others will be closed. | `true` | `Boolean`|
 |`scoold.min_password_length`<br/>The minimum length of passwords. | `8` | `Integer`|
 |`scoold.min_password_strength`<br/>The minimum password strength - one of 3 levels: `1` good enough, `2` strong, `3` very strong. | `2` | `Integer`|

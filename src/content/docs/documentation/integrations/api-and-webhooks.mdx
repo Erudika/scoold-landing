@@ -59,10 +59,12 @@ scoold.api_user_access_enabled = true
 ```
 
 That will unlock a new section on the **Settings** page, where each user can generate one API token at a time.
-For security reasons, personal tokens have a fixed expiration period of 7 days, but that period is configurable:
+By default, the expiration period for personal tokens is 7 days, but that period is configurable.
+Setting the period to `0` would allow users to select a period from a dropdown box on their settings page.
 
 ```ini title=scoold-application.conf
-# expiration period in seconds, default is 7 days
+# expiration period in seconds, default is 7 days, 
+# a value of 0 will show the dropdown box in the web UI
 scoold.personal_token_expires_after = 604800
 ```
 
