@@ -47,7 +47,7 @@ Keep in mind that if your website has a lot of traffic, this will result in hund
 Scoold attaches several security headers to each response. These can be enabled or disabled with the following configuration
 properties:
 
-```ini
+```ini title="scoold-application.conf"
 # Strict-Transport-Security
 scoold.hsts_header_enabled = true
 
@@ -84,7 +84,7 @@ You can protect signups and password reset functionality with reCAPTCHA v3.
 By default, Scoold will protect valuable questions and answers from accidental deletion. If a question has at least one
 answer, the author of that question will not be able to delete it. Or, if an answer is accepted by the author of the
 question, the person who wrote the answer won't be able to delete it. You can turn this off with:
-```ini
+```ini title="scoold-application.conf"
 scoold.delete_protection_enabled = false
 ```
 
@@ -93,7 +93,7 @@ scoold.delete_protection_enabled = false
 By default, only one session is allowed per user/browser. When a user logs in from one device, they will automatically be
 logged out from every other device. This can be disabled to allow multiple simultaneous sessions with:
 
-```ini
+```ini title="scoold-application.conf"
 scoold.security.one_session_per_user = false
 ```
 
@@ -105,26 +105,26 @@ will the access token (JWT) inside the cookie.
 
 You can restrict signups only to users from a particular identity domain, say `acme-corp.com`. To do so, set the
 following configuration property:
-```ini
+```ini title="scoold-application.conf"
 scoold.approved_domains_for_signups = "acme-corp.com"
 ```
 Then a user with email `john@acme-corp.com` will be allowed to login (the identity provider is irrelevant), but user
 `bob@gmail.com` will be denied access.
 
 In Scoold Pro, this setting can also contain a comma-separated list of identity domains:
-```ini
+```ini title="scoold-application.conf"
 scoold.approved_domains_for_signups = "acme-corp.com,gmail.com"
 ```
 
 ## Admins
 
 You can specify the user with administrative privileges in your `scoold-application.conf` file:
-```ini
+```ini title="scoold-application.conf"
 scoold.admins = "joe@example.com"
 ```
 In Scoold Pro, you can have multiple admin users by specifying a comma-separated list of user identifiers.
 This works both for new and existing users.
-```ini
+```ini title="scoold-application.conf"
 scoold.admins = "joe@example.com,fb:1023405345366,gh:1234124"
 ```
 
@@ -137,19 +137,33 @@ This feature is enabled with `scoold.anonymous_posts_enabled = true`. It allows 
 replies, without having a Scoold account. Posting to the "Feedback" section will also be open without requiring users
 to sign in. This feature is disabled by default.
 
+You can also restrict the access for unauthenticated visitors to the anonymous posting feature by specifying an IP range:
+
+```ini title="scoold-application.conf"
+scoold.anonymous_posts_ip_allowlist = "10.0.0.0/8,192.168.1.0/24,203.0.113.5"
+```
+
+Be careful when deploying Scoold in front of a reverse proxy and especially if you have enabled Spring's 
+forward headers support with `server.forward-headers-strategy=native`. The feature works correctly for clients 
+whose deployment terminates at a trusted corporate proxy/LB, but should not be relied upon for Internet-facing deployments 
+as a blocked user can forge the header and bypass the gate.
+
 ## Anonymous profiles
 
 People may wish to make their profile details anonymous from the Settings page. To allow this option set:
-```ini
+```ini title="scoold-application.conf"
 scoold.profile_anonimity_enabled = true
 ```
+
+Anonymous posting can also work per post, by checking the "Post anonymously" checkbox under the post form.
+You must first enable profile anonymity in your configuration for the checkbox to appear.
 
 ## Spam protection
 
 Scoold can be configured to detect and block spam content with the help of the Akismet API. To enable this functionality,
 specify your Akismet API key like this:
 
-```ini
+```ini title="scoold-application.conf"
 scoold.akismet_api_key = "xyz123"
 ```
 
@@ -158,6 +172,6 @@ will be ignored and the user will get an error, preventing them from posting it.
 a report will be created each time a spam post is detected so that mods/admins can take action on it. In the meantime
 the post would be marked as "pending approval".
 
-```ini
+```ini title="scoold-application.conf"
 scoold.automatic_spam_protection_enabled = false
 ```

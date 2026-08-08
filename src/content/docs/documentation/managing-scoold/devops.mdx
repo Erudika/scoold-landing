@@ -121,6 +121,11 @@ proxy server like NGINX in front of Scoold and Para. As an alternative you can u
 3. Start NGINX with the configuration below
 </Steps>
 
+<Aside type="tip" title="Tip">
+When running Scoold behind a reverse proxy, it is recommended that you enable support for forward headers in Spring with
+`server.forward-headers-strategy=NATIVE` in `application.properties` or as a system property.
+</Aside>
+
 <details>
 <summary>Example configuration for NGINX</summary>
 ```nginx title=/etc/nginx/nginx.conf
