@@ -280,6 +280,7 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.max_comment_length`<br/>The maximum length of each comment. | `600` | `Integer`|
 |`scoold.max_mentions_in_posts` <kbd>Pro</kbd><br/>The maximum number of mentioned users a post can have. | `10` | `Integer`|
 |`scoold.anonymous_posts_enabled` <kbd>Pro</kbd><br/>Enable/disable the ability for unathenticated users to create new questions. | `false` | `Boolean`|
+|`scoold.anonymous_posts_ip_allowlist` <kbd>Pro</kbd><br/>Restrict anonymous posting to visitors coming from a configured list of allowed IP addresses/ranges. Has no effect on authenticated users. Securing this gate requires a trusted reverse proxy in front of Scoold that overwrites the `X-Forwarded-For` header; otherwise the header can be forged by the client. Comma-separated list of allowed IPs and/or CIDR ranges used by the IP allowlist (e.g. '10.0.0.0/8,192.168.1.0/24,203.0.113.5'). Leave empty to disable the gate. | ` ` | `String`|
 |`scoold.nearme_feature_enabled`<br/>Enable/disable the ability for users to attach geolocation data to questions and location-based filtering of questions. | `false` | `Boolean`|
 |`scoold.merge_question_bodies`<br/>Enable/disable the merging of question bodies when two questions are merged into one. | `true` | `Boolean`|
 |`scoold.max_similar_posts`<br/>The maximum number of similar posts which will be displayed on the side. | `7` | `Integer`|
@@ -504,3 +505,5 @@ This page contains a full list of all configuration properties available in Scoo
 |`scoold.ai_training_allowed`<br/>Enable/disable permission for AI training on content from the website, using the new RSL standard. | `false` | `Boolean`|
 |`scoold.mcp_server_mode`<br/>Enable/disable the MCP server. Possible values: `off`, `r` - read-only, `rw` - full access. | `off` | `String`|
 |`scoold.onboarding_enabled`<br/>Enable/disable the onboarding wizard when Scoold is initially started without any data. | `true` | `Boolean`|
+|`scoold.activity_tracking_enabled`<br/>Enable/disable request activity tracking for statistics shown on the admin dashboard. Also includes tracking security events for the audit log. | `true` | `Boolean`|
+|`scoold.voting_on_homepage_enabled`<br/>Enable/disable voting buttons on the homepage where all questions are listed. Also includes the fav (like) button, if available. | `false` | `Boolean`|
