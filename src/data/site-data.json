@@ -873,7 +873,7 @@
       "hero_badge": "COMPARISON",
       "intro": [
         "Discourse is an excellent forum platform optimized for long-form discussion threads. Scoold is purpose-built for Q&A - where finding the best answer quickly is the goal. Both are open-source and easy to self-host.",
-        "Scoold also offers managed cloud hosting (Scoold Cloud) with plans starting from €49/month, and perpetual Pro licenses (from €499). Discourse offers several cloud hosting plans (ranging from $0 to $500+/month), but the cheaper plans are very limited in terms of functionality.",
+        "Scoold also offers managed cloud hosting (Scoold Cloud) with plans starting from €49/month, and perpetual Pro licenses (from 499€). Discourse offers several cloud hosting plans (ranging from $0 to $500+/month), but the cheaper plans are very limited in terms of functionality.",
         "Discourse relies on plugins for additional features. Scoold offers an excellent alternative with well-rounded features out-of-the-box, and advanced integrations."
       ],
       "table_headers": ["Feature", "Scoold", "Scoold Pro", "Discourse"],

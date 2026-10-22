@@ -93,8 +93,8 @@ const breadcrumbJsonLd = {
                     ) : (
                       <span class:list={[i === 2 ? 'text-brand-600 font-bold' : 'text-slate-800 font-bold']} set:html=
                         {cell.
-                          replace("{pricePro}", site.priceSign + site.pricePro).
-                          replace("{priceProPlus}", site.priceSign + site.priceProPlus)} 
+                          replace("{pricePro}", site.pricePro + site.priceSign).
+                          replace("{priceProPlus}", site.priceProPlus + site.priceSign)} 
                       >
                       </span>
                     )}

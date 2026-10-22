@@ -73,11 +73,11 @@ const { titleFirst, titleSecond, pageBlock } = Astro.props;
           <div class="mb-6">
             <div class:list={['text-4xl font-extrabold tracking-tight', plan.popular ? 'text-white' : 'text-slate-900']}>
               {plan.price.
-                          replace("{pricePro}", site.priceSign + site.pricePro).
-                          replace("{priceProPlus}", site.priceSign + site.priceProPlus).
-                          replace("{priceCloudSmall}", site.priceSign + site.priceCloudSmall).
-                          replace("{priceCloudLarge}", site.priceSign + site.priceCloudLarge).
-                          replace("{priceCloudApp}", site.priceSign + site.priceCloudApp)}
+                          replace("{pricePro}", site.pricePro + site.priceSign).
+                          replace("{priceProPlus}", site.priceProPlus + site.priceSign).
+                          replace("{priceCloudSmall}", site.priceCloudSmall + site.priceSign).
+                          replace("{priceCloudLarge}", site.priceCloudLarge + site.priceSign).
+                          replace("{priceCloudApp}", site.priceCloudApp + site.priceSign)}
             </div>
             <div class:list={['text-sm font-medium mt-0.5', plan.popular ? 'text-slate-300' : 'text-slate-600']}>
               {plan.price_note}
