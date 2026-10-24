@@ -32,12 +32,15 @@
       "home": "Home",
       "blog": "Blog",
       "faq": "FAQ",
+      "legal": "Legal",
       "pricing": "Pricing",
       "tags": "Tags",
       "pagePrefix": "Page",
+      "contacts": "Contacts",
       "features": "Features",
       "integrations": "Integrations",
-      "solutions": "Solutions"
+      "solutions": "Solutions",
+      "comparisons": "Comparisons"
     }
   },
   "authors": [
@@ -1454,9 +1457,9 @@
         "href": "/legal/licenses/"
       },
       {
-        "label": "Imprint",
-        "description": "Legal details about the company behind Scoold.",
-        "href": "/imprint/impressum/"
+        "label": "Acceptable Use Policy",
+        "href": "/legal/acceptable-use-policy/",
+        "description": "This policy defines permitted and prohibited uses of Scoold Cloud hosting service."
       }
     ]
   },
@@ -1475,6 +1478,11 @@
       "title": "Data Processing Agreement",
       "description": "The DPA outlines the rights and obligations of customers and us, as data processor, regarding the handling and protection of personal data.",
       "effective_date": "2026-03-10"
+    },
+    "aup": {
+      "title": "Acceptable Use Policy",
+      "description": "Acceptable Use Policy for Scoold Cloud, operated by Erudika.",
+      "effective_date": "24 October 2026"
     }
   },
   "download": {
